@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+<title>IRI/LDEO Climate Data Library</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
+<link rel="canonical" href="index.html" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#forecast" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem">
+                <legend>IRI/LDEO</legend> 
+                     <span class="navtext">Climate Data Library</span>
+            </fieldset> 
+ </div>
+ <div id="content" class="searchDescription">
+<h2 property="term:title">IRI/LDEO Climate Data Library</h2>
+<p align="left" property="term:description">
+The IRI Data Library is a powerful and freely accessible online data repository and analysis tool that allows a user to view, analyze, and download hundreds of terabytes of climate-related data through a standard web browser.</p>
+<p> It is a powerful tool that 
+offers the following capabilities at no cost to the user:
+<ul><li>access any number of datasets;</li>
+<li>create analyses of data ranging from simple averaging to more advanced EOF analyses using the Ingrid Data Analysis Language;</li>
+<li>monitor present climate conditions with maps and analyses in the <a href="/maproom/">Maproom</a>;</li>
+<li>create visual representations of data, including animations;</li>
+<li>download data in a variety of commonly-used <a href="dochelp/Tutorial/MVD/Download/formats.html">formats</a>, including 
+GIS-compatible formats.</li>
+</ul>
+</p>
+</div>
+
+<div class="rightcol tabbedentries" about="index.html" >
+
+  <a rel="section" href="maproom/"></a>
+  <a rel="section" href="http://iridl.tumblr.com/"></a>
+  <a rel="section" href="SOURCES/"></a>
+<div about="maproom/">
+  <a rel="canonical" href="maproom/"></a>
+      <meta property="maproom:Sort_Id" content="a01" />
+<link rel="term:icon" href="http://iridl.ldeo.columbia.edu/expert/ds:/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/X/Y/1/SM121/DATA/10/STEP/Y/%2822S%29%2822N%29RANGE//name//tropical_OLR/def/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/X/Y/1/SM121/DATA/10/STEP//name//global_OLR/def/:ds/a-+.tropical_OLR+startcolormap+DATA+120+300+RANGE+5+130+5+RGB+RGBdup+120+VALUE+5+130+5+RGB+RGBdup+170+VALUE+10+150+15+RGB+RGBdup+180+VALUE+20+170+25+RGB+RGBdup+190+VALUE+45+180+50+RGB+RGBdup+200+VALUE+70+190+75+RGB+RGBdup+210+VALUE+110+210+115+RGB+RGBdup+220+VALUE+150+230+155+RGB+RGBdup+230+VALUE+170+242+175+RGB+RGBdup+240+VALUE+211+211+211+RGB+RGBdup+250+VALUE+255+255+255+RGB+300+VALUE+white+endcolormap+-a-+.global_OLR+-a+X+Y+fig:+colors+grey+unlabelledcontours+black+thin+solid+coasts+countries+:fig+/T/last/plotvalue/X/-20/340/plotrange/Y/-65/75/plotrange//plotborder+0+psdef//antialias+true+psdef//plotaxislength+220+psdef//XOVY+null+psdef+.gif" />
+<h2 property="term:title">IRI Climate and Society Map Room</h2>
+<p align="left" property="term:description">
+The climate and society maproom is a collection of maps and other figures that monitor climate and societal conditions at present and in the recent past. The maps and figures can be manipulated and are linked to the original data. Even if you are primarily interested in data rather than figures, this is a good place to see which datasets are particularly useful for monitoring current conditions.</p>
+</div>
+<div about="http://iridl.tumblr.com/">
+  <a rel="canonical" href="http://iridl.tumblr.com/"></a>
+      <meta property="maproom:Sort_Id" content="a02" />
+<link rel="term:icon" href="http://static.tumblr.com/e43a1d75fc37f030c78646b43cb77dad/u2cxaxb/wGrmu3roj/tumblr_static_iriwh128.png" />
+<h2 property="term:title">IRI Data Library Announcements</h2>
+<p property="term:description">Data Library announcements about new datasets and capabilities are available on our tumblr blog</p> 
+</div>
+<div about="SOURCES/">
+  <a rel="canonical" href="SOURCES/"></a>
+      <meta property="maproom:Sort_Id" content="a03" />
+<link rel="term:icon" href="http://static.tumblr.com/e43a1d75fc37f030c78646b43cb77dad/u2cxaxb/wGrmu3roj/tumblr_static_iriwh128.png" />
+<h2 property="term:title">Data by Source</h2>
+<p property="term:description">Datasets organized by source, i.e. creator and/or provider.</p>
+</div>
+</div>
+<div class="optionsBar">
+            <fieldset class="navitem" id="share"><legend>Share</legend>
+
+</fieldset>
+</div>
+ </body>
+
+ </html>
