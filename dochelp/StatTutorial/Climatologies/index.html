@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Climatologies and Standardized Anomalies</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend>
+            </fieldset> 
+ </div>
+
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a HREF="#Climo"> Climatologies</a></li>
+<li> <a HREF="#Comp"> Composites</a></li>
+<li> <a HREF="#Stand"> Standardized Anomalies</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Climatologies and Standardized Anomalies</h2>
+<p property="term:description">
+Climatology is commonly known as the study of our climate, yet the term encompasses 
+many other important definitions.  Climatology is also defined as the long-term 
+average of a given variable, often over time periods of 20-30 years.
+Climatologies are frequently employed in the atmospheric sciences, and may be computed 
+for a variety of time ranges.</p>
+<p>  A monthly climatology, for example, will produce a mean 
+value for each month and
+a daily climatology will produce a mean value for each day, over a specified time 
+range. Anomalies, or the deviation from the mean, are created by subtracting 
+climatological values from observed data. 
+</p><p>
+When seasonal variations are present within a set of data, it often helps to express 
+the data in terms of standardized anomalies.
+Standardized anomalies, also referred to as normalized anomalies,are calculated by 
+dividing anomalies by the climatological standard deviation.  They generally 
+provide more information about the magnitude of the anomalies because influences of 
+dispersion have been removed.
+It is not necessary that a dataset have a particular distribution to express it in 
+terms of standardized anomalies.
+</p>
+</div>
+<div id="Climo" class="ui-tabs-panel">
+<h2>Climatologies</h2>
+<p>
+<ul><li>Long-term average of a variable.</li>
+<li>A periodic mean function of the data.</li>
+<li>Computed over a variety of time ranges (daily, monthly, decadal).</li></ul>
+</p>
+<p>
+<u><b>Example</b></u>:  Generate monthly vapor pressure climatologies over world landmasses from Jan 1901 to Dec 1995.
+</p>
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Atmosphere" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/">
+UEA CRU New CRU05</a> dataset.</li> 
+<li> Click on the "monthly" link under the Datasets and Variables subheading.</li>
+<li> Select the "vapor pressure" link under the Datasets and Variables subheading.
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/">CHECK</a></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Select Domains</td>
+<td>
+<ul><li>No ranges will be adjusted in this example.<br/>
+The dataset will be analyzed over its entire temporal and spatial grids.</li>
+</ul>
+</td></tr>
+<tr><td align="center">Manually Generate Periodic Mean Function of the Data (Climatology)</td>
+<td>
+<ul>
+<li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Type the following command under the text already there:
+<span class="ingridcode">T 12 splitstreamgrid</span></li></ul>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/T/12/splitstreamgrid/">CHECK</a>
+<br/>This command splits the time grid into two new time grids. 
+The T grid has a period of 12 months and a step of 1.
+This grid represents data from January, Februrary, March, etc.  The T2 grid has a step 
+of 12 and represents the years
+from the beginning of the dataset (1901) to the end of the dataset (1995).
+</li>
+
+<li> Select the "Filters" link in the function bar.</li>
+<li> Choose the <i>Average over "T2"</i> command. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/T/12/splitstreamgrid/[T2+]average/">CHECK</a> <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/T/12/splitstreamgrid%5BT2%5Daverage/">EXPERT</a>
+<br/>
+Taking the average over T2 will generate a mean vapor pressure field for each month.  In this example, the mean function is called the monthly climatology.</li></ul>
+</td></tr>
+
+<tr><td align="center">View Climatologies</td>
+<td><ul><li> To see your results, choose the viewer with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/T/12/splitstreamgrid/[T2+]average/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a></li>
+<li>You may cycle through the climatologies of different months by
+  using the buttons above the viewer window.</li>
+</ul>
+
+<center>
+Monthly Climatologies of Vapor Pressure from January 1901 to December 1995
+<img WIDTH="400" HEIGHT="236"
+     src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/T/12/splitstreamgrid%5BT2%5Daverage/X+Y+fig:+colors+thin+solid+states+thinnish+countries+coasts_gaz+:fig+//vap/0.08526316/31.48842/plotrange//T/0.5/11.5/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif"
+     />
+<br/>
+<img WIDTH="350" HEIGHT="56"
+     src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/T/12/splitstreamgrid%5BT2%5Daverage/X+Y+fig:+colors+thin+solid+states+thinnish+countries+coasts_gaz+:fig+.auxfig+//vap/0.08526316/31.48842/plotrange//T/0.5/11.5/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif"
+     />
+</center>
+The animated image above shows the monthly climatology. You may create animated loops 
+such as this by entering "Jan to Dec" in the text box above the viewer window.<br/>
+</td></tr>
+<tr><td align="center">Create Climatologies via Shortcut</td>
+<td>
+
+<ul><li>Click on the box titled "vapor pressure" in the source bar on the dataset page. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/">CHECK</a><br/>
+This operation will undo the <i>splitstreamgrid</i> and <i>average</i> commands, erasing the monthly climatologies.</li>
+
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Choose the <i>Monthly Climatology</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/yearly-climatology/">CHECK</a> <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.vap/yearly-climatology/">EXPERT</a>
+<br/>
+Using the "Monthly Climatology" link under the Filters menu is a more direct way of computing monthly climatologies of the data.</li></ul>
+</td></tr>
+</table>
+
+</div>
+<div id="Comp" class="ui-tabs-panel">
+<h2>Composites</h2>
+<ul>
+  <li>Average of a variable taken over specially-selected time periods
+  with a common characteristic.</li> 
+  <li>Computed over a variety of time ranges (e.g., monthly, seasonal).</li>
+  <li>A "selective climatology".</li>
+</ul>
+<p>
+<b><u>Example</u></b>: Generate a composite of Oct-Dec seasonal average
+monthly zonal surface wind anomalies from the 1951-2006 climatology for
+Oct-Dec
+El Niño seasons (based upon the Climate Prediction Center
+definition)
+during that range of years.
+</p>
+<table border="1">
+  <colgroup width="15%"></colgroup><tbody>
+    <tr>
+      <td align="center">Locate Dataset and Variable</td>
+      <td> 
+      <ul>
+        <li>Select the "Datasets by Catagory" link in the blue banner
+on the Data Library page.</li>
+        <li>Click on the "Historical Model
+Simulations" link.</li>
+        <li>Select the <a
+ href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/">
+NOAA NCEP-NCAR CDAS-1</a>  dataset.</li>
+        <li> Click on the "MONTHLY" link under the Datasets and
+Variables subheading.</li>
+        <li> Select the "Diagnostic" link under the Datasets and
+Variables subheading.</li>
+        <li> Select the "above-ground" link under the Datasets and
+Variables subheading.</li>
+        <li> Select the "zonal wind" variable link under the Datasets
+and Variables subheading <a
+ href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/">CHECK</a>
+</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Select Domains</td>
+      <td> 
+      <ul>
+        <li>Click on the "Data Selection" link in the function bar.</li>
+        <li>Enter the text <i>Jan 1951 to Dec 2006</i> in the Time
+grid text box.</li>
+        <li>Press the Restrict Ranges button and then the Stop
+Selecting
+button. <a
+ href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%20
+1951%29%28Dec%202006%29RANGEEDGES/">CHECK</a></li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Calculate the<br/>
+Monthly Zonal Wind<br/>
+Anomalies</td>
+      <td>
+      <ul>
+        <li> Select the "Filters" link in the
+function bar.</li>
+        <li> Choose the <i>"anomalies" calculates the difference
+between the (above) monthly climatology and the original data</i>
+command. <a
+ href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/">CHECK</a>
+          <a
+ href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/">EXPERT</a>
+          <br/>
+          For each gridbox this step calculates the
+difference between each monthly zonal wind value and the monthly
+climatology calculated over the 1951-2006 period. This is the monthly
+zonal wind anomaly.</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Calculate 3-Month<br/>
+(Seasonal) Running<br/>
+Averages
+      </td>
+      <td>
+      <ul>
+        <li> If you are not already in Expert Mode, click on the
+"Expert Mode" link. <a
+ href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/">EXPERT</a></li>
+        <li> In the Expert Mode text box, under "yearly-anomalies" type
+in the following command: <br/>
+        </li>
+        <span class="ingridcode">T 3 runningAverage</span>
+      </ul>
+      
+      <ul>
+        <li>Press the OK button. <a
+ href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/T/3/runningAverage/">CHECK</a>
+          <br/>
+        </li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Select the Oct-Dec<br/>
+El Niño Seasons<br/>
+to Composite<br/>
+      </td>
+      <td> 
+      <ul>
+        <li>In the Expert Mode text box, after the existing text, type
+in the following command to initially select all Oct-Dec seasons from
+1951 to 2006:<br/>
+        </li>
+        <span class="ingridcode">T (Oct-Dec) VALUES</span>
+      </ul>
+      
+      <ul>
+        <li>The table on the following page at the Climate Prediction
+Center (CPC) website identifies historical El Niño and La
+Niña periods
+by 3-month season: <a
+ href="http://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ensoyears.shtml">Cold
+&amp; Warm Episodes by Season</a>. In the Expert Mode text box, after
+the existing text, type in
+the following command to select the Oct-Dec El Niño seasons
+identified
+in the CPC's table:<br/>
+        </li>
+        <span class="ingridcode">T (1951) (1957) (1963) (1965) (1968) (1969)
+(1972) (1976) (1977) (1982) (1986) (1987) (1991) (1994) (1997) (2002)
+(2004) (2006) VALUES</span>
+      </ul>
+      
+      <ul>
+        <li> Press the OK button. <a
+ href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/T/3/runningAverage/T/%28Oct-Dec%29VALUES/T/%281951%29%281957%29%281963%29%281965%29%281968%29%281969%29%281972%29%281976%29%281977%29%281982%29%281986%29%281987%29%281991%29%281994%29%281997%29%282002%29%282004%29%282006%29VALUES/">CHECK</a>
+        </li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Average Over the<br/>
+Selected Seasons</td>
+      <td>
+      <ul>
+        <li>In the Expert Mode text box, after the existing text, type
+in the following command to average over the selected El Niño
+seasons to create the composite:<br/>
+        </li>
+        <span class="ingridcode">[T] average</span>
+      </ul>
+      
+      <ul>
+        <li> Press the OK button. <a
+ href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/T/3/runningAverage/T/%28Oct-Dec%29VALUES/T/%281951%29%281957%29%281963%29%281965%29%281968%29%281969%29%281972%29%281976%29%281977%29%281982%29%281986%29%281987%29%281991%29%281994%29%281997%29%282002%29%282004%29%282006%29VALUES%5BT%5Daverage/">CHECK</a>
+        </li>
+        <li> To see your results, choose the viewer with coasts drawn. <a
+ href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/T/3/runningAverage/T/%28Oct-Dec%29VALUES/T/%281951%29%281957%29%281963%29%281965%29%281968%29%281969%29%281972%29%281976%29%281977%29%281982%29%281986%29%281987%29%281991%29%281994%29%281997%29%282002%29%282004%29%282006%29VALUES%5BT%5Daverage/figviewer.html?map.url=X+Y+fig-+colors+coasts+lakes+-fig&amp;my.help=more+options">CHECK</a>
+        </li>
+      </ul>
+      <center>Composite of Zonal Surface
+Wind Anomalies During Oct-Dec El Niño Seasons, 1951-2006<br/>
+      <img width="400" height="236"
+ src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/T/3/runningAverage/T/%28Oct-Dec%29VALUES/T/%281951%29%281957%29%281963%29%281965%29%281968%29%281969%29%281972%29%281976%29%281977%29%281982%29%281986%29%281987%29%281991%29%281994%29%281997%29%282002%29%282004%29%282006%29VALUES%5BT%5Daverage/X+Y+fig-+colors+coasts+lakes+-fig+Y/-88.54196/88.54196/plotrange//plotborder+72+psdef//plotaxislength+432+psdef+.gif"
+ />
+      <br />
+<img width="350"
+ height="56"
+ src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/.above_ground/.u/T/%28Jan%201951%29%28Dec%202006%29RANGEEDGES/yearly-anomalies/T/3/runningAverage/T/%28Oct-Dec%29VALUES/T/%281951%29%281957%29%281963%29%281965%29%281968%29%281969%29%281972%29%281976%29%281977%29%281982%29%281986%29%281987%29%281991%29%281994%29%281997%29%282002%29%282004%29%282006%29VALUES%5BT%5Daverage/X+Y+fig-+colors+coasts+lakes+-fig+.auxfig+Y/-88.54196/88.54196/plotrange//plotborder+72+psdef//plotaxislength+432+psdef+.gif"
+ /><br />
+      </center>
+      <br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div id="Stand" class="ui-tabs-panel">
+<h2>Standardized Anomalies</h2>
+<p>
+<ul><li>A measure of distance, in standard units, between a data value and its mean.</li>
+<li>Removes influences of location and spread from data.</li>
+<li>Easier to discern normal vs. unusual values.</li>
+<li>Calculated by subtracting the mean from each observation, then dividing by the standard deviation.</li>
+<li>Have the following characteristics: mean=0 and standard deviation=1.</li>
+<li>Dimensionless</li>
+</ul>
+
+
+<u><b>Example</b></u>:  Calculate monthly sea surface temperature standardized 
+anomalies from Jan 1984 to Dec 2003.
+</p>
+<table border="2"><colgroup width="15%" />
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Air-Sea Interface" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/">
+NOAA NCEP EMC CMB GLOBAL Reyn_Smith </a> dataset.</li>
+<li> Select the "Reyn_SmithOIv2" link under the Datasets and Variables subheading.</li>
+<li> Click on the "monthly" link again under the Datasets and Variables subheading.</li>
+<li> Select the "Sea Surface Temperature" link again under the Datasets and Variables subheading.
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/">CHECK</a></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Select Domains</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i>Jan 1984 to Dec 2003</i> in the appropriate text boxes.</li>
+<li>Press the Restrit Ranges button and then the Stop Selecting button.
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28Jan%201984%29%28Dec%202003%29RANGEEDGES/">CHECK</a></li>
+</ul>
+
+</td></tr>
+<tr><td align="center">Compute Anomalies</td>
+<td>
+<ul>
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Choose the <i>anomalies</i> command. 
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28Jan%201984%29%28Dec%202003%29RANGEEDGES/yearly-anomalies/">CHECK</a> 
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28Jan%201984%29%28Dec%202003%29RANGEEDGES/yearly-anomalies/">EXPERT</a>
+<br />
+This operation calculates the difference between monthly climatology and the original data.  These anomalies are <b>not</b> standardized.</li></ul>
+</td></tr>
+<tr><td align="center">Standardize Anomalies</td>
+<td>
+<ul>
+<li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Type the following command under the text already there:
+<span class="ingridcode">[T] standardize
+</span></li>
+</ul>
+<ul><li>Press the OK button. 
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28Jan%201984%29%28Dec%202003%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/">CHECK</a>
+The standardize function divides each anomaly by the standard deviation of the data, removing influences of dispersion.  The result is a dataset of standardized sea surface temperature anomalies.
+</li>
+<!--
+<li>In the Expert Mode text box, enter the following text below the text already there:<br /><br />
+
+<span><span class="ingridcode">
+startcolormap DATA<br />
+    -5. 5. RANGE<br />
+    black navy blue<br />
+       -5. VALUE<br />
+       cyan<br />
+        -0.5 VALUE<br />
+        white white<br />
+          0.5 bandmax<br />
+          yellow<br />
+           0.5 VALUE<br />
+           red<br />
+            5. VALUE<br />
+            firebrick endcolormap<br />
+  DATA 0.5 STEP
+
+</li></ul>
+</span><span class=in>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/yearly-anomalies%5BT%5Dstandardize/startcolormap/DATA/-5./5./RANGE/black/navy/blue/-5./VALUE/cyan/-0.5/VALUE/white/white/0.5/bandmax/yellow/0.5/VALUE/red/5./VALUE/firebrick/endcolormap/DATA/0.5/STEP/">CHECK</a>
+<br /></span><span class="reg">
+The above set of commands creates a color map to view the data.  Visualizing the standardized anomalies is easier using this color scheme than the default color scheme.
+</li></span>
+-->
+</ul>
+</td></tr>
+
+<tr><td align="center">View Standardized Anomalies</td>
+<td>
+<ul>
+<li>To see the result of these operations, choose the viewer with land shaded in black.</li>
+<li>In the text box above the viewer window, enter the text <i>Nov 1988</i>. 
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28Jan%201984%29%28Dec%202003%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/figviewer.html?my.help=more+options&amp;map.T.plotvalue=Nov+1988&amp;map.Y.units=degree_north&amp;map.Y.plotlast=89.5N&amp;map.url=X+Y+fig-+colors+land+-fig&amp;map.domain=+%7B+%2FT+527.5+plotvalue+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=89.5S&amp;map.X.plotfirst=0.5E&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=0.5W&amp;map.sst.plotfirst=-5.02034&amp;map.sst.units=unitless&amp;map.sst.plotlast=3.974625&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+land&amp;map.newurl.plot=colors&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.XOVY=auto&amp;map.color_smoothing=1&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a></li>
+<li>Click on the <b>Edit</b> "plot" button in the table at the bottom of the page. 
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28Jan%201984%29%28Dec%202003%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/figviewer.html?my.help=more+options&amp;map.T.plotvalue=Nov+1988&amp;map.Y.units=degree_north&amp;map.Y.plotlast=89.5N&amp;map.url=X+Y+fig-+colors+land+-fig&amp;map.domain=+%7B+%2Fsst+-5.02034+3.9746251+plotrange+%2FT+346.5+plotvalue+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef+%2FXOVY+null+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=89.5S&amp;map.X.plotfirst=0.5E&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=0.5W&amp;map.sst.plotfirst=-5.02034&amp;map.sst.units=unitless&amp;map.sst.plotlast=3.974625&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+land&amp;map.newurl.plot=colors&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.XOVY=auto&amp;map.color_smoothing=1&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200&amp;my.help=plot">CHECK</a></li>
+<li>Select "sstacolorscale" in the Plot pull-down menu.</li>
+<li>Click on the "plot" button. 
+These steps select a default colorscale for sea surface temperature anomalies.</li>
+<li>Click on the "more options" button. 
+<br />
+This button returns the users to the main viewer interface.</li>
+
+</ul><br />
+<center>
+November 1988 Global Standardized Sea Surface Temperature Anomalies<br />
+<img WIDTH="400" HEIGHT="236"
+     src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28Jan%201984%29%28Dec%202003%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/sstacolorscale+X+Y+fig:+colors+land+:fig+//sst/-5.02034/3.974625/plotrange//T/346.5/plotvalue+//plotaxislength+432+psdef//XOVY+null+psdef//plotborder+72+psdef+.gif"
+     />
+<br />
+<img WIDTH="350" HEIGHT="56"
+     src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28Jan%201984%29%28Dec%202003%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/sstacolorscale+X+Y+fig:+colors+land+:fig+.auxfig+//sst/-5.02034/3.974625/plotrange//T/346.5/plotvalue+//plotaxislength+432+psdef//XOVY+null+psdef//plotborder+72+psdef+.gif"
+     />
+
+
+
+
+<br /><br /></center>
+Standardizing anomalies facilitates the comparison of observations at
+two different locations.  For example, an anomaly of 2° Celsius may be insignificant off the east coast of Peru and highly significant in the Central Atlantic Ocean.  A standardized anomaly of 2 has the
+same relative significance at both locations.  Note that the below average sea surface temperatures in the Central and Eastern Pacific are indicative of the 1988 La Niña event.
+
+<!--
+Variations in sea surface temperature are greater in the Eastern Pacific than in the Western Pacific. Therefore, the same temperature anomaly might be significant in the Western Pacific while insignificant in the Eastern Pacific.
+By standardizing, the sea surface temperatures are normalized as to no longer reflect inconsistencies in the spread of the data.
+An anomaly of two standard deviation units, for example, is significant to the same degree at any point along the spatial grid.
+Notice the cold temperature anomalies in the Central to Eastern Pacfic.  The image reflects a strong La Niña event. <br /><br />
+-->
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title> Measures of Central Tendency</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a01" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a href="#Intro">Introduction</a></li>
+<li> <a href="#Mean">Mean</a></li>
+<li> <a href="#Median">Median</a></li>
+<li> <a href="#Trimmed">Trimmed Mean</a></li>
+<li> <a href="#Tri">Trimean</a></li>
+<li> <a href="#Int">Interpreting Measures of Central Tendency</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Measures of Central Tendency</h2>
+<p property="term:description">
+One of the most common quantities used to summarize a set of data is its center.
+The center is a single value, chosen in such a way that it gives a reasonable approximation of normality.
+There are many ways to approximate the center of a set of data. One of the most familiar 
+and useful measures of center is the mean,
+however, using only the mean to approximate normality can often be misleading.
+To obtain a better understanding of what is considered normal,
+other measures of central tendency such as the median, the trimmed mean, and the 
+trimean may be utilized in addition to the mean.
+</p>
+</div>
+<div id="Mean" class="ui-tabs-panel">
+<h2>Mean</h2>
+<ul>
+   <li>Defined as the arithmetic average of the set.</li>
+   <li>Calculated by summing <i>all</i> values, then dividing by the number of values.</li>
+   <li>One of the simplest measures of center to calculate.</li>
+   <li>May provide an incomplete description of the central tendency if not accompanied 
+by other measures.</li>
+   <li>Greatly affected by extreme values.</li>
+ </ul>
+<u><b>Example</b></u>:  Calculate temporal, spatial, and zonal means of outgoing 
+longwave radiation data over eastern North America for the time period 1980-1999.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Cloud Characteristics and Radiation Budget" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/">
+NOAA NCEP CPC GLOBAL</a>  dataset.</li>
+<li> Select the "monthly" link under the Datasets and Variables subheading.</li>
+<li> Choose the "outgoing longwave radiation" link, again located under the Datasets and Variables subheading.
+<A HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.</li>
+
+<li>Enter the text <i>70W to 90W</i>, <i>20N to 60N</i>, and <i>Jan 1980 to Dec 1999</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/">
+CHECK</a></li></ul>
+</td></tr>
+
+
+<tr><td align="center">Calculate Temporal Average</td>
+<td>
+
+
+<ul><li>Click on the "Filters" link in the function bar.</li>
+<li> Select the <i>Average over "T"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BT+%5Daverage/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BT%5Daverage/">EXPERT</a>
+
+This operation computes a temporal mean of the data by calculating the mean at each spatial grid point over the time range.
+
+*NOTE: In the filters menu, it is possible to average over mutiple variables.  Make sure you have averaged over T only.</li>
+
+<li>Scroll down to the Grids subheading.
+Notice there is no longer a time grid and the only independent variables remaining are longitude and latitude.</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">View Temporal Average</td>
+<td><ul><li> To see your results, choose the viewer with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BT+%5Daverage/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig">CHECK</a>
+</li></ul>
+
+<center>
+Temporal Average of Outgoing Longwave Radiation at 70°W-90°W, 20°N-60°N for Jan 1980 - Dec 1999
+<img class="dlimg map" WIDTH="350" HEIGHT="400" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BT%5Daverage/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//olr/192.3828/261.8878/plotrange/X/-91.25/-68.75/plotrange+//plotborder+72+psdef//plotaxislength+328+psdef//XOVY+null+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BT%5Daverage/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//olr/192.3828/261.8878/plotrange/X/-91.25/-68.75/plotrange+//plotborder+72+psdef//plotaxislength+328+psdef//XOVY+null+psdef+.gif" />
+</center>
+
+</td></tr>
+
+<tr><td align="center">Calculate Zonal Average</td>
+<td>
+
+
+<ul>
+<li>Click on the right most link in the blue source bar to exit the viewer.</li>
+<li>Select the link to the left of the <i>[ T ] 0.0 average</i> box in the source bar. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/">CHECK</a>
+
+This operation will undo the temporal average.</li>
+
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Select the <i>Average over "X"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BX+%5Daverage/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX%5Daverage/">EXPERT</a>
+
+This function computes a zonal mean of the data as a function of time and latitude.
+</li>
+
+<li>Scroll down to the Grids subheading.
+Notice there is no longer a longitude grid and the only independent variables remaining are latitude and time.</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">View Zonal Average</td>
+<td><ul><li> To see your results, select the color viewer. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BX+%5Daverage/figviewer.html?map.url=Y+T+fig-+colors+-fig">CHECK</a>
+
+ The image should resemble a stack of thin horizontal lines, with red colors to the left and green colors to the right.  The data is easier to visualize if the axes are reversed.</li>
+<li>Locate the three pull down menus underneath the color bar. </li><li>Change the item in the first menu from Latitude to Time and change the item in the second menu from Time to Latitude.</li>
+<li>Select the Redraw button. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BX+%5Daverage/figviewer.html?my.help=&map.T.units=months+since+1960-01-01&map.T.calendar=360&map.T.plotlast=2400+15+Dec+1999&map.url=Y+T+fig-+colors+-fig&map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&map.zoom=Zoom&map.T.plotfirst=0000+16+Jan+1980&map.Y.plotfirst=20N&map.Y.units=degree_north&map.Y.plotlast=60N&map.olr.plotfirst=157.5713&map.olr.units=W%2Fm2&map.olr.plotlast=281.3887&map.newurl.grid0=T&map.newurl.grid1=Y&map.newurl.plot=colors&map.plotaxislength=432&map.plotborder=72&map.fnt=Helvetica&map.fntsze=12&map.color_smoothing=1&map.XOVY=auto">CHECK</a>
+</li></ul>
+
+<center>
+Zonal Average of Outgoing Longwave Radiation at 70°W-90°W, 20°N-60°N for Jan 1980 - Dec 1999
+
+<img class="dlimg map" WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX%5Daverage/T+Y+fig-+colors+-fig+//olr/157.085/280.816/plotrange/T/240./480./plotrange+//plotborder+72+psdef//plotaxislength+328+psdef//XOVY+null+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX%5Daverage/T+Y+fig-+colors+-fig+.auxfig+//olr/157.085/280.816/plotrange/T/240./480./plotrange+//plotborder+72+psdef//plotaxislength+328+psdef//XOVY+null+psdef+.gif" />
+
+</center>
+
+</td></tr>
+
+
+<tr><td align="center">Calculate Spatial Average</td>
+<td>
+
+
+<ul>
+<li>Click on the right most link in the blue source bar to exit the viewer.</li>
+<li>Select the link to the left of the <i>[ X ] 0.0 average</i> box in the source bar. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/">CHECK</a>
+
+This operation will undo the [ X ] average command. </li>
+
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Select the <i>Average over "XY"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BX+Y+%5Daverage/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/">EXPERT</a>
+
+This function computes a spatial mean.  For each month, the outgoing longwave radiation data at each spatial grid point is averaged together to generate one value.
+*NOTE:  Make sure to select the combined "XY" in the filters menu.  Multiple variable selections are located to the right of the individual variables in the filters menu.
+</li>
+
+<li>Scroll down to the Grids subheading.
+Notice that the only independent variable remaining is time.</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">View Spatial Average</td>
+<td><ul><li> To see your results, select the time series viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BX+Y+%5Daverage/figviewer.html?plottype=line&my.help=more+options">CHECK</a>
+</li></ul>
+
+<center>
+Spatial Average of Outgoing Longwave Radiation at 70°W-90°W, 20°N-60°N for Jan 1980 - Dec 1999
+<img class="dlimg map" WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BX+Y+%5Daverage/T+fig-+line+-fig+//olr/197.6143/247.2252/plotrange/T/240./480./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+
+</center>
+
+</td></tr>
+
+</table>
+
+</div>
+<div id="Median" class="ui-tabs-panel">
+<h2>Median</h2>
+<ul>
+  <li>A commonly used robust and resistant measure of central tendency.</li>
+  <li>Defined as the middle value when observations are ordered from smallest to largest.</li>
+  <li>Divides the dataset into two parts of equal size, with 50% of the values below the median and 50% of the values above the median.</li>
+  <li>Also known as the 50th percentile.</li>
+  <li>Insensitive to extreme values.</li>
+  </ul>
+
+
+<u><b>Example</b></u>:  Calculate the spatial median of outgoing longwave radiation data.
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+*NOTE:  This example uses the same dataset and variable as the previous example.
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Cloud Characteristics and Radiation Budget" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/">
+NOAA NCEP CPC GLOBAL</a>  dataset.</li>
+<li> Select the "monthly" link under the Datasets and Variables subheading.</li>
+<li> Choose the "outgoing longwave radiation" link, again located under the Datasets and Variables subheading.
+<A HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.</li>
+
+<li>Enter the text <i>70W to 90W</i>, <i>20N to 60N</i>, and <i>Jan 1980 to Dec 1999</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/">
+CHECK</a></li></ul>
+</td></tr>
+
+<tr><td align="center">Calculate Spatial Median</td>
+<td>
+<ul><li>Click on the "Expert Mode" link in the function bar. </li>
+<li>Enter the following text below the text already there:
+
+<pre class="ingridcode">[X Y]medianover</pre>
+</li>
+<li>Press the OK button.
+<A HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Dmedianover/">
+CHECK</a> 
+The above command computes the spatial median of the data.  The median longitude and 
+median latitude values are located for each time step.</li></ul>
+
+</td></tr>
+<tr><td align="center">View Spatial Median</td>
+<td>
+
+<ul><li>To see the results of this operation, choose the time series viewer. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Dmedianover/figviewer.html?plottype=line&my.help=more+options">
+CHECK</a></li></ul>
+
+<center>
+Spatial Median of Outgoing Longwave Radiation at 70°W-90°W, 20°N-60°N for Jan 1980 - Dec 1999 
+<img class="dlimg map" WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Dmedianover/T+fig-+line+-fig+//olr/184.645/248.605/plotrange/T/240./480./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The spatial median time series looks similar to the spatial average time series from the previous example.  Yet, even though the two images look similar, they are not identical.
+In a non-symmetrical dataset such as this, the median is different from the mean.
+
+
+*NOTE: A temporal or zonal median can be generated the same way as temporal averages in Expert Mode.  For a temporal median, enter the command <i>[T] medianover.</i>
+
+
+</td></tr>
+</table>
+
+
+
+
+
+</div>
+<div id="Trimmed" class="ui-tabs-panel">
+<h2>Trimmed Mean</h2>
+<ul>
+
+    <li>Discards a percentage of the outlying values before calculating the arithmetic average.</li>
+    <li>A measure that incorporates characteristics of the mean and the median.</li>
+   <li>Less affected by outliers than the untrimmed average.</li>
+   <li>A x% trimmed mean will eliminate the largest x% and the smallest x% of the sample
+before calculated the mean.</li>
+    <li>Typical range for x% is 5% to 25%.
+
+
+    <div align=right>Wilks, Daniel S. <i>Statisical Methods in the Atmospheric Sciences.</i> p 26.</div></li>
+    </ul>
+
+<u><b>Example</b></u>:  Calculate the 20% trimmed mean of spatially averaged outgoing longwave radiation data.
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+*NOTE:  This example uses the same dataset and variable as the previous 
+example.
+
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Cloud Characteristics and Radiation Budget" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/">
+NOAA NCEP CPC GLOBAL</a>  dataset.</li>
+<li> Select the "monthly" link under the Datasets and Variables subheading.</li>
+<li> Choose the "outgoing longwave radiation" link, again located under the Datasets and Variables subheading.
+<A HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.</li>
+
+<li>Enter the text <i>70W to 90W</i>, <i>20N to 60N</i>, and <i>Jan 1980 to Dec 1999</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/">
+CHECK</a></li></ul>
+</td></tr>
+
+
+<tr><td align="center">Calculate Spatial Average</td>
+<td>
+
+
+<ul><li>Click on the "Filters" link in the function bar.</li>
+<li> Select the <i>Average over "XY"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BX+Y+%5Daverage/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/">EXPERT</a>
+
+
+This command takes the spatial average of the data (refer to section on calculating the <a HREF="#Mean">Mean</a>)</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Calculate Trimmed Mean</td>
+<td>
+<ul><li>Click on the "Expert Mode" link in the function bar. </li>
+<li>Enter the following lines below the text already there:
+
+<pre class="ingridcode">
+dup
+   [T]0.2 0.8 0.0 replacebypercentile
+   a:
+     percentile 0.2 VALUE
+     :a:
+      percentile 0.8 VALUE
+      :a
+    masknotrange
+</pre>
+</li>
+<li>Press the OK button.
+<A HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/dup%5BT%5D0.2/0.8/0.0/replacebypercentile/a:/percentile/0.2/VALUE/:a:/percentile/0.8/VALUE/:a/masknotrange/">
+CHECK</a> 
+
+
+The commands above discard the lowest 20% of the values and the highest 20% of the 
+values from the dataset.  First, the <i>dup</i> command duplicates the current variable 
+and adds it to the stack.
+The <i>replacebypercentile</i> command identifies the 20<sup>th</sup> and 80<sup>th</sup>
+percentiles and the remaining code masks out the values below and above these thresholds, 
+respectively.</li>
+
+
+<li>Click on the time series viewer in the function bar. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/dup%5BT%5D0.2/0.8/0.0/replacebypercentile/a:/percentile/0.2/VALUE/:a:/percentile/0.8/VALUE/:a/masknotrange/figviewer.html?plottype=line&my.help=more+options">
+CHECK</a></li></ul>
+
+<center>
+Outgoing Longwave Radiation at 70°W-90°W, 20°
+N-60°N for Jan 1980 - Dec 1999 With Extreme Values Masked Out
+<img class="dlimg map" WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/dup%5BT%5D0.2/0.8/0.0/replacebypercentile/a:/percentile/0.2/VALUE/:a:/percentile/0.8/VALUE/:a/masknotrange/T+fig-+line+-fig+//olr/213.1384/237.7585/plotrange/T/240./480./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+
+<ul>
+<li>Select the right most link in the blue source bar to return to the dataset page.</li>
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Select the <i>Average over "T"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/dup%5BT%5D0.2/0.8/0.0/replacebypercentile/a:/percentile/0.2/VALUE/:a:/percentile/0.8/VALUE/:a/masknotrange/%5BT+%5Daverage/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/dup%5BT%5D0.2/0.8/0.0/replacebypercentile/a:/percentile/0.2/VALUE/:a:/percentile/0.8/VALUE/:a/masknotrange%5BT%5Daverage/">EXPERT</a>
+
+The operation computes the temporal average of the data, after trimming.
+Since time was the only remaining independent variable, the result of this function is a single value.
+The value should be located under the Expert Mode text box in bold: 225.9467 W/m<sup>2</sup></li>
+
+
+
+</ul>
+</td></tr>
+</table>
+
+
+
+
+
+</div>
+<div id="Tri" class="ui-tabs-panel">
+<h2>Trimean</h2>
+<ul>
+  <li>Weighted average of the median and the quartiles.</li>
+  <li>Mean receives twice as much weight as the quartiles.</li>
+  <li>More representative of the magnitude of the data values than the median.</li>
+</ul>
+
+
+
+<u><b>Example</b></u>:  Calculate the trimean of spatially averaged outgoing longwave radiation data.
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+*NOTE:  This example uses the same dataset and variable as the previous example.
+
+
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Cloud Characteristics and Radiation Budget" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/">
+NOAA NCEP CPC GLOBAL</a>  dataset.</li>
+<li> Select the "monthly" link under the Datasets and Variables subheading.</li>
+<li> Choose the "outgoing longwave radiation" link, again located under the Datasets and Variables subheading.
+<A HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.</li>
+
+<li>Enter the text <i>70W to 90W</i>, <i>20N to 60N</i>, and <i>Jan 1980 to Dec 1999</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/">
+CHECK</a></li></ul>
+</td></tr>
+<tr><td align="center">Calculate Spatial Average</td>
+<td>
+
+
+<ul><li>Click on the "Filters" link in the function bar.</li>
+<li> Select the <i>Average over "XY"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/%5BX+Y+%5Daverage/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/">EXPERT</a>
+
+
+This command calculates the spatial average of the data 
+(refer to section on calculating the <a HREF="#Mean">mean</a>)</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Calculate Trimean</td>
+<td>
+
+<ul><li>Click on the "Expert Mode" link in the function bar. </li>
+<li>Enter the following text below the text already there:
+
+<pre class="ingridcode">
+[T]0.25 0.5 0.75 0 replacebypercentile
+  a:
+    percentile 0.5 VALUE
+    2 mul
+    :a:
+     percentile 0.25 VALUE
+     :a:
+      percentile 0.75 VALUE
+      :a
+    add
+   add
+  4 div
+  </pre></li>
+<li>Press the OK button.
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage%5BT%5D0.25/0.5/0.75/0/replacebypercentile/a:/percentile/0.5/VALUE/2/mul/:a:/percentile/0.25/VALUE/:a:/percentile/0.75/VALUE/:a/add/add/4/div/">CHECK</a>
+
+
+The <i>[T] 0.25 0.5 0.75 0 replacebypercentile</i> command computes the 25<sup>th</sup> 
+percentile, the median, and the 75<sup>th</sup> quartile.
+The <i>percentile 0.5 VALUE</i> and <i>2 mul</i> commands take the median value and 
+multiply it by 2.  The following 7 lines add the 25<sup>th</sup> and 75<sup>th</sup> 
+percentiles
+to the resulting sum.  The last command, <i>4 div</i>, divides the total sum by 
+four.  The resulting value is the trimean.  The value should be located
+below the Expert Mode text box in bold: 226.1863 W/m<sup>2</sup>.
+</li>
+
+<!--
+
+<li>Again in the Expert Mode text box, enter the following lines below the text already there:
+<span class=ing>
+      [T]0.25 0.75 0 replacebypercentile
+      a:
+        percentile 0.25 VALUE
+        :a:
+         percentile 0.75 VALUE
+         :a
+       add
+      add
+     4 div
+  
+</li>
+<li>Press the OK button.
+<A HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGE/T/%28Jan%201980%29%28Dec%201999%29RANGE/X/%2870W%29%2890W%29RANGE%5BX/Y%5Daverage%5BT%5D0.5/0/replacebypercentile/2/mul/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGE/T/%28Jan%201980%29%28Dec%201999%29RANGE/X/%2870W%29%2890W%29RANGE%5BX/Y%5Daverage%5BT%5D0.25/0.75/0/replacebypercentile/a:/percentile/0.25/VALUE/:a:/percentile/0.75/VALUE/:a/add/add/4/div/">
+CHECK</a> 
+
+
+The commands above compute the 25<sup>th</sup> and 75<sup>th</sup> percentiles and add their sum to the median found above.
+The last command, <i>4 div</i> divides the total sum by four.  The resulting value is the trimean.  The value should be located
+below the Expert Mode text box in bold: 226.2243 W/m<sup>2</sup>.
+
+
+-->
+
+</td></tr>
+</table>
+
+
+
+
+
+
+</div>
+<div id="Int" class="ui-tabs-panel">
+<h2>Interpreting Measures of Central Tendency</h2>
+<ul>
+  <li>If the population is non-symmetrical, it is said to be skewed.</li>
+  <li>Negatively skewed distributions:</li>
+  <ol><li>Tail to the left.</li>
+  <li>Median always greater than mean.</li></ol>
+  <li>Positively skewed distributions:</li>
+  <ol><li>Tail to the right.</li>
+  <li>Mean always greater than median.</li></ol></ul>
+  <center>
+
+  <img src="skew1.gif" />
+  <img src="skew3.gif" />
+  <img src="skew2.gif" />
+  </center>
+  
+
+ <ul><li>Before making inferences from the data, decide whether the mean or median is of greater interest and then proceed accordingly.</li></ul>
+
+<b><u>
+Interpreting Measures of Central Tendency: Caveats in the Atmospheric Sciences</b></u>
+
+
+<ol><li>The computed mean is not a completely reliable estimate of the climate system’s true long-term mean state.</li>
+<ul><li>Observations only taken over a limited observing period, at discrete times and varying locations.</li>
+<li>Mean may be affected by instrumental or human errors.</li>
+<li>Subjective and objective interpolation of station data both introduce error not present in the raw station data.</li></ul>
+
+<li>The mean state is not necessarily a typical state.</li>
+<ul><li>Long-term mean masks a great deal of intraperiod variability.</li>
+<li>Spatial variability within each period is larger than that of the long-term mean.</li>
+<li>Often the long-term mean field is unlikely to be observed, due to variablity within the period.</li>
+<li>Sample mean becomes an increasingly better estimator of the long-term mean as the number of elements in the sample increases.</li></ul>
+
+<li>The climatological mean is a moving target.</li>
+<ul><li>Today's climate is different from climates of the past.</li>
+<li>Climatology generally based on 10 - 30 year time period.</li>
+<li>Shorter climatologies more representative of today's climate.</li>
+</ul>
+</ol>
+
+A certain estimate of the center is never considered to be "wrong" or "right". 
+It is an approximation based on a given set of data and parameters. The 
+probability that the exact value aligns perfectly with the estimated value is extremely 
+low. Nevertheless, some estimates will be closer to the actual value than others.
+
+
+
+<!--
+From a climatological perspective, the most fundamental statistical function is the mean.  However, there are many caveats to be aware of when performing the basic function of calculating the mean.
+
+
+The computed mean is not a completely reliable estimate of the climate system's true long-term mean state.
+Observations used to compute the mean are only taken over a limited observing period, at discrete times and varying locations.
+The mean may also be affected by instrumental or human errors.
+Unreliability can also stem from data that has been analyzed.  Analyzed data has been interpolated to a regular grid using techniques that incorporate the laws of atmospheric dynamics.
+The interpolation can either be performed subjectively by a human, or objectively by a combination of atmospheric models.  Subjective and objective interpolation both introduce error not present in the raw station data.
+
+The mean state is not a typical state.  In many cases, the long-term mean masks a great deal of interperiod variability.
+In these cases, we would expect to see the spatial variability within each period to be larger than that of the long-term mean.
+Therefore, the long-term mean field would not be a typical field, since it is very unlikely to be observed for a given period.  In this sense, the long-term mean is a rare event.
+
+Lastly, a climatological mean is a moving target. The climate of today is different than the climate 500 years ago, which was different than the climate 6000 years ago.
+It is important to get a clear understanding of what the "true" mean state of the atmosphere is before interpreting the calculated mean from a set of observations.
+As long as the set of data is stationary and the memory of the time series is short relative to the length of the sample, it is safe to assume that the dataset consists of a random set of elements.
+
+If the conditions listed above are met, the mean state is considered to be representative of the random sample.  In other words, the mean lies in the center of the scatter of individual points in the state space.
+However, the mean is not necessarily representative of the typical state, as illustrated earlier.
+The sample mean becomes an increasingly better estimator of the long-term mean as the number of elements in the sample increases.
+Calculating the mean January 500 hPa height field, for example, using a 15-year sample would produce considerable uncertainty while using a 50-year sample would be more accurate.
+The interval at which data is taken is also an important factor to consider.  The mean of 100 surface air pressure readings taken at one-minute intervals at a given station is not a reliable estimator of the long-term mean air pressure at that station.
+Air pressure does not vary greatly on one-minute time scales. Instead, taking the mean of 100 surface air pressure readings at weekly intervals would provide a more adequate representation of the typical mean state.
+
+A certain estimate of the center is never considered to be wrong or right. It is an approximation, a guess, given a certain set of data and parameters. The probability that the exact value aligns perfectly with the estimated value is extremely low.
+Nevertheless, some estimates will be closer to the actual value than others.
+
+-->
+
+<u><b>Example</b></u>:  Calculate spatially averaged July rainfall from 10E to 25W and 0N to 30N and show that the mean value is atypical for the region.
+
+
+
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Atmosphere" link.</li>
+
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/"> NOAA NCEP CPC Merged_Analysis</a>  dataset.</li>
+
+<li>Select the "monthly" link under the Datasets and Variables subheading.</li>
+
+<li>Select the "December 2003 Release" link under the Datasets and Variables subheading.</li>
+
+<li>Choose the "Version 2" link.</li>
+
+<li>Click on the "CMAP estimated precipitation" link.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/">
+CHECK</a></li></ul>
+
+</td></tr>
+<tr><td align="center">Select Spatial and Temporal Domains</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 10E to 25W</i>,<i> 0N to 30N</i>, and <i> Jan 1980 to Dec 2002</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/">
+CHECK</a> </li></ul>
+
+</td></tr>
+<tr><td align="center">Compute Average July Precipitation</td>
+<td>
+
+
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Enter the following lines below the text already there:
+
+<pre class="ingridcode>
+T 12 splitstreamgrid
+  T (Jul) VALUES
+</pre>
+</li>
+<li>Press the OK button.  <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29VALUES/">
+CHECK</a>
+The <i>splitstreamgrid</i> function splits the time grid into two new parts, T and T2.
+The T grid has a period of 12 months and a step of 1. This grid represents data from 
+January, Februrary, March, etc.
+The T2 grid has a step of 12 and represents the years from the 
+beginning of the dataset to the end of the dataset.
+
+The subsequent command retains only the July values from the T grid.</li>
+
+
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Select the <i>Average over "T2"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29VALUES/%5BT2+%5Daverage/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29VALUES%5BT2%5Daverage/">EXPERT</a>
+
+
+
+This operation averages over the second time grid, T2, thereby calculating the temporal average of July rainfall over the years from 1980 to 2002.</li>
+</ul>
+
+
+
+<tr><td align="center">View Average July Precipitation</td>
+<td>
+
+
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts outlined. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29VALUES%5BT2%5Daverage/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&my.help=more+options">CHECK</a>
+</li></ul>
+<center>
+Estimated Average July Precipitation for 10E to 25W, 0N to 30N
+<img WIDTH=400 HEIGHT=350 src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29VALUES%5BT2%5Daverage/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//prcp_est/0.00173913/15.61826/plotrange/X/-23.75/8.75/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img WIDTH=350 HEIGHT=56 src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29VALUES%5BT2%5Daverage/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//prcp_est/0.00173913/15.61826/plotrange/X/-23.75/8.75/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif">
+</center>
+
+
+Average July rainfall is not constant over the spatial grid.
+There seems to be a distinct rainy area to the south and a distinct dry area to the north.
+
+
+</td></tr>
+
+
+
+
+
+
+
+
+</td></tr>
+<tr><td align="center">Calculate Spatial Average</td>
+<td>
+
+
+<ul>
+<li>Click on the right most link in the blue source bar to exit the viewer.</li>
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Select the <i>Average over "XY"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29VALUES%5BT2%5Daverage/%5BX+Y+%5Daverage/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.Merged_Analysis/.monthly/.v0312/.ver2/.prcp_est/Y/%280N%29%2830N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%202002%20%29RANGEEDGES/X/%2810E%29%2825W%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29VALUES%5BT2%5Daverage%5BX/Y%5Daverage/">EXPERT</a>
+The spatially averaged precipitation value is located under the Expert Mode text box in bold:  3.169257 mm/day.</li>
+</ul>
+This value, 3.169257 mm/day, represents the mean July precipitation per day in the region from 10° East to 25° West and from the equator to 30° North.
+Look again at the image of average July rainfall over the spatial grid (see above).
+There are a few locations on the border of wet and dry with daily rainfall near 3.17 mm/day, yet, it is not a typical value for the region.
+In most places, the location is either wet (above 4 mm/day), or it is dry (below 2 mm/day).
+This example illustrates that the mean state is not necessarily the typical state of the system.
+</td></tr>
+</table>
+
+Some additional functions associated with central tendency, along with corresponding 
+examples, are located in the basic <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Manipulation/#Averages">Tutorial</a>
+(e.g., box average, running average).
+
+<!--Additional averaging functions, such as <i>monthlyAverage</i> which
+converts daily data to monthly data by averaging and <i>pentadAverage</i> which converts daily data to pentad (i.e., five-day) data by averaging, will be located in the <a href="">Function Index</a>.
+-->
+<center>
+<a href="../Running/index.html">Click Here For The Running Averages & Weighted Averages Section</a>
+</center>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

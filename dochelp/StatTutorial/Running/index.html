@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Running and Weighted Averages</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a01" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a href="#Intro"> Introduction</a></li>
+<li> <a href="#Run"> Running Average </a></li>
+<li> <a href="#Weight"> Weighted Average </a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Running and Weighted Averages</h2>
+<p property="term:description">Both running and weighted averages are important filtering methods for statistical analysis.</p>
+</div>
+<div id="Run" class="ui-tabs-panel">
+<h2>Running Average</h2>
+<ul>
+   <li>Often used to illustrate climatic trends by temporally smoothing data.</li>
+   <li>Calculated by finding a number of successive means, each mean incorporating the same number of observations.</li>
+   <li>Each successive mean will drop first value of the mean interval and add the next 
+value in the dataset to the next mean interval.</li>
+   <li>Tends to damp out extreme values and highlights the movement of data with time.</li>
+   <li>Also known as a <i>moving average</i>.</li>
+ </ul>
+<b><u>Example</u></b>:  Calculate a 3-year running average of gridded temperature anomaly data.
+<br /><br />
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Atmosphere" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/">
+NOAA NCEP CPC CAMS</a>  dataset.</li>
+<li> Select the "anomaly" link under the Datasets and Variables subheading.</li>
+<li> Choose the "temperature anomaly" link, again located under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Spatial Domain</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.<br /></li>
+
+<li>Enter the text <i>130W to 30W</i> and <i>70S to 70N</i>, in the appropriate text boxes. </li>
+
+<li>Press the Restrict Ranges button and then the Stop Selecting button. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/Y/%2870S%29%2870N%29RANGEEDGES/X/%28130W%29%2830W%29RANGEEDGES/">
+CHECK</a><br /></li></ul>
+</td></tr>
+
+
+<tr><td align="center">Calculate Running Average</td>
+<td>
+
+<ul><li>Click on the "Expert Mode" link in the function bar. <br /></li>
+<li>Enter the following text below the text already there:<br /><br />
+
+<pre class="ingridcode">
+T 3 runningAverage
+</pre>
+</li>
+<li>Press the OK button.
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/Y/%2870S%29%2870N%29RANGEEDGES/X/%28130W%29%2830W%29RANGEEDGES/T/3/runningAverage/">
+CHECK</a> <br />
+The command above will compute the 3-month running average.</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">View Running Average</td>
+<td>
+<ul>
+<li> To see your results, choose the viewer with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/Y/%2870S%29%2870N%29RANGEEDGES/X/%28130W%29%2830W%29RANGEEDGES/T/3/runningAverage/DATA/1./STEP/startcolormap/DATA/-10./10./RANGE/white/purple/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a><br />
+The image depicts the running average of the first three months of the dataset, 
+Jan-Mar 1950.  The anomlies may be easier to see if we change the color scale.</li>
+<li>Click on the right most link in the blue source bar to exit the viewer.</li>
+<li>Enter the following text in the Expert Mode text box below the text already there:<br /><br />
+<pre class="ingridcode">
+DATA 1. STEP
+  startcolormap DATA
+    -10. 10. RANGE
+    white purple purple
+       -10. VALUE
+       cyan
+        -1. VALUE
+        white white
+          1. bandmax
+          yellow
+           1. VALUE
+           red
+            10. VALUE
+            firebrick endcolormap
+</pre>
+</li>
+<li>Press the OK button.
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/Y/%2870S%29%2870N%29RANGEEDGES/X/%28130W%29%2830W%29RANGEEDGES/T/3/runningAverage/DATA/1./STEP/startcolormap/DATA/-10./10./RANGE/white/purple/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/">
+CHECK</a> <br />
+These commands format the color scale so that anomalies are easier to observe.</li>
+
+
+<li>Replace the range with a three month period during an El Niño event: <i>Jun-Aug 1983</i>.</li>
+<li>Click the Redraw button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/Y/%2870S%29%2870N%29RANGEEDGES/X/%28130W%29%2830W%29RANGEEDGES/T/3/runningAverage/DATA/1./STEP/startcolormap/DATA/-10./10./RANGE/white/purple/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/figviewer.html?my.help=more+options&amp;map.T.plotvalue=Jun-Aug+1983&amp;map.Y.units=degree_north&amp;map.Y.plotlast=69N&amp;map.url=X+Y+fig-+colors+coasts+-fig&amp;map.domain=+%7B+%2FT+-117.5+plotvalue+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef+%2FXOVY+null+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=69S&amp;map.X.plotfirst=129W&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=31W&amp;map.temp.plotfirst=-10.&amp;map.temp.units=degree_Celsius&amp;map.temp.plotlast=10.&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+coasts&amp;map.newurl.plot=colors&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.XOVY=auto&amp;map.color_smoothing=1&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a> </li>
+</ul>
+
+<center>
+Running Average of Gridded Temperature Anomaly Data at 130W-30W, 70S-70N<br />
+<img WIDTH="308" HEIGHT="400" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/Y/%2870S%29%2870N%29RANGEEDGES/X/%28130W%29%2830W%29RANGEEDGES/T/3/runningAverage/DATA/1./STEP/startcolormap/DATA/-10./10./RANGE/white/purple/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//T/282.5/plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/Y/%2870S%29%2870N%29RANGEEDGES/X/%28130W%29%2830W%29RANGEEDGES/T/3/runningAverage/DATA/1./STEP/startcolormap/DATA/-10./10./RANGE/white/purple/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//T/282.5/plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The high positive anomalies off the western coast of South America are assocaiated with the El Niño event that summer.
+</td></tr>
+</table>
+<b><u>Example</u></b>:  Calculate the 20-year running average of April precipitation for a location in the Pampas Region of Southern South America.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Atmosphere" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/">
+NOAA NCEP CPC CAMS</a>  dataset.</li>
+<li> Select the "mean" link under the Datasets and Variables subheading.</li>
+<li> Choose the "precipitation" link, again located under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Spatial Domain</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.<br /></li>
+
+<li>Enter the text <i>60W</i> and <i>25S</i>, in the appropriate text boxes. </li>
+
+<li>Press the Restrict Ranges button and then the Stop Selecting button. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2825S%29VALUES/X/%2860W%29VALUES/">
+CHECK</a><br /></li></ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+T 12 splitstreamgrid>
+  T (Apr) VALUES
+</pre></li>
+<li>Press the OK button.  <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2825S%29VALUES/X/%2860W%29VALUES/T/12/splitstreamgrid/T/%28Apr%29VALUES/">
+CHECK</a><br />
+The <i>splitstreamgrid</i> function splits the time grid into two new time grids. The T grid has a period of 12 months and a step of 1.
+This grid represents data from January, Februrary, March, etc. The T2 grid has a step of 12 and is unperiodic. This grid represents the years from the beginning of the dataset to the end of the dataset.
+The next command, <i>T (Apr) VALUES,</i> will retain only the April values from the T grid.</li>
+</ul>
+
+</td></tr>
+<tr><td align="center">View April Precipitation</td>
+<td>
+
+<ul><li>To see the results of this operation, choose the time series viewer. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2825S%29VALUES/X/%2860W%29VALUES/T/12/splitstreamgrid/T/%28Apr%29VALUES/figviewer.html?plottype=line&amp;my.help=more+options">
+CHECK</a><br />
+
+Precipitation is labeled on the Y-axis in mm/month and time is labeled on the X-axis in years.  Each X-axis value represents mean April precipitation for that year.  </li></ul>
+
+<center>
+Mean April Precipitation at 60W, 25S for 1950 to 2000<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2825S%29VALUES/X/%2860W%29VALUES/T/12/splitstreamgrid/T/%28Apr%29VALUES/T2+fig-+line+-fig+//prcp/20./507.6/plotrange/T2/-108./492./plotrange+//plotborder+72+psdef//plotaxislength+328+psdef//XOVY+null+psdef+.gif" />
+</center>
+Without smoothing the data, it may be difficult to recognize any trends over the 50-year span pictured above.
+Applying a running average, however, will often make any trend in the data more distinguishable.
+</td></tr>
+<tr><td align="center">Calculate Running Average</td>
+<td>
+<ul>
+<li>Click on the right most link in the blue source bar to exit the viewer.</li>
+<li>Scroll down to the Grids subheading.
+<p>
+Notice under the Grids subheading that the new time grid created, T2, represents months since 1950 ordered from 1950 to 2000 by 12.
+Every 12 grid points in T2 correspond to 1 year.  The 20-year running average is calculated over the T2 variable,
+and must be evaluated in months, not years.
+</p>
+</li>
+<li>In the Expert Mode text box, enter the following line below the text already there:
+
+<pre class="ingridcode">
+T2 240 runningAverage</pre>
+</li>
+<li>Press the OK button.  <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2825S%29VALUES/X/%2860W%29VALUES/T/12/splitstreamgrid/T/%28Apr%29VALUES/T2/240/runningAverage/">
+CHECK</a>
+<p>
+This command computes the 20-year (12*20 = 240 months) running average over T2.
+</p>
+</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">View Running Average</td>
+<td>
+
+<ul><li>To see the results of this operation, choose the time series viewer. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2825S%29VALUES/X/%2860W%29VALUES/T/12/splitstreamgrid/T/%28Apr%29VALUES/T2/240/runningAverage/figviewer.html?plottype=line&amp;my.help=more+options">
+CHECK</a></li></ul>
+<center>
+Running Mean of April Precipitation at 60W, 25S for 1950 to 2000.<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2825S%29VALUES/X/%2860W%29VALUES/T/12/splitstreamgrid/T/%28Apr%29VALUES/T2/240/runningAverage/T2+fig-+line+-fig+//prcp/102.045/203.655/plotrange/T2/12./372./plotrange+//plotborder+72+psdef//plotaxislength+328+psdef//XOVY+null+psdef+.gif" />
+</center>
+The increasing trend in April precipitation from 1950 to 2000 becomes visible after running averages are employed.
+Note that the time grid extends from 1960 - 1990.  This is due to the fact that each successive mean in the running average is labeled according to its midpoint.
+For example, the first mean in the running average includes the interval April 1950 - April 1969, and is labled as April 1960.
+</td></tr>
+</table>
+</div>
+<div id="Weight" class="ui-tabs-panel">
+<h2>Weighted Average</h2>
+<ul>
+  <li>Differs from a regular average in that each value in the dataset is not represented equally.</li>
+  <li>The degree of "importance" of each data value, which determines how one value will 
+be included in the average relative to the other values, is called the weight.</li>
+  <li>Determined by weighting each value in the series, adding together the weighted 
+values, and then dividing by the total weight.</li>
+  <li>Often used to account for area changes between meridians at varying latitudes by 
+using the cosine of the latitude as the weights.</li>
+  </ul>
+<b><u>Example</u></b>:  Find spatially weighted averages of monthly solar radiation.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Air-Sea Interface" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.OSUSFC/">
+OSUSFC</a>  dataset.</li>
+<li> Select the "Data" link under the Datasets and Variables subheading.</li>
+<li> Choose the "solar radiation" link, again located under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.OSUSFC/.DATA/.solr/">CHECK</a><br />
+
+Notice under the Grids subheading that the time variable is periodic from January to December.
+The OSUSFC dataset consists of monthly climatologies for each variable.</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Domains</td>
+<td>
+
+
+<ul><li>No ranges will be adjusted in this example.<br />
+The dataset will be analyzed over its entire temporal and spatial grids.</li>
+</ul>
+</td></tr>
+<tr><td align="center">Calculate Weighted Average</td>
+<td>
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Enter the following text below the text already there:
+<pre class="ingridcode">
+{Y cosd} [X Y]weighted-average
+</pre>
+</li>
+<li>Press the OK button.
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.OSUSFC/.DATA/.solr/%7BY/cosd%7D%5BX/Y%5Dweighted-average/">
+CHECK</a> <br />
+The above command calculates a spatial average, weighted with the cosine of the latitude.
+The resulting dataset is a time series from Jan to Dec of average solar radiation in W/m<sup>2</sup>.
+</li></ul>
+
+
+
+
+</td></tr>
+<tr><td align="center">View Weighted Average</td>
+<td>
+
+<ul><li>To see the results of this operation, choose the time series viewer. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.OSUSFC/.DATA/.solr/%7BY/cosd%7D%5BX/Y%5Dweighted-average/figviewer.html?plottype=line&amp;my.help=more+options">
+CHECK</a></li></ul>
+
+<center>
+Weighted Spatial Average of Monthly Climatological Solar Radiation<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.OSUSFC/.DATA/.solr/%7BY/cosd%7D%5BX/Y%5Dweighted-average/T+fig-+line+-fig//plotaxislength+328+psdef//plotborder+72+psdef+.gif" />
+<br /><br /></center>
+
+Averaged over the world, solar radiation is at a minimum near July and at a maximum near January.
+<br /><br />
+</td></tr>
+
+
+<tr><td align="center">View Differences Between Weighted Average and Non-weighted Average</td>
+<td>
+
+<ul>
+<li>Click on the right most link in the blue source bar to exit the viewer.</li>
+<li>In the Expert Mode text box, enter the following text below the text already there:<br /><br />
+
+<pre class="ingridcode">
+SOURCES .OSUSFC .DATA .solr
+  [X Y]average
+   sub
+</pre>
+</li>
+<li>Press the OK button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.OSUSFC/.DATA/.solr/%7BY/cosd%7D%5BX/Y%5Dweighted-average/SOURCES/.OSUSFC/.DATA/.solr%5BX/Y%5Daverage/sub/">CHECK</a>
+<br />
+The commands above subtract the non-weighted average from the weighted average.</li>
+
+<li>To see the results of this operation, choose the time series viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.OSUSFC/.DATA/.solr/%7BY/cosd%7D%5BX/Y%5Dweighted-average/SOURCES/.OSUSFC/.DATA/.solr%5BX/Y%5Daverage/sub/figviewer.html?plottype=line&amp;my.help=more+options">CHECK</a></li>
+</ul>
+<center>
+Difference Between Weighted Average and Non-weighted Average of Monthly Climatological Solar Radiation<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.OSUSFC/.DATA/.solr/%7BY/cosd%7D%5BX/Y%5Dweighted-average/SOURCES/.OSUSFC/.DATA/.solr%5BX/Y%5Daverage/sub/T+fig-+line+-fig//plotaxislength+328+psdef//plotborder+72+psdef+.gif" />
+</center>
+The largest difference between the weighted average and the regular average occurs sometime near April and October.
+Refering to the previous graph of the weighted average, these are times when solar radiation is changing most rapidly.
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
