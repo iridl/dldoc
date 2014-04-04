@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stationarity</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a05" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a href="#Intro"> Introduction</a></li>
+<li> <a href="#Approach"> Approaches to Nonstationary Data</a></li>
+<li> <a href="#Example"> Analyzing and Transforming Cyclo-Stationary Data</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Stationarity</h2>
+<p property="term:description">
+A random variable or random process is said to be stationary if all of its 
+statistical parameters are independent of time.  While most statistical 
+techniques require that data is stationary, most atmospheric processes are 
+visibly nonstationary. Instead, climate data sampled more than once per year 
+is usually cyclo-stationary, due to the seasonal nature of our climate. For 
+example, long-term averages of monthly mean temperatures exhibit a very strong
+annual cycle in the mid- and high latitudes, with one maximum in the summer 
+and one minimum in the winter. While monthly mean temperatures tend to be 
+cyclostationary, average mean January temperatures at a fixed location are 
+approximately stationary, since we may assume that past and future January 
+datasets will possess a similiar mean and standard deviation.
+</p>
+</div>
+<div id="Approach" class="ui-tabs-panel">
+<h2>Approaches to Nonstationary Data</h2>
+There are three approaches used to manage nonstationary data, two of which 
+attempt to manipulate the data so that stationarity may be reasonably assumed.  
+<ol>
+<li>Subtract the periodic mean function from the data, which creates a series 
+of anomalies (The concept of anomalies are discussed in an 
+<a href="../Climatologies/">alternate section)</a>.
+<ul TYPE="CIRCLE">
+<li>The dataset is called cyclo-stationary in the mean if it becomes stationary after the periodic cycle has been removed. </li>
+ <li>Cyclo-stationary data may be analyzed using common statistical techniques.</li>
+ <li>Does not account for variability in the dispersion of the data.</li></ul>
+
+<li>Transform the series of anomalies calculated in method 1 to standardized anomalies.</li>
+<ul><li>Divide each anomaly value by the standard deviation.</li>
+<li>Referred to as "normalizing" the data.</li>
+<li>Removes the influences of location and variability.</li></ul>
+<li>Stratify the data.</li>
+<ul><li>Analyze separate subsets of the data that are short enough to be considered stationary.</li>
+<li>For example, analyzing observations for all available January data for a given location, making the assumption that the 31-day record is uninfluenced by seasonal changes.</li>
+</ul></li></ol>
+</div>
+<div id="Example" class="ui-tabs-panel">
+<h2>Analyzing and Transforming Cyclo-Stationary Data</h2>
+<b><u>Example</u></b>:  Normalize Cyclo-Stationary Data:  Sea Surface Temperatures at 50.5W, 29.5N.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Air-Sea Interface" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/">
+NOAA NCEP EMC CMB GLOBAL Reyn_Smith</a>  dataset.</li>
+<li> Click on the "Reyn_SmithOIv2" link under the Datasets and Variables subheading.</li>
+<li> Select the "monthly" link under the Datasets and Variables subheading.</li>
+<li> Choose the "Sea Surface Temperature" link again under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/">CHECK</a></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 50.5 W</i>,<i> 29.5 N</i>, and <i>Jan 1982 to Dec 2003</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/">
+CHECK</a> <br /></li></ul>
+
+</td></tr>
+
+<tr><td align="center">View Sea Surface Temperature Time Series</td>
+<td>
+
+
+<ul><li>To see the result of this operation, choose the time series viewer in the function bar. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/figviewer.html?plottype=line">CHECK</a>
+</li></ul><br />
+<center>
+Time Series of Sea Surface Temperature at 50.5W, 29.5N<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T+fig-+line+-fig+T/264./528./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+
+Notice that sea surface temperatures are indeed cyclo-stationary.
+Even though sea surface temperatures do not vary seasonally as much as temperatures on land, there still appears to be a distinct maximum and minimum present each year.
+Depending on the statistical methods that will be applied to the data, it may be important to transform the data to be approximately stationary.
+</td></tr>
+
+
+<tr><td align="center">Generate Periodic Mean Function</td>
+<td>
+
+
+
+<ul><li>Return to the dataset page by clicking on the right-most link in the blue source bar at the top of the page.</li>
+
+<li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Type the following command under the text already there.
+<pre class="ingridcode">
+T 12 splitstreamgrid
+</pre>
+</li></ul>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid/">CHECK</a>
+<br />The <i>splitstreamgrid</i> command splits the time grid into two new time grids. The T grid has a period of 12 months and a step of 1.
+This grid represents data from January, Februrary, March, etc. The T2 grid 
+has a step of 12 and represents the years from the beginning of the dataset to the end of the dataset.</li>
+
+<li> Select the "Filters" link in the function bar.</li>
+<li> Choose the <i>Average over "T2"</i> command. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid/%5BT2+%5Daverage/">CHECK</a> <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid%5BT2%5Daverage/">EXPERT</a>
+
+<br />
+Taking the average over T2 will generate the mean SST for each month.  In this case, the mean function is also the monthly climatology.</li></ul>
+</td></tr>
+
+<tr><td align="center">Create Anomalies</td>
+<td>
+
+
+<ul><li>Click on the "Expert Mode" link in the function bar if the Expert Mode text box is not displayed.</li>
+<li>Enter the following lines under the text already there:<br /><br />
+
+<pre class="ingridcode">
+ SOURCES .NOAA .NCEP .EMC .CMB .GLOBAL .Reyn_SmithOIv2 .monthly .sst
+  X (50.5W) VALUES
+  T (Jan 1982) (Dec 2003) RANGEEDGES
+  Y (29.5N) VALUES
+</pre>
+</li></ul>
+<ul><li>Click the OK button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid%5BT2%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/X/%2850.5W%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/Y/%2829.5N%29VALUES/">CHECK</a><br />
+The above commands add another variable to the interface: the original Reyn_Smith Monthly SST data.</li>
+
+
+<li>Again in the Expert Mode text box, enter the following lines under the text already there:<br /><br />
+
+<pre class="ingridcode">
+sub
+-1 mul
+</pre>
+</li></ul>
+<ul><li>Click the OK button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid%5BT2%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/X/%2850.5W%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/Y/%2829.5N%29VALUES/sub/-1/mul/">CHECK</a><br />
+The sub command subtracts the Reyn_Smith Monthly SST dataset from the mean Monthly SST dataset.  However, we want the mean to be subtracted from the original data so we multiply by -1 in the next command.  In the atmospheric sciences, when an average is subtracted from a data value, it is called an anomaly.
+The concept of anomalies are discussed in further detail in the 
+<a href="../Climatologies/">Climatologies and Standardized Anomalies section.</a></li>
+<li>To see the result of these operations, choose the time series viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid%5BT2%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/X/%2850.5W%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/Y/%2829.5N%29VALUES/sub/-1/mul/figviewer.html?plottype=line&amp;my.help=more+options">CHECK</a> </li></ul><br />
+<center>
+Sea Surface Temperature Anomalies at 50.5W, 29.5N<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid%5BT2%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/X/%2850.5W%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/Y/%2829.5N%29VALUES/sub/-1/mul/T+fig-+line+-fig+//sst/-1.477199/1.706071/plotrange/T/264./528./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+
+Negative anomalies represent below average temperatures while positive anomalies represent above average temperatures.
+</td></tr>
+
+<tr><td align="center">Normalize Data</td>
+<td>
+
+
+<ul><li>Return to the dataset page by clicking on the right-most link in the blue source bar at the top of the page.</li>
+
+<li>In the Expert Mode text box, enter the following lines under the text already there:
+<pre class="ingridcode">
+[T] standardize
+</pre></li></ul>
+<ul><li>Click the OK button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid%5BT2%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/X/%2850.5W%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/Y/%2829.5N%29VALUES/sub/-1/mul%5BT%5Dstandardize/">CHECK</a><br />
+
+The function <i>standardize</i> removes the influences of dispersion.  In the previous step, we subtracted the mean from each value.  This produces a series of anomalies.
+The <i>standardize</i> function divides each anomaly by the RMSA, which is very similar to standard deviation.  To learn more about the root mean square anomaly and standard deviation functions, refer to the <a href="/dochelp/StatTutorial/Dispersion/">Measures of Dispersion</a> section.</li>
+
+<li>To see the result of these operations, choose the time series viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid%5BT2%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/X/%2850.5W%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/Y/%2829.5N%29VALUES/sub/-1/mul%5BT%5Dstandardize/figviewer.html?plottype=line&amp;my.help=more+options">CHECK</a>
+</li></ul>
+<center>
+Standardized Sea Surface Temperature Anomalies at 50.5W, 29.5N<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/Y/%2829.5%20N%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/X/%2850.5%20W%29VALUES/T/12/splitstreamgrid%5BT2%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/X/%2850.5W%29VALUES/T/%28Jan%201982%29%28Dec%202003%29RANGEEDGES/Y/%2829.5N%29VALUES/sub/-1/mul%5BT%5Dstandardize/T+fig-+line+-fig+//sst/-3.170089/3.661252/plotrange/T/264./528./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The standardized anomaly dataset has a mean of 0 and standard deviation of 1. 
+Note that standardized anomalies are dimensionless quantities.
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
