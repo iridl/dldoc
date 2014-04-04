@@ -1,0 +1,610 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Data Homogeneity</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a04" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionListo">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a href="#Whatis"> Introduction</a></li>
+<li> <a href="#Example"> Example</a></li>
+</ul>
+<div id="Whatis" class="ui-tabs-panel">
+<h2 property="term:title">Data Homogeneity</h2>
+<p property="term:description">
+It is often important to determine if a set of data is homogeneous before any statistical 
+technique is applied to it.
+Homogeneous data are drawn from a single population.
+In other words, all outside processes that could potentially affect the data 
+must remain constant for the complete time period of the sample.
+Inhomogeneities are caused when artificial changes affect the statistical 
+properties of the observations through time.  These changes may be abrupt 
+or gradual, depending on the nature of the disturbance.
+Realistically, obtaining perfectly homogeneous data is almost impossible, 
+as unavoidable changes in the area surrounding the observing station will 
+often affect the data.</p>
+<p>
+Interpreting climate data with unknown homogeneity:
+<ul>
+<li>Many observed trends are the result of inhomogeneities and not some other 
+large-scale climatic change (e.g., global warming).</li>
+<li>Characterizing a short-term artificially-induced trend as natural 
+variations in the climate system can cause substantial errors in conclusions 
+drawn from the data.</li>
+<li>The interpretation of a given process depends on the time scales 
+considered (i.e., analyses using short time scales should not be used as 
+evidence to support phenomena observed over larger time scales).</li>
+</ul>
+</p>
+</div>
+<div id="Example" class="ui-tabs-panel">
+<h2>Analyzing the Homogeneity of a Dataset</h2>
+The following method may be used to determine whether a set of data can be 
+considered homogeneous to a certain degree of accuracy.
+<ul>
+<li> Calculate the median.</li>
+<li> Subtract the median from each value in the dataset. </li>
+<li> Count how many times the data will make a run above or below the median (i.e., persistance of positive or negative values).</li>
+<li> Use significance tables to determine thresholds for homogeneity.</li>
+</ul>
+<b><u>Example</u></b>:  Analyze homogeneity of data by comparing the the annual mean of the daily minimum temperature time series for Sherbrooke, Quebec and Shawinigan, Quebec from 1920 to 1970.
+<table border="2">
+<tr><td align="center">Locate Dataset, Variable, and Station</td>
+<td>
+
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Atmosphere" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/">
+NOAA NCDC GDCN</a>  dataset.</li>
+<li> Click on the "searches" link to the right of the map.</li>
+<li> In the Name text box under the Searches subheading, enter <i>Sherbrooke</i>.</li>
+<li> Click the Search NOAA NCDC GDCN button.</li>
+<li> Click on the number "7028120", the first entry that appears below the search text box.
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA+7028120+VALUE/">CHECK</a><br />
+You have selected the station identification number for Sherbrooke.  To get
+general information on finding station ID's, click the following link
+to the tutorial: <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Selection/Stations_Regions/#Station_Single">How
+to Find A Station ID</a> </li>
+<li> Scroll down the page and select the "Min Temperature" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA+7028120+VALUE/.TMIN/">CHECK</a></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 1 Jan 1920 to 1 Jan 1970</i> in the Time text box.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/">
+CHECK</a> </li></ul>
+
+
+</td></tr>
+
+<tr><td align="center">Compute Yearly Mean Minimum Temperature</td>
+<td>
+
+
+
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Enter the following line under the text already there:<br /><br />
+<pre class="ingridcode">
+T 365 boxAverage
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/T/365/boxAverage/"> CHECK</a>
+<br />
+This command computes the mean minimum temperature for each year by taking a 365-day average of the minimum daily temperature.
+This is not an exact yearly average because every 4 years is a leap year, with one extra day.
+Every four years, the 365-day range will start one day earlier.  This being ignored, we are still left with a good approximation of the mean minimum temperature per year.</li></ul>
+
+</td></tr>
+
+<tr><td align="center">View Yearly Mean Minimum Temperature Time Series</td>
+<td>
+
+
+
+
+<ul><li>To see the result of this operation, choose the time series viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/T/365/boxAverage/figviewer.html?plottype=line&amp;my.help=more+options">CHECK</a>
+</li></ul><br />
+<center>
+Time Series of Average Minimum Temperature for Sherbrooke<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/T/365/boxAverage/T+fig-+line+-fig+//TMIN/-1.116438/2.249589/plotrange/T/2422325./2440575./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /><br />
+</center>
+A gradual upward trend is noticeable over the selected 
+time range.  The increase in temperature may have been caused
+by urbanization in the region surrounding the observing station.   Has the 
+urbanization made a sufficient impact on the data so that it may no longer 
+be considered homogeneous over this time period?
+To answer this question, it is necessary to analyze the distribution of the 
+data around the median. <br /><br />
+
+
+</td></tr>
+
+<tr><td align="center">Subtract Median From Dataset</td>
+<td>
+
+
+
+<ul><li>Return to the dataset page by clicking on the right-most link in the blue source bar at the top of the page. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/T/365/boxAverage/">CHECK</a>
+</li>
+
+<li>Enter into Expert Mode and type the following command under the text already there.
+<pre class="ingridcode">
+[T] 1 medianover
+</pre>
+</li></ul>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/T/365/boxAverage%5BT%5D1/medianover/">CHECK</a>
+<br />
+The median should be located below the expert mode text box in bold: 0.8683567 degrees Celsius.  Take note of this value.
+The <i>medianover</i> function is further explained in the <a href="">Measures of Central Tendency</a> section. </li>
+
+<li>
+In the source bar, click on the <i> T 365 0.0 boxAverage</i> link. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/T/365/0.0/boxAverage/">CHECK</a><br />
+This will undo the medianover command.</li>
+
+
+<li>Click on the Expert Mode link in the function bar if the text box is not shown.</li>
+<li>In the Expert Mode text box, enter the following line under the text already there:
+<pre class="ingridcode">
+0.8683567 sub
+</pre>
+</li></ul>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/T/365/0.0/boxAverage/0.8683567/sub/">CHECK</a>
+<br />The above command subtracts the median (0.8683567° Celsius) from each value in the dataset.</li></ul>
+
+</td></tr>
+
+<tr><td align="center">Analyze Homogeneity of Data</td>
+<td>
+
+
+
+
+<ul><li>Select the "Tables" link in the function bar.</li>
+<li>Read the licensing agreement and click the "I agree" button to continue. </li>
+<li>Select the <i>columnar table</i> link. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/7028120/VALUE/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/T/365/0.0/boxAverage/0.8683567/sub/T+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a>
+<br />A table will appear with Time in one column and (Min Temp - 0.8683567) in the other column.  The day in the Time column changes every four years
+because of the leap year issue mentioned earlier. </li>
+
+
+<li>Count how many times the data will make a run above or below the median.<br />
+For example, if the value in the right column remains negative for three years and then becomes positive in the fourth year, those three years would be considered one run.
+If in the fifth year the value becomes negative again, then the fourth year is considered another separate run.
+Homogeneity can be tested by noting how many runs were present in the sample compared to how many total elements were in the sample.</li>
+
+
+<li>
+Use the significance table below to help decide whether the minimum temperature data at Sherbrooke is homogeneous.</li></ul>
+
+The table lists the number of runs for a given number above (N<sub>A</sub>) and below (N<sub>B</sub>) the median.
+For a 40 year series, for example, N<sub>A</sub> = N<sub>B</sub> = 20.  If the number of runs falls between the .10 and .90 significance limits, there is a high probability that the data is homogeneous.
+Other significance tables can be obtained for sample sizes not contained in the table.
+
+<center>
+<table border="1" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td width="197" valign="top"
+ style="border: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      <div style="text-align: center;"> <span
+ style="font-weight: bold;">N</span><sub style="font-weight: bold;">A </sub><span
+ style="font-weight: bold;">= N</span><sub><span
+ style="font-weight: bold;">B</span></sub></div>
+      </td>
+      <td width="197" valign="top"
+>
+      <div style="text-align: center;"> <b>.10 significance level</b></div>
+      </td>
+      <td width="197" valign="top"
+ style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      <div style="text-align: center;"> <b>.90 significance level</b></div>
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      10
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      8
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      13
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      11
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      9
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      14
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      12
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      9
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      16
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      13
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      10
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      17
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      14
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      11
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      18
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      15
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      12
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      19
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      16
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      13
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      20
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      17
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      14
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      21
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      18
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      15
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      22
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      19
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      16
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      23
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      20
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      16
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      25
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      25
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      22
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      30
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      30
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      26
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      36
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      35
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      31
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      41
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      40
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      35
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      47
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      45
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      40
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      52
+      </td>
+    </tr>
+    <tr>
+      <td width="197" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      50
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      45
+      </td>
+      <td width="197" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 2.05in;">
+      57
+      </td>
+    </tr>
+  </tbody>
+</table></center>
+<p>
+Oliver, John E.<i> Climatology: Selected Applications.</i> p 7.</p>
+<p>
+There are 18 runs in the Sherbrooke data from 1920 to 1970.  The total number of elements that make up the sample is 50 (each yearly mean minimum temperature constitutes one element).
+According to the table, at a .10 significance limit there should be at least 22 runs.
+We can therefore conclude, with 90% confidence, that this data is not homogeneous.  Is this inhomogeneity caused by a large-scale climatic change or by an inconsistancy in the area surrounding the observing station?
+To answer this question, we analyze the mean minimum temperature at another station only a few miles away.
+</p>
+</td></tr></table>
+Repeat the same process for Shawinigan:
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Return to the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/">
+Global Daily Climatology</a>  dataset.</li>
+
+<li>Select the "Min Temperature" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/">CHECK</a></li>
+</ul>
+
+
+</td></tr>
+
+<tr><td align="center">Select Temporal Domain and Station</td>
+<td>
+
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 1 Jan 1920 to 1 Jan 1970</i> in the Time text box.</li>
+<li>Enter the station identification <i>7018000</i> in the ISTA Station text box.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/ISTA/%287018000%29VALUES/">
+CHECK</a> <br />
+ The station ID 7018000 is for Shawinigan.  To get
+more information on finding station ID's, click the following link
+to the tutorial: <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Selection/Stations_Regions/#Station_Single">How
+to Find A Station ID</a> </li></ul>
+
+
+</td></tr>
+
+<tr><td align="center">Compute Yearly Mean Minimum Temperature</td>
+<td>
+
+
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+<li>In the text box that appears, enter the following line under the text already there:<br /><br />
+
+<pre class="ingridcode">
+T 365 boxAverage
+</pre>
+</li></ul>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/ISTA/%287018000%29VALUES/T/365/boxAverage/">CHECK</a>
+</li></ul>
+
+
+</td></tr>
+
+<tr><td align="center">View Yearly Mean Minimum Temperature Time Series</td>
+<td>
+
+
+
+<ul><li>To see the results of this operation, choose the time series viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/ISTA/%287018000%29VALUES/T/365/boxAverage/figviewer.html?plottype=line&amp;my.help=more+options">CHECK</a>
+</li></ul>
+<br />
+<center>
+Time Series of Average Minimum Temperature for Shawinigan<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/ISTA/%287018000%29VALUES/T/365/boxAverage/T+fig-+line+-fig+//TMIN/-2.660274/0.8112318/plotrange/T/2422325./2440575./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+Based on visual inspection, these data appear to be more homogeneous than the 
+data that taken at Sherbrooke. There isn't a distinct upward trend in the 
+minimum temperatures, as there was in the Sherbrooke data.
+</td></tr>
+<tr><td align="center">Subtract Median From Dataset</td>
+<td>
+<ul><li>
+Return to the dataset page by clicking on the right-most link on the blue source bar at the top of the page.</li>
+
+<li> Enter into Expert Mode and type the following command under the text already there.<br /><br />
+
+<pre class="ingridcode">
+[T] 1 medianover
+</pre>
+</li></ul>
+<ul><li>Press the OK button.<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/ISTA/%287018000%29VALUES/T/365/boxAverage%5BT%5D1/medianover/">CHECK</a>
+<br />The median should be -0.6845208 degrees Celsius.  Take note of this value.</li>
+
+<li>
+In the source bar, click on the <i> T 365 0.0 boxAverage</i> link. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/ISTA/%287018000%29VALUES/T/365/0.0/boxAverage/">CHECK</a>
+</li>
+<li>Click on the Expert Mode link in the function bar if the text box is not shown.</li>
+<li>In the Expert Mode text box, enter the command:<br /><br />
+<pre class="ingridcode">
+-0.6845208 sub
+</pre>
+ </li></ul>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/ISTA/%287018000%29VALUES/T/365/0.0/boxAverage/-0.6845208/sub/">CHECK</a>
+<br />The above command subtracts the median (-0.6845208° Celsius) from each value in the dataset.</li></ul>
+
+</td></tr>
+
+<tr><td align="center">Analyze Homogeneity of Data</td>
+<td>
+<ul><li>
+Select the "Tables" link in the function bar.</li>
+<li> Click the I agree button. </li>
+<li>Select the <i>columnar table</i> link. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/.TMIN/T/%281%20Jan%201920%29%281%20Jan%201970%29RANGEEDGES/ISTA/%287018000%29VALUES/T/365/0.0/boxAverage/-0.6845208/sub/T+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a>
+<br />A table will appear with Time in one column and (Min Temp - -0.6845208) in the other column.</li>
+<li>
+Count how many times the data will make a run above or below the median.<br />
+You should have counted 21 runs.  Using the significance table above, we should not conclude (with a 90% confidence) that this data is homogeneous, as it is still one run short of 22.  Yet, because the Shawinigan data did present more runs than the Sherbrooke data, we may conclude that the Shawinigan data is more homogeneous than the Sherbrooke data.
+</li></ul>
+Shawinigan is only located a few miles northwest of Sherbrooke across the St. Lawrence River, yet the minimum temperature at Sherbrooke exhibited a noticeable upward trend over the time period while the minimum temperature at Shawinigan did not.
+Therefore, we can conclude that the inhomogeneity at Sherbrooke is not the result of large-scale climatic change.  Instead, from 1920 to 1970, Sherbrooke had been heavily affected by human development.  The increased density and height of buildings surrounding the observing station in Sherbrooke caused a small heat island, which in turn created an inhomogeneity in the data.
+Shawinigan, on the other hand, was not affected by development and in turn, did not experience a gradual warming over the period.
+</td></tr></table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
