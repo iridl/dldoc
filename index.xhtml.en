@@ -9,10 +9,9 @@
  xml:lang="en"
       >
 <head>
- <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>IRI/LDEO Climate Data Library</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
-<link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
 <link rel="canonical" href="index.html" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
@@ -20,7 +19,6 @@
 <link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
 <link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
-<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#forecast" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 </head>
 <body>
@@ -51,7 +49,7 @@ GIS-compatible formats.</li>
 </p>
 </div>
 
-<div class="rightcol tabbedentries" about="index.html" >
+<div class="rightcol tabbedentries" about="/" >
 
   <a rel="section" href="maproom/"></a>
   <a rel="section" href="http://iridl.tumblr.com/"></a>
@@ -74,7 +72,6 @@ The climate and society maproom is a collection of maps and other figures that m
 <div about="SOURCES/">
   <a rel="canonical" href="SOURCES/"></a>
       <meta property="maproom:Sort_Id" content="a03" />
-<link rel="term:icon" href="http://static.tumblr.com/e43a1d75fc37f030c78646b43cb77dad/u2cxaxb/wGrmu3roj/tumblr_static_iriwh128.png" />
 <h2 property="term:title">Data by Source</h2>
 <p property="term:description">Datasets organized by source, i.e. creator and/or provider.</p>
 </div>
