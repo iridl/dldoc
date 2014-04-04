@@ -1,0 +1,790 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Measures of Dispersion</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a06" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a href="#Intro"> Introduction</a></li>
+<li> <a href="#Range"> Range </a></li>
+<li> <a href="#SD">Standard Deviation</a></li>
+<li> <a href="#RMSA"> Root Mean Square</a></li>
+<li> <a href="#IQR"> Interquartile Range </a></li>
+<li> <a href="#MAD"> Median Absolute Deviation </a></li>
+<li> <a href="#TrimmedVar"> Trimmed Variance </a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Measures of Dispersion</h2>
+<!--
+<ul>
+   <li>While measures of central tendency are good estimators of what is considered
+"normal," they provide no insight into the dispersion of the data.</li>
+   <li>The dispersion denotes the degree of variation or spread around a
+central value.</li>
+   <li>Various methods can be used to measure the dispersion of a set of data.</li>
+   <li>There are pros and cons to each method.</li>
+   <li>Included in this tutorial are descriptions of the range, the root mean
+square anomaly, the root mean square, the standard deviation, the interquartile
+range, the median absolute deviation and the trimmed variance.</li>
+</ul>
+-->
+<p><span property="term:description">
+While measures of central tendency are used to estimate "normal" values of
+a dataset, measures of dispersion are important for describing the spread of the
+data, or its variation around a central value.</span>
+  Two distinct samples may have the same 
+mean or
+median, but completely different levels of variability, or vice versa. A proper
+description of a set of data should  include both of these characteristics.  There
+are various methods that can be used to measure the dispersion of a dataset, each
+with its own set of advantages and
+disadvantages. 
+</p>
+</div><div id="Range" class="ui-tabs-panel">
+<h2>Range</h2>
+<ul>
+   <li>Defined as the difference between the largest and smallest sample values.</li>
+   <li>One of the simplest measures of variability to calculate.</li>
+   <li>Depends only on extreme values and provides no information about how the remaining data is distributed.</li>
+ </ul>
+<br />
+<u><b>Example</b></u>:  Find the range of global observed sea surface temperatures at each grid point over the time period December 1981 to the present.
+<br /><br />
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Air-Sea Interface" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/">
+NOAA NCEP EMC CMB GLOBAL Reyn_Smith</a>  dataset.</li>
+<li> Click on the "Reyn_SmithOIv2" link.</li>
+<li> Scroll down the page and select the "monthly" link under the Datasets and Variables subheading.</li>
+<li> Choose the "Sea Surface Temperature" link again located under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/">CHECK</a></li>
+</ul>
+</td></tr>
+<tr><td align="center">Find Maximum Value</td>
+<td>
+<ul><li> Click on the "Filters" link in the function bar.<br />
+To the right, you will see a selection of grids from which you may select any one or 
+combination.</li>
+<li> Select the <i> Maximum over "T"</i> command.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/%5BT+%5Dmaxover/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst%5BT%5Dmaxover/">EXPERT</a>
+<br />
+This operation finds the maximum SST for each grid point over the time grid T.</li></ul>
+</td></tr>
+<tr><td align="center">View Maximum Values</td>
+<td>
+<ul><li> To see the results of this operation, choose the viewer window with land drawn in black.</li></ul>
+<center>
+Maximum Observed Sea Surface Temperatures<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/%5BT+%5Dmaxover/X+Y+fig-+colors+land+-fig//plotaxislength+328+psdef//plotborder+72+psdef//XOVY+null+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/%5BT+%5Dmaxover/X+Y+fig-+colors+land+-fig+.auxfig//plotaxislength+328+psdef//plotborder+72+psdef//XOVY+null+psdef+.gif"/>
+<br />
+</center>
+</td>
+</tr>
+<tr><td align="center">Find Minimum Values and Subtract from Maximum Values</td>
+<td>
+<ul><li> Return to the dataset page by clicking on the right-most link on the blue source bar.</li>
+
+<!-- The next step is to find the minimum SST's for each grid point.  The range is computed
+by subtracting this value from the maximum value found above.
+-->
+<li>Click on the "Expert Mode" link in the function bar.</li>
+<li> Enter the following lines below the text already there:
+<pre class="ingridcode">
+SOURCES .NOAA .NCEP .EMC .CMB .GLOBAL .Reyn_SmithOIv2 .monthly .sst
+[T]minover
+sub
+</pre>
+</li>
+<li> Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst%5BT%5Dmaxover/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst%5BT%5Dminover/sub/">
+CHECK</a><br />
+The above command subtracts the monthly minimum SST from the monthly maximum SST.  The result is a range of SST values for each spatial grid point.
+</li> </ul>
+</td></tr>
+<tr><td align="center">View Range</td>
+<td><ul><li> To see your results, choose the viewer with land shaded in black.</li></ul>
+
+<center>
+Range of Observed Sea Surface Temperatures<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst%5BT%5Dmaxover/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst%5BT%5Dminover/sub/X+Y+fig-+colors+land+-fig+//adif/1.1920929E-07/29.59947/plotrange+//plotaxislength+328+psdef//plotborder+72+psdef//XOVY+null+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/%5BT+%5Dmaxover/X+Y+fig-+colors+land+-fig+.auxfig//plotaxislength+328+psdef//plotborder+72+psdef//XOVY+null+psdef+.gif"/>
+</center>
+Generally, there is a larger range of sea-surface temperatures near the coasts and in smaller, 
+sheltered bodies of water compared to the open ocean.  For example, the Caspian Sea 
+has a sea surface temperature range of over 25°C, while the sea surface temperature 
+range of the non-coastal Atlantic Ocean at a comparable latitude does not exceed 
+12°C.  This image also illustrates relatively large ranges off the west coast of South 
+America, which is related to the El Niño Southern Oscillation (ENSO).
+</td></tr>
+</table>
+</div><div id="SD" class="ui-tabs-panel">
+<h2>Standard Deviation</h2>
+<ul>
+  <li>The standard deviation is the square root of the sample variance.</li>
+  <li>Defined so that it can be used to make inferences about the population variance.</li>
+  <li>Calculated using the formula: <img src="SD.gif" /></li>
+  <li>The values computed in the squared term, x<sub>i</sub> - xbar, are
+anomalies, which is discussed in another <a href="../Climatologies/">section</a>.</li>
+  <li>Not restricted to large sample datsets, compared to the <a href="#RMSA">root mean square anomaly</a> discussed later in this section.</li>
+  <li>Provides significant information into the distribution of data around
+the mean, approximating normality.
+  </li>
+  <ol><li>The mean ± one standard deviation contains approximately
+68% of the measurements in the series.<br /></li>
+<li>The mean ± two standard deviations contains approximately
+95% of the measurements in the series.</li>
+<li>The mean ± three standard deviations contains approximately 99.7% of the measurements in the series.</li></ol>
+  <li>Climatologists often use standard deviations to help classify abnormal climatic conditions.
+The chart below describes the abnormality of a data value by how many
+standard deviations it is located away from the mean. The probablities in the third column assume the data is normally distributed.
+  </li>
+</ul>
+<br />
+
+<div align="center">
+<table border="1" cellspacing="0" cellpadding="0"
+ style="border: medium none ; border-collapse: collapse;">
+  <tbody>
+    <tr>
+      <td width="295" valign="top"
+ style="border: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;"><b><u>Standard
+Deviations Away From Mean</u></b></p>
+      </td>
+      <td width="295" valign="top"
+ style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;"><b><u>Abnormality</u></b></p>
+      </td>
+    <td width="295" valign="top"
+	 style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+	      <p class="MsoNormal" align="center" style="text-align: center;"><b><u>Probability of Occurance</u></b></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="295" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">beyond
+-3 sd</p>
+      </td>
+      <td width="295" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">extremely
+subnormal</p>
+      </td>
+    <td width="295" valign="top"
+	 style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+	      <p class="MsoNormal" align="center" style="text-align: center;">0.15%</p>
+      </td>
+      </tr>
+    <tr>
+      <td width="295" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">-3
+to -2 sd</p>
+      </td>
+      <td width="295" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">greatly
+subnormal</p>
+      </td>
+      <td width="295" valign="top"
+	  	 style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+	  	      <p class="MsoNormal" align="center" style="text-align: center;">2.35%</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="295" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">-2
+to -1 sd</p>
+      </td>
+      <td width="295" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">subnormal
+      </p>
+      </td>
+    <td width="295" valign="top"
+		 style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+		      <p class="MsoNormal" align="center" style="text-align: center;">13.5%</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="295" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">-1
+to +1 sd</p>
+      </td>
+      <td width="295" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">normal
+      </p>
+      </td>
+      <td width="295" valign="top"
+	  		 style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+	  		      <p class="MsoNormal" align="center" style="text-align: center;">68.0%</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="295" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">+1
+to +2 sd</p>
+      </td>
+      <td width="295" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">above
+normal</p>
+      </td>
+    <td width="295" valign="top"
+			 style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+			      <p class="MsoNormal" align="center" style="text-align: center;">13.5%</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="295" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">+2
+to +3 sd</p>
+      </td>
+      <td width="295" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">greatly
+above normal</p>
+      </td>
+      <td width="295" valign="top"
+	  		 style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+	  		      <p class="MsoNormal" align="center" style="text-align: center;">2.35%</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="295" valign="top"
+ style="border-style: none solid solid; border-width: medium 0.5pt 0.5pt; border-left: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">beyond
++3 sd</p>
+      </td>
+      <td width="295" valign="top"
+ style="border-style: none solid solid none; border-width: medium 0.5pt 0.5pt medium; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+      <p class="MsoNormal" align="center" style="text-align: center;">extremely
+above normal</p>
+      </td>
+      <td width="295" valign="top"
+	  		 style="border-style: solid solid solid none; border-width: 0.5pt 0.5pt 0.5pt medium; border-top: 0.5pt solid windowtext; border-right: 0.5pt solid windowtext; border-bottom: 0.5pt solid windowtext; padding: 0in 5.4pt; width: 221.4pt;">
+	  		      <p class="MsoNormal" align="center" style="text-align: center;">0.15%</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>
+Oliver, John E.  <i>Climatology:  Selected Applications.</i>   p 45.
+</div>
+
+<u><b>Example</b></u>:  Calculate the standard deviation of monthly cloud cover over Equatorial Africa for January 1960 to December 1962.
+<br /><br />
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.<br /></li>
+
+<li>Click on the "Atmosphere" link.<br /></li>
+
+<li>Scroll down the page and select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/">
+UEA CRU New CRU05</a>  dataset.<br /></li>
+
+<li>Click on the "monthly" link.<br /></li>
+
+<li>Select the "cloud cover" link under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/">CHECK</a><br /></li></ul>
+</td></tr>
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.<br /></li>
+<li>Enter the text <i> 25W to 50E</i>,<i> 40S to 38N</i>, and <i>Jan 1960 to Dec 1962</i> in the appropriate text boxes.<br /></li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES/">
+CHECK</a> <br /></li></ul>
+</td></tr>
+<tr><td align="center">Calculate Standard Deviation Values</td>
+<td>
+
+<ul><li>Click on the "Expert Mode" link in the function bar. <br /></li>
+<li>Enter the following text below the text already there:<br /><br />
+
+<pre class="ingridcode">
+dataflag [T]sum dup 1.0 sub div sqrt
+SOURCES .UEA .CRU .New .CRU05 .monthly .cld
+X (25W) (50E) RANGEEDGES
+T (Jan 1960) (Dec 1962) RANGEEDGES
+Y (40S) (38N) RANGEEDGES
+[T] rmsaover
+mul</pre>
+</li>
+<li>Press the OK button.
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES/dataflag%5BT%5Dsum/dup/1./sub/div/sqrt/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES%5BT%5Drmsaover/mul/">
+CHECK</a> <br />
+
+
+The above commands calculate the standard deviation of the time series.  The <i>dataflag [T]sum</i> commands determines, for each grid point, the number of non-missing elements in the time series.  <i>dup</i> makes a copy of this number to then calculate n-1 using <i>1. sub</i> (where n is the number of data points in time).
+ The next step is to take n and divide it by n-1.
+The last step in the first line is to take the square root of n / (n-1).  The following five lines of code reference the dataset being used, including the temporal and spatial ranges.  The final two lines of code multiply the root mean square anomaly by the value calculated in the first line,
+sqrt(n / (n-1)).<br /></li></ul>
+
+
+</td></tr>
+<tr><td align="center">View Standard Deviation Values</td>
+<td>
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts outlined. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES/dataflag%5BT%5Dsum/dup/1./sub/div/sqrt/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES%5BT%5Drmsaover/mul/figviewer.html?map.url=X+Y+fig-+colors+coasts+lakes+-fig&amp;my.help=more+options">
+CHECK</a></li></ul>
+
+<center>
+Standard Deviation of Monthly Cloud Cover<br />
+<img WIDTH="253" HEIGHT="260" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES/dataflag%5BT%5Dsum/dup/1./sub/div/sqrt/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/X/%2825W%29%2850E%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/Y/%2840S%29%2838N%29RANGEEDGES%5BT%5Drmsaover/mul/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//cld/0.0/22.31307/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+188+psdef+.gif" />
+<br />
+<img WIDTH="210" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES/dataflag%5BT%5Dsum/dup/1./sub/div/sqrt/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/X/%2825W%29%2850E%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201962%29RANGEEDGES/Y/%2840S%29%2838N%29RANGEEDGES%5BT%5Drmsaover/mul/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//cld/0.0/22.31307/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+188+psdef+.gif" />
+</center>
+<br />
+Equatorial Africa exhibits low standard deviation values of monthly cloud cover 
+compared to regions to its north and south.  High standard deviation values 
+correspond to areas with large interannual cloud cover variability.<br /><br />
+
+Note that the root mean square anomaly can be substituted for the standard devation if the sample size is sufficiently large.
+<br />(Devore, Jay L. <i>Probability and Statistics for Engineering and the Sciences.</i> pp. 38-39, 259.)
+</td></tr>
+</table>
+</div><div id="RMSA" class="ui-tabs-panel">
+<h2>Root Mean Square Anomaly / Root Mean Square</h2>
+<h3> Root Mean Square Anomaly </h3>
+
+<ul><a href=""></a>
+ 	<li>Also known as root mean square deviation.</li>
+    <li>Very similar to <a href="#SD">standard devation</a>, except used for large 
+sample sizes (i.e., divisior is n instead of n-1) (Devore).</li>
+   <li>RMSA calculated using the formula:
+<img src="RMSA.gif" />, where xbar is the mean, x<sub>i</sub> is each data value, and 
+n is the number of observations.</li>
+    <li>The term x<sub>i</sub>  xbar is an anomaly, which is discussed
+in another <a href="../Climatologies/">section.</a></li>
+   <li>Provides similar information into the dispersion of data as the standard 
+deviation.</li>
+   <li>Often used as a measurement of error.</li>
+    <li>More commonly used than the standard deviation function in the statistical 
+analysis of climate data because climate-related datasets are generally quite large in 
+size, in terms of number of data points.</li>
+</ul>
+<h3> Root Mean Square </h3>
+<ul>
+   <li>Calculated using the formula: <img src="RMS.gif" /></li>
+
+   <li>Unlike the RMSA or standard deviation, The mean is <i>not</i> removed in the 
+calculation.</li>
+   <li>Acceptable to use only when dealing with large sample datasets (Devore).</li>
+ </ul>
+<br /><br />
+
+<u><b>Example</b></u>:  Calculate the root mean square anomaly of monthly cloud cover over Africa for January 1960 to December 1979.
+<br /><br />
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.<br /></li>
+
+<li>Click on the "Atmosphere" link.</li>
+
+<li>Scroll down the page and select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/">
+UEA CRU New CRU05</a>  dataset.<br /></li>
+
+<li>Click on the "monthly" link.<br /></li>
+
+<li>Click on the "cloud cover" link under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/">CHECK</a><br />
+</li></ul>
+
+</td></tr>
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.<br /></li>
+
+<li>Enter the text <i> 25W to 50E</i>, <i>40S to 38N</i>, and <i>Jan 1960 to Dec 1979</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201979%20%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES/">
+CHECK</a><br /></li></ul>
+</td></tr>
+<tr><td align="center">Calculate Root Mean Square Anomaly</td>
+<td>
+
+
+<ul><li>Click on the "Filters" link in the function bar.</li><li> Select the <i>RMSA over "T"</i> command. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201979%20%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES/[T+]rmsaover/">
+CHECK</a> <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201979%20%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES%5BT%5Drmsaover/">EXPERT</a>
+<br />
+The result is a set of root mean square anomaly values (i.e. root mean square with mean removed).
+Higher (lower) values represent a larger (smaller) distribution of monthly cloud cover about the mean.</li></ul>
+*Note: Choosing the Root Mean Square over T instead of the Root Mean Square Anomaly over T will produce very different results.
+After completing the example, try going back and selecting the <i>RMS over "T"</i> command to see the difference between the two functions.
+<br /><br />
+</td></tr>
+<tr><td align="center">View Root Mean Square Values</td>
+<td>
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts outlined. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201979%20%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES%5BT%5Drmsaover/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a></li>
+</ul>
+<center>
+Root Mean Square Anomaly of Monthly Cloud Cover<br />
+<img WIDTH="253" HEIGHT="260" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201979%20%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES%5BT%5Drmsaover/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//cld/0.0/20.96761/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+188+psdef+.gif" />
+<br />
+<img WIDTH="210" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UEA/.CRU/.New/.CRU05/.monthly/.cld/Y/%2840S%29%2838N%29RANGEEDGES/T/%28Jan%201960%29%28Dec%201979%20%29RANGEEDGES/X/%2825W%29%2850E%29RANGEEDGES%5BT%5Drmsaover/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//cld/0.0/20.96761/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+188+psdef+.gif" />
+</center>
+Relatively low root mean square anomaly (RMSA) values are found 
+in Equatorial Africa while regions to the north and south possess higher values.  
+High RMSA values correspond to areas with large interannual cloud cover variability.
+</td></tr>
+</table>
+</div><div id="IQR" class="ui-tabs-panel">
+<h2>Interquartile Range (IQR)</h2>
+<ul>
+  <li>Calculated by taking the difference between the upper and lower quartiles (the 25th percentile subtracted from the 75th percentile).</li>
+  <li>A good indicator of the spread in the center region of the data.</li>
+  <li>Relatively easy to compute.</li>
+  <li>More resistant to extreme values than the range.</li>
+  <li>Doesn't incorporate all of the data in the sample, compared to the median absolute deviation discussed later in the section.</li>
+  <li>Also called the fourth-spread.</li>
+</ul>
+<br />
+<u><b>Example</b></u>:  Find the interquartile range of climatological monthly 
+precipitation in South America for January 1970 to December 2003.
+<br /><br />
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Atmosphere" link.</li>
+
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GPCP/.V2/">NASA GPCP V2</a> dataset.</li>
+
+<li>Select the "multi-satellite" link under the Datasets and Variables subheading.</li>
+
+<li>Select the "precipitation" link again under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/">
+CHECK</a></li></ul>
+
+</td></tr>
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 90W to 30W</i>,<i> 60S to 10N</i>, and <i>Jan 1970 to Dec 2003</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/">
+CHECK</a> </li></ul>
+
+</td></tr>
+<tr><td align="center">Compute Monthly Climatologies</td>
+<td>
+<ul><li>
+Select the "Filters" link in the function bar. </li><li>Choose the<i> Monthly Climatology</i> command.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/">CHECK</a>
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/">EXPERT</a>
+<br /> This command computes the average cloud cover over all years for each month, January through December (i.e. climatological monthly cloud covers).
+</li></ul>
+
+</td></tr>
+<tr><td align="center">Calculate Interquartile Range</td>
+<td>
+
+
+<ul><li>
+Enter into Expert Mode.  Enter the following lines under the text already there:<br /><br />
+
+<pre class="ingridcode">
+[T]0.25 0.75 0 replacebypercentile
+  [percentile]differences
+</pre>
+</li><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology%5BT%5D0.25/0.75/0/replacebypercentile%5Bpercentile%5Ddifferences/">
+CHECK</a><br />
+The <i>replacebypercentile</i> calculates the upper and lower quartiles for each grid point in the spatial field over the January to December climatologies.
+The <i>differences</i> command then takes the difference of the two values along the percentile grid.  The result is a dataset of interquartile ranges at each grid point in the spatial field.</li></ul>
+</td></tr>
+<tr><td align="center">View Interquartile Range</td>
+<td>
+
+
+ <ul><li>To see the results of this operation, choose the viewer window with coasts outlined. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology%5BT%5D0.25/0.75/0/replacebypercentile%5Bpercentile%5Ddifferences/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a></li></ul>
+<center>
+Interquartile Range of Climatological Monthly Precipitation<br />
+<img WIDTH="234" HEIGHT="260" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology%5BT%5D0.25/0.75/0/replacebypercentile%5Bpercentile%5Ddifferences/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//prcp/0.04199505/9.65061/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+188+psdef+.gif" />
+<br />
+<img WIDTH="210" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology%5BT%5D0.25/0.75/0/replacebypercentile%5Bpercentile%5Ddifferences/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//prcp/0.04199505/9.65061/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+188+psdef+.gif" />
+</center>
+The higher the interquartile range, the more variability in the data.  The Amazon Basin exhibits high intraannual precipitation variability, while areas to the north and south exhibit lower precipitation variability.
+</td></tr>
+</table>
+</div><div id="MAD" class="ui-tabs-panel">
+<h2>Median Absolute Deviation (MAD)</h2>
+<ul>
+  <li>A more comprehensive alternative to the IQR by incorporating all of the data in the sample.</li>
+  <li>MAD = median |X<sub>i</sub>  q<sub>.5</sub>| where X<sub>i</sub> represents
+each value and q<sub>.5</sub> represents the median.<br />
+  </li>
+</ul>
+<br />
+<u><b>Example</b></u>:  Find the median absolute deviation of climatological monthly precipitation in South America for January 1970 to December 2003.
+<br /><br />
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+
+*NOTE:  This example uses the same dataset and variable as the previous example.<br />
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Atmosphere" link.</li>
+
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GPCP/.V2/">NASA GPCP V2</a>  dataset.</li>
+
+<li>Select the "multi-satellite" link under the Datasets and Variables subheading.</li>
+
+<li>Select the "precipitation" link again under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/">
+CHECK</a></li></ul>
+
+</td></tr>
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 90W to 30W</i>,<i> 60S to 10N</i>, and <i>Jan 1970 to Dec 2003</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/">
+CHECK</a> </li></ul>
+
+</td></tr>
+<tr><td align="center">Compute Monthly Climatologies</td>
+<td>
+
+
+<ul><li>Select the "Filters" link in the function bar. </li><li>Choose the<i> Monthly Climatology</i> command.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/">CHECK</a>
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/">EXPERT</a>
+</li></ul>
+
+</td></tr>
+<tr><td align="center">Calculate Median Absolute Deviation</td>
+<td>
+
+
+<ul><li>Enter Expert Mode via the function bar and enter the following lines under the text already there:<br /><br />
+
+<pre class="ingridcode">
+SOURCES .NASA .GPCP .V2 .multi-satellite .prcp
+  Y (60S) (10N) RANGEEDGES
+  X (90W) (30W) RANGEEDGES
+  T (Jan 1970) (Dec 2003) RANGEEDGES
+  yearly-climatology
+  [T] medianover
+  sub
+</pre>
+</li>
+
+<li>Press the OK button.  <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/yearly-climatology%5BT%5Dmedianover/sub/">
+CHECK</a><br />
+The above command computes the median value over the monthly climatologies at each grid point in the field.</li>
+<li>In Expert Mode, enter the command:
+<pre class="ingridcode">
+abs
+</pre></li>
+<li>Click the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/yearly-climatology%5BT%5Dmedianover/sub/abs/">CHECK</a><br />
+This command takes the absolute value.</li>
+
+<li>Enter the command:
+<pre class="ingridcode">
+[T] medianover
+</pre></li>
+<li>Click the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/yearly-climatology%5BT%5Dmedianover/sub/abs%5BT%5Dmedianover/">CHECK</a>
+</li></ul>
+
+</td></tr>
+<tr><td align="center">View Median Absolute Deviation</td>
+<td>
+
+
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts outlined. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/yearly-climatology%5BT%5Dmedianover/sub/abs%5BT%5Dmedianover/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a>
+</li></ul>
+<center>
+Median Absolute Deviation of Climatological Monthly Precipitation<br />
+<img WIDTH="232" HEIGHT="260" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/yearly-climatology%5BT%5Dmedianover/sub/abs%5BT%5Dmedianover/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//prcp/0.01132944/4.540802/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+188+psdef+.gif" />
+<br />
+<img WIDTH="210" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/yearly-climatology/SOURCES/.NASA/.GPCP/.V2/.multi-satellite/.prcp/Y/%2860S%29%2810N%29RANGEEDGES/X/%2890W%29%2830W%29RANGEEDGES/T/%28Jan%201970%29%28Dec%202003%29RANGEEDGES/yearly-climatology%5BT%5Dmedianover/sub/abs%5BT%5Dmedianover/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//prcp/0.01132944/4.540802/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+188+psdef+.gif" />
+</center>
+<br />
+The higher the median absolute deviation, the more variability in the data.
+Similar to the IQR example, the Amazon Basin exhibits high intraannual precipitation variability, while areas to the north and south exhibit lower precipitation variability.
+</td></tr>
+</table>
+</div><div id="TrimmedVar" class="ui-tabs-panel">
+<h2>Trimmed Variance</h2>
+<ul><a href=""></a>
+  <li>Similar to variance, except that a proportion of the largest and smallest values in the dataset
+are ommitted before it is calculated.</li>
+  <li>Less affected by outliers since the largest x% and the smallest x%
+of the sample are eliminated.</li>
+  <li>Typical range for x% is 5% to 25%.</li>
+  <li>Sometimes multiplied by an adjustment factor to
+make it more consistant with the ordinary sample variance. (Wilks, Daniel S. <i>Statisical Methods in the Atmospheric Sciences.</i> p 26).</li>
+  <li>Analogous to the <a href="../MCT/#Trimmed">trimmed mean</a>.</li>
+</ul>
+<br />
+<u><b>Example</b></u>:  Find the trimmed variance of average OLR values in the eastern United States for January 1980 to December 1999.
+<br /><br />
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Cloud Characteristics and Radiation Budget" link.</li>
+
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/">NOAA NCEP CPC GLOBAL</a>  dataset.</li>
+
+<li>Click on the "monthly" link</li>
+
+<li>Select the "outgoing longwave radiation" link under the Datasets and Variables subheading. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/">CHECK</a>
+</li></ul>
+
+
+</td></tr>
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 70W to 90W</i>,<i> 20N to 60N</i>, and <i>Jan 1980 to Dec 1999</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/">
+CHECK</a></li></ul>
+
+</td></tr>
+<tr><td align="center">Calculate Spatial Average</td>
+<td>
+
+
+<ul><li>Click on the "Filters" link in the function bar.</li>
+<li>Select the <i>Average over "XY"</i> link.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES/[X+Y+]average/">CHECK</a>
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage/">EXPERT</a><br />
+This command takes a spatial average of the data.
+</li></ul>
+
+</td></tr>
+<tr><td align="center">Find Trimmed Variance</td>
+<td>
+
+<ul><li>In Expert Mode, enter the command: <br /><br />
+<pre class="ingridcode">[T] .2 0 replacebypercentile</pre></li>
+<li> Click the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5Daverage%5BT%5D0.2/0/replacebypercentile/">CHECK</a>
+<br />
+The above command finds the 20th percentile of the data.  The result is located under the Expert Mode text box in bold: 213.1339 W/m<sup>2</sup>.
+Make a note of this value.</li>
+
+<li>In the source bar, click on the <i>[X Y] average</i> box.<br />
+This operation undoes the replacebypercentile command.</li>
+
+<li>Return to Expert Mode.</li>
+<li>Enter the following command under the text already there:
+<pre class="ingridcode">[T] .8 0 replacebypercentile</pre></li>
+<li>Click the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5D0.0/average%5BT%5D0.8/0/replacebypercentile/">CHECK</a>
+<br />
+This command finds the 80th percentile of the data.  The result should be 237.7733 W/m<sup>2</sup>.  Make a note of this value.
+</li>
+
+<li>In the source bar, click on the <i>[X Y] average</i> box.</li>
+
+<li>In Expert Mode, type in the command:
+<pre class="ingridcode">213 238 masknotrange </pre></li>
+<li>Click the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5D0.0/average/213/238/masknotrange/">CHECK</a>
+<br />
+This command masks out all values not included in the indicated range.</li>
+<li>Click on the "Filters" link in the function bar. </li>
+<li>Choose <i>RMSA over "T"</i>
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5D0.0/average/213/238/masknotrange/[T+]rmsaover/"> CHECK</a>
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5D0.0/average/213/238/masknotrange%5BT%5Drmsaover/">EXPERT</a>
+</li></ul>
+Since this dataset is large, we can assume that the root mean square is an acceptable estimate of the standard deviation.
+The value of the root mean square is 7.811205 W/m<sup>2</sup>.<br /><br />
+
+Calculate the trimmed variance by squaring the value above.<br />
+<ul><li> In Expert Mode, enter the command:<br /><br />
+<pre class="ingridcode">
+dup mul
+</pre>
+</li>
+<li>Click the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.monthly/.olr/Y/%2820N%29%2860N%29RANGEEDGES/T/%28Jan%201980%29%28Dec%201999%29RANGEEDGES/X/%2870W%29%2890W%29RANGEEDGES%5BX/Y%5D0.0/average/213/238/masknotrange%5BT%5Drmsaover/dup/mul/">CHECK</a>
+<br />
+The trimmed variance should be 61.01493 kg<sup>2</sup>s<sup>-6</sup>.</li></ul>
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
