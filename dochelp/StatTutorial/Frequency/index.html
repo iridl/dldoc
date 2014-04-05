@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frequency Distributions</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a09" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a href="#Histo"> Histograms</a></li>
+<li> <a href="#Cumu"> Cumulative Frequency Distributions</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Frequency Distributions</h2>
+<p property="term:description">
+A frequency distribution is one of the most common graphical tools used to describe a 
+single population.  It is a tabulation of 
+the frequencies of each value (or range of values). 
+</p>
+<p>There are a wide variety of ways 
+to illustrate frequency distributions, including histograms, relative frequency 
+histograms, density 
+histograms, and cumulative frequency distributions.  Histograms show the frequency of 
+elements that occur <i>within</i> a certain range of values, while cumulative 
+distributions show the frequency of elements that occur <i>below</i> a certain value.
+</p></div>
+<div id="Histo" class="ui-tabs-panel">
+<h2>Histograms</h2>
+<u>Frequency Histogram</u><br />
+<ol>
+<li>A graphical representation of a single dataset, tallied into classes.</li>
+<li>Frequency defined as the number of values that fall into each class. </li>
+
+<li>Histogram consists of a series of rectangles whose widths are defined by the limits of the classes, and whose heights are determined by the frequency in each interval.</li>
+<li>Histogram depicts many attributes of the data, including location, spread, and symmetry.</li>
+ <ol TYPE="a"><li>No rigid set of rules that determine the number of classes or class interval.</li>
+ <li>Between 5 and 20 classes suitable for most datasets.</li>
+<li>Equal sized class widths are found by dividing the range by the number of classes. </li>
+<li>Formal guide by which class intervals can be derived is the formula:  K = 1 + 3.3 * log n<br />
+where K is the number of classes and n is the number of variables.</li></ol>
+</ol>
+
+<u>Relative Frequency Histogram</u><br />
+
+<ol><li>Relative frequency defined as the fraction of times the value occurs, or the 
+freuqency of value(s) &#247; number of observations in the set.</li>
+<li>Relative frequencies usually of more interest than the absolute frequencies.</li>
+<li>Relative frequency histogram constructed by assigning the relative frequencies as heights of the rectangles.</li>
+<li>Sum of all relative frequencies in a dataset is 1.</li>
+</ol>
+
+<u>Density Histogram</u>
+
+<ol><li>Similar to frequency histogram except heights of rectangles are calculated by dividing relative frequency by class width.</li>
+<li>Resulting rectangle heights called densities, vertical scale called density scale.</li>
+<li>Noteworthy property: (class width * density) = relative frequency.</li>
+<li>Total area of all rectangles equals 1.</li>
+</ol>
+
+<u>Histogram Shapes</u>
+
+<ul><li>Unimodal: Rises to single peak, then declines.</li>
+<li>Bimodal: Has two distinct peaks.</li>
+<li>Multimodal:  More than two peaks.</li>
+<li>Discriptions of skew may also be applied to histograms 
+(see <a href="../MCT/#Int">Measures of Central Tendency</a> section.)</li>
+</ul>
+<b><u>Example</u></b>:  Construct a frequency, relative frequency, and density histogram of net heat flux data at 130° E, 20° N for January 1960 to March 1998.<br /><br />
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Cloud Characteristics and Radiation Budget" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/">
+CAYAN</a>  dataset.</li>
+<li> Click on the "net heat flux" link under the Datasets and Variables subheading.
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/">CHECK</a></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 130E</i>,<i> 20N</i> and <i>Jan 1960 to Mar 1998</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/">
+CHECK</a> <br /></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Calculate Number of Classes and Class Interval</td>
+<td>
+<ul><li> Select the "Filters" link in the function bar.</li>
+<li> Choose the <i>Maximum over "T"</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/[T+]maxover/">CHECK</a>
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES%5BT%5Dmaxover/">EXPERT</a>
+<br />
+This operation computes the maximum heat flux over the time grid T.  The value is located under the Expert Mode text box in bold:  154.3319 W/m<sup>2</sup>.
+Remember this value.</li>
+<li>Click on the right most link <b>prior</b> to the "T 0.0 maxover" box in the source bar. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGE/X/%28130E%29VALUES/">CHECK</a><br />
+
+This operation undoes the <i>maxover</i> command.</li>
+<li>Again, select the "Filters" link in the function bar.</li>
+<li> Choose the <i>Minimum over "T"</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/[T+]minover/">CHECK</a>
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES%5BT%5Dminover/">EXPERT</a>
+<br />
+This operation computes the minimum heat flux value over the time grid T.  Again, the value is located under the Expert Mode text box in bold:  -401.584 W/m<sup>2</sup>.
+Remember this value.</li>
+<li>Click on the right most link <b>prior</b> to the "T 0.0 maxover" box in the source bar. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGE/X/%28130E%29VALUES/">CHECK</a><br />
+
+This operation undoes the <i>minover</i> command.</li>
+<li>Calculate the range by subtracting the minimum value from the maximum value.<br />
+
+154.3319 - -401.584 = 555.91 which may be rounded to 556.</li>
+
+<li>Scroll down the page and find the <i>month</i> variable under the <b>Grids</b> subheading.</li>
+<li>Note how many data points are contained in the grid by finding N=___.<br />
+You should have seen the number 459.</li> 
+<li>Use the following formula to estimate the number of classes:  K = 1 + 3.3 * log n<br />
+K = 1 + 3.3 * log 459.  K = 9.7840 which may be rounded to 10.</li>
+<li>Calculate the class width by dividing the range (556) by the number of classes (10).<br />
+556 &#247; 10 = 55.6, however the class interval should be rounded to a whole number.
+Rounding the class interval to 56, and beginning the first class at -405 will ensure that the ten classes include all values in the dataset.  -405 + 56 * 10 = 155.</li>
+</ul>
+</td></tr>
+<tr><td align="center">Generate Histogram</td>
+<td>
+
+
+<ul>
+<li>Click on the "Expert Mode" text box in the function bar.</li>
+<li>Type the following command under the text already there:<br /><br />
+
+<pre class="ingridcode">
+DATA -405 155 56 RANGESTEP
+distrib1D
+</pre>
+</li></ul>
+
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/">CHECK</a>
+<br />The <i>RANGESTEP</i> command defines the range of heat flux values to consider, as well as the spacing to use.
+The range -405 to 155 includes the entire set of values.  The spacing is 56.
+The <i>distrib1D</i> command calculates the frequencies within each class that are used to create the histogram.</li>
+</ul></td></tr>
+
+
+<tr><td align="center">View Histogram</td>
+<td>
+
+
+
+
+<ul><li>To view the histogram, choose the viewer marked with colors. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/figviewer.html?map.url=dup+Qnet+fig-+colorbars2+-fig&amp;my.help=more+options">CHECK</a></li></ul>
+<center>
+Heat Flux Frequencies at 130E, 20N for January 1960 to March 1998<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/dup+Qnet+fig-+colorbars2+-fig+%28freq%291./124./plotrange/%28freq%291./124./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/dup+Qnet+fig-+colorbars2+-fig+.auxfig+%28freq%291./124./plotrange/%28freq%291./124./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+
+<br /><br />
+</center>
+
+The histogram is unimodal and is negatively skewed.<br /><br />
+</td></tr>
+
+<tr><td align="center">Generate Relative Frequency Histogram</td>
+<td>
+
+
+<ul><li>Click on the right most link in the blue source bar to exit the viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/">CHECK</a></li>
+<li>Click in the Expert Mode text box in the function bar.</li>
+<li>Type the following command under the text already there:<br /><br />
+
+<pre class="ingridcode">
+459 div
+/long_name (Relative Frequency) def
+</pre>
+</li></ul>
+
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/">CHECK</a>
+<br />
+The <i>div</i> command divides each frequency by 459, the total number of observations.
+This transforms the set of frequencies into relative frequencies. The second command changes the variable name from
+Frequency to Relative Frequency</li>
+</ul>
+
+</td></tr>
+
+
+<tr><td align="center">View Relative Frequency Histogram</td>
+<td>
+
+<ul><li>To view the relative frequency histogram, choose the viewer marked with colors. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/figviewer.html?map.url=dup+Qnet+fig-+colorbars2+-fig&amp;my.help=more+options">CHECK</a></li></ul>
+<center>
+Heat Flux Relative Frequencies at 130E, 20N for January 1960 to March 1998<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/dup+Qnet+fig-+colorbars2+-fig+%28freq%290.002178649/0.2701525/plotrange/%28freq%290.002178649/0.2701525/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/dup+Qnet+fig-+colorbars2+-fig+.auxfig+%28freq%290.002178649/0.2701525/plotrange/%28freq%290.002178649/0.2701525/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+
+<br /><br />
+</center>
+
+The relative frequency histogram looks similar to the frequency histogram, except that the rectangle heights are represented by different values. <br /><br />
+</td></tr>
+
+<tr><td align="center">Generate Density Histogram</td>
+<td>
+
+
+<ul><li>Click on the right most link in the blue source bar to exit the viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/">CHECK</a></li>
+<li>Click in the Expert Mode text box in the function bar.</li>
+<li>Type the following command under the text already there:<br /><br />
+
+<pre class="ingridcode">
+56 div
+/long_name (Density) def
+</pre>
+</li></ul>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/56/div//long_name/%28Density%29def/">CHECK</a>
+<br />
+The <i>div</i> command divides each relative frequency by 56, the class width.
+This transforms the set of relative frequencies into densities.  The second command changes the variable name from
+Relative Frequency to Density.</li></ul>
+
+</td></tr>
+
+
+<tr><td align="center">View Density Histogram</td>
+<td>
+
+<ul>
+<li>To view the density histogram, choose the viewer marked with colors. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/56/div//long_name/%28Density%29def/figviewer.html?map.url=dup+Qnet+fig-+colorbars2+-fig&amp;my.help=more+options">CHECK</a></li></ul>
+<center>
+Heat Flux Relative Frequencies at 130E, 20N for January 1960 to March 1998<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/56/div//long_name/%28Density%29def/dup+Qnet+fig-+colorbars2+-fig+%28freq%293.8904451E-05/0.004824152/plotrange/%28freq%293.8904451E-05/0.004824152/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/56/RANGESTEP/distrib1D/459/div//long_name/%28Relative%20Frequency%29def/56/div//long_name/%28Density%29def/dup+Qnet+fig-+colorbars2+-fig+.auxfig+%28freq%293.8904451E-05/0.004824152/plotrange/%28freq%293.8904451E-05/0.004824152/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+
+The density histogram looks similar to the frequency and relative frequency histograms, except that the rectangle heights are represented by different values.  Recall that in a density histogram, the total area of all rectanges is 1. <br /><br />
+</td></tr>
+
+
+</table>
+</div>
+<div id="Cumu" class="ui-tabs-panel">
+<h2>Cumulative Frequency Distributions</h2>
+
+<br />
+
+<ol>
+<li>Cumulative frequency distributions contain all information present in histograms, plus the following:</li>
+<ol type="a">
+<li>Allows user to easily estimate frequencies over several class intervals.</li>
+<li>Provides better estimates of probablities since there is no arbitrary division of data into classes.</li></ol>
+<li>Cumulative distribution function is plotted with cumulative probabilites on the vertical axis and data values on the horizontal axis.</li>
+ <li>Cumulative frequencies are obtained by the formula F = m / (n + 1) where m is the m<sup>th</sup> value in order of magnitude of the series and n is the number of terms in the series.</li>
+ <li>F gives the probability that a randomly chosen value will not exceed the data value by which F was calcuated.</li>
+<li>Probability of any exact value occuring is zero.<br /></li>
+<li>Concave downward (upward) cumulative frequency distributions indicative of positively (negatively) skewed data.</li>
+
+</ol>
+
+
+
+
+<br />
+<b><u>Example</u></b>:  Construct a cumulative frequency distribution of net heat flux data at 130° E, 20° N for January 1960 to March 1998.<br /><br />
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+*NOTE:  This example uses the same dataset and variable as the previous example.
+<br />
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Cloud Characteristics and Radiation Budget" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/">
+CAYAN</a>  dataset.</li>
+<li> Click on the "net heat flux" link under the Datasets and Variables subheading.
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/">CHECK</a></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 130E</i>,<i> 20N</i> and <i>Jan 1960 to Mar 1998</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/">
+CHECK</a> <br /></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Calculate Maximum and Minimum Values</td>
+<td>
+
+
+<ul><li> Select the "Filters" link in the function bar.</li>
+<li> Choose the <i>Maximum over "T"</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/[T+]maxover/">CHECK</a>
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES%5BT%5Dmaxover/">EXPERT</a>
+<br />
+This operation computes the maximum heat flux over the time grid T.  The value is located under the Expert Mode text box in bold:  154.3319 W/m<sup>2</sup>.
+Remember this value.</li>
+<li>Click on the right most link <b>prior</b> to the "T 0.0 maxover" box in the source bar. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/">CHECK</a><br />
+
+This operation undoes the <i>maxover</i> command.</li>
+<li>Again, select the "Filters" link in the function bar.</li>
+<li> Choose the <i>Minimum over "T"</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/[T+]minover/">CHECK</a>
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES%5BT%5Dminover/">EXPERT</a>
+<br />
+This operation computes the minimum heat flux value over the time grid T.  Again, the value is located under the Expert Mode text box in bold:  -401.584 W/m<sup>2</sup>.
+Remember this value.</li>
+<li>Click on the right most link <b>prior</b> to the "T 0.0 maxover" box in the source bar. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/">CHECK</a><br />
+
+This operation undoes the <i>minover</i> command.<br /></li>
+</ul>
+</td></tr>
+<tr><td align="center">Generate Cumulative Frequency Distribution</td>
+<td>
+<ul>
+<li>Click on the "Expert Mode" text box in the function bar.</li>
+<li>Type the following command under the text already there:<br /><br />
+
+<pre class="ingridcode">
+DATA -405 155 1 RANGESTEP
+integrateddistrib1D
+</pre>
+</li></ul>
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/1/RANGESTEP/integrateddistrib1D/">CHECK</a>
+<br />
+The <i>RANGESTEP</i> command defines the range of heat flux values to consider, as well as the spacing to use.
+The range -405 to 155 includes the entire set of values.  The spacing will be assigned to 1 because the smallest interval will yield the most precise distribution.
+The <i>integrateddistrib1D</i> command creates the cumulative frequency distribution by integrating along the relative frequencies.</li>
+</ul></td></tr>
+<tr><td align="center">View Cumulative Frequency Distribution</td>
+<td>
+<ul><li>To view the histogram, choose the viewer marked with colors. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/1/RANGESTEP/integrateddistrib1D/figviewer.html?map.url=dup+Qnet+fig-+colorbars2+-fig&amp;my.help=more+options">CHECK</a></li></ul>
+<center>
+Cumulative Frequency Distribution of Heat Flux at 130E, 20N for January 1960 to March 1998<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/1/RANGESTEP/integrateddistrib1D/dup+Qnet+fig-+colorbars2+-fig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.CAYAN/.Qnet/Y/%2820N%20%29VALUES/T/%28Jan%201960%29%28Mar%201998%29RANGEEDGES/X/%28130E%29VALUES/DATA/-405/155/1/RANGESTEP/integrateddistrib1D/dup+Qnet+fig-+colorbars2+-fig+.auxfig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The cumulative distribution always begins at a relative frequency of 0 and ends at a relative frequency of 1.
+Notice how the distribution rises slowly at first, then rises quickly towards the end.  This concave upward look is indicative of negatively skewed data.
+Recall from the previous example that the histogram had a tail to the left, signifying negative skewness.
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

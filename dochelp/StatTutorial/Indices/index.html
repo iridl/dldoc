@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Climate Indices</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a08" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a href="#Ex1"> Example: Creating the Southern Oscillation Index</a></li>
+<li> <a href="#Ex2"> Example: Creating the Niño 3 Index</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Climate Indices</h2>
+<p property="term:description">
+Indices are diagnostic tools used to describe the state of a climate system.
+Climate indices are most often represented with a time series;
+each point in time corresponds to one index value.
+</p>
+<p>An index can be constructed to describe almost any atmospheric event, from summer 
+monsoon rainfall in India, to pressure differences at two locations in the Pacific 
+Ocean, to spatially-averaged sea surface temperatures. Each of these indices are 
+created with a specific purpose: to monitor climate. 
+</p></div>
+<div id="Ex1" class="ui-tabs-panel">
+<h2>Creating the Southern Oscillation Index</h2>
+<u><b>Example</b></u>:  Generate the Southern Oscillation Index by standardizing 
+the differences in sea-level pressure anomalies at Tahiti and Darwin.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Climate Indicies" link.</li>
+
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.Indices/.Tahiti/">
+Indicies Tahiti</a>  dataset.<br /></li>
+
+<li>Click on the "sea level pressure" link under the Datasets and Variables subheading.</li>
+<li>Click on the "sea level pressure" link again under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.Indices/.Tahiti/.slp/.full/">CHECK</a><br />
+Notice that sea level pressure anomaly and standardized sea level pressure are also variables contained in this dataset.
+These are variables that will be computed in this example, however you may select them in the future to save time.
+</li></ul>
+</td></tr>
+
+
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.<br /></li>
+<li>Enter the text <i> Jan 1960 to Apr 2004</i> in the Time text box.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.Indices/.Tahiti/.slp/.full/T/%28Jan%201960%29%28Apr%202004%29RANGEEDGES/">
+CHECK</a> <br /></li></ul>
+</td></tr>
+
+
+<tr><td align="center">Calculate Anomalies</td>
+<td>
+
+
+
+<ul><li>Click on the "Filters" link in the function bar.</li>
+<li> Choose the <i>anomalies</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.Indices/.Tahiti/.slp/.full/T/%28Jan%201960%29%28Apr%202004%29RANGEEDGES/yearly-anomalies/">CHECK</a> <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.Tahiti/.slp/.full/T/%28Jan%201960%29%28Apr%202004%29RANGEEDGES/yearly-anomalies/">EXPERT</a>
+<br />
+This operation calculates the difference between monthly climatology and the original data.  These anomalies are <b>not</b> standardized.</li>
+</ul></td></tr>
+
+<tr><td align="center">Standardize (Normalize) Tahiti Anomalies</td>
+<td>
+
+
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Type the following command under the text already there:<br /><br />
+
+<pre class="ingridcode">
+[T] standardize
+</pre>
+</li></ul>
+
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.Tahiti/.slp/.full/T/%28Jan%201960%29%28Apr%202004%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/">CHECK</a>
+<br />
+The standardize function divides each anomaly by the standard deviation of the data.
+The result is a time series of standardized sea level pressure anomalies at Tahiti.
+</li></ul>
+</td></tr>
+
+
+<tr><td align="center">Enter Darwin, Australia Standardized Anomaly Data</td>
+<td>
+
+
+
+<ul><li>In the Expert Mode text box, enter the following lines below the text already there: <br /><br />
+
+<pre class="ingridcode">
+SOURCES .Indices .Darwin .slp .full
+  T (Jan 1900) (Apr 2004) RANGEEDGES
+  yearly-anomalies
+  [T]standardize
+  sub
+</pre>
+</li>
+<li>Press the OK button.
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.Tahiti/.slp/.full/T/%28Jan%201960%29%28Apr%202004%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/SOURCES/.Indices/.Darwin/.slp/.full/T/%28Jan%201900%29%28Apr%202004%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/sub/">
+CHECK</a> <br />
+
+
+The above set of commands adds another variable to the interface, standardized sea level pressure anomalies from Darwin, then subtracts the two variables with the sub command.  The result is a dataset of standardized anomalies at Tahiti minus standardized anomalies at Darwin, Australia from January 1960 to April 2004.
+The Southern Oscillation Index is defined as the difference between standardized sea level pressure anomalies at these two locations.<br /></li></ul>
+
+
+
+</td></tr>
+<tr><td align="center">View Results</td>
+<td>
+
+<ul><li>To see the results of this operation, choose the time series viewer. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.Tahiti/.slp/.full/T/%28Jan%201960%29%28Apr%202004%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/SOURCES/.Indices/.Darwin/.slp/.full/T/%28Jan%201900%29%28Apr%202004%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/sub/figviewer.html?plottype=line&amp;my.help=more+options">
+CHECK</a></li></ul>
+
+<center>
+Southern Oscillation Index from January 1960 to April 2004<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.Tahiti/.slp/.full/T/%28Jan%201960%29%28Apr%202004%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/SOURCES/.Indices/.Darwin/.slp/.full/T/%28Jan%201900%29%28Apr%202004%29RANGEEDGES/yearly-anomalies%5BT%5Dstandardize/sub/T+fig-+line+-fig+//full/-6.631317/4.459283/plotrange/T/0.0/532./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The resulting image is a graph of the SOI over the previous 44 years.  Negative values 
+represent higher-than-average surface pressures at Darwin and lower-than-average 
+surface pressures at Tahiti, which in turn, often correspond to El Niño conditions.
+The exceptionally strong El Niño event of 1982 / 1983 is prominent in this figure.
+</td></tr>
+</table>
+</div>
+<div id="Ex2" class="ui-tabs-panel">
+<h2>Creating the Niño 3 Index</h2>
+<u><b>Example</b></u>:  Generate the Nino 3 Index by spatially averaging sea surface temperature anomalies over the range 90° W - 150° W, 5° S - 5° N.
+<br /><br />
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Air-Sea Interface" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/">
+NOAA NCEP EMC CMB GLOBAL Reyn_Smith </a>  dataset.</li>
+<li> Select the "Reyn_SmithOIv2" link under the Datasets and Variables subheading.</li>
+<li> Click on the "monthly" link again under the Datasets and Variables subheading.</li>
+<li> Select the "Sea Surface Temperature Anomaly" link again under the Datasets and Variables subheading.
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/">CHECK</a></li></ul>
+
+</td></tr>
+
+<tr><td align="center">Select Spatial Domain</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.<br /></li>
+<li>Enter the text <i> 90W to 150W</i>,<i> 5S to 5N</i> in the appropriate text boxes.<br /></li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%285S%29%285N%20%29RANGEEDGES/X/%2890W%29%28150W%29RANGEEDGES/">
+CHECK</a> <br /></li></ul>
+</td></tr>
+
+
+
+<tr><td align="center">Calculate Spatial Average</td>
+<td>
+
+
+
+<ul><li>Click on the "Filters" link in the function bar.</li>
+<li> Choose the <i>Average over "XY"</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%285S%29%285N%20%29RANGEEDGES/X/%2890W%29%28150W%29RANGEEDGES/[X+Y+]average/">CHECK</a> <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%285S%29%285N%20%29RANGEEDGES/X/%2890W%29%28150W%29RANGEEDGES%5BX/Y%5Daverage/">EXPERT</a>
+<br />
+This operation calculates the spatial average of the data. <br />
+*NOTE: Make sure to select the combined "XY" in the filters menu. Multiple variable selections are located to the right of the individual variables in the filters menu.</li>
+</ul>
+</td></tr>
+<tr><td align="center">View Results</td>
+<td>
+
+<ul><li>To see the results of this operation, choose the time series viewer. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%285S%29%285N%20%29RANGEEDGES/X/%2890W%29%28150W%29RANGEEDGES/[X+Y+]average/figviewer.html?plottype=line">
+CHECK</a></li></ul>
+
+<center>
+Niño 3 Index from December 1981 to Present<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%285S%29%285N%20%29RANGEEDGES/X/%2890W%29%28150W%29RANGEEDGES/%5BX+Y+%5Daverage/T+fig-+line+-fig+//ssta/-2.023791/3.674029/plotrange/T/263./534./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The resulting image is a time series of the Niño 3 Index.  The Niño 
+indices (i.e., Niño 1+2, Niño 3, Niño 3.4, Niño 4) are 
+used to analyze El Niño and La Niña conditions, and each index 
+represents a 
+<a href="http://iri.columbia.edu/climate/ENSO/background/monitoring.html#nino">different region in the Pacific.</a>
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

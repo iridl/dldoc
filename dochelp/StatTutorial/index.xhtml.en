@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Statistics Tutorial</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="canonical" href="index.html" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem">
+                <legend>Data Library</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend about="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial"><span property="term:label">Tutorials</span></legend> 
+                     <span class="navtext">Statistics Tutorial</span>
+            </fieldset> 
+ </div>
+<div class="searchDescription">
+<h2 property="term:title">Statistical Techniques in the Data Library: A Tutorial</h2>
+<p>
+The Data Library is an online tool that provides access to an abundance of climate-related data via 
+one easy-to-use interface.  Ingrid, the programming language on which the Data Library is built, contains a variety of functions that can be used to manipulate data.
+These Ingrid functions are simple to perform because they are executed directly within the Data Library interface.
+The wide variety of available functions makes the Data Library beneficial to the novice and advanced user.
+</p><p>
+While the first Data Library tutorial, <a href="../Tutorial/">Navigating Through the Data Library</a>, is 
+is primarily focused on introducing the Data Library to new users, <span  property="term:description">this statistics-based tutorial
+explores more in-depth topics.
+Its purpose is to help facilitate the use of statistical functions within the Data Library, 
+and even though it concentrates on some advanced techniques, the sections still cover many basic skills.</span>
+</p><p>
+The following topics are included in the tutorial: measures of central tendency, measures of dispersion, 
+climatologies, standardized anomalies, correlations, climate indices, frequency distributions,
+singular value decompositions, interpolations, and more.  An introduction and detailed real-world 
+example are provided for each statistical function.
+</p>
+</div>
+<div class="rightcol tabbedentries" about="/dochelp/StatTutorial/">
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
