@@ -1,0 +1,966 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Correlation</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a07" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a href="#Pearson"> Pearson Product-Moment Correlation </a></li>
+<li> <a href="#Spear"> Spearman Rank Correlation </a></li>
+<li> <a href="#Lagged"> Lagged Correlation </a></li>
+<li> <a href="#Auto"> Autocorrelation </a></li>
+<li> <a href="#Sig"> Significance Tables</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Correlation</h2>
+<p property="term:description">
+The correlation is defined as the measure of linear association between two variables.
+A single value, commonly referred to as the correlation coefficient, is often needed to 
+describe this association.
+</p>
+<p> The value has two special properties.  First, most estimates of correlation are bounded by 
+-1 and 1.  If the correlation is exactly -1, there is a perfect, negative linear association 
+between the two variables; the scatterplot of the two variables fall along one line with 
+negative slope. Conversely, if the correlation is exactly 1, there is a perfect, positive 
+linear correlation.  Secondly, the square of the correlation describes the amount of 
+variability in one variable that is described by the other variable.  It should be noted, 
+however, that the correlation coefficient provides no explanation about the physical 
+relationship between the variables.
+</p>
+<p>
+Caveats / limitations associated with linear correlation:
+<ul>
+<li>Correlation does NOT imply causation or a physical relationship of any kind.</li>
+<li>Correlations are only associated with observed instances of events; further conclusions cannot be inferred from correlations.</li>
+<li>The two datasets must contain similar grids (i.e., independent variables) over which the 
+correlation coefficient is calculated. </li>
+</ul>
+
+*NOTE: The examples below only illustrate correlations over temporal grids.  You may correlate 
+over spatial grids by replacing [T] with [X], [Y], [X Y], etc.
+</p>
+</div>
+<div id="Pearson" class="ui-tabs-panel">
+<h2>The Pearson Product-Moment Correlation</h2>
+<ul>
+   <li>Pearson product-moment correlation coefficient is the technically correct term for the commonly used term, correlation coefficient.</li>
+   <li>Calculated by taking the ratio of the sample covariance of the two variables to the product of the two standard deviations.
+   <br /><img HEIGHT="79" WIDTH="256" src="formula-corr.gif" /></li>
+   <li>Illustrates the strength of linear relationships.</li>
+   <li>Coefficient is neither robust nor resistant.</li>
+   <ol><li>Not robust because strong <i>non</i>linear relationships between the two variables may not be recognized.</li>
+   <li>Not resistant because it is sensitive to outlying points.</li></ol>
+ </ul>
+<br />
+The core of the Pearson correlation coefficient is the covariance between the two variables, or in this case, x and y.
+Look at the scatterplot below, which illustrates two variables that are positively correlated.
+The horizontal and vertical lines represent the mean of the data plotted on the y-axis and the 
+x-axis, respectively.
+<br /><center><img src="correlatediag.gif" /><br /></center><br />
+For points in quadrant I, both of the x and y values are larger than their respective means.
+These points will contribute positive terms to the correlation coefficient.
+In quadrant III, both the x and y values are less than their respective means, so in the formula for correlation coefficient, the product of the two terms in parenthesis is positive.
+These points also contribute positive terms to the correlation coefficient.
+Conversely, points in quadrants II and IV contribute negative terms to the correlation coefficient.  Since most of the points fall in quadrants I and III,
+the correlation coefficient will be dominated by positive terms.<br />
+
+
+
+<br /><br />
+<u><b>Example</b></u>:  Find the Pearson product-moment correlation between maximum and minimum temperatures at Toyko, Japan for August 1976.
+<br /><br />
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset, Station and Maximum Temperature Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Atmosphere" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/">
+NOAA NCDC GDCN</a>  dataset.</li>
+<li> Click on the "searches" link to the right of the map.</li>
+<li> In the Name text box under the Searches subheading, enter <i>Tokyo</i>.</li>
+<li> Click the Search NOAA NCDC GDCN button.</li>
+<li> Click on the number "47622" which appears below the search text box.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA+47662+VALUE/">CHECK</a><br />
+You have selected the station identification number for Tokyo, Japan.</li>
+<li> Select the "Max Temperature" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA+47662+VALUE/.TMAX/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.<br /></li>
+<li>Enter the text <i> 1 Aug 1976 to 31 Aug 1976</i> in the Time text box.<br /></li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMAX/T/%281%20Aug%201976%29%2831%20Aug%201976%20%29RANGEEDGES/">
+CHECK</a> <br /></li></ul>
+</td></tr>
+
+<tr><td align="center">Select Minimum Temperature and Temporal Domain</td>
+<td>
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+<li> Enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+SOURCES .NOAA .NCDC .GDCN
+ISTA 47662 VALUE
+.TMIN
+T (1 Aug 1976) (31 Aug 1976) RANGEEDGES
+</pre>
+</li>
+<li> Press the OK button.
+
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMAX/T/%281%20Aug%201976%29%2831%20Aug%201976%20%29RANGEEDGES/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMIN/T/%281%20Aug%201976%29%2831%20Aug%201976%29RANGEEDGES/">
+CHECK</a></li></ul>
+</td></tr>
+
+<tr><td align="center">Calculate Pearson Product-Moment Correlation Coefficient</td>
+<td>
+
+
+<ul>
+<li>Again in the Expert Mode text box, enter the following line: <br /><br />
+
+<pre class="ingridcode">
+[T] correlate
+</pre>
+</li>
+<li> Press the OK button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMAX/T/%281%20Aug%201976%29%2831%20Aug%201976%20%29RANGEEDGES/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMIN/T/%281%20Aug%201976%29%2831%20Aug%201976%29RANGEEDGES%5BT%5Dcorrelate/">CHECK</a>
+<br />
+ 
+The <i>[T] correlate</i> command computes the Pearson product-moment correlation coefficient for the data over the given range: August 1st-31st, 1976.
+The result should be located under the Expert Mode text box in bold: 0.8239428.<br /><br />
+
+The relatively high correlation coefficient is easily explained.  Warm days are usually associated 
+with warm nights and cold days are usually associated with cold nights.
+</li></ul>
+</td></tr>
+</table>
+</div>
+<div id="Spear" class="ui-tabs-panel">
+<h2>Spearman Rank Correlation</h2>
+<ul>
+  <li>Data is first sorted and each value assigned a rank, 1 assigned to the lowest value.</li>
+  <li>Spearman rank calculated by taking the Pearson product-moment correlation of the ranks of the datasets. </li>
+  <li>In cases of ties, where a particular data value appears more than once, all equal values 
+assigned their average rank.</li>
+  <li>Robust and resistant alternative to the Pearson product-moment correlation because it is 
+less sensitive to outlying values.</li>
+  <li>The rank and product-moment correlations will have dissimilar values due to the different 
+sensitivities of the two methods.</li>
+</ul>
+<br />
+<u><b>Example</b></u>:   Find the Spearman rank correlation between maximum and minimum temperatures at Toyko, Japan for August 1976.
+<br /><br />
+
+<table border="2">
+<tr><td align="center">Locate Dataset, Station and Maximum Temperature Variable</td>
+<td>
+*NOTE:  This example uses the same dataset, variable, and ranges as the previous example.
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Atmosphere" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/">
+NOAA NCDC GDCN</a>  dataset.</li>
+<li> Click on the "searches" link to the right of the map.</li>
+<li> In the Name text box under the Searches subheading, enter <i>Tokyo</i>.</li>
+<li> Click the Search NOAA NCDC GDCN button.</li>
+<li> Click on the number "47622" which appears below the search text box.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA+47662+VALUE/">CHECK</a><br />
+You have selected the station identification number for Tokyo, Japan.</li>
+<li> Select the "Max Temperature" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA+47662+VALUE/.TMAX/">CHECK</a>
+</li></ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.<br /></li>
+<li>Enter the text <i> 1 Aug 1976 to 31 Aug 1976</i> in the Time text box.<br /></li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMAX/T/%281%20Aug%201976%29%2831%20Aug%201976%20%29RANGEEDGES/">
+CHECK</a> <br /></li></ul>
+</td></tr>
+
+<tr><td align="center">Select Minimum Temperature and Temporal Domain</td>
+<td>
+
+
+
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+<li> Enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+SOURCES .NOAA .NCDC .GDCN
+   ISTA 47662 VALUE
+   .TMIN
+   T (1 Aug 1976) (31 Aug 1976) RANGEEDGES
+</pre>
+</li>
+<li> Press the OK button.
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMAX/T/%281%20Aug%201976%29%2831%20Aug%201976%20%29RANGEEDGES/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMIN/T/%281%20Aug%201976%29%2831%20Aug%201976%29RANGEEDGES/">
+CHECK</a></li></ul>
+</td></tr>
+
+<tr><td align="center">Calculate Spearman Rank Correlation Coefficient</td>
+<td>
+
+
+<ul><li>Again in the Expert Mode text box, enter the following line: <br /><br />
+
+<pre class="ingridcode">
+[T] rankcorrelate
+</pre>
+</li>
+<li> Press the OK button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMAX/T/%281%20Aug%201976%29%2831%20Aug%201976%20%29RANGEEDGES/SOURCES/.NOAA/.NCDC/.GDCN/ISTA/47662/VALUE/.TMIN/T/%281%20Aug%201976%29%2831%20Aug%201976%29RANGEEDGES%5BT%5Drankcorrelate/">CHECK</a>
+<br />
+ 
+The <i>[T] rankcorrelate</i> command computes the Spearman correlation coefficient by correlating the ranks of both datasets over the given time range:  August 1, 1976 to August 31,1976.  The result should be located under the Expert Mode text box in bold: 0.8568417.<br /><br />
+
+As in the previous example, there is a relatively high correlation between the two sets of data.  
+</li></ul>
+</td></tr>
+</table>
+</div>
+<div id="Lagged" class="ui-tabs-panel">
+<h2>Lagged Correlation</h2>
+<ul>
+<li>Lagged correlations found by correlating a lagged dataset with another unlagged dataset 
+using the Pearson product-moment method.</li>
+<li>Lagged data computed by shifting data by a certain unit of time, either forward or 
+backward.</li>
+<li>A positive (negative) lag in time refers to a later (earlier) time.  For example, in a data set with a monthly time step, a data point in February 2000 lags the January 2000 data point by a +1 month lag.</li> 
+<li>Practical in climatology: often greatest correlation between two variables exhibited using a 
+lagged time step.</li>
+<li>A lag-0 system has no lag applied to it.
+</li></ul>
+
+<br />
+
+<u><b>Example</b></u>:  Find the lagged correlation between sea surface temperature anomalies and the Southern Oscillation Index from January 1985 to December 2003.
+<br /><br />
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Air-Sea Interface" link.</li>
+
+<li>Scroll down the page and select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/">
+NOAA NCEP EMC CMB GLOBAL Reyn_Smith </a>  dataset.</li>
+<li>Click on the "Reyn_SmithOIv2" link.</li>
+<li>Click on the "monthly" link.</li>
+<li>Click on the "Sea Surface Temperature Anomaly" link under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/">CHECK</a><br />
+</li></ul>
+
+</td></tr>
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+<ul><li>Click on the "Data Selection" link in the function bar.<br /></li>
+<li>Enter the text <i> Jan 1985 to Dec 2003</i> in the Time text box.<br /></li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201985%29%28Dec%202003%20%29RANGEEDGES/">
+CHECK</a> <br /></li></ul>
+
+</td></tr>
+<tr><td align="center">Add the Standardized SLP Difference SOI Index Dataset with Temporal Domain</td>
+<td>
+
+
+<ul><li>Click on the "Expert Mode" link in the function bar.</li>
+
+<li>Enter the following line below the text already there:<br /><br />
+
+<pre class="ingridcode">
+SOURCES .Indices .soi .standardized
+T (Jan 1985) (Dec 2003) RANGEEDGES
+</pre>
+</li>
+</ul>
+<ul><li> Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201985%29%28Dec%202003%20%29RANGEEDGES/SOURCES/.Indices/.soi/.standardized/T/%28Jan%201985%29%28Dec%202003%29RANGEEDGES/">CHECK</a>
+<br />
+The above command will enter the SOI dataset into the interface with the same domain as the SSTA dataset.</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Compute Lags and Correlate</td>
+<td>
+<ul><li>In the Expert Mode text box, enter the following line below the text already there:
+<br /><br />
+
+<pre class="ingridcode">
+T -6 1 6 shiftdatashort
+</pre>
+</li>
+<li> Press the OK button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201985%29%28Dec%202003%20%29RANGEEDGES/SOURCES/.Indices/.soi/.standardized/T/%28Jan%201985%29%28Dec%202003%29RANGEEDGES/T/-6/1/6/shiftdatashort/">CHECK</a>
+ <br />
+Here, the <i>shiftdatashort</i> function will shift the SOI data by several lags in time, in effect creating several lagged versions of the data.  A new grid will be created with <i>_lag</i> appended to the grid name.  In this case 13 lagged versions of the SOI data (from lag -6 to +6 months) will be assigned to the <i>T_lag</i> grid.  The monthly time grid "T" will still exist for both the SST and SOI data, but for the SOI data, the time grid will be shortened by six months at each end such that the remaining time grid will include only those time points that are common to all the lagged versions of the SOI data.  As mentioned earlier, a positive (negative) lag in time refers to a later (earlier) time.  In this case, the lags are all applied to the SOI data.  For <i>T_lag</i> = 0, January 2000 SOI data are matched with January 2000 SST data.  For <i>T_lag</i> = +1, February 2000 SOI data are matched with January 2000 SST data.  So, at <i>T_lag</i> = +1, the February 2000 SOI data are assigned to January 2000 in the time grid.  For <i>T_lag</i> = -1, the December 1999 SOI data are assigned to January 2000 (and matched with the January 2000 SST data), and so on for each lag.  Complete documentation on the <i>shiftdatashort</i> function is available <a href="http://iridl.ldeo.columbia.edu/dochelp/Documentation/details/index.html?func=shiftdatashort">here</a>.
+</li>
+<!--
+Complete documentation on the <i>shiftdatashort</i> function is avaialable <a href="">here.</a></li>
+-->
+<li>Enter the following command in the Expert Mode text box below the text already there:
+<br /><br />
+<pre class="ingridcode">
+[T] correlate
+</pre>
+</li>
+<li> Press the OK button. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201985%29%28Dec%202003%20%29RANGEEDGES/SOURCES/.Indices/.soi/.standardized/T/%28Jan%201985%29%28Dec%202003%29RANGEEDGES/T/-6/1/6/shiftdatashort%5BT%5Dcorrelate/">CHECK</a>
+ <br />
+The Pearson product-moment method is used to correlate the sea surface temperature anomalies with the Southern Oscillation Index at each lag interval
+(i.e. 13 different correlations are calculated).</li></ul>
+</td></tr>
+
+
+<tr> <td align="center">View Results</td>
+<td> 
+<ul><li>To see the results of this operation, choose the viewer window with land shaded in black. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201985%29%28Dec%202003%20%29RANGEEDGES/SOURCES/.Indices/.soi/.standardized/T/%28Jan%201985%29%28Dec%202003%29RANGEEDGES/T/-6/1/6/shiftdatashort%5BT%5Dcorrelate/figviewer.html?map.url=X+Y+fig-+colors+land+-fig&amp;my.help=more+options">CHECK</a>
+<br />
+*NOTE:  The image may take a few seconds to load.</li>
+<li>Select different lags by changing the number in the T_lag text box located near the top of the viewer. <br />
+  The image below corresponds to a -6 lag.</li> </ul>
+<center>
+Pearson Correlation Between SSTA and SOI for -6 Lag<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201985%29%28Dec%202003%20%29RANGEEDGES/SOURCES/.Indices/.soi/.standardized/T/%28Jan%201985%29%28Dec%202003%29RANGEEDGES/T/-6/1/6/shiftdatashort%5BT%5Dcorrelate/X+Y+fig-+colors+land+-fig+//T_lag/-6./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201985%29%28Dec%202003%20%29RANGEEDGES/SOURCES/.Indices/.soi/.standardized/T/%28Jan%201985%29%28Dec%202003%29RANGEEDGES/T/-6/1/6/shiftdatashort%5BT%5Dcorrelate/X+Y+fig-+colors+land+-fig+.auxfig+//T_lag/-6./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+Notice the strong negative correlations in the Eastern Pacific.  By convention, a negative 
+Southern Oscillation value corresponds to warmer-than-average conditions in the equatorial 
+Pacific while a positive value corresponds to cooler-than-average conditions.  Therefore, a 
+negative correlation between SSTA's and SOI values is expected, as shown in the above image. 
+
+<!--After viewing the images corresponding to each lag, you will notice that the -1 lag image exhibits the strongest correlations.  It may be inferred that changes in SSTs follow changes in sea level pressure, in association with ENSO.
+-->
+<br /><br />
+</td></tr>
+</table>
+</div>
+<div id="Auto" class="ui-tabs-panel">
+<h2>Autocorrelation</h2>
+<ul>
+  <li>The correlation between values of the same variable at different times.</li>
+  <li>Sometimes referred to as serial correlation.</li>
+  <li>Autocorrelation <i>coefficient</i> is calculated by substituting lagged data pairs into the formula for the Pearson product-moment correlation coefficient.</li>
+  <li>Autocorrelation <i>function</i> is the collection of autocorrelation coefficients computed for various lags.</li><ol>
+  <li>Function always begins with an autocorrelation coefficient of 1, since a series of unshifted data will exhibit perfect correlation with itself.  </li>
+  <li>Function will decay towards zero as lag increases.</li></ol>
+  <li>Used to detect non-randomness in data.</li>
+  <li>Used to analyze decorrelation time.</li>
+  <ol><li>Indicator of the "memory" or persistence of processes.</li>
+  <li>Dimensionless quantity.</li>
+  <li>Calculated using a positive lag time.</li></ol>
+  <li>Used to analyze the effectiveness of persistence forecasts (forecasts consisting of current observations).</li>
+  <ol> <li>Persistence forecasts better for processes with long memory than for processes with short memory.</li>
+  <li>Autocorrelation function of a long memory process decays to zero more slowly than that of a short memory process.</li>
+  <li>Calculated using negative lag time.</li></ol>
+  <li>Correlation between the persistence forecast and the verifying observation is called the correlation skill score.</li>
+
+	</ul>
+
+<br />
+<u><b>Example</b></u>:  Calculate the autocorrelation function and correlation skill score of the NINO 3.4 Index from January 1856 to December 1998.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Climate Indicies" link.</li>
+
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.Indices/.nino/">Indicies nino</a> dataset.</li>
+
+<li>Select the "EXTENDED" link under the Datasets and Variables subheading.</li>
+
+<li>Select the "NINO34" link under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.Indices/.nino/.EXTENDED/.NINO34/">
+CHECK</a></li></ul>
+
+</td></tr>
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> Jan 1856 to Dec 1998</i> in the Time text box.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.Indices/.nino/.EXTENDED/.NINO34/T/%28Jan%201856%29%28Dec%201998%29RANGEEDGES/">
+CHECK</a> </li></ul>
+
+
+</td></tr>
+<tr><td align="center">Calculate Autocorrelation Function</td>
+<td>
+
+
+<ul>
+<li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Enter the following lines under the text already there:<br /><br />
+
+<pre class="ingridcode">
+dup
+T -36 1 1 shiftdatashort
+[T] correlate
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.nino/.EXTENDED/.NINO34/T/%28Jan%201856%29%28Dec%201998%29RANGEEDGES/dup/T/-36/1/1/shiftdatashort%5BT%5Dcorrelate/">
+CHECK</a><br />
+The <i>dup</i> command duplicates the NINO 3.4 dataset and adds it to the stack.<br />
+The <i>shiftdatashort</i> command then computes a series of negative lags of the duplicated dataset.  This operation results in a series of persistence forecasts of the NINO 3.4 index for each lag.
+<br />
+Finally, the <i>correlate</i> command calculates the correlation coefficient between the lagged NINO 3.4 data and the unlagged NINO 3.4 data.</li></ul>
+
+<br />*Note that the <i>shiftdatashort</i> function will shorten the range over which the two 
+variables will be correlated. For instance, a -36 lag will correlate values starting at 
+January 1859 because 36 months (3 years) of data were moved foward.<br /><br />
+
+</td></tr>
+<tr><td align="center">View Autocorrelation Function</td>
+<td>
+
+
+ <ul><li>To see the results of this operation, choose the time series viewer.</li>
+<li>In the two text boxes that represent the x-axis ranges, enter 1. and -36. in the left and right boxes, respectively. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.nino/.EXTENDED/.NINO34/T/%28Jan%201856%29%28Dec%201998%29RANGEEDGES/dup/T/-36/1/1/shiftdatashort%5BT%5Dcorrelate/figviewer.html?my.help=more+options&amp;map.correlation.units=unitless&amp;map.correlation.plotlast=0.9960159&amp;map.url=T_lag+fig-+line+-fig&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.correlation.plotfirst=-0.9960159&amp;map.T_lag.plotfirst=-1.&amp;map.T_lag.units=months&amp;map.T_lag.calendar=360&amp;map.T_lag.plotlast=-36.&amp;map.newurl.grid0=T_lag&amp;map.newurl.plot=line&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.XOVY=auto&amp;map.color_smoothing=1">CHECK</a>
+<br />
+This will reverse the order of the lag on the x-axis so that the autocorrelation function is easier to visualize. </li>
+
+</ul>
+
+<center>
+Autocorrelation Function of the NINO 3.4 Index<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.nino/.EXTENDED/.NINO34/T/%28Jan%201856%29%28Dec%201998%29RANGEEDGES/dup/T/-36/1/1/shiftdatashort%5BT%5Dcorrelate/T_lag+fig-+line+-fig+T_lag/-1./-36./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The autocorrelation function exhibits relatively high values at lags less than 5 months.  This 
+is indicative of the "memory" of the NINO 3.4 Index. Persistence forecasts up to a few months 
+may be sufficiently accurate depending on their intended application.
+Notice that the autocorrelation function crosses zero near -14 months, but then asymptotes back 
+to a correlation of 0 as the lag becomes more negative.
+Occasionally, the autocorrelation function will oscillate around 0 before eventually decaying to 0.
+</td></tr>
+<tr><td align="center">Find Correlation Skill Score for Individual Lags</td>
+<td>
+<ul><li>
+Click on the right-most link in the blue source bar to exit the viewer.</li>
+<li>Select the "Tables" link in the function bar.</li>
+<li>Click on the "columnar table" link. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Indices/.nino/.EXTENDED/.NINO34/T/%28Jan%201856%29%28Dec%201998%29RANGEEDGES/dup/T/-36/1/1/shiftdatashort%5BT%5Dcorrelate/T_lag+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a>
+<br /><br />
+Lags smaller than -6 exhibit correlations above 0.5.  Also observe that a -1 lag has a correlation of .948.
+This indicates that a persistance forecast for one month in advance will most likely be quite accurate.<br /></li></ul>
+</td></tr>
+</table>
+</div>
+<div id="Sig" class="ui-tabs-panel">
+<h2>Significance Tables and Correlation</h2>
+<ul>
+  <li>Used to determine minimum threshold for the correlation coefficient at a given significance level and degree of freedom.</li>
+  <li>The 90%, 95%, 98% and 99% two-tailed significance levels of the correlation coefficient are listed in the table below (assuming normally distributed datasets).</li>
+  <li>Note that the degrees of freedom (df) = n - 2 for a sample of size n.</li>
+</ul><center>
+<table cellpadding="2" cellspacing="2" border="1"
+ style="text-align: left; width: 50%;">
+  <tbody>
+    <tr>
+      <td
+ style="vertical-align: top; text-align: center; font-weight: bold;">df<br />
+      </td>
+      <td
+ style="vertical-align: top; text-align: center; font-weight: bold;">90%<br />
+      </td>
+      <td
+ style="vertical-align: top; text-align: center; font-weight: bold;">95%<br />
+      </td>
+      <td
+ style="vertical-align: top; text-align: center; font-weight: bold;">98%<br />
+      </td>
+      <td
+ style="vertical-align: top; text-align: center; font-weight: bold;">99%<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">4<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.729<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.811<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.882<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.917<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">6<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.622<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.707<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.789<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.834<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">8<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.549<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.632<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.716<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.765<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">10<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.497<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.576<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.658<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.708<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">12<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.458<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.532<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.612<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.661<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">14<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.426<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.497<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.574<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.623<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">16<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.400<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.468<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.542<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.590<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">18<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.378<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.444<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.516<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.561<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">20<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.360<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.423<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.492<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.537<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">25<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.323<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.381<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.445<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.487<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">30<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.295<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.349<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.409<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.449<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">35<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.275<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.325<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.381<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.418<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">40<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.257<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.304<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.358<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.393<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">45<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.243<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.288<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.338<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.372<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">50<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.231<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.273<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.322<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.354<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">60<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.211<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.250<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.295<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.325<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">70<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.195<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.232 </td>
+      <td style="vertical-align: top; text-align: center;">.274<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.302<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">80<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.183<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.217<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.256<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.283<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">90<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.173<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.205<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.242<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.267<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">100<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.164<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.195<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.230<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.254<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">200<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.116<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.138<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.164<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.181<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">300<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.095<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.113<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.134<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.148<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">400<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.082 </td>
+      <td style="vertical-align: top; text-align: center;">.098<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.116<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.128<br />
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center;">500<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.073<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.088<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.104<br />
+      </td>
+      <td style="vertical-align: top; text-align: center;">.115<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<div>
+Snedecor, George W.   <i>Statistical Methods.</i>   p 473.
+</div>
+<br />
+<u><b>Example</b></u>:  Find the correlation between average summer (JJA) Sahel rainfall and sea 
+surface temperature anomalies during the time period 1983-1999, and then make a plot of 
+correlation coefficients significant to the 90% level.
+<br /><br />
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Atmosphere" link.</li>
+
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/">NOAA NCEP CPC CAMS</a>  dataset.</li>
+
+<li>Select the "mean" link under the Datasets and Variables subheading.</li>
+
+<li>Select the "precipitation" link under the Datasets and Variables subheading.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/">
+CHECK</a></li></ul>
+
+</td></tr>
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i> 20W to 40E</i>,<i> 11N to 20N</i>, and <i>Jan 1983 to Dec 1999</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Dec%201999%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/">
+CHECK</a> </li></ul>
+
+</td></tr>
+<tr><td align="center">Compute Summer Rainfall Averages</td>
+<td>
+
+
+<ul><li>Select the "Expert Mode" link in the function bar. </li>
+<li>Enter the following lines below the text already there:<br /><br />
+
+
+ <pre class="ingridcode">
+T 12 splitstreamgrid
+T (Jul) (Aug) (Sep) VALUES
+[T]average
+</pre>
+</li></ul>
+
+<ul><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Dec%201999%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage/">CHECK</a>
+<br />
+This command splits the time grid into two new time grids. The T grid has a period of 12 months 
+and a step of 1. This grid represents data from January, Februrary, March, etc. The T2 grid 
+has a step of 12 and represents the years from the beginning of the 
+dataset (1999) to the end of the dataset (1999). The following command selects July, August, and 
+September values from the T grid and and the <i>average</i> command averages the rainfall over 
+those three months for each year.</li></ul>
+
+</td></tr>
+<tr><td align="center">Compute Spatial Average</td>
+<td>
+
+
+<ul>
+<li>Click on the "Filters" link in the function bar. </li>
+<li>Choose <i>Average over "XY"</i>
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Dec%201999%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage/%5BX+Y+%5Daverage/"> CHECK</a>
+</li></ul>
+</td></tr>
+<tr><td align="center">Add Reyn_Smith Sea Surface Temperature Anomaly Dataset and Correlate with Precipitation Data</td>
+<td>
+<ul><li>Click on the "Expert Mode" link in the function bar and enter the following lines under the text already there:
+<pre class="ingridcode">
+SOURCES .NOAA .NCEP .EMC .CMB .GLOBAL .Reyn_SmithOIv2 .monthly .ssta
+   T (Jan 1983) (Dec 1999) RANGEEDGES
+   T 12 splitstreamgrid
+   T (Jul) (Aug) (Sep) VALUES
+   [T]average
+</pre>
+</li>
+<li>Press the OK button.  <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Dec%201999%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BX/Y%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201983%29%28Dec%201999%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage/">
+CHECK</a><br />
+The above commands will add the Reyn_Smith monthly SSTA dataset to the interface with the same temporal grid as the CAMS dataset.</li>
+<li>Again in expert mode, enter the command:
+<pre class="ingridcode">[T2] correlate
+</pre></li>
+<li>Click the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Dec%201999%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BX/Y%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201983%29%28Dec%201999%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BT2%5Dcorrelate/">CHECK</a><br />
+This command will correlate the two variables over the time grid T2.
+</li></ul>
+
+</td></tr>
+<tr><td align="center">Calculate the 10% Significance Level of the Correlation Coefficient and View Results</td>
+<td>
+
+
+<ul><li>Recall that the correlation coefficient was calculated over the years from 1983 to 1999 (a 17-year span)<br />
+A sample size of 17 results in 15 degrees of freedom using the formula df = n - 2.</li>
+<li>Find the 90% significance level using the table above.<br />
+There is no entry for 15 degrees of freedom in the table.  Common practice for instances such as
+this is to use the significance level for the closest number of degrees of freedom BELOW the 
+desired one.  This will give a conservative estimate of statistical significance. In this case,  
+you should use the 90% significance level for 14 degrees of freedom, or 0.426.</li>
+
+
+<li>Return to the Expert Mode text box and enter the following lines under the text already there:<br /><br />
+
+<pre class="ingridcode">
+startcolormap
+    -1 1 RANGEEDGES
+    white black navy
+       -1 value
+       blue
+        -0.8 bandmax
+        DeepSkyBlue
+         -0.6 bandmax
+         aquamarine
+          -0.426 bandmax
+          moccasin dup
+            0 bandmax
+            moccasin dup
+              0.426 bandmax
+              yellow DarkOrange
+                0.6 bandmax
+                red
+                 0.8 bandmax
+                 DarkRed
+                  1 bandmax
+                  brown 
+                  endcolormap
+</pre>
+</li>
+<li>Press the OK button.  <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Mar%202000%20%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BX/Y%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201983%29%28Mar%202000%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BT2%5Dcorrelate/startcolormap/-1/1/RANGEEDGES/white/black/navy/-1/value/blue/-0.8/bandmax/DeepSkyBlue/-0.6/bandmax/aquamarine/-0.426/bandmax/moccasin/dup/0/bandmax/moccasin/dup/0.426/bandmax/yellow/DarkOrange/0.6/bandmax/red/0.8/bandmax/DarkRed/1/bandmax/brown/endcolormap/">
+CHECK</a><br />
+The above colormap commands will create an image with correlation coefficient values between -0.426 and 0.426 masked out.</li>
+<li>To see the results of this operation, choose the viewer window with land shaded in black. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Mar%202000%20%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BX/Y%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201983%29%28Mar%202000%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BT2%5Dcorrelate/startcolormap/-1/1/RANGEEDGES/white/black/navy/-1/value/blue/-0.8/bandmax/DeepSkyBlue/-0.6/bandmax/aquamarine/-0.426/bandmax/moccasin/dup/0/bandmax/moccasin/dup/0.426/bandmax/yellow/DarkOrange/0.6/bandmax/red/0.8/bandmax/DarkRed/1/bandmax/brown/endcolormap/figviewer.html?map.url=X+Y+fig-+colors+land+-fig&amp;my.help=more+options">CHECK</a>
+</li></ul>
+<center>
+Correlation Between Summer Sahel Rainfall and SSTA at a 90% Significance Level<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Mar%202000%20%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BX/Y%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201983%29%28Mar%202000%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BT2%5Dcorrelate/startcolormap/-1/1/RANGEEDGES/white/black/navy/-1/value/blue/-0.8/bandmax/DeepSkyBlue/-0.6/bandmax/aquamarine/-0.426/bandmax/moccasin/dup/0/bandmax/moccasin/dup/0.426/bandmax/yellow/DarkOrange/0.6/bandmax/red/0.8/bandmax/DarkRed/1/bandmax/brown/endcolormap/X+Y+fig-+colors+land+-fig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br />
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.mean/.prcp/Y/%2811N%29%2820N%29RANGEEDGES/T/%28Jan%201983%29%28Mar%202000%20%29RANGEEDGES/X/%2820W%29%2840E%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BX/Y%5Daverage/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/T/%28Jan%201983%29%28Mar%202000%29RANGEEDGES/T/12/splitstreamgrid/T/%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage%5BT2%5Dcorrelate/startcolormap/-1/1/RANGEEDGES/white/black/navy/-1/value/blue/-0.8/bandmax/DeepSkyBlue/-0.6/bandmax/aquamarine/-0.426/bandmax/moccasin/dup/0/bandmax/moccasin/dup/0.426/bandmax/yellow/DarkOrange/0.6/bandmax/red/0.8/bandmax/DarkRed/1/bandmax/brown/endcolormap/X+Y+fig-+colors+land+-fig+.auxfig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+Note the negative correlations in the Eastern Pacific.
+These results suggest that during El Niño conditions, when SST's are above normal in the 
+Eastern Pacific, below average summer rainfall in the Sahel is generally observed.
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
