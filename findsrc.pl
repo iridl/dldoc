@@ -11,6 +11,7 @@ while(<filelist>){
 }
 close filelist;
 if($ARGV[0] eq 'src'){
+# src -- outputs source xhtml/html files
     foreach $vval (@files){
 	if(!$output{$vval}){
 	    print "$vval\n";
@@ -18,6 +19,7 @@ if($ARGV[0] eq 'src'){
     }
 }
 else {
+# bld -- outputs target (to be build from xhtml) html files
     foreach $vval (@files){
 	if($output{$vval}){
 	    print "$vval\n";
