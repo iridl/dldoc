@@ -1,9 +1,5 @@
-xhtmlen := $(shell find . -name '*.xhtml.en')
-xhtmlsrc = $(xhtmlen)
-htmlsrc = $(shell find . -name '*.html')
-htmlbld = $(xhtmlen:.xhtml.en=.html.en)
-
-src = $(xhtmlsrc) $(htmlsrc)
+htmlbld = $(shell perl ./findsrc.pl bld)
+src = $(shell perl ./findsrc.pl src)
 
 all:	$(htmlbld)
 
