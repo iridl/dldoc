@@ -1,0 +1,772 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Singular Value Decomposition</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a10" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a href="#Intro"> Introduction</a></li>
+<li> <a href="#Analysis"> Analysis of Singular Value Decomposition</a></li>
+<li> <a href="#Outline">Key Points</a></li>
+<li> <a href="#Ex1">SVD of North Atlantic SSTA</a></li>
+<li> <a href="#Ex2">SVD of North Atlantic SLPa and Their Relation to the NAO</a></li>
+<li> <a href="#Ex3">Correlation of a SVD Time Series</a></li>
+<li> <a href="#Intro2"> Disadvantages of Unrotated SVD</a></li>
+<li> <a href="#Rotate">Rotated SVD</a></li>
+<li> <a href="#Compare"> Advantages / Disadvantages of Varimax Rotation</a></li>
+<li> <a href="#Ex4"> Varimax Rotation of East Pacific SST</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Singular Value Decomposition</h2>
+<p property="term:description">
+Singular value decomposition (SVD) is quite possibly the most widely-used multivariate statistical technique used in the atmospheric sciences.
+The technique was first introduced to meteorology in a 1956 paper by Edward Lorenz, in which he referred to the process as empirical orthogonal function (EOF) analysis.
+Today, it is also commonly known as principal-component analysis (PCA).  All three names are still used, and refer to the same set of procedures within the Data Library.
+</p>
+
+The purpose of singular value decomposition is to reduce a dataset containing a large number of values to a dataset containing significantly fewer values,
+but which still contains a large fraction of the variability present in the original data.
+Often in the atmospheric and geophysical sciences, data will exhibit large spatial correlations.  SVD analysis results in a more compact representation
+of these correlations, especially with multivariate datasets and
+can provide insight into spatial and temporal variations exhibited in the fields of data being analyzed.
+<br /><br />
+
+There are a few caveats one should be aware of before computing the SVD of a set of data.  First, the data must consist of anomalies.  Secondly, the data should be de-trended.
+When trends in the data exist over time, the first structure often captures them.  If the purpose of the analysis is to find spatial correlations independent of trends, the
+data should be de-trended before applying SVD analysis.
+</div>
+<div id="Analysis" class="ui-tabs-panel">
+<h2>Analysis of Singular Value Decomposition</h2>
+<p>
+The first structure is the single pattern that represents the most variance in the data.
+The structures are the elements of the eigenvectors of the variance-covariance matrix of the data.
+In the Data Library, the eigenvectors are also known as EOF's.  The first eigenvector (EOF) points to the direction in which the data vectors jointly exhibit the most variability.
+Essentially, a new coordinate system is created, with each axis aligned along the direction of maximum joint variability.
+</p>
+<p>
+The second structure is the pattern that describes the second largest amount of variance, calculated the same way as the first structure. A very important property of the second structure is that it is completely uncorrelated with the first structure, as well as all other following structures.
+The second eigenvector is perpendicular to the first eigenvector, which is perpendicular to the third eigenvector and so on.  This property is what led Lorenz to call the technique empirical <i>orthogonal</i> function analysis.
+All structures are mutually uncorrelated.
+</p>
+<p>
+The variance of the nth principal component is the nth eigenvalue.
+Therefore, the total variation exhibited by the data is equal to the sum of all eigenvalues.
+In the Data Library, eigenvalues are normalized such that the sum of all eigenvalues equals 1.
+A normalized eigenvalue will indicate the percentage of total variance explained by its corresponding structure.
+Structures have also been normalized so that the root mean square equals 1.  This way, the structures can be expressed in terms of standard deviation.
+</p><p>
+Singular values are equal to the square root of the eigenvalues.  Since eigenvalues are automatically normalized in the Data Library, they do not easily provide
+information into the total amount of variance they explain.
+However, you may calculate the total variance explained by each EOF by squaring the singular values.
+</p>
+<p>
+In the Data Library there is a time series associated with each structure. These time series are also known as principal components.
+The first time series is calculated by projecting the data matrix onto the first eigenvector of the variance-covariance matrix of the data, the
+second time series by projecting onto the second eigenvector, and so on.
+The time series values indicate the amount of the given structure needed to complete the data field.
+It follows that the structure (dimensionless) multiplied by the time series value at a single point in time (units of the data),
+summed over all structures, yields the original data at that point in time.
+</p><p>
+Mathematically, there are as many eigenvectors as there are elements in the vector data set.
+The first few eigenvectors will point in directions where the data jointly exhibits large variation.
+The remaining eigenvectors will point to directions where the data jointly exhibits less variation.
+For this reason, it is often possible to capture most of the variation by considering only the first few eigenvectors.
+The remaining eigenvectors, along with their corresponding principal components, are truncated.
+The ability of SVD to eliminate a large proportion of the data is a primary reason for its use.
+</p>
+</div>
+<div id="Outline" class="ui-tabs-panel">
+<h2>Outline of Key Points</h2>
+<ul>
+<li>Datasets must consist of anomalies.</li>
+<li>Better results when applied to de-trended data.</li>
+<li>As many eigenvectors as temporal data values in the set.</li>
+<li>Eigenvectors point in the direction of maximum joint variability.</li>
+<li>Eigenvalues represent the amount of variance explained by the corresponding structure.</li>
+<li>First eigenvalue will account for the most variation.</li>
+<li>All but first few structures may be truncated in most cases.</li>
+<li>All principal components mutually uncorrelated.</li>
+</ul>
+</div>
+<div id="Ex1" class="ui-tabs-panel">
+<h2>Example: SVD Analysis of North Atlantic Sea Surface Temperature Anomalies</h2>
+<b><u>Example</u></b>:  Perform a singular value decomposition of reconstructed sea surface temperature anomaly data in the North Atlantic for the months of December, January, and February from 1870 to 2004.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Air-Sea Interface" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/">
+ERSST</a>  dataset.</li>
+
+<li>Scroll down the page and select the "version2" link under the Datasets and Variables subheading.</li>
+<li>Select the "Sea Surface Temperature" link again under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/">CHECK</a>
+</li>
+</ul>
+
+</td></tr>
+
+<tr><td align="center">Compute Monthly Anomalies</td>
+<td>
+
+
+<ul>
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Choose the <i>anomalies</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/">CHECK</a> <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/">EXPERT</a>
+<br />
+This operation calculates the SST anomalies for each month.</li></ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i>10N to 70N</i>, <i>5W to 80W</i>, and <i>Dec-Feb 1870-2004</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/">
+CHECK</a><br />
+The time range entered will select only December, January, and February values for each year.</li></ul>
+
+
+</td></tr>
+
+<tr><td align="center">Compute Singular Value Decomposition</td>
+<td>
+
+
+
+<ul>
+
+<li>Click on the "Expert Mode" link in the function bar</li>
+<li>Enter the following line under the text already there:
+<pre class="ingridcode">
+{Y cosd} [X Y] [T] svd
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/">CHECK</a>
+<br />The <i>svd</i> function computes the singular value 
+decomposition of the SST dataset weighted over the cosine of the latitude. Often, spatial 
+data will be weighted over the cosine of the latitude to account for area changes between meridians at varying latitudes.  A weight term, however, is not necessary to complete the SVD analysis.
+Five new variables appear under the Datasets and Variables subheading: normalized eigenvalues, structures, singular values, time series, and weights.
+While all of the variables are associated with the same new coordinate system generated by the SVD, each contain a different piece of information about the system. </li>
+</ul>
+</td></tr>
+
+<tr><td align="center">View Normalized Eigenvalues</td>
+<td>
+
+
+<ul><li>Click on the "normalized eigenvalues" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.evaln/">CHECK</a></li>
+<li>Select the time series viewer in the function bar. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.evaln/figviewer.html?plottype=line&amp;my.help=more+options">CHECK</a></li></ul>
+
+<center>
+Normalized Eigenvalues vs. Eigenvectors of SVD SST Anomalies <br />
+<img WIDTH="400" HEIGHT="400" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/X/%285W%29%2880W%29RANGEEDGES/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.evaln/ev+fig-+line+-fig//plotborder+72+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+
+Notice the speed in which this function decays.  The eigenvalues associated with the first few eigenvectors are much larger than the eigenvalues associated with subsequent eigenvectors.
+As mentioned earlier, the first few eigenvalues account for most of the variation present in the original data. <br /><br />
+
+
+<ul><li>
+Click on the right-most link in the blue source bar to exit the viewer.</li>
+<li>Select the "Tables" link in the function bar.</li>
+<li>Select the <i>columnar table</i> link. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.evaln/ev+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a>
+<br />
+The first normalized eigenvalue is .233, the second eigenvalue is .151, and the third eigenvalue is .139.  Recall that normalized eigenvalues represent the fraction of variance explained
+by the structure associated with that eigenvalue.  Therefore, the first structure explains 23% of the variance, the second structure 15%, and so on.  Looking at the table, there are 402 structures.  Yet, the first
+three structures account for over 50% of the variance.</li></ul>
+
+</td></tr>
+
+
+
+
+<tr><td align="center">Return to Dataset Page</td>
+<td>
+
+
+<ul><li>Select the "Additional Information" link at the top of the page to exit the table.</li>
+<li>
+In the source bar, click on the <i> { Y cosd } [ X Y ] [ T ] svd</i> link. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/">CHECK</a><br />
+This will remove the normalized eigenvector variable selection and return you to the SVD page.</li>
+
+</ul>
+</td></tr>
+
+<tr><td align="center">View Structures</td>
+<td>
+
+<ul>
+<li>Click on the "structures" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/">CHECK</a></li>
+<li>In the function bar, select the viewer with land shaded in black. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/figviewer.html?map.url=X+Y+fig-+colors+land+-fig">CHECK</a></li></ul>
+
+<center>
+1st Structure of SVD SST Anomalies<br />
+<img WIDTH="400" HEIGHT="350" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/T/%28Dec-Feb%201870-2004%29RANGE/Y/%2810%29%2870%29RANGE/X/%28-5%29%28-80%29RANGE/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/X+Y+fig-+colors+land+-fig+//Ss/-4/4/plotrange//ev/1./plotvalue/X/-80./-4./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%20%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/X+Y+fig-+colors+land+-fig+.auxfig+//Ss/-4/4/plotrange//ev/1./plotvalue/X/-6./280./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+This is an image of the 1st structure, which explains 23.2% of the total variance present in the original data.
+Recall that the structures have been normalized, and as a result, are unitless quantities.
+<!--Recall that the strucutres have been normalized so that they contain units of standard deviation.  Note the large negative SD values off the coast of West Africa.
+-->
+Note the large negative values off the coast of West Africa.   This variability is caused by an ocean-atmosphere coupling system described in the third example.
+
+<ul>
+
+<li>In the text box above the viewer window, enter the number <i>2</i>.</li>
+<li>Press the redraw button. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/figviewer.html?my.help=&amp;map.ev.plotvalue=2.&amp;map.Y.units=degree_north&amp;map.Y.plotlast=70N&amp;map.url=X+Y+fig-+colors+land+-fig&amp;map.domain=+%7B+%2Fev+1.+plotvalue+X+-80.+-6.+plotrange+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=10N&amp;map.X.plotfirst=80W&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=6W&amp;map.Ss.plotfirst=-4&amp;map.Ss.units=unitless&amp;map.Ss.plotlast=4&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+land&amp;map.newurl.plot=colors&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a></li></ul>
+
+<center>
+2nd Structure of SVD SST Anomalies<br />
+<img WIDTH="400" HEIGHT="350" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/T/%28Dec-Feb%201870-2004%29RANGE/Y/%2810%29%2870%29RANGE/X/%28-5%29%28-80%29RANGE/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/X+Y+fig-+colors+land+-fig+//Ss/-4/4/plotrange//ev/2./plotvalue/X/-80./-4./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/X/%285W%29%2880W%29RANGEEDGES/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/X+Y+fig-+colors+coasts+-fig+.auxfig+//Ss/-4/4/plotrange//ev/2./plotvalue/X/-80./-4./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+This is an image of the second structure, which explains 15% of the total variance present in the original data.  Notice the large negative values off the east coast of the United States that extend into the Central Atlantic.
+These large values may be produced, in part, by the Gulf Stream current, which causes annual variability of SST's in the region.  An image of the gulf stream current is provided below.  The large values present in the 2nd EOF structure above and the vectors that represent the gulf stream current in the image below appear to overlap.
+This region is also aligned with the jet stream, a narrow area where weather patterns move off the coast and cause additional variability in SST's.
+The large values in the 2nd structure may also be caused by an atmospheric circulation 
+pattern known as the North Atlantic Oscillation.  
+<br /><br />
+<center>
+The Gulf Stream Current<br />
+<img WIDTH="400" HEIGHT="350" src="http://iri.columbia.edu/~hoeve/svd/gulfs.gif" />
+<div>
+Gyory, Joanna.<i> The Gulf Stream.</i> http://oceancurrents.rsmas.miami.edu/atlantic/gulf-stream.html.
+</div>
+</center>
+</td></tr>
+<tr><td align="center">Return to Dataset Page</td>
+<td>
+<ul><li>Click on the right-most link in the blue source bar to exit the viewer.</li>
+<li>In the source bar, click on the <i> { Y cosd } [ X Y ] [ T ] svd</i> link. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/">CHECK</a><br />
+This will remove the structures variable selection and return you to the SVD page.</li></ul>
+</td></tr>
+
+<tr><td align="center">View Time Series</td>
+<td>
+
+
+<ul><li>Click on the "time series" link under the Datasets and Variables subheading.</li> <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/">CHECK</a>
+<li>Select the <b>time series</b> viewer. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/figviewer.html?plottype=line">CHECK</a></li></ul>
+<center>
+Time Series of SVD SST Anomalies<br />
+<img WIDTH="400" HEIGHT="236" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%20%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/T+fig-+line+-fig+//Ts/-0.5907478/0.5044607/plotrange//ev/1./plotvalue/T/-1081./518./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+There is a time series associated with each eigenvector/structure. This is the time series corresponding to the 1st eigenvector, but you may change the eigenvector by changing
+the number in the text box above the viewer.
+The time series illustrates the amount of the structure present in the data, or in other words,
+the amount of the structure needed to complete the data field at each time step.  These time series can be correlated with time series
+and/or indices relating to other processes in order to demonstrate a relationship.
+<br /><br />
+*NOTE:  The singular values variable can be accessed the same way as the other three variables shown above.
+</td></tr>
+</table>
+</div>
+<div id="Ex2" class="ui-tabs-panel">
+<h2>Example: SVD Analysis of North Atlantic Mean Sea Level Pressure Anomalies and Their Relation to the NAO</h2>
+<b><u>Example</u></b>:  Perform a singular value decomposition analysis of mean sea level pressure anomaly data in the North Atlantic for the months of December, January, and February from 1950 to 2004.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li>Click on the "Historical Model Simulations" link.</li>
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/">
+NOAA NCEP-NCAR CDAS-1</a>  dataset.</li>
+
+<li>Scroll down the page and select the "MONTHLY" link under the Datasets and Variables subheading.</li>
+<li>Select the "Intrinsic" link again under the Datasets and Variables subheading.</li>
+<li>Select the "Mean Sea Level" link again under the Datasets and Variables subheading.</li>
+<li>Select the "Pressure" link again under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/">CHECK</a>
+</li>
+</ul>
+
+</td></tr>
+
+<tr><td align="center">Compute Monthly Anomalies</td>
+<td>
+
+
+<ul>
+<li>Click on the "Filters" link in the function bar.</li>
+<li> Choose the <i>anomalies</i> command. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/">CHECK</a> <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/">EXPERT</a>
+<br />
+This operation calculates the mean sea level pressure anomalies for each month.</li></ul>
+</td></tr>
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i>5W to 80W</i>, <i>10N to 70N</i>, and <i>Dec-Feb 1950-2004</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/">
+CHECK</a><br />
+The time range entered will select only December, January, and February values for each year.</li></ul>
+
+
+</td></tr>
+<tr><td align="center">Compute Singular Value Decomposition</td>
+<td>
+<ul>
+<li>Again in Expert Mode, enter the following line under the text already there:
+<pre class="ingridcode">
+{Y cosd} [X Y] [T] svd
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/">CHECK</a>
+<br />The <i>svd</i> function computes the singular value decomposition of the mean sea level pressure dataset weighted over the cosine of the latitude. </li>
+
+</ul>
+</td></tr>
+
+<tr><td align="center">Find Eigenvalue of 1st Structure</td>
+<td>
+<ul>
+<li>Click on the "normalized eigenvalues" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.evaln/">CHECK</a></li>
+<li>Select the "Tables" link in the function bar.</li>
+<li>Select the <i>columnar table</i> link. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.evaln/ev+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a>
+<br />
+The first normalized eigenvalue is .402, the second eigenvalue is .278, and the third eigenvalue is .100.  Normalized eigenvalues represent the fraction of varience explained
+by the structure associated with that eigenvalue.  In this example, we will only be concerned with the first eigenvalue, which explains 40.2% of the total variance.</li></ul>
+</td></tr>
+<tr><td align="center">Return to Dataset Page</td>
+<td>
+
+
+<ul><li>Select the "Additional Information" link at the top of the page to exit the table.</li>
+<li>
+In the source bar, click on the <i> { Y cosd } [ X Y ] [ T ] svd</i> link. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/">CHECK</a><br />
+This will remove the normalized eigenvector variable selection and return you to the SVD page.</li>
+
+</ul>
+</td></tr>
+
+<tr><td align="center">View 1st Structure</td>
+<td>
+
+
+
+<ul>
+<li>Click on the "structures" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/">CHECK</a></li>
+<li>In the function bar, select the viewer with land shaded in black. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/figviewer.html?map.url=X+Y+fig-+colors+land+-fig">CHECK</a></li></ul>
+
+
+<center>
+1st Structure of SVD MSLP Anomalies<br />
+<img WIDTH="400" HEIGHT="350" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGE/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGE/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/X+Y+fig-+colors+land+-fig+//ev/1./plotvalue/X/-80./-5./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGE/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGE/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/X+Y+fig-+colors+land+-fig+.auxfig+//ev/1./plotvalue/X/-80./-5./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+This is an image of the first structure, which explains 40.2% of the total variance present 
+in the original data. The large positive values centered around 45° N and the 
+large negative values centered around 65° N are indicative of two regions whose 
+mean sea level pressures are generally inversely related.  This system is a well known 
+low-frequency atmospheric circulation pattern called the North Atlantic Oscillation.  The 
+NAO is characterized by large-scale MSLP variablity associated with a subtropical high / 
+polar low system over the Northern Atlantic.  During a postive NAO, the subtropical high is 
+stronger than usual and the polar low is deeper than usual.  The increased pressure gradient
+causes stronger winter storms to cross over the Atlantic.  During a negative NAO, the 
+subtropical high and polar low are both weaker than usual, resulting in fewer / less severe 
+storms crossing the Atlantic.
+</td></tr>
+</table>
+</div>
+<div id="Ex3" class="ui-tabs-panel">
+<h2>Example:  Correlation of a SVD Time Series of Mean Sea Level Pressure Anomalies with a SVD Time Series of SST Anomalies in the North Atlantic.</h2>
+<b><u>Example</u></b>:  Correlate a SVD time series of mean sea level pressure anomalies with a SVD time series of SST anomalies in the North Atlantic for the months of December, January, and February.
+<table border="2">
+<tr><td align="center">Select Dataset, Variable, and Domains</td>
+<td>
+*NOTE:  Datasets used in the example are similar to those used in the previous two examples.
+<ul><li>Return to the NOAA NCEP-NCAR CDAS-1 MSLP anomaly dataset with previously selected domains by <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/">clicking here</a>
+or by following the steps listed above in the previous example.</li>
+<li>You may also enter the following commands into Expert Mode:
+<pre class="ingridcode">
+SOURCES .NOAA .NCEP-NCAR .CDAS-1 .MONTHLY .Intrinsic .MSL .pressure
+  yearly-anomalies
+  Y (10N) (70N) RANGEEDGES
+  T (Dec-Feb 1950-2004) VALUES
+  X (5W) (80W) RANGEEDGES
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/">CHECK</a>
+</li></ul>
+</td></tr>
+<tr><td align="center">Compute Singular Value Decomposition</td>
+<td>
+
+<ul>
+
+<li>In Expert Mode, enter the following line under the text already there:<br /><br />
+
+<pre class="ingridcode">
+{Y cosd} [X Y] [T] svd
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/">CHECK</a>
+<br />
+The <i>svd</i> function computes the singular value decomposition of the mean sea level pressure dataset weighted over the cosine of the latitude. </li>
+
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Time Series Variable and 1st Eigenvector</td>
+<td>
+
+<ul>
+<li>Click the "Time Series" variable under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/">CHECK</a></li>
+<li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the number <i>1</i> in the ev text box.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/ev/%281%29VALUES/">
+CHECK</a><br />
+You have selected the first eigenvector, and its associated time series.</li></ul>
+</td></tr>
+<tr><td align="center">Add the Second Structure SVD Time Series of Reconstructed SST Anomaly Data.</td>
+<td>
+<ul>
+<li>Enter into Expert Mode by clicking the "Expert Mode" link in the function bar, if you are not already there.</li>
+<li>Enter the following lines under the text already there:<br /><br />
+
+<pre class="ingridcode">
+ SOURCES .NOAA .NCDC .ERSST .version2 .SST yearly-anomalies
+  X (5W) (80W) RANGEEDGES
+  Y (10N) (70N) RANGEEDGES
+  T (Dec-Feb 1870-2004) VALUES
+  {Y cosd}[X Y][T]svd
+  .Ts
+  ev (1) VALUE
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/X/%285W%29%2880W%29RANGEEDGES/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/ev/%281%29VALUE/ev/%281%29VALUES/">CHECK</a>
+<br />The above commands add the SST anomaly data to the interface.  The singular value decomposition of this data has already been preformed, and the 1st eigenvector has been selected.</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Correlate Datasets</td>
+<td>
+
+<ul>
+
+<li>In Expert Mode, enter the following line under the text already there:<br /><br />
+
+<pre class="ingridcode">
+[T] correlate
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.MSL/.pressure/yearly-anomalies/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201950-2004%29VALUES/X/%285W%29%2880W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/SOURCES/.NOAA/.NCDC/.ERSST/.version2/.SST/yearly-anomalies/X/%285W%29%2880W%29RANGEEDGES/Y/%2810N%29%2870N%29RANGEEDGES/T/%28Dec-Feb%201870-2004%29VALUES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ts/ev/%281%29VALUE/ev/%281%29VALUES%5BT%5Dcorrelate/">CHECK</a>
+<br />The above command correlates the two sets of data.  The correlation coefficient is located under the Expert Mode text box in bold: 0.249616.  </li></ul>
+
+
+We can conclude there is a slight correlation between MSLP anomalies and  SST anomalies in the North Atlantic.
+The correlation coefficient is not very high because correlations between the 1st SST anomaly strucuture, for example, can be found in multiple MSLP anomaly structures.  SVD analyses of the MSLP and SST datasets are independent of each other.
+There is no guarantee that the maximum amount of association between two variables will be found in two distinct principal component analysis time series.
+<br /><br />
+However, it has been proven that there is a relationship between these two datasets, specifically between these two structures.  Atmospheric anomalies do cause SST anomalies, and vice versa.  In this example, changes in MSLP sometimes cause an anomalous atmospheric cyclonic circulation
+centered around 40° W and 30° N.  The cyclone weakens the normal northerly winds off the west coast of Africa.  As a result, coastal upwelling is reduced and positive SST anomalies occur.  Scroll up the page to the first EOF structure in the first example.  Notice the
+extremely low values off the coast of West Africa.  This SST variability is associated with variations in MSLP that produce the anomalous low.
+<br /><br />
+
+</td></tr>
+</table>
+</div>
+<div id="Intro2" class="ui-tabs-panel">
+<h2>Disadvantages of Unrotated Singular Value Decomposition</h2>
+Unrotated emperical orthogonal functions (EOFs) are often very useful to describe natural modes of variability in a data field, due to their spatial and temporal orthogonality, ability to extract the maximum variance from a field, and relative
+simplicity.
+Yet, unrotated emperical orthogonal functions generally do a poor job of isolating individual modes of variation.
+This weakness is largely due to four inherent characteristcs of unrotated EOFs: domain shape dependence, subdomain instability, sensitivity to sampling, and an inaccurate portrayal of the physical relationships embedded within the input data (Richman 1986).
+<br />
+<ol>
+<li><u>Domain Shape Dependence</u><br /><br />
+Unrotated EOFs can be primarily determined by the shape of the domain rather than by the covariation of the data.
+In these cases, structures of the unrotated EOF analysis do not resemble any of the single input patterns, but rather, they represent combinations of the input patterns.<br /><br /></li>
+
+
+<li><u>Subdomain Instability</u><br /><br />
+Unrotated EOFs usually exhibit poor subdomain stability, where subdomain instability refers to the stability of the modal patterns as sub-portions of the domain.
+Richman and Lamb (1985) did a study where unrotated EOF analyses were performed on the same set of data, once over an entire domain and once over the northern and southern halves of the domain separately.
+The results for each half of the domain did not correspond with the results of the entire domain, which leads to the question:  How robust are the results from an unrotated EOF?<br /><br /></li>
+
+<li><u>Sensitivity to Sampling</u><br /><br />
+When eigenvalues are close together, they may be dominated by noise and the corresponding EOFs may not be well defined.<br /><br /></li>
+
+<li><u>Lack of Physical Meaning</u><br /><br />
+Unrotated EOFs sometimes produce results that are not physically meaningful.<br /><br /></li>
+</ol>
+<!--
+The basis of domain shape dependence is that in many cases, unrotated EOFs are primarily determined by the shape of the domain and not by the covariation of the data.
+In these cases, structures of the unrotated EOF analysis do not resemble any of the input patterns, but rather, the structures represent combinations (a merging) of the input patterns.
+Subdomain instability refers to the stability of the modal patterns as sub-portions of the domain are examined.  Unrotated EOFs usually exhibit poor subdomain stability.
+Richman and Lamb (1985) did a study where unrotated EOF analyses were performed on the same set of data, once over an entire domain and once over the northern and southern halves of the domain separately.
+The results for each half of the domain did not correspond with the results of the entire domain, which leads to the question: Which of the patterns represent the correct mode of variability?
+Sampling errors occur when the eigenvalues are close together.  When this happens, the eigenvalues may only represent noise and the corresponding EOFs may not be well defined.
+Lastly, unrotated EOFs sometimes produce results that are not intuitively meaningful in a meteorological sense.
+
+-->
+</div>
+<div id="Rotate" class="ui-tabs-panel">
+<h2>Rotated Singular Value Decomposition</h2>
+<p>In a rotated EOF analysis, the eigenvectors are weighted by the square root of their corresponding eigenvalues, so that the weights (i.e., loadings) represent
+the correlations between each variable and principal component.  Most rotations are simple expressions which approximate a simple structure through the application
+of mathematical algorithms which distribute the PC loadings such that the dispersion of the loadings is maximized.
+</p>
+
+Varimax rotation is the most widely accepted method for analytical rotation.  The Varimax method reduces variances of the projection of the data onto the rotated basis, where the projection is the principal component time series.
+This improves the alignment of the basis with the actual data and improves the relationship between their spatial and temporal patterns and known physical mechanisms.  Varimax is a method for rotating the axes of a plot such that the eigenvectors remain orthogonal as they are rotated.
+These rotations are used in principal component analysis so that the axes are rotated to a
+position in which the sum of the variances of the loadings is the maximum possible (Oilfield Glossary).
+In the Data Library, the varimax function requires the user to specify the number of eigenvectors to use in the rotation.
+The matrix of loadings is determined by the truncated eigenvectors.<br /><br />
+
+Many atmospheric scientists argue that rotated EOF analysis is a more effective tool than unrotated EOF analysis for the study of atmospheric circulation patterns.
+While EOF rotation is often very useful, it is not meant to be a default operation after every EOF analysis.
+The application of actual EOFs should be guided by the specific analysis.
+</div>
+<div id="Compare" class="ui-tabs-panel">
+<h2>Advantages / Disadvantages of Varimax Rotation</h2>
+<u>Advantages</u>
+
+<ul>
+<li>Less affected by domain dependence than unrotated EOF analyses.</li>
+<li>Varimax analyses of subdomains more stable than unrotated EOF analyses.</li>
+<li>When neighboring eigenvalues are similar in value, patterns not present in the unrotated EOFs may become present after rotation.</li>
+<li>Eigenvectors still remain orthogonal as they are rotated.</li>
+<li>Generally exhibits a stronger relationship between components and known physical mechanisms than unrotated EOFs.</li>
+<li>Rotated EOFs often in better agreement with physical patterns than unrotated EOFs.</li>
+</ul>
+<u>Disadvantages</u>
+<ul>
+<li>More complex than unrotated EOFs.</li>
+<li>Sometimes difficult to determine when rotation is useful.</li>
+<li>Not applicable to cases where sole purpose of EOF analysis is data reduction.</li>
+<li>In some cases, will not increase the physical explainablity of the data (may cause more harm than good).</li>
+</ul>
+</div>
+<div id="Ex4" class="ui-tabs-panel">
+<h2>Varimax Rotation of East Pacific Sea Surface Temperature Data</h2>
+<b><u>Example</u></b>:  Perform a varimax rotation of an SVD analysis of East Pacific sea surface temperatures.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Air-Sea Interface" link.</li>
+
+<li>Scroll down the page and select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/">
+NOAA NCEP EMC CMB GLOBAL Reyn_Smith </a>  dataset.</li>
+<li>Click on the "Reyn_SmithOIv2" link.</li>
+<li>Click on the "monthly" link.</li>
+<li>Click on the "Sea Surface Temperature Anomaly" link under the Datasets and Variables subheading.
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/">CHECK</a>
+</li></ul>
+</td></tr>
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+<ul><li>Click on the "Data Selection" link in the function bar.</li>
+<li>Enter the text <i>180W to 70W</i> and <i>35S to 35N</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button.
+<a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/">
+CHECK</a></li></ul>
+</td></tr>
+<tr><td align="center">Compute Singular Value Decomposition</td>
+<td>
+<ul>
+<li>Click on the "Expert Mode" link in the function bar</li>
+<li>Enter the following line under the text already there:<br /><br />
+<pre class="ingridcode">
+{Y cosd} [X Y] [T] svd
+</pre>
+</li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/">CHECK</a>
+<br />The <i>svd</i> function computes the singular value decomposition of the SST dataset weighted over the cosine of the latitude.
+Five new variables appear under the Datasets and Variables subheading: normalized eigenvalues, structures, singular values, time series, and weights.
+</li>
+</ul>
+</td></tr>
+
+<tr><td align="center">View Structures</td>
+<td>
+
+<ul>
+<li>Click on the "structures" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/">CHECK</a></li>
+<li>In the function bar, select the viewer with land shaded in black. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/figviewer.html?map.url=X+Y+fig-+colors+land+-fig&amp;my.help=more+options">CHECK</a></li></ul>
+
+<center>
+1st Structure of SVD SST Anomalies<br />
+<img WIDTH="400" HEIGHT="280" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/X+Y+fig-+colors+land+-fig+//ev/1./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/.Ss/X+Y+fig-+colors+land+-fig+.auxfig+//ev/1./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+<p>
+The first structure is representative of the El Niño Southern Oscillation.
+Recall that the first structure is the pattern that explains the most variability in the 
+original set of data.
+The relatively large positive values located immediately off the west coast of South America 
+correspond to the
+variability in SSTs caused by upwelling during La Niño years and the lack of 
+upwelling during El Niño years.
+</p><p>
+Notice that these values extend westward in a narrow line, and as a result, do not cover much surface area in the Pacific.
+However, ENSO generally effects a greater area than depicted by this first structure.  One explanation is that part of the ENSO pattern might be contained
+in another strucuture, or multiple structures.
+</p>
+</td></tr>
+
+<tr><td align="center">Return to Dataset Page</td>
+<td>
+
+<ul><li>Click on the right-most link in the blue source bar to exit the viewer.</li>
+<li>In the source bar, click on the <i> { Y cosd } [ X Y ] [ T ] svd</i> link. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/">CHECK</a><br />
+This will remove the structures variable selection and return you to the SVD page.</li></ul>
+</td></tr>
+
+
+
+<tr><td align="center">Perform Varimax Rotation</td>
+<td>
+
+
+
+<ul>
+
+<li>Click on the Expert Mode link in the function bar.</li>
+<li>Enter the following line under the text already there:<br /><br />
+
+<pre class="ingridcode">
+3 varimax
+</pre></li>
+<li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/">CHECK</a>
+<br />The <i>varimax</i> function above performs a varimax rotation using the first three eigenvectors.  Changing the number before the varimax command will change the number of eigenvalues
+to be entered into the function.  Seven new variables appear under the Datasets and Variables subheading: varimax rotation, communalities, energy, rotated structures, singular values, time series, and weights.
+</li>
+</ul>
+</td></tr>
+
+
+<tr><td align="center">Select Rotated Structures Variable</td>
+<td>
+
+
+<ul>
+<li>Click on the "rotated structures" link under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/">CHECK</a>
+</li>
+
+</ul>
+</td></tr>
+
+<tr><td align="center">View Structures</td>
+<td>
+
+<ul>
+<li>In the function bar, select the viewer with land shaded in black. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/figviewer.html?map.url=X+Y+fig-+colors+land+-fig&amp;my.help=more+options">CHECK</a></li></ul>
+
+<center>
+1st Structure of SVD Varimax Rotated SST Anomalies<br />
+<img WIDTH="400" HEIGHT="280" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/X+Y+fig-+colors+land+-fig+//Ss/-0.382012/1.667397/plotrange//evrot/1./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/X+Y+fig-+colors+land+-fig+.auxfig+//Ss/-0.382012/1.667397/plotrange//evrot/1./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+Notice that the colorscale is not centered around 0°.  To enhance the interpretability of the image, the colormap can be adjusted so that
+the scale is centered around 0°.
+</td></tr>
+<tr><td align="center">Return to Dataset Page</td>
+<td>
+<ul><li>Click on the right-most link in the blue source bar to exit the viewer. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/">CHECK</a></li></ul>
+</td></tr>
+<tr><td align="center">Generate Colormap</td>
+<td>
+<ul>
+<li>In the Expert Mode text box, enter the following lines below the text already there:
+<pre class="ingridcode">
+startcolormap
+    -1.5 1.5 RANGE
+    white DarkViolet DarkViolet
+       -1.5 VALUE
+       cyan
+        0 VALUE
+        white 0 bandmax
+        yellow orange
+          0.5 VALUE
+          red
+           1.5 VALUE
+           firebrick endcolormap
+</pre>
+</li>
+<li> Press the OK button.
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/startcolormap/-1.5/1.5/RANGE/white/DarkViolet/DarkViolet/-1.5/VALUE/cyan/0/VALUE/white/0/bandmax/yellow/orange/0.5/VALUE/red/1.5/VALUE/firebrick/endcolormap/">
+CHECK</a><br />
+The colorscale is depicted at the bottom of the dataset page.  Values less than -1.5° are assigned the color DarkViolet and values greater than 1.5° are assigned the color firebrick.
+Values of 0° are white.  Missing values are also white.  For more information on colorscales, see the Data Library <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Visualization/#EX7">Tutorial.</a>
+</li></ul>
+</td></tr>
+<tr><td align="center">View Structures</td>
+<td>
+<ul>
+<li>In the function bar, select the viewer with land shaded in black. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/startcolormap/-1.5/1.5/RANGE/white/DarkViolet/DarkViolet/-1.5/VALUE/cyan/0/VALUE/white/0/bandmax/yellow/orange/0.5/VALUE/red/1.5/VALUE/firebrick/endcolormap/figviewer.html?map.url=X+Y+fig-+colors+land+-fig&amp;my.help=more+options">CHECK</a></li></ul>
+
+<center>
+1st Structure of SVD Varimax Rotated SST Anomalies<br />
+<img WIDTH="400" HEIGHT="280" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/startcolormap/-1.5/1.5/RANGE/white/DarkViolet/DarkViolet/-1.5/VALUE/cyan/0/VALUE/white/0/bandmax/yellow/orange/0.5/VALUE/red/1.5/VALUE/firebrick/endcolormap/X+Y+fig-+colors+land+-fig+//evrot/1./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.ssta/Y/%2835S%29%2835N%29RANGEEDGES/X/%28180W%29%2870W%29RANGEEDGES/%7BY/cosd%7D%5BX/Y%5D%5BT%5Dsvd/3/varimax/.Ss/startcolormap/-1.5/1.5/RANGE/white/DarkViolet/DarkViolet/-1.5/VALUE/cyan/0/VALUE/white/0/bandmax/yellow/orange/0.5/VALUE/red/1.5/VALUE/firebrick/endcolormap/X+Y+fig-+colors+land+-fig+.auxfig+//evrot/1./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+By rotating the first three eigenvectors via the varimax method, the resulting structure is more representative of the
+physical pattern (ENSO) than the unrotated EOF structure illustrated earlier in the example.  Pieces of the ENSO pattern contained in the multiple unrotated principal components have been incorporated
+into one rotated component.  The negative values now extend farther north and south, as
+well as to the west.  Many times, rotating the EOFs / PCs will result in a solution that better explains the underlying physical patterns in the input data.
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
