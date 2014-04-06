@@ -1,0 +1,777 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Interpolation Techniques</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a11" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/StatTutorial/">Statistics Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Statistics Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a href="#Linear">Linear Interpolation</a></li>
+<li> <a href="#Cressman">Cressman Analysis</a></li>
+<li> <a href="#Weaver">Weaver Analysis</a></li>
+<li><a href="#Ex1">Example: Interpolate Monthly Surface Temperature Data</a></li>
+<li><a href="#Ex2">Example: Regrid Normalized Difference Vegetation Index Data for South America </a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Interpolation Techniques</h2>
+<p><span property="term:description">
+Interpolation is the process of using known data values to estimate unknown data values.
+</span>
+Various interpolation techniques are often used in the atmospheric sciences.  One of the simplest methods, linear interpolation, requires knowledge of two points and the constant rate of change
+between them.  With this information, you may interpolate values anywhere between those two points.
+More sophisticated interpolations are also available in the Data Library.  They are often applied to station datasets with irregular spacing between stations.
+The Cressman and Weaver analysis interpolation techniques are covered in this tutorial section.
+Both methods are primarily used to estimate equally-spaced latitude / longitude grid data from station data or gridded data with non-constant spacing.
+</p>
+</div>
+<div id="Linear" class="ui-tabs-panel">
+<h2>Linear Interpolation</h2>
+<p>
+Linear interpolation is a simple technique used to estimate unknown values that lie between known values.
+The concept of linear interpolation relies on the assumption that the rate of change between the known values is constant and can be calculated from these values using a simple slope formula.
+Then, an unknown value between the two known points can be calculated using one of the 
+points and the rate of change. Linear interpolation is a relatively straightforward method, but is often not sophisticated enough to effectively interpolate station data to an even grid.  Linear interpolation is often used to regrid
+evenly-spaced data, such as longitude / latitude gridded data, to a higher or lower resolution.
+</p>
+<u><b>Example</b></u>: Regrid NOAA NCDC GCPS Monthly Gridded Precipitation Anomalies for Europe from a 5° x 5° resolution to a 1° x 1° resolution.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Atmosphere" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/">
+NOAA NCDC GCPS MONTHLY GRIDDED</a>  dataset.</li>
+<li> Click on the "precipitation" link under the Datasets and Variables subheading.</li>
+<li> Click on the "anomalies" link, again under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/">CHECK</a></li>
+</ul>
+</td></tr>
+
+
+<tr><td align="center">Select Temporal and Spatial Domains</td>
+<td>
+
+<ul><li>
+Click on the "Data Selection" link in the function bar.<br /></li>
+<li>Enter the text <i> 13W to 32E</i>, <i>35N to 60N</i>, and <i>Oct 1993</i> in the appropriate text boxes.</li>
+<li>Press the Restrict Ranges button and then the Stop Selecting button. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/Y/%2835%29%2860%29RANGEEDGES/T/%28oct%201993%29VALUES/X/%28-13%29%2832%29RANGEEDGES/">
+CHECK</a><br /></li></ul>
+</td></tr>
+
+<tr><td align="center">View Gridded Data at a 5° x 5° Resolution</td>
+<td>
+
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/Y/%2835%29%2860%29RANGEEDGES/T/%28oct%201993%29VALUES/X/%28-13%29%2832%29RANGEEDGES/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig">CHECK</a>
+</li></ul>
+<center>
+October 1993 Precipitation Anomalies in Europe at 5°x 5° Resolution<br />
+<img WIDTH="400" HEIGHT="254" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/Y/%2835%29%2860%29RANGEEDGES/T/%28oct%201993%29VALUES/X/%28-13%29%2832%29RANGEEDGES/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//anomalies/-85.45/114./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/Y/%2835%29%2860%29RANGEEDGES/T/%28oct%201993%29VALUES/X/%28-13%29%2832%29RANGEEDGES/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//anomalies/-85.45/114./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The resolution of this dataset is relatively low, which makes the image appear fairly discontinuous.
+Linear interpolation can be used to help smooth the data by changing the grid to a higher resolution (e.g., 1° x 1°).
+</td></tr>
+<tr><td align="center">Perform Linear Interpolation</td>
+<td>
+<ul><li>Click on the right-most link in the blue source bar to exit the viewer.</li>
+<li>Click on the "Expert Mode" link in the function bar.</li>
+<li>In the Expert Mode text box, enter the following lines below the text already there:
+<pre class="ingridcode">
+  X -13 1 32 GRID
+  Y 35 1 60 GRID
+</pre>
+</li>
+<li> Press the OK button.
+
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/Y/%2835%29%2860%29RANGEEDGES/T/%28oct%201993%29VALUES/X/%28-13%29%2832%29RANGEEDGES/X/-13/1/32/GRID/Y/35/1/60/GRID/">
+CHECK</a> <br />
+The two <i>GRID</i> commands regrid the data in the specified region to a different resolution.  In this case, data located within
+13° W to 32° E and 35° N to 60° N is regrided to a 1° x 1° resolution.
+
+</li></ul>
+</td></tr>
+
+<tr><td align="center">View Results at a 1° x 1° Resolution</td>
+<td>
+
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/Y/%2835%29%2860%29RANGEEDGES/T/%28oct%201993%29VALUES/X/%28-13%29%2832%29RANGEEDGES/X/-13/1/32/GRID/Y/35/1/60/GRID/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a>
+</li></ul>
+
+<center>
+October 1993 Precipitation Anomalies in Europe at 1°x 1° Resolution<br />
+<img WIDTH="400" HEIGHT="254" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/Y/%2835%29%2860%29RANGEEDGES/T/%28oct%201993%29VALUES/X/%28-13%29%2832%29RANGEEDGES/X/-13/1/32/GRID/Y/35/1/60/GRID/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//anomalies/-85.45/114./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.GRIDDED/.precipitation/.anomalies/Y/%2835%29%2860%29RANGEEDGES/T/%28oct%201993%29VALUES/X/%28-13%29%2832%29RANGEEDGES/X/-13/1/32/GRID/Y/35/1/60/GRID/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//anomalies/-85.45/114./plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The data appears more continuous at a higher resolution.
+Above average precipitation amounts are found over the Alps in Northern Italy and Southern France and precipitation deficits are located over the Northern United Kingdom and Ireland.
+White-colored grid boxes represent regions of missing data.
+</td></tr>
+</table>
+</div>
+<div id="Cressman" class="ui-tabs-panel">
+<h2>Cressman Analysis</h2>
+George Cressman developed the Cressman interpolation technique in 1959.
+The technique interpolates station data to a user-defined latitude-longitude grid.
+Multiple passes are made through the grid at consecutively smaller radii of influence to 
+increase precision.
+The radius of influence is defined as the maximum radius from a grid point to a station 
+by which the observed station value may be weighted to estimate the value at the grid 
+point. Stations beyond the radius of influence have no bearing on a grid point value.  At 
+each pass, a new value is calculated for each grid point based on its correction factor.
+This correction factor is determined by analyzing each station within the radius of 
+influence.
+For each such station, an error is defined as the difference between the station value 
+and a value arrived by interpolation from the grid to that station.
+A distance-weighted formula (shown below) is then applied to all such errors within the 
+radius of influence of the grid point to arrive at a correction value for that grid point.
+The correction factors are applied to all grid points before the next pass is made. 
+Observations nearest the grid point carry the most weight.
+As the distance increases, the observations carry less weight.  The <i>cressman</i> 
+function in Ingrid calculates the weights as follows:
+<br /><br />
+W = (R<sup>2</sup> - r<sup>2</sup>)/(R<sup>2</sup> + r<sup>2</sup>)
+<br /><br />
+where R = influence radius and r = distance between the station and the gridpoint.  The weighting function is pictured below.<br /><br />
+
+<center>
+<img HEIGHT="341" WIDTH="500" src="cress_weight2.gif" />
+</center>
+
+<br />
+As the radius of influence is tightened, results become more representative of the observed data.
+The analysis value at each gridpoint is calculated as the analysis value from the previous pass added to the sum of the products of the calculated weights and the difference between the actual station value
+and the interpolated background value at the station, divided by the sum of the weights.  The Data Library performs three passes by default, at 4, 2.5, and 1.5.  These numbers are proportions of the average minimum station distance calculated in the function.
+These parameters may be changed when entering the command in Ingrid.  There is also a minimum station number parameter, which ensures a certain number of station data points must be included within the radius of influence
+for an analysis value to be calculated for that gridpoint.  If the minimum station number requirement is not met for a given gridpoint, a missing value will be assigned.
+<br /><br />
+
+Cressman schemes may be used with data assimilation as well.  Data assimilation is the analytical process of incorporating an estimation of the state of the atmosphere into a numerical model.
+By the early 1960s, weather centers within the United States began using data assimilation methods to improve forecasting techniques.  They used interpolation techniques, such as the Cressman analysis, to interpolate
+current atmospheric conditions onto an evenly spaced grid.
+The Cressman analysis assigns weighted values of the observed stations to the model initialization, similar to the interpolation technique described above.
+However, Cressman suggests that persistence (climatology) values can be assigned if there are an insufficient number of stations in the area.
+<br /><br />
+
+<u>Advantages</u>
+<ul>
+   <li>Simple and computationally fast (speed depends upon the number of scans).</li>
+   <li>Generally more accurate than other simple methods such as linear interpolation.</li>
+</ul>
+
+<u>Disadvantages</u>
+<ul>
+	<li>Can be unstable if grid density is higher than station density (i.e., more grid points than station data points). </li>
+	<li>Sensitive to observational errors (random observation errors can generate unphysical features in analysis).</li>
+	<li>Analysis may produce unrealistic extrema in the grid values, especially near the edges of the spatial domain.</li>
+	<li>Does not account for the distribution of observations relative to each other.</li>
+	<li>Consistency of the result with observations varies with observation (station) density.</li>
+	<li>Optimum radii of influence have to be determined by trial and error.</li>
+</ul>
+
+
+
+
+
+<br /><br />
+<u><b>Example</b></u>: Perform a Cressman analysis of monthly surface temperature anomaly data over Australia for December 2000.
+<br /><br />
+
+
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Atmosphere" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/">
+NOAA NCEP CPC CAMS</a>  dataset.</li>
+<li> Click on the "station" link under the Datasets and Variables subheading.</li>
+<li> Click on the "temperature" link again under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Stations In Australia and Surrounding Islands</td>
+<td>
+
+
+<ul>
+<li> Click on the "searches" link to the right of the map.</li>
+<li> In the lat text boxes under the Searches subheading, enter the values <i>-40</i> and <i>-10</i>.</li>
+<li> In the lon text boxes under the Searches subheading, enter the values <i>112</i> and <i>155</i>.</li>
+<li> Click the Search NOAA NCEP CPC CAMS station temperature button.</li>
+<li> Click on the link immediately below the Searches subheading that says "Dataset (and map) with all data found in search."
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lat/(-40)/(-10)/masknotrange/SELECT/lon/(112)/(155)/masknotrange/SELECT/">CHECK</a><br />
+You have selected all of the stations within 40° S to 10° S and 112° E to 155° E.  This region encompasses Australia and a few surrounding islands.  For more
+information on finding station ID's, click the following link
+to the Data Library tutorial: <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Selection/Stations_Regions/#Station_Single">How
+to Find A Station ID</a> </li></ul>
+</td></tr>
+
+<tr><td align="center">Select Stations With 30-Year Climatology</td>
+<td>
+<ul><li>Click on the "Expert Mode" link in the function bar if the text box is not already open.</li>
+<li> Enter the following lines below the text already there:
+<pre class="ingridcode">
+DataFlag
+   1 1 masknotrange
+   SELECT
+</pre>
+</li>
+<li> Press the OK button.
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lat/%28-40%29%28-10%29masknotrange/SELECT/lon/%28112%29%28155%29masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/">
+CHECK</a><br />
+
+DataFlag is a variable in the CAMS station temperature dataset.  Stations with 30 years of data since 1971 have a DataFlag equal to 1.
+The commands above mask out all stations with a DataFlag unequal to 1.</li>
+</ul>
+</td></tr>
+
+<!--
+<tr><td align="center">Define Longitude and Latitude Variable Names</td>
+<td>
+
+<ul><li>Return to the Expert Mode text box and enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+  lon
+  /long_name (Longitude) def
+  lat
+  /long_name (Latitude) def
+</pre>
+</li>
+<li> Press the OK button.
+
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/DataFlag/1/1/masknotrange/SELECT/lon//long_name/%28Longitude%29def/lat//long_name/%28Latitude%29def/">
+CHECK</a> <br />
+The above commands redefine the long_name titles of the longitude and latitude variables.  <br />
+*NOTE:  This step is necessary in order for the <i>cressman</i> function to operate properly.
+
+</li>
+</ul>
+</td></tr>
+-->
+
+<tr><td align="center">Compute Anomalies</td>
+<td>
+
+
+<ul><li>In the Expert Mode text box, enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+      lon lat temp
+      dup
+      T (Jan 1971) (Dec 2000) RANGEEDGES
+      yearly-climatology
+      sub
+      /long_name (Temperature Anomaly) def
+</pre>
+</li>
+<li> Press the OK button.
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lat/%28-40%29%28-10%29masknotrange/SELECT/lon/%28112%29%28155%29360./masknotrangeperiodic/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/">
+CHECK</a> <br />
+The <i>lon</i>, <i>lat</i>, and <i>temp</i> commands select those variables in the dataset.  <i>dup</i> then duplicates the current dataset and adds it to the stack.
+The next command selects a temporal range for one of the identical variables.
+The following two commands compute the monthly climatology, and then subtract the climatology variable from the original data.
+The last command redefines the title of the resulting variable to "Temperature Anomaly".
+</li>
+</ul>
+</td></tr>
+
+
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+
+<ul><li>In the Expert Mode text box, enter the following line below the text already there:
+
+<pre class="ingridcode">
+ T (Dec 2000) VALUE
+</pre>
+</li>
+<li> Press the OK button.
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE/">
+CHECK</a><br />
+
+The command selects the month of December in the year 2000.<br />
+*NOTE:  You may not select ranges via the Data Selection link in the function bar. If you do, some commands entered earlier will be erased.</li>
+</ul>
+</td></tr>
+
+
+
+
+<tr><td align="center">Perform Cressman Analysis</td>
+<td>
+<ul><li>In the Expert Mode text box, enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+[IWMO]cressman:
+        3 minstns
+       X 100 180 1 RANGEEDGESTEP
+        Y -60 0 1 RANGEEDGESTEP
+        4 pass1
+        2.5 pass2
+        1.5 pass3
+        :cressman
+</pre>
+</li>
+<li> Press the OK button.
+
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dcressman:/3/minstns/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/4/pass1/2.5/pass2/1.5/pass3/:cressman/">
+CHECK</a><br />
+The proper syntax of the <i>cressman</i> function in Ingrid is shown above.  The <i>minstns</i> parameter is set to 3.  The data is
+analyzed over a spatial range from 100° E to 180° E, and 60° S to 0° N, at a resolution of 1°.
+The passes are at 4, 2.5, and 1.5 times the average minimum station
+distance calculated within the function.
+
+<!--
+For more information on the <i>cressman</i> function, see the <a href="">Function Documentation</a>.
+-->
+</li></ul>
+</td></tr>
+
+<tr><td align="center">View Results</td>
+<td>
+
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dcressman:/3/minstns/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/4/pass1/2.5/pass2/1.5/pass3/:cressman/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a>
+</li></ul>
+
+<center>
+Australia Surface Temperature Anomaly for December 2000 at 1°x 1° Resolution<br />
+<img WIDTH="400" HEIGHT="317" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dcressman:/3/minstns/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/4/pass1/2.5/pass2/1.5/pass3/:cressman/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+//temp/-3.813189/2.333905/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dcressman:/3/minstns/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/4/pass1/2.5/pass2/1.5/pass3/:cressman/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig+//temp/-3.813189/2.333905/plotrange+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The default color scheme does not appear to be particularly ideal or intuitive.
+Changing the color scheme may greatly improve the visual representation of the data.
+</td></tr>
+<tr><td align="center">Generate Colormap</td>
+<td>
+<ul>
+<li>Click on the right-most link in the blue source bar to exit the viewer.</li>
+<li>Again in the Expert Mode text box, enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+startcolormap
+     -10. 10. RANGE
+     white black purple
+        -10. VALUE
+        cyan
+         -1. VALUE
+         white white
+           1. bandmax
+           yellow
+            1. VALUE
+            red
+             10. VALUE
+             firebrick endcolormap
+</pre>
+</li>
+<li> Press the OK button.
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dcressman:/3/minstns/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/4/pass1/2.5/pass2/1.5/pass3/:cressman/startcolormap/-10./10./RANGE/white/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/">
+CHECK</a><br />
+The colorscale is depicted at the bottom of the dataset page.  Values less than -10° are assigned the color black and values greater than 10° are assigned the color firebrick.
+Values between -1° and 1° are white.  Missing values are also white.  For more information on colorscales, see the Data Library <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Visualization/#EX7">Tutorial.</a>
+</li></ul>
+</td></tr>
+
+<tr><td align="center">View Results with New Color Scheme</td>
+<td>
+
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dcressman:/3/minstns/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/4/pass1/2.5/pass2/1.5/pass3/:cressman/startcolormap/-10./10./RANGE/white/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a>
+</li></ul>
+
+<center>
+Australia Surface Temperature Anomaly for December 2000 at 1°x 1° Resolution<br />
+<img WIDTH="400" HEIGHT="317" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dcressman:/3/minstns/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/4/pass1/2.5/pass2/1.5/pass3/:cressman/startcolormap/-10./10./RANGE/white/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dcressman:/3/minstns/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/4/pass1/2.5/pass2/1.5/pass3/:cressman/startcolormap/-10./10./RANGE/white/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+Northern Australia experienced below average temperatures while Southern Australia generally experienced above average temperatures for December 2000.
+The more extreme anomalies appear to line up along a constant meridian near 138° E.
+</td></tr>
+</table>
+</div>
+<div id="Weaver" class="ui-tabs-panel">
+<h2>
+Weaver Analysis</h2>The Weaver analysis is another type of interpolation scheme, developed at the Climate Prediction Center in the 1970's.
+In the Data Library, a simplified <i>weaver</i> function can be used to perform unweighted interpolation, examples of which are shown below.
+
+Weaver analysis is different from the Cressman analysis in many ways.  First, the Weaver analysis does not
+use radii of influence.  When the <i>weaver</i> function is used to interpolate to an equally spaced longitude/latitude grid,
+only the observations located within each grid box are used to calculate the interpolated value for that grid box.  Any observations located outside the grid box, regardless of their proximity to the boundary of the grid box, will
+not effect the interpolated value of the grid box.  Second, the <i>weaver</i> function does not weight the values of the observations.  The value of each grid box
+is found by computing a simple arithmetic average of the observations.<br /><br />
+
+
+<u>Advantages</u>
+<ul>
+   <li>Simple and fast (speed depends upon the resolution of the grid).</li>
+   <li>Generally more accurate than other simpler methods such as linear interpolation.</li>
+   <li>Avoids unrealistic, extreme values at the edges of the domain.</li>
+
+</ul>
+<u>Disadvantages</u>
+<ul>
+	<li>Spatial resolution is increased at the expense of missing data, and vice versa.</li>
+
+		<ol>
+		<li>As the resolution decreases (i.e., number of stations per grid box increases), extreme observations generally have less impact on the interpolated values.</li>
+		<li>As the resolution increases (i.e., number of stations per grid box decreases), more grid boxes will not contain at least one station, and will therefore be identified as missing.</li>
+		</ol>
+
+	<li>Ignores the influence of stations outside each grid box.</li>
+	<li>Potential errors enhanced at very low spatial resolutions and when using datasets with low station density.</li>
+</ul>
+
+
+
+<!--
+<ul>
+  <li>Ability to interpolate data into a evenly spaced grid (i.e., latitude / longitude grid).</li>
+  <li>Calculates unweighted arithmetic averages of station data within each grid box.</li>
+  <li>Only stations within the grid box have an effect on the interpolated value for that grid box.</li>
+  <li>Bad:  Ignores any influence of stations outside grid box, regardless of their distance from boundary
+  			and their proximity to other stations.
+            Because of its discrete nature, can cause inaccurate results.
+  <li>Bad:  stations within grid box unweighted based on distance.
+            Also can cause inaccurate results, depending on the distribution of stations within each box.
+  <li><i>False setweave</i> function instructs Ingrid to only interpolate and regrid the data.
+
+<li>Good:  Avoid unphysical values at the spatial extremes
+<li>Good:  Also simple: arithmetic average used.
+-->
+</div>
+<div id="Ex1" class="ui-tabs-panel">
+<u><b>Example</b></u>:  Perform a Weaver analysis of monthly surface temperature anomaly data over Austrailia for December 2000.
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+
+*NOTE:  This example uses the same dataset and variable as the previous example.<br />
+
+<ul><li>Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+<li> Click on the "Atmosphere" link.</li>
+<li> Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/">
+NOAA NCEP CPC CAMS</a>  dataset.</li>
+<li> Click on the "station" link under the Datasets and Variables subheading.</li>
+<li> Click on the "temperature" link again under the Datasets and Variables subheading. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/">CHECK</a></li>
+</ul>
+</td></tr>
+
+<tr><td align="center">Select Stations In Australia and Surrounding Islands</td>
+<td>
+
+
+<ul>
+<li> Click on the "searches" link to the right of the map.</li>
+<li> In the lat text boxes under the Searches subheading, enter the values <i>-40</i> and <i>-10</i>.</li>
+<li> In the lon text boxes under the Searches subheading, enter the values <i>112</i> and <i>155</i>.</li>
+<li> Click the Search NOAA NCEP CPC CAMS station temperature button.</li>
+<li> Click on the link immediately below the Searches subheading that says "Dataset (and map) with all data found in search."
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lat/(-40)/(-10)/masknotrange/SELECT/lon/(112)/(155)/masknotrange/SELECT/">CHECK</a><br />
+You have selected all of the stations within 40° S to 10° S and 112° E to 155° E.  This region encompasses Australia and a few surrounding islands.  To get
+general information on finding station ID's, click the following link
+to the tutorial: <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Selection/Stations_Regions/#Station_Single">How
+to Find A Station ID</a> </li></ul>
+</td></tr>
+
+<tr><td align="center">Select Stations With 30-Year Climatology</td>
+<td>
+
+
+<ul><li>Click on the "Expert Mode" link in the function bar if the text box is not already open.</li>
+<li> Enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+DataFlag
+   1 1 masknotrange
+   SELECT
+</pre>
+</li>
+<li> Press the OK button.
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lat/%28-40%29%28-10%29masknotrange/SELECT/lon/%28112%29%28155%29masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/">
+CHECK</a><br />
+
+DataFlag is a variable in the CAMS station temperature dataset.  Stations with 30 years of data since 1971 have a DataFlag equal to 1.
+The commands above mask out all stations with a DataFlag unequal to 1.</li>
+</ul>
+</td></tr>
+
+
+<tr><td align="center">Compute Anomalies</td>
+<td>
+
+
+<ul><li>In the Expert Mode text box, enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+      lon lat temp
+      dup
+      T (Jan 1971) (Dec 2000) RANGEEDGES
+      yearly-climatology
+      sub
+      /long_name (Temperature Anomaly) def
+</pre>
+</li>
+<li> Press the OK button.
+
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lat/%28-40%29%28-10%29masknotrange/SELECT/lon/%28112%29%28155%29360./masknotrangeperiodic/SELECT/DataFlag/1/1/masknotrange/SELECT/.temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/">
+CHECK</a> <br />
+The <i>temp</i> command selects the "temp" variable in the dataset.  <i>dup</i> then duplicates the variable and adds it to the stack.
+The next command selects a temporal range for one of the identical temp variables.
+The following two commands compute the monthly climatology of that variable, and then subtract the climatology variable from the original data.
+The last command redefines the title of the resulting dataset to "Temperature Anomaly".
+</li>
+</ul>
+</td></tr>
+
+
+<tr><td align="center">Select Temporal Domain</td>
+<td>
+
+<ul><li>In the Expert Mode text box, enter the following line below the text already there:<br /><br />
+
+<pre class="ingridcode">
+ T (Dec 2000) VALUE
+</pre>
+</li>
+<li> Press the OK button.
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE/">
+CHECK</a><br />
+
+The command selects the month of December in the year 2000.<br />
+*NOTE:  You may not select ranges via the Data Selection link in the function bar. If you do, some commands entered earlier will be erased.</li>
+</ul>
+</td></tr>
+
+
+
+<tr><td align="center">Perform Weaver Analysis</td>
+<td>
+<ul><li>In the Expert Mode text box, enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+ [IWMO]weaver:
+        X 100 180 1 RANGEEDGESTEP
+        Y -60 0 1 RANGEEDGESTEP
+        false setweave
+        :weaver
+</pre>
+</li>
+<li> Press the OK button.
+
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/false/setweave/:weaver/">
+CHECK</a><br />
+The proper syntax of the <i>weaver</i> function in Ingrid is shown above. The data is
+analyzed over a spatial range from 100° E to 180° E, and 60° S to 0° N, at a resolution of 1°, similar to the previous example.
+This spatial range is larger than the range in which the selected stations are located.  The "false setweave" command tells the function to
+perform an interpolation by averaging the stations in each grid box.
+
+<!--
+For more information on the <i>weaver</i> function, see the <a href="">Function Documentation</a>.
+-->
+
+</li></ul>
+</td></tr>
+
+
+<tr><td align="center">Generate Colormap</td>
+<td>
+<ul><li>Again in the Expert Mode text box, enter the following lines below the text already there:<br /><br />
+
+<pre class="ingridcode">
+startcolormap
+     -10. 10. RANGE
+     grey black purple
+        -10. VALUE
+        cyan
+         -1. VALUE
+         white white
+           1. bandmax
+           yellow
+            1. VALUE
+            red
+             10. VALUE
+             firebrick endcolormap
+</pre>
+</li>
+<li> Press the OK button.
+
+<a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/false/setweave/:weaver/startcolormap/-10./10./RANGE/grey/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/">
+CHECK</a><br />
+The colorscale is depicted at the bottom of the dataset page.  Values less than -10° are assigned the color black and values greater than 10° are assigned the color firebrick.
+Values between -1° and 1° are white.  Missing values are grey.  For more information on colorscales, see the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Visualization/#EX7">Tutorial.</a>
+</li></ul>
+</td></tr>
+
+<tr><td align="center">View Results</td>
+<td>
+
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/false/setweave/:weaver/startcolormap/-10./10./RANGE/grey/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a>
+</li></ul>
+
+<center>Australia Surface Temperature Anomaly for December 2000 at 1° x 1° Resolution<br />
+<img WIDTH="400" HEIGHT="317" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/false/setweave/:weaver/startcolormap/-10./10./RANGE/grey/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/1/RANGEEDGESTEP/Y/-60/0/1/RANGEEDGESTEP/false/setweave/:weaver/startcolormap/-10./10./RANGE/grey/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The effect of choosing such a high resolution (1° x 1°) is that most of the grid boxes contain missing values.
+Yet, it is still possible to make out the below average temperatures in Northern Australia and the above average temperatures in Southern Australia.
+However, the primary purpose of interpolation is to estimate values where there are no observations.  We should therefore try using a lower resolution.
+</td></tr>
+<tr><td align="center">Perform Weaver Analysis at a 5° Resolution</td>
+<td>
+<ul><li>Click on the right-most link in the blue source bar to exit the viewer.</li>
+<li>In the Expert Mode text box, <b>change</b> the following text:</li>
+<li>Change the number 1 in the <i>X 100 180 1 RANGEEDGESTEP</i> command to the number 5.</li>
+<li>Chage the number 1 in the <i>Y -60 0 1 RANGEEDGESTEP</i> command to the number 5. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/5/RANGEEDGESTEP/Y/-60/0/5/RANGEEDGESTEP/false/setweave/:weaver/startcolormap/-10./10./RANGE/grey/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/">CHECK</a>
+These changes will adjust the resolution of the spatial grid from 1° x 1° to 5° x 5°.  As a result, more grid boxes
+will contain observations.  Missing values should occupy less area in the spatial grid. </li>
+</ul>
+</td></tr>
+<tr><td align="center">View Results</td>
+<td>
+
+
+<ul><li>To see the results of this operation, choose the viewer window with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/5/RANGEEDGESTEP/Y/-60/0/5/RANGEEDGESTEP/false/setweave/:weaver/startcolormap/-10./10./RANGE/grey/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a>
+</li></ul>
+
+<center>Australia Surface Temperature Anomaly for December 2000 at 5° x 5° Resolution<br />
+<img WIDTH="400" HEIGHT="313" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/5/RANGEEDGESTEP/Y/-60/0/5/RANGEEDGESTEP/false/setweave/:weaver/startcolormap/-10./10./RANGE/grey/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.station/.temperature/lon/110/170/masknotrange/SELECT/lat/-50/-10/masknotrange/SELECT/DataFlag/1/1/masknotrange/SELECT/lon/lat/temp/dup/T/%28Jan%201971%29%28Dec%202000%29RANGEEDGES/yearly-climatology/sub//long_name/%28Temperature%20Anomaly%29def/T/%28Dec%202000%29VALUE%5BIWMO%5Dweaver:/X/100/180/5/RANGEEDGESTEP/Y/-60/0/5/RANGEEDGESTEP/false/setweave/:weaver/startcolormap/-10./10./RANGE/grey/black/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/X+Y+fig:+colors+thinnish+solid+coasts_gaz+:fig+.auxfig//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+At a lower resolution, there are fewer grid boxes with missing data.  However, the accuracy of the 
+interpolated values generally declines as the resolution increases.
+Observations are averaged over large distances, reducing variability within each grid box.
+</td></tr></table>
+</div>
+<div id="Ex2" class="ui-tabs-panel">
+<u><b>Example</b></u>:  Perform a Weaver interpolation of the Normalized Difference Vegetative Index (NDVI) in South America to an even longitude / latitude grid at a 0.2° resolution.
+
+<br /><br />
+<table border="2">
+<tr><td align="center">Locate Dataset and Variable</td>
+<td>
+<ul><li>
+Select the "Datasets by Catagory" link in the blue banner on the Data Library page.</li>
+
+<li>Click on the "Topographic and Land Characteristics" link.</li>
+
+<li>Select the <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GES-DAAC/.PAL/.vegetation/.continent/">NASA GES-DAAC PAL vegetation</a> dataset.</li>
+
+<li>Select the "south america" link under the Datasets and Variables subheading. <a HREF="http://iridl.ldeo.columbia.edu/SOURCES/.NASA/.GES-DAAC/.PAL/.vegetation/.continent/.south_america/">
+CHECK</a></li></ul>
+</td></tr>
+
+
+<tr><td align="center">Select Domains</td>
+<td>
+<ul><li>No ranges will be adjusted in this example.
+The dataset will be analyzed over its entire temporal and spatial grids.
+</li></ul>
+</td></tr>
+<tr><td align="center">Perform Weaver Interpolation</td>
+<td>
+
+
+<ul>
+<li>Click on the "Expert Mode" link in the function bar.</li>
+<li>Enter the following lines under the text already there:
+
+<pre class="ingridcode">
+lon lat NDVI[x y]weaver:
+        X -84 -32 0.2 RANGEEDGESTEP
+        Y -58 14 0.2 RANGEEDGESTEP
+        false setweave
+        :weaver
+</pre>
+</li><li>Press the OK button. <a HREF="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GES-DAAC/.PAL/.vegetation/.continent/.south_america/lon/lat/NDVI%5Bx/y%5Dweaver:/X/-84/-32/0.2/RANGEEDGESTEP/Y/-58/14/0.2/RANGEEDGESTEP/false/setweave/:weaver/">
+CHECK</a><br />
+
+The <i>weaver</i> function regrids the NDVI data variable from the default Interrupted Goode Homolosine projection to an even longitude / latitude grid.
+The lon/lat range is 84° W to 32° W and 58° S to 14° N at a 0.2° resolution.  Notice the original NDVI projection is dependent on two grids,
+x and y, which should not be confused with longitude and latitude grids.  The <i>weaver</i> function averages the NDVI values that fall inside each longitude / latitide grid box to compute
+an interpolated value for that box.</li>
+</ul>
+
+</td></tr>
+<tr><td align="center">View Results</td>
+<td>
+
+
+ <ul><li>To see the results of this operation, choose the viewer with coasts drawn. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GES-DAAC/.PAL/.vegetation/.continent/.south_america/lon/lat/NDVI%5Bx/y%5Dweaver:/X/-84/-32/0.2/RANGEEDGESTEP/Y/-58/14/0.2/RANGEEDGESTEP/false/setweave/:weaver/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a>
+</li>
+<li>You may adjust the time period represented by the image by editing the range in the text box above the viewer.</li></ul>
+
+<center>South America Regrided NDVI Data for July 13-20, 1981 at a 0.2° x 0.2° Resolution<br />
+<img WIDTH="309" HEIGHT="400" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GES-DAAC/.PAL/.vegetation/.continent/.south_america/lon/lat/NDVI%5Bx/y%5Dweaver:/X/-84/-32/0.2/RANGEEDGESTEP/Y/-58/14/0.2/RANGEEDGESTEP/false/setweave/:weaver/X+Y+fig-+colors+coasts+-fig+//NDVI/-0.1/0.916/plotrange//T/7868./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+<br /> 
+<img WIDTH="350" HEIGHT="56" src="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NASA/.GES-DAAC/.PAL/.vegetation/.continent/.south_america/lon/lat/NDVI%5Bx/y%5Dweaver:/X/-84/-32/0.2/RANGEEDGESTEP/Y/-58/14/0.2/RANGEEDGESTEP/false/setweave/:weaver/X+Y+fig-+colors+coasts+-fig+.auxfig+//NDVI/-0.1/0.916/plotrange//T/7868./plotvalue+//plotborder+72+psdef//XOVY+null+psdef//plotaxislength+328+psdef+.gif" />
+</center>
+The most common measurement of plant growth density is the Normalized Difference Vegetation Index (NDVI).
+The NDVI, like most other vegetative indices, is calculated as a ratio between measured reflectivity in the red and near infrared sections of the electromagnetic spectrum.
+These spectral bands are chosen because they are most affected by the absorption of chlorophyll in leafy green vegetation.Very low values of NDVI (0.1 and below) correspond to barren
+areas of rock, sand, or snow. Moderate values represent shrub and grassland (0.2 to 0.3), while high values indicate temperate and tropical rainforests (0.6 to 0.8).  The <I>weaver</I> function regrids the NDVI data to an equal latitude /
+longitude grid.  It appears from the image that in July of 1981, dense vegetation would be found within the Amazon River Basin, while less dense areas would be found to the south and east.  If you change the time period above the image to a more recent date,
+you will observe that a similar vegetative pattern in South America still exists today.
+</td></tr>
+</table>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
