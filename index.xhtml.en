@@ -23,13 +23,16 @@
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <style>
 .search {
-width: 60%;
+margin-top: 5pt;
+float: right;
+width: 35%;
 }
 .search div {
 margin-top: 2px;
 }
 @media only all and (max-width: 600px) {
 .search {
+float: none;
 width: 95%;
 }
 }
