@@ -5,6 +5,7 @@
       xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
       xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      xmlns:gcse="http://google.com/search#"
       version="XHTML+RDFa 1.0"
  xml:lang="en"
       >
@@ -20,6 +21,19 @@
 <link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
+<style>
+.search {
+width: 60%;
+}
+.search div {
+margin-top: 2px;
+}
+@media only all and (max-width: 600px) {
+.search {
+width: 95%;
+}
+}
+</style>
 </head>
 <body>
 
@@ -32,6 +46,22 @@
                 <legend>IRI/LDEO</legend> 
                      <span class="navtext">Climate Data Library</span>
             </fieldset> 
+	   <fieldset class="navitem search">
+	     <div><script>
+  (function() {
+    var cx = '002439769827255946943:6z9nl_kcvry';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:searchbox-only></gcse:searchbox-only>
+	       </div>
+	     </fieldset>
  </div>
  <div id="content" class="searchDescription">
 <h2 property="term:title">IRI/LDEO Climate Data Library</h2>
