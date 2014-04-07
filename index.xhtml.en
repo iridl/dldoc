@@ -50,10 +50,10 @@ GIS-compatible formats.</li>
 </div>
 
 <div class="rightcol tabbedentries" about="/" >
-
   <a rel="section" href="maproom/"></a>
   <a rel="section" href="http://iridl.tumblr.com/"></a>
   <a rel="section" href="SOURCES/"></a>
+  <a rel="section" href="dochelp/StatTutorial/index.xhtml.en"></a>
 <div about="maproom/">
   <a rel="canonical" href="maproom/"></a>
       <meta property="maproom:Sort_Id" content="a01" />
