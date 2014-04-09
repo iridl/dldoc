@@ -1,8 +1,10 @@
 .ingridcode {
-border: 2pt;
-margin: 5pt;
 font-weight: bold;
 font-family: inherit;
+}
+pre.ingridcode {
+border: 0pt;
+margin-left: 5pt;
 }
 .dlimage.example {
 margin-left: auto;
