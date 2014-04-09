@@ -3,7 +3,7 @@
 open filelist,"find . -regex '.*\\.x?html[^~]*\$' |";
 while(<filelist>){
     chop;
-    if(/(.+).xhtml(\..+)/){
+    if(/^(.+).xhtml(\..+)$/){
 	$out = "$1.html$2";
 	$output{"$out"} = "1";
 	$hasoutput{"$_"} = "1";
@@ -21,7 +21,7 @@ if($ARGV[0] eq 'src'){
 }
 elsif($ARGV[0] eq 'bld') {
 # bld -- outputs target (to be build from xhtml) html files
-    foreach $vval (@files){
+    foreach $vval (keys %output){
 	if($output{$vval}){
 	    print "$vval\n";
 	}
