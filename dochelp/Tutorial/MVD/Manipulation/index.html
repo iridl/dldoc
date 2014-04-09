@@ -1,0 +1,720 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manipulating Data</title>
+   <meta name="author" content="Emily K. Grover" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a01" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorials" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+   <style type="text/css">
+	.ingridcode 	{font: 12pt helvetica, sans-serif; color: #009900; }
+	.instruct	{font: 12pt helvetica, sans-serif; color: #FF0000; }
+	h1		{font: 20pt helvetica, sans-serif; color: #660000; }
+	h2		{font: 18pt helvetica, sans-serif; color: #660000; }
+	h3		{font: 12pt helvetica, sans-serif; color: #660000; }
+	.t		{font: 12pt helvetica, sans-serif; color: #000066; }
+	.t2		{font: 15pt helvetica, sans-serif; color: #000066; }
+	.ex		{font: bold 12pt helvetica, sans-serif; color: #0000CC; }
+	.tb		{font: bold 12pt helvetica, sans-serif; color: #000066; }
+	.go		{font: 12pt helvetica, sans-serif; color: #990000; }
+   </style>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/Tutorial/">Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a HREF="#Arithmetic"> Arithmetic</a></li>
+<li> <a HREF="#Limits"> Limits</a></li>
+<li> <a HREF="#Averages">Averages</a></li>
+<li> <a HREF="#Other">Statistical and Other</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Manipulating Data</h2>
+<p property="term:description"></p>
+<span class="t">Note that when specific time periods or locations are not selected, these 
+operations are applied to the time and spatial grids in their entirety by default.  It also 
+important to note that when multiple data variables are to be compared, as is common in the 
+examples in this section, the time and spatial grids of those variables must be identical. 
+You will see this issue addressed frequently.</span>
+</div>
+<div id="Arithmetic" class="ui-tabs-panel">
+<h2>Basic Arithmetic Operations</h2>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li><a href="#Add_number">Adding number to field</a></li>
+<li><a href="#Add_field">Adding fields</a></li>
+<li><a href="#Sub_number">Subtracting number from field</a></li>
+<li><a href="#Sub_field">Subtracting fields</a></li>
+<li><a href="#Mul_number">Multiplying field by number</a></li>
+<li><a href="#Mul_field">Multiplying fields</a></li>
+<li><a href="#Div_number">Dividing field by number</a></li>
+<li><a href="#Div_field">Dividing fields</a></li>
+</ul>
+</div>
+<div id="Add_number" class="ui-tabs-panel">
+<h2>Adding a number to a field</h2>
+<span class="ex"><u>Example: Add 2.5°F to the minimum temperature data from Bismarck, ND.</u></span>
+<p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">GLOBALSOD*</a>
+dataset main page.</span>
+</p>
+<span class="instruct">Select the station in Bismarck, ND. </span> <font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+727640+VALUE/">CHECK</a></font>
+<br /><span class="instruct">Select the minimum temperature data variable. </span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+727640+VALUE/.minimum/.temp/">CHECK</a> 
+<a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+727640+VALUE/.minimum/.temp/">EXPERT</a></font>
+<br /><span class="t">When adding a number to the field, the units of that data variable 
+are automatically used. Note the units of the minimum temperature data variable under 
+the Other Info heading.</span>
+<p>
+<a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+727640+VALUE/.minimum/.temp/" target="station">START</a>
+</p>
+<p>
+<span class="instruct">While in expert mode, enter the following line 
+below the text already there.</span>
+<pre class="ingridcode">2.5 add</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO/727640/VALUE/.minimum/.temp/2.5/add/">CHECK</a></font>
+</p><p>
+<span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select Tables link > Agree button> columnar table link. </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO/727640/VALUE/.minimum/.temp/2.5/add/T+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a></font>
+<span class="instruct">Compare with </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+727640+VALUE/.minimum/.temp/T+exch+table-+text+text+skipanyNaN+-table+.html">ORIGINAL DATA</a></font>
+</p>
+</div>
+<div id="Add_field" class="ui-tabs-panel">
+<h2>Adding fields</h2>
+<span class="ex"><u>Example: Create the observed monthly SST data by adding the 
+monthly climatological SST data and the monthly SST anomaly data.</u></span>
+<p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.</span>
+</p><p>
+<span class="t">Because we are combining an observational data string with a 
+climatological data string, we do not need to worry about the time grids matching. 
+We must only make sure that the two string have the same time scale (temporal resolution). In this 
+example, the time grids of each of the data variables look like this:</span>
+</p><p>
+<span class="t"><u>Climatological SST</u>
+<br />Time grid: /T (months since 01-Jan) periodic Jan to Dec by 1. N= 12 pts :grid</span>
+</p><p>
+<span class="t"><u>SSTA</u>
+<br />Time grid: /T (months since 1960-01-01) ordered Nov 1981 to Jul 2002 by 1. N= 
+249 pts :grid</span>
+</p><p>
+<span class="t">Note that both of the data variables have a monthly time scale and that the time 
+grid for the climatological data is periodic. Ingrid will automatically match that 
+periodic data properly with the SSTA time grid.</span>
+</p><p>
+<span class="instruct">Select the monthly SSTA and climatological SST data variables. </span>
+<font size="-1"> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/">EXPERT</a></font>
+</p><p>
+<a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/" target="gridded">START</a>
+</p><p><span class="instruct">While in expert mode, enter the following line below the 
+text already there.</span>
+<pre class="ingridcode">add</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/add/">CHECK</a></font>
+</p><p>
+<span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select a small region (175.5-150°W, 10-15°N) and 
+a single time step (May 1988) to make the size of the data file more manageable. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/a:/.climatology/.sst/:a:/.monthly/.ssta/:a/add/Y/%2810N%29%2815N%29RANGE/X/%28179.5W%29%28150W%29RANGE/T/%28May%201988%29VALUES/">CHECK</a> 
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/a:/.climatology/.sst/:a:/.monthly/.ssta/:a/add/Y/%2810N%29%2815N%29RANGE/X/%28179.5W%29%28150W%29RANGE/T/%28May%201988%29VALUES/" target="gridded">START</a></font>
+<br /><span class="instruct">Select Tables link > Agree button> columnar table link.</span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/a:/.climatology/.sst/:a:/.monthly/.ssta/:a/add/Y/%2810N%29%2815N%29RANGE/X/%28179.5W%29%28150W%29RANGE/T/%28May%201988%29VALUES/ngridtable+table-+skipanyNaN+3+-table+.html">CHECK</a></font>
+<span class="instruct">Compare with</span><font size="-1"> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/Y/%2810N%29%2815N%29RANGE/X/%28179.5W%29%28150W%29RANGE/T/%28May%201988%29VALUES/ngridtable+table-+skipanyNaN+3+-table+.html">CLIMO DATA</a></font>
+<span class="instruct">,</span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/Y/%2810N%29%2815N%29RANGE/X/%28179.5W%29%28150W%29RANGE/T/%28May%201988%29VALUES/ngridtable+table-+skipanyNaN+3+-table+.html">ANOMALY DATA</a></font> 
+<span class="instruct">and</span> 
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/Y/%2810N%29%2815N%29RANGE/X/%28179.5W%29%28150W%29RANGE/T/%28May%201988%29VALUES/ngridtable+table-+skipanyNaN+3+-table+.html">OBSERVED DATA</a></font> 
+<span class="instruct">.</span>
+</p>
+</div>
+<div id="Sub_number" class="ui-tabs-panel">
+<h2>Subtracting a number from a field</h2>
+<span class="ex"><u>Example: Subtract 2.5°F from the minimum temperature data from 
+Bismarck, ND.</u></span>
+<br /><span class="t">Refer to the example in Section Adding a Number to a Field.</span>
+<p>
+<span class="instruct">Substitute the following Ingrid command for <i>2.5 add</i>.</span>
+<pre class="ingridcode">2.5 sub</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO/727640/VALUE/.minimum/.temp/2.5/sub/">CHECK</a></font>
+<br /><span class="t">Note that Ingrid subtracts the second number/field listed (e.g., 
+2.5) from the first number/field listed (e.g., min. temperature).</span>
+</p>
+</div>
+<div id="Sub_field" class="ui-tabs-panel">
+<h2>Subtracting fields</h2>
+<p><span class="ex"><u>Example: Create the monthly climatological SST data by 
+subtracting the monthly SSTA data from the observed monthly SST data.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.</span>
+</p><p>
+<span class="t">Note the time grids of the two variables to be compared.</span>
+</p><p>
+<span class="t"><u>SSTA</u>
+<br />Time grid: /T (months since 1960-01-01) ordered Nov 1981 to Jul 2002 by 1. 
+N= 249 pts :grid</span>
+</p><p>
+<span class="t"><u>SST</u>
+<br />Time grid: /T (months since 1960-01-01) ordered Nov 1981 to Jul 2002 by 1. 
+N= 249 pts :grid</span>
+</p><p>
+<span class="t">As is common when comparing two variables from the same dataset, 
+their time grids match exactly. However, you should get always make a of point 
+of checking this.</span>
+</p><p>
+<span class="instruct">Make sure that the spatial grids of these two variables match.</span>
+<br /><span class="t">Now that we are sure that the grids match properly, this example 
+is very much like that in Section 1.b where we added the two fields. The primary 
+difference here is the order that the variables are listed. As noted in Section 1.c, 
+Ingrid subtracts the second field listed from the first field listed.</span>
+</p><p>
+<span class="instruct">Select the monthly SST and then the monthly SSTA data variables. </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/">EXPERT</a></font>
+</p><p>
+<a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/" target="gridded">START</a>
+</p><p>
+<span class="instruct">While in expert mode, enter the following line below the 
+text already there.</span>
+<pre class="ingridcode">sub</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/sub/">CHECK</a></font>
+</p>
+</div>
+<div id="Mul_number" class="ui-tabs-panel">
+<h2>Multiplying a field by a number</h2>
+<p>
+<span class="ex"><u>Example: Convert the units of the mean sea level pressure data 
+from mb to Pa by multiplying the field by 100.</u></span>
+<br /><span class="t">Note: there is an Ingrid command that converts units themselves 
+instead of just the data values. This is just an example and the units of the data will 
+still appear as mb after the arithmetic operation.</span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">GLOBALSOD*</a>
+dataset main page.
+<br />Select the mean sea level pressure data variable. </span><font size="-1"><a href="http://ingrid.ldgo.columbia.edu/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.mean/.sea_level/.pressure/">CHECK</a> 
+<a href="http://ingrid.ldgo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.mean/.sea_level/.pressure/">EXPERT</a></font>
+<br /><span class="instruct">While in expert mode, enter the following line below the text 
+already there.</span>
+<pre class="ingridcode">100 mul</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.mean/.sea_level/.pressure/100./mul/">CHECK</a></font>
+</p>
+</div>
+<div id="Mul_field" class="ui-tabs-panel">
+<h2>Multiplying fields</h2>
+<p>
+<span class="t">This operation works just like that covered in Sections 1.b and 1.d.</span>
+</p><p>
+<span class="t">Ensure that the grids of the variables match, select both of them, and use <span class="ingridcode">mul</span> as the operator in expert mode. The <span class="ingridcode">mul</span>
+command can also be used to find common entries in two different data strings.</span>
+</p>
+</div>
+<div id="Div_number" class="ui-tabs-panel">
+<h2>Dividing a field by a number</h2>
+<p>
+<span class="ex"><u>Example: Convert the units of the precipitation data from inches to cm 
+by dividing the field by 2.54.</u></span>
+<br /><span class="t">Note: there is an Ingrid command that converts units themselves instead of 
+just the data values. This is just an example and the units of the data will still appear as 
+inches after the arithmetic operation.</span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">GLOBALSOD*</a>
+dataset main page.
+<br />Select the precipitation data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.prcp/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.prcp/">EXPERT</a></font>
+<br /><span class="instruct">While in expert mode, enter the following line below the text already 
+there.</span>
+<pre class="ingridcode">2.54 div</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.prcp/2.54/div/">CHECK</a></font>
+</p><p>
+<span class="t">Note that Ingrid divides the first number/field listed (e.g., precipitation) by 
+the second number/field listed (e.g., 2.54).</span>
+</p>
+</div>
+<div id="Div_field" class="ui-tabs-panel">
+<h2>Dividing fields</h2>
+<p>
+<span class="t">This operation works just like that covered in Sections 1.b and 1.d.</span>
+</p><p>
+<span class="t">Ensure that the grids of the variables match, select both of them, and use <span class="ingridcode">div</span> as the operator in expert mode. Again, note that 
+Ingrid divided the first field listed by the second field listed.</span>
+</p>
+</div>
+</div>
+<div id="Limits" class="ui-tabs-panel">
+<h2>Setting Limits</h2>
+<span class="t">It is often useful to limit data values. You may want to set minimum and 
+maximum limits on data as a means of quality control or only use data that meets particular 
+criteria. Ingrid makes these types of operations very easy. Below are some common examples.</span>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li><a href="#Set">Setting a minimum/maximum</a></li>
+<li><a href="#Find">Finding a minimum/maximum</a></li>
+<li><a href="#Mask">Creating a numerical mask</a></li>
+<li><a href="#Flag">Flagging Data</a></li>
+</ul>
+</div>
+<div id="Set" class="ui-tabs-panel">
+<h2>Setting a minimum/maximum</h2>
+<p>
+<span class="ex"><u>Example: Create a data string where all minimum temperature data values 
+less than 0°C are given a value of 0°C.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">GLOBALSOD*</a>
+dataset main page.
+<br />Select the minimum temperature data variable. </span><font size="-1"> <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.minimum/.temp/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.minimum/.temp/">EXPERT</a></font>
+</p><p>
+<span class="t">As previously described, it is a good idea to note the units of the data 
+in question as all values in Ingrid are automatically referenced to the units of the 
+data variable.</span>
+</p><p>
+<span class="instruct">Note that units of temperature by looking at the information 
+under the Other Info heading.</span>
+<br /><span class="t">In this case, the units are in Fahrenheit and we must therefore give 
+our desired minimum temperature in Fahrenheit.</span>
+</p><p>
+<span class="instruct">While in expert mode, enter the following line below the text already 
+there.</span>
+<pre class="ingridcode">32. max</pre><span class="instruct">Click "OK".</span>
+</p><p>
+<span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select a single station (Vienna, WMO ID:110360) and short time period 
+(e.g., 1996) to make the size of the data file more manageable. </span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.minimum/.temp/32./max/IWMO/%28110360%29VALUE/T/%281%20Jan%201996%29%2831%20Dec%201996%29RANGE/">CHECK</a></font>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.minimum/.temp/32./max/IWMO/%28110360%29VALUE/T/%281%20Jan%201996%29%2831%20Dec%201996%29RANGE/" target="station">START</a>
+</p><p>
+<span class="instruct">Select Tables link > Agree button> columnar table link. </span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.minimum/.temp/32./max/IWMO/%28110360%29VALUE/T/%281%20Jan%201996%29%2831%20Dec%201996%29RANGE/T+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a></font>
+<span class="instruct">Compare with the</span> <font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.minimum/.temp/IWMO/%28110360%29VALUE/T/%281%20Jan%201996%29%2831%20Dec%201996%29RANGE/T+exch+table-+text+text+skipanyNaN+-table+.html">ORIGINAL DATA</a></font> 
+<span class="instruct">.</span>
+</p><p>
+<span class="t">An analogous operation, setting a maximum value of 0°C, can be done by 
+replacing the command <i>32. max</i> with <span class="ingridcode">32. min</span>.</span>
+</p>
+</div>
+<div id="Find" class="ui-tabs-panel">
+<h2>Finding a minimum/maximum</h2>
+<p>
+<span class="t">There are two common uses of these feature. You may want to find a minimum/maximum 
+value in a particular region or time period. Let's look at examples of these operations.</span>
+</p><p>
+<span class="ex"><u>Example: Find the largest SSTAs for the entire time grid.</u></span>
+<br /><span class="t">This example finds the largest SSTA from the entire time grid for each 
+grid point. The result is the largest SSTA as function of X (longitude) and Y (latitude). 
+Of course, you can limit the time grid to find the largest SSTAs in a more specific
+time period.</span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.
+<br />Select the monthly SSTA data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/">EXPERT</a></font>
+</p><p>
+<span class="t">To find the largest positive SSTA:</span>
+<br /><span class="instruct">While in expert mode, enter the following line below the text 
+already there.</span>
+<pre class="ingridcode">[T] maxover</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta%5BT%5Dmaxover/">CHECK</a></font>
+</p><p>
+<span class="t">To find the largest negative SSTA:</span>
+<br /><span class="instruct">While in expert mode, enter the following line below the text 
+already there.</span>
+<pre class="ingridcode">[T] minover</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta%5BT%5Dminover/">CHECK</a></font>
+</p><p><span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select views icon furthest to the left in the function bar that has 
+the land in black. </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta%5BT%5Dminover/figviewer.html?map.url=X+Y+fig-+colors+land+-fig&amp;my.help=more+options">CHECK</a></font>
+</p><p>
+<span class="ex"><u>Example: Find the largest SSTAs for the entire spatial grid.</u></span>
+<br /><span class="t">This example finds the largest SSTA from the entire spatial grid for each time 
+step. The result is the maximum global SSTA as a function of T (time). Of course, you can
+limit the spatial grid to find the largest SSTAs in a specific region.</span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.
+<br />Select the monthly SSTA data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/">EXPERT</a></font>
+<br /><span class="t">To find the largest positive SSTA:</span>
+<br /><span class="instruct">While in expert mode, enter the following line below the text already 
+there.</span>
+<pre class="ingridcode">[X Y] maxover</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta%5BX/Y%5Dmaxover/">CHECK</a></font>
+</p><p>
+<span class="t">To find the largest negative SSTA:</span>
+<br /><span class="instruct">While in expert mode, enter the following line below the text already 
+there.</span>
+<pre class="ingridcode">[X Y] minover</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta%5BX/Y%5Dminover/">CHECK</a></font>
+</p><p>
+<span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select Tables link > columnar table link.</span><font size="-1"> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta%5BX/Y%5Dminover/T+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a></font>
+</p>
+</div>
+<div id="Mask" class="ui-tabs-panel">
+<h2>Creating a numerical mask</h2>
+<p>
+<span class="t">Masks make data values that meet a particular threshold equal to NaN.</span>
+</p><p>
+<span class="ex"><u>Example: Mask out the maximum temperature values greater than 100°F.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">GLOBALSOD*</a>
+dataset main page.
+<br />Select the maximum temperature data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.temp/">CHECK</a></font>
+<br /><span class="instruct">Note that the temperature unit is Fahrenheit.</span>
+<br /><span class="t">This is good because our mask threshold is also in Fahrenheit. If the units 
+had not agreed, then we would have had to convert the mask threshold to the units of the data
+variable.</span>
+</p><p>
+<span class="instruct">While in expert mode, enter the following line below the text already 
+there.</span>
+<pre class="ingridcode">100. maskgt</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.temp/100./maskgt/">CHECK</a></font>
+</p><p>
+<span class="t">An analogous operation, masking out the maximum temperature values less than 
+100°F, can be done by replacing <span class="ingridcode">maskgt</span> with <span class="ingridcode">masklt</span>.</span>
+</p><p>
+<span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select a single station (Damascus, WMO ID: 400800) and a short time 
+period (Jun 1994) to make the size of the data file more manageable. </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.temp/100/maskgt/IWMO/%28400800%29VALUES/T/%281%20Jun%201994%29%2830%20Jun%201994%29RANGE/">CHECK</a></font>
+</p><p>
+<a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.temp/100/maskgt/IWMO/%28400800%29VALUES/T/%281%20Jun%201994%29%2830%20Jun%201994%29RANGE/" target="station">START</a>
+</p><p>
+<span class="instruct">Select Tables link > Agree button> columnar table link. </span>
+<font size="-1"> <a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.temp/100/maskgt/IWMO/%28400800%29VALUES/T/%281%20Jun%201994%29%2830%20Jun%201994%29RANGE/T+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a></font>
+<span class="instruct">Compare with the</span> <font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.temp/IWMO/%28400800%29VALUES/T/%281%20Jun%201994%29%2830%20Jun%201994%29RANGE/T+exch+table-+text+text+skipanyNaN+-table+.html">ORIGINAL DATA</a></font> 
+<span class="instruct">. Note that the data value from June 15 is missing. (Tables exclude NaN values.)</span>
+</p>
+</div>
+<div id="Flag" class="ui-tabs-panel">
+<h2>Flagging Data</h2>
+<p>
+<span class="t">Flags create a binary version of any variable based on a particular threshold. 
+Those data that meet the threshold are given a value of 1 and those that do not receive a value
+of 0.</span>
+</p><p>
+<span class="ex"><u>Example: Flag snow depth values greater than 1 meter.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">GLOBALSOD*</a>
+dataset main page.
+<br />Select the snow depth data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.snow/">CHECK</a></font>
+<br /><span class="instruct">Note that the depth unit is inches.</span>
+<br /><span class="t">Our flag threshhold is in meters, so we must convert that depth to give Ingrid 
+the threshhold in the units of the data variable.</span>
+</p><p>
+<span class="instruct">While in expert mode, enter the following line below the text already 
+there.</span>
+<pre class="ingridcode">39.4 flaggt</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.snow/39.4/flaggt/">CHECK</a></font>
+</p><p>
+<span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select a single station (Pellston, MI, WMO ID: 727347) and a short time 
+period (Jan-Feb 1996) to make the size of the data file more manageable. </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.snow/39.4/flaggt/T/%281%20Jan%201996%29%2828%20Feb%201996%29RANGE/IWMO/727347/VALUE/">CHECK</a></font>
+</p><p>
+<a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.snow/39.4/flaggt/T/%281%20Jan%201996%29%2828%20Feb%201996%29RANGE/IWMO/727347/VALUE/" target="station">START</a>
+</p><p>
+<span class="instruct">Select Tables link > Agree button> columnar table link. </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.snow/39.4/flaggt/T/%281%20Jan%201996%29%2828%20Feb%201996%29RANGE/IWMO/727347/VALUE/T+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a></font>
+<span class="instruct">Compare with the<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO/727347/VALUE/.snow/T/%281%20Jan%201996%29%2828%20Feb%201996%29RANGE/T+exch+table-+text+text+skipanyNaN+-table+.html">ORIGINAL DATA</a></font> </span>
+<span class="instruct">.</span>
+</p><p>
+<span class="t">An analogous operation, flagging snow depths less than 1 meter, can be done by 
+replacing <i>flaggt</i> with <span class="ingridcode">flaglt</span>.</span>
+</p>
+</div>
+</div>
+<div id="Averages" class="ui-tabs-panel">
+<h2>Creating Averages</h2>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li><a href="#Spatial">Spatial Averages</a></li>
+<li><a href="#Chunk">Seasonal/Chunk Averages</a></li>
+<li><a href="#Running">Running Averages</a></li>
+</ul>
+</div>
+<div id="Spatial" class="ui-tabs-panel">
+<h2>Spatial averages</h2>
+<p>
+<span class="t">When creating a spatial average of station of data, one typically wants to take 
+into account the location of each station (e.g., weighted average). That operation is beyond
+the scope of this tutorial. However, creating a spatial average of gridded data is much more 
+straightforward and an example is given here.</span>
+</p><p>
+<span class="ex"><u>Example: Find the spatial average of monthly SST data in a region in the Gulf 
+of Mexico defined by 83°-97°W, 21°-30°N for Jan-Dec 1998.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.
+<br />Select the monthly SST data variable.</span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/">CHECK</a></font>
+<br /><span class="instruct">Select the 1998 time period and the lat/lon defined region. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/Y/%2821N%29%2830N%29RANGE/X/%2897W%29%2883W%29RANGE/T/%28Jan%201998%29%28Dec%201998%29RANGE/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/Y/%2821N%29%2830N%29RANGE/X/%2897W%29%2883W%29RANGE/T/%28Jan%201998%29%28Dec%201998%29RANGE/">EXPERT</a></font>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/Y/%2821N%29%2830N%29RANGE/X/%2897W%29%2883W%29RANGE/T/%28Jan%201998%29%28Dec%201998%29RANGE/" target="gridded">START</a>
+</p><p>
+<span class="instruct">Enter expert mode and enter the following line below the text already 
+there.</span>
+<pre class="ingridcode">[X Y] average</pre><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/Y/%2821N%29%2830N%29RANGE/X/%2897W%29%2883W%29RANGE/T/%28Jan%201998%29%28Dec%201998%29RANGE%5BX/Y%5Daverage/">CHECK</a></font>
+</p><p>
+<span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select one of the views links in the function bar.</span>
+</p><p>
+<span class="t">This procedure can be easily applied to other types of spatial averaging. For 
+example, if you wanted to create a zonal average, then you would use the following line of Ingrid
+instead.</span>
+<pre class="ingridcode">[X] average</pre><span class="t">This creates a zonal average as a function of T (time) and Y (latitude). Click 
+<a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/Y/%2821N%29%2830N%29RANGE/X/%2897W%29%2883W%29RANGE/T/%28Jan%201998%29%28Dec%201998%29RANGE%5BX%5Daverage/figviewer.html?map.url=Y+T+fig-+colors+-fig&amp;my.help=more+options">here</a>
+to see an example of this operation.</span>
+</p>
+</div>
+<div id="Chunk" class="ui-tabs-panel">
+<h2>Seasonal/chunk averages</h2>
+<p>
+<span class="ex"><u>Example: Create seasonal averages (DJF, MAM, JJA, SON) of monthly SST data 
+from 1990-1999.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.
+<br />Select the monthly SST data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/">CHECK</a></font>
+<br /><span class="instruct">Select the Dec 1989-Nov 1999 time period. </span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Dec%201989%29%28Nov%201999%29RANGE/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Dec%201989%29%28Nov%201999%29RANGE/">EXPERT</a></font>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Dec%201989%29%28Nov%201999%29RANGE/" target="gridded">START</a>
+</p><p>
+<span class="instruct">While in expert mode, enter the following line below the text already there.
+<pre class="ingridcode">T 3 boxAverage</pre>Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Dec%201989%29%28Nov%201999%29RANGE/T/3/boxAverage/">CHECK</a></font>
+</p><p>
+<span class="t">To see an animation of the seasonal averages you just created:</span>
+<br /><span class="instruct">Select the views link furthest to the left in the function bar.
+<br />Enter the "Jan 1990 to Oct 1999" in the time text box at the top of the data viewer.
+<br />Click "Redraw". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Dec%201989%29%28Nov%201999%29RANGE/T/3/boxAverage/figviewer.html?my.help=more+options&amp;map.T.plotvalue=Jan+1990+to+Oct+1999&amp;map.Y.units=degree_north&amp;map.Y.plotlast=90N&amp;map.url=X+Y+fig-+colors+land+-fig&amp;map.domain=+%7B+%2Fsst+-1.79+30.51333+plotrange+%2FT+360.5+477.5+plotrange+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef+%2FXOVY+null+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=90S&amp;map.X.plotfirst=180W&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=180&amp;map.sst.plotfirst=-1.79&amp;map.sst.units=Celsius_scale&amp;map.sst.plotlast=30.51333&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+land&amp;map.newurl.plot=colors&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.XOVY=auto&amp;map.color_smoothing=1&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a></font>
+</p><p>
+<span class="t">Note that if you had wanted JFM, AMJ, JAS, OND seasonal averages, then the selected 
+time period would have been Jan 1990 to Dec 1999. Another important point here is that the step over 
+which the average is created is always in the units of the data variable in question. For example, 
+had the SST data been at a daily time scale, the above Ingrid command would have created a 3-day
+average instead of a 3-month average. Therefore, it is an excellent idea to get in the habit of 
+making sure the units of the data variable and the step agree with each other. The technique 
+used in this example is particularly useful when 12 is evenly divisible by the step over which 
+you want to average. The next example addresses the cases when this is not true.</span>
+</p><p>
+<span class="ex"><u>Example: Create a May-Sept averages of SSTA data for the time period 1985-1994.</u></span>
+<br /><span class="t">This example creates an average over 5 months. Twelve is not evenly divisible by 
+this step (e.g., 5 months) so we much use a different technique than the one above.</span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.
+<br />Select the monthly SSTA data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/">CHECK</a></font>
+<br /><span class="instruct">Select the Jan 1985- Dec 1994 time period. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201985%29%28Dec%201994%29RANGE/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201985%29%28Dec%201994%29RANGE/">EXPERT</a></font>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201985%29%28Dec%201994%29RANGE/" target="gridded">START</a>
+</p><p>
+<span class="instruct">While in expert mode, enter the following line below the text already there.
+<pre class="ingridcode">T 12 splitstreamgrid</pre>Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201985%29%28Dec%201994%29RANGE/T/12/splitstreamgrid/">CHECK</a></font>
+</p><p>
+<span class="t">This Ingrid command splits the time grid with a period of 12. That is, in this example, 
+it creates a dataset of Jan data, a dataset of Feb data, etc. This is an important step, but we are not quite 
+finished.</span>
+</p><p>
+<span class="instruct">Select May-Sept grids and average over them with the following Ingrid commands.
+<pre class="ingridcode">T (May) (Jun) (Jul) (Aug) (Sep) VALUES
+<br />[T] average</pre>Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201985%29%28Dec%201994%29RANGE/T/12/splitstreamgrid/T/%28May%29%28Jun%29%28Jul%29%28Aug%29%28Sep%29VALUES%5BT%5Daverage/">CHECK</a></font>
+</p><p>
+<span class="t">There is also a convenient option if you want to create averages/climatologies of 
+single months.</span>
+</p><p>
+<span class="ex"><u>Example: Create a monthly climatology of SST data for the time period 1982-2001.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.
+<br />Select the monthly SST data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/">CHECK</a></font>
+<br /><span class="instruct">Select the Jan 1982-Dec 2001 time period. </span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/">EXPERT</a></font>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/" target="gridded">START</a>
+</p><p>
+<span class="instruct">Select the Filters link in the function bar.
+<br />Select the monthly climatology link.</span>
+<br /><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/yearly-climatology/">CHECK</a>  
+<a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/yearly-climatology/">EXPERT</a></font>
+</p><p>
+<span class="t">Note that this command can only be applied to monthly data. </span>
+</p>
+</div>
+<div id="Running" class="ui-tabs-panel">
+<h2>Running averages</h2>
+<p>
+<span class="t">This operation offers a fast and easy way to smooth data temporally. Let's look at an 
+example.</span>
+</p><p>
+<span class="ex"><u>Example: Create a 15-day running average of precipitation data.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">GLOBALSOD*</a>
+dataset main page.
+<br />Select the precipitation data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.prcp/">CHECK</a></font>
+</p><p>
+<span class="t">At this point, it is a good habit to check the temporal unit to make sure it agrees with 
+how you want to define your average step. In this example, we want to create a 15-day running mean . 
+Therefore, the unit over which we want to average is a day.</span>
+</p><p>
+<span class="instruct">Make sure that the temporal unit of the precipitation data is the same as the unit 
+over which you want to average.
+<br />While in expert mode, enter the following line below the text already there.
+<pre class="ingridcode">T 15 runningAverage</pre>Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.prcp/T/15/runningAverage/">CHECK</a></font>
+</p><p>
+<span class="t">Note that this operation will truncate the data to fit the step. In this example, we have 
+a step of 15 days and are using the full time grid of Jan 8, 1994 - Dec 25, 1999. Therefore, after the 
+running mean is created, the data will include the dates Jan 15, 1994 - Dec 18, 1999.</span>
+</p><p>
+<span class="t">To see the results of this operation:</span>
+<br /><span class="instruct">Select a station (Barcelona, Spain, WMO ID: 81810).</span>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+81810+VALUE/.prcp/" target="station">START</a>
+</p><p>
+<span class="t">Select one of the views links in the function bar. Compare with those from the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+81810+VALUE/.prcp/figviewer.html?plottype=line">line</a>
+, <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+81810+VALUE/.prcp/figviewer.html?map.url=dup+T+fig-+colorbars2+-fig">bar</a>
+, and <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+81810+VALUE/.prcp/figviewer.html?map.url=T+exch+fig-+scatter+-fig">scatter</a> 
+plots of the original data.</span>
+</p>
+</div>
+</div>
+<div id="Other" class="ui-tabs-panel">
+<h2>Statistical and Other Mathematical Operations</h2>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li><a href="#Anomalies">Anomalies</a></li>
+<li><a href="#Correlation">Correlation</a></li>
+<li><a href="#Trig">Trigonometric Functions</a></li>
+</ul>
+</div>
+<div id="Anomalies" class="ui-tabs-panel">
+<h2>Anomalies</h2>
+<p>
+<span class="t">Earth science data is commonly viewed in term of anomalies (i.e., difference between 
+observations and climatology) rather than as raw values. Anomalies can be produced with Ingrid by first 
+calculating a climatology and then calculating the difference between it and the observed data. However, 
+Ingrid also has a single command that does all of these calculations. Let's look at an example.</span>
+</p><p>
+<span class="ex"><u>Example: Recreate the SSTA data for the time period 1982-2001.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.
+<br />Select the monthly SST data variable. </span><font size="-1"><a href="http://ingrid.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/">CHECK</a></font>
+<br /><span class="instruct">Select the Jan 1982-Dec 2001 time period. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/">EXPERT</a></font>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/" target="gridded">START</a>
+</p><p>
+<span class="instruct">While in expert mode, enter the following line below the text already there.
+<pre class="ingridcode">yearly-anomalies</pre>Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/T/%28Jan%201982%29%28Dec%202001%29RANGE/yearly-anomalies/">CHECK</a></font>
+</p><p>
+<span class="t">You have just created the SSTA anomalies for the time period 1982-2001 based 
+a 1982-2001 climatology. While convenient, this operation is bit limited in that it can be applied to
+monthly data. And like the <i>yearly-climatology</i> command, you can find this options via the 
+"Filters" link in the function bar.</span>
+</p>
+</div>
+<div id="Correlation" class="ui-tabs-panel">
+<h2>Correlation</h2>
+<p>
+<span class="t">This is an excellent example that combines many of the techniques covered to this point.</span>
+</p><p>
+<span class="ex"><u>Example: Correlate precipitation amount observations in Chimbote, Peru with SSTA in 
+the region defined by 130°-90°W, 5°-15°S for the time period 1997-1998.</u></span>
+<br /><span class="tb">Note: in order to correlate two sets of data, they must have the exact same 
+temporal unit.</span>
+</p><p>
+<span class="t">Up to this point, we have been using the GLOBALSOD dataset for our station data. 
+However, you can see in the time grid information of this dataset that its temporal unit is days while  
+that of the Reyn_Smith SST data we have been using is months since 1960. For simplicity, let's use another station dataset, 
+NOAA NCDC GHCN v2beta, that has monthly data defined as months since 1960.</span>
+</p><p>
+<span class="instruct">Select the NOAA NCDC GHCN v2beta dataset by either searching for it or through the 
+SOURCES option. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/">CHECK</a></font>
+<br /><span class="instruct">Select the station in Chimbote, Peru (WMO ID: 84531000).</span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO+84531000+VALUE/">CHECK</a></font>
+<br /><span class="instruct">Select the precipitation variable. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO+84531000+VALUE/.prcp/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO+84531000+VALUE/.prcp/">EXPERT</a></font>
+<br /><span class="instruct">Select the Jan 1997-Dec 1998 time period.</span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO/84531000/VALUE/.prcp/T/%28Jan%201997%29%28Dec%201998%29RANGE/">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO/84531000/VALUE/.prcp/T/%28Jan%201997%29%28Dec%201998%29RANGE/">EXPERT</a></font>
+</p><p>
+<span class="t">At this point, when the first dataset selections have been made, it is typically easiest 
+to make the second dataset selections in expert mode.</span>
+</p><p>
+<span class="instruct">While in expert mode, enter the following lines below the text already there. All 
+of these commands should look familiar to you from previous examples.
+<pre class="ingridcode">
+SOURCES .NOAA .NCEP .EMC .CMB .GLOBAL .Reyn_SmithOIv1 .monthly .ssta
+T (Jan 1997) (Dec 1998) RANGE
+X (130W) (90W) RANGE
+Y (15S) (5S) RANGE
+</pre>
+Click "OK". </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO/84531000/VALUE/.prcp/T/%28Jan%201997%29%28Dec%201998%29RANGE/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201997%29%28Dec%201998%29RANGE/X/%28130W%29%2890W%29RANGE/Y/%2815S%29%285S%29RANGE/">CHECK</a></font>
+</p><p>
+<a href="/expert/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO/84531000/VALUE/.prcp/T/%28Jan%201997%29%28Dec%201998%29RANGE/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201997%29%28Dec%201998%29RANGE/X/%28130W%29%2890W%29RANGE/Y/%2815S%29%285S%29RANGE/" target="GHCN">START</a>
+</p><p>
+<span class="t">You now have two data fields with identical time grids. Let's correlate these fields.</span>
+<br />
+</p><p>
+<span class="instruct">While in expert mode, enter the following lines below the text already there.
+<pre class="ingridcode">[T] correlate</pre>Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO/84531000/VALUE/.prcp/T/%28Jan%201997%29%28Dec%201998%29RANGE/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201982%29%28Dec%202001%29RANGE/X/%28130W%29%2890W%29RANGE/Y/%2815S%29%285S%29RANGE%5BT%5Dcorrelate/">CHECK</a></font>
+</p><p>
+<span class="t">To view the correlation data you just produced:</span>
+<br /><span class="instruct">Select one of the views links in the function bar.</span>
+<br /><span class="t">OR</span>
+<br /><span class="instruct">Select Tables link > Agree button > columnar table link. </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.GHCN/.v2beta/IWMO/84531000/VALUE/.prcp/T/%28Jan%201997%29%28Dec%201998%29RANGE/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jan%201982%29%28Dec%202001%29RANGE/X/%28130W%29%2890W%29RANGE/Y/%2815S%29%285S%29RANGE%5BT%5Dcorrelate/ngridtable+table-+skipanyNaN+3+-table+.html">CHECK</a></font>
+<br /><span class="t">You can correlate over the spatial grids as well by replacing [T] with [X], [Y], [X Y], etc.</span>
+</p>
+</div>
+<div id="Trig" class="ui-tabs-panel">
+<h2>Trigonometric functions</h2>
+<p>
+<span class="t">Basic trig functions are typically used with the spatial grids. The results of this 
+function can then be used as part a broader technique, such as spatial weighting.</span>
+</p><p>
+<span class="ex"><u>Example: Find the cosine of a latitudinal grid of weekly SST data.</u></span>
+</p><p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a>
+dataset main page.
+<br />Select the weekly SST data variable. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.weekly/.sst/">CHECK</a></font>
+<br /><span class="instruct">While in expert mode, enter the following line after the text already there.</span>
+<pre class="ingridcode">Y cosd</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.weekly/.sst/Y/cosd/">CHECK</a></font>
+<br /><span class="t">To find the sine of data, replace cosd with <span class="ingridcode">sind</span>.</span>
+</p><p>
+<span class="t">To view the data you just produced:</span>
+<br /><span class="instruct">Select one of the views links in the function bar.</span>
+<br /><span class="t">OR</span>
+<br /><span class="instruct">Select Tables link > columnar table link.</span><font size="-1"> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.weekly/.sst/Y/cosd/Y+exch+table-+text+text+skipanyNaN+-table+.html">CHECK</a></font>
+</p></div>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
+
