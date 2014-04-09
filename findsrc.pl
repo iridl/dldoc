@@ -9,6 +9,8 @@ while(<filelist>){
 	$hasoutput{"$_"} = "1";
     }
     push @files, $_;
+    $all{"$_"}="1";
+    $all{"$out"}="1";
 }
 close filelist;
 if($ARGV[0] eq 'src'){
@@ -29,7 +31,7 @@ elsif($ARGV[0] eq 'bld') {
 }
 else {
 # out -- outputs final file list (omits source xhtml files)
-    foreach $vval (@files){
+    foreach $vval (sort keys %all){
 	if(!$hasoutput{$vval}){
 	    print "$vval\n";
 	}
