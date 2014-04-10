@@ -12,3 +12,15 @@ margin-right: auto;
 display: block;
 float: none
 }
+/*
+	.instruct	{font: 12pt helvetica, sans-serif; color: #FF0000; }
+	h1		{font: 20pt helvetica, sans-serif; color: #660000; }
+	h2		{font: 18pt helvetica, sans-serif; color: #660000; }
+	h3		{font: 12pt helvetica, sans-serif; color: #660000; }
+	.t		{font: 12pt helvetica, sans-serif; color: #000066; }
+*/
+	.instruct	{color: #660000; }
+	.t2		{color: #006600; }
+	.ex		{color: #009900; }
+	.tb		{font-weight: bold; color: #009900; }
+	.go		{color: #990000; }

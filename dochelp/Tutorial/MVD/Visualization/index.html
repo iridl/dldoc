@@ -1,0 +1,551 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="author" content="Emily K. Grover" />
+<title>Visualizing Data</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="mvd02" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialMVD" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/Tutorial/">Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a HREF="#EX1">1. Color Map</a></li>
+<li> <a HREF="#EX2">2. Contour Map</a></li>
+<li> <a HREF="#EX3">3. Line,Scatter,Bar</a></li>
+<li> <a HREF="#EX4">4. Vector plot</a></li>
+<li> <a HREF="#EX5">5. Cross Section</a></li>
+<li> <a HREF="#EX6">6. Animation</a></li>
+<li> <a HREF="#EX7">7. Custom Color Scale</a></li>
+<li> <a HREF="#EX8">8. Land Mask</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<div style="float:left; margin-right: 10pt;">
+<table border="5" cellpadding="2" align="center">
+<tr align="center"><th colspan="2">Index Of Tools</th></tr>
+<tr align="center"><th>Tool</th><th>Example</th></tr>
+<tr align="center"><th>animation</th><td><a href="#EX6">6</a></td></tr>
+<tr align="center"><th>bar plot</th><td><a href="#EX3">3</a></td></tr>
+<tr align="center"><th>color shading</th><td><a href="#EX1">1</a>, <a href="#EX3">3</a>, <a href="#EX4">4</a>, <a href="#EX5">5</a></td></tr>
+<tr align="center"><th>contour</th><td><a href="#EX2">2</a>, <a href="#EX5">5</a></td></tr>
+<tr align="center"><th>cross section</th><td><a href="#EX5">5</a></td></tr>
+<tr align="center"><th>custom colorscale</th><td><a href="#EX7">7</a></td></tr>
+<tr align="center"><th>data viewer</th><td><a href="#EX1">1</a>, <a href="#EX2">2</a>, <a href="#EX3">3</a>, <a href="#EX5">5</a>, <a href="#E63">6</a></td></tr>
+<tr align="center"><th>land mask</th><td><a href="#EX8">8</a></td></tr>
+<tr align="center"><th>land overlays</th><td><a href="#EX1">1</a>, <a href="#EX2">2</a>, <a href="#EX4">4</a></td></tr>
+<tr align="center"><th>line plot</th><td><a href="#EX3">3</a></td></tr>
+<tr align="center"><th>matching grids</th><td><a href="#EX8">8</a></td></tr>
+<tr align="center"><th>multiple variables</th><td><a href="#EX4">4</a>, <a href="#EX5">5</a></td></tr>
+<tr align="center"><th>scatter plot</th><td><a href="#EX3">3</a></td></tr>
+<tr align="center"><th>vector</th><td><a href="#EX4">4</a></td></tr>
+</table>
+</div>
+<h2 property="term:title">Visualizing Data</h2>
+<p property="term:description">
+The data selection and manipulation capabilities of the Data Library are 
+extremely valuable on their own, but its data visualization techniques make the Data Library 
+the truly complete tool that it is. </p>
+<p> While a discussion of all of these capabilities 
+is not practical for this tutorial, a summary of the most commonly used tools is 
+offered here.  As in the previous sections, you will learn how to use these tools with the 
+interface utilities as well as with Ingrid commands in expert mode.    
+It is suggested that you become acquainted with all of the functions described in this 
+section by working through it example by example. However, if you are looking for an example of 
+a particular tool, then please refer to the following tabular index.
+</p>
+</div>
+<div id="EX1" class="ui-tabs-panel">
+<h2>Example 1: Create color maps of global monthly SSTA for June 1998 with 1) the land in 
+black, and 2) the continents outlined.</h2>
+<p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a> 
+dataset main page.
+<br />Select the monthly SSTA data variable.
+<br />Select the June 1998 time period.</span><font size="-1"> <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/">CHECK</a></font>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/" target="gridded">START</a>
+</p><p>
+<span class="tb"><u>Method 1: Views Links</u></span>
+<br />There are three colored views icons in the function bar and two of them represent the 
+maps that we want to create.
+</p><p>
+<span class="instruct">Select the icon that shows the continents outlined. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig">CHECK</a></font>
+<br /><span class="instruct">Go back to the June 1998 SSTA page with either the back button or the source bar.
+<br />Select the icon that shows the land in black. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/figviewer.html?map.url=X+Y+fig-+colors+land+-fig">CHECK</a></font>
+<br /><span class="instruct">Go back to the June 1998 SSTA page with either the back button or the source bar.</span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/">CHECK</a></font>
+<br />Note the other views icons in the function bar.  You can obtain maps similar to these images 
+(e.g., contoured maps) by selecting them as well.
+</p><p>
+<span class="tb"><u>Method 2: Data Viewer</u></span>
+<br />These same options are available in pull-down menus in the Data Viewer.
+</p><p>
+<span class="instruct">Select the "Views" link in the function bar.
+<br />Locate the pull-down menu with the default "draw land".
+<br />Browse this menu and it's options to create maps with a variety of continent and country information. </span>
+<br />These same overlay options, along with many other plotting options, can be found via the "plot" 
+button in the table at the bottom of the page.
+</p><p>
+<span class="instruct">Select the "plot" button.</span>
+<br />Note the contents of the text box.  As you make selections in the pull-down 
+menus you will see these commands change to indicate your selection.  You will also see these commands 
+in Method 3 when we discuss how to use these tools in expert mode.
+</p><p>
+<span class="instruct">Experiment with the overlay options to create similar images as you did above.  Your selections 
+will be drawn when you select the "plot" button.
+<br />Experiment with the color scale pull-down menu.  Your selections will be drawn when you select 
+"plot" button.</span>
+<br /><span class="instruct">Go back to the June 1998 SSTA page with either the back button or the source bar.</span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/">CHECK</a></font>
+</p><p>
+<span class="tb"><u>Method 3: Expert Mode</u></span>
+<br /><span class="instruct">While in expert mode, enter the following line below the text already there.</span>
+<pre class="ingridcode">
+X Y fig: colors land :fig
+</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/X/Y/fig-/colors/land/-fig/">CHECK</a></font>
+<br />From this page, you can click on the map to enter the data viewer. To produce a map with the 
+continents outlined, replace <i>X Y fig: colors land :fig</i> with
+<span class="ingridcode">X Y fig: colors coasts :fig</span>.
+</p><p>
+As mentioned in Method 2, all of the options in the pull-down menus can be put directly 
+into expert mode.  In this case, where we are only plotting colors and various overlays, the proper 
+order of these options is as follows:
+<pre class="ingridcode"><i>color_scale</i>
+X Y fig: colors overlay_descript overlay_type :fig
+</pre>
+Specifically, to create a map of SSTAs using the default color scale for SST data 
+with grey land,
+</p><p>
+<span class="instruct">Delete any figure information existing in the text box.  Only the dataset, variable, 
+and time selections should be in the text box. </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/">CHECK</a></font>
+<br /><span class="instruct">Enter the following lines:</span>
+<pre class="ingridcode">
+sstcolorscale
+X Y fig: colors gray land :fig
+</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/sstcolorscale/X/Y/fig:/colors/grey/land/:fig/">CHECK</a></font>
+</p>
+</div>
+<div id="EX2" class="ui-tabs-panel">
+<h2>Example 2: Create a contoured map of February surface potential temperature with 
+contours of varying characteristics (e.g., thickness, type, etc.).</h2>
+<p>This example provides the opportunity to explore many of the features of the 
+data viewer.  We also introduce a new dataset, Levitus94, for this example.  The Levitus dataset 
+contains gridded oceanic data on the monthly, seasonal, and annual time scales.
+</p><p>
+<span class="instruct">Find the Levitus94 dataset using one of the methods highlighted in Part I 
+or go directly to it <a href="http://ingrid.ldeo.columbia.edu/SOURCES/.LEVITUS94/" target="levitus">
+here*</a>. </span><font size="-1"><a href="http://ingrid.ldeo.columbia.edu/SOURCES/.LEVITUS94/">CHECK</a></font>
+<br /><span class="instruct">Select the monthly potential temperature data variable.
+<br />Select the month of February. 
+<br />Select the data for the surface (Z=0). </span><font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.MONTHLY/.theta/T/%28Feb%29VALUES/Z/%280%29VALUES/">CHECK</a></font>
+</p><p>
+<a href="/expert/SOURCES/.LEVITUS94/.MONTHLY/.theta/T/%28Feb%29VALUES/Z/%280%29VALUE/" target="levitus">START</a>
+</p><p>
+<span class="tb"><u>Method 1: Data Viewer</u></span>
+<br /><span class="instruct">Select the views icon that is contoured and has land drawn in black. </span>
+<font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.MONTHLY/.theta/T/%28Feb%29VALUES/Z/%280%29VALUE/figviewer.html?map.url=X+Y+fig-+contours+land+-fig&amp;my.help=more+options">CHECK</a></font>
+<br /><span class="instruct">Select the "plot" button in the table at the bottom of the page.</span>
+<font size="-1"><a href="/SOURCES/.LEVITUS94/.MONTHLY/.theta/T/%28Feb%29VALUES/figviewer.html?my.help=&amp;map.Z.plotvalue=0.0&amp;map.Y.units=degree_north&amp;map.Y.plotlast=90N&amp;map.url=X+Y+fig-+contours+land+-fig&amp;map.domain=+%7B+%2FZ+0.0+plotvalue+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=90S&amp;map.X.plotfirst=0&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=0&amp;map.theta.plotfirst=&amp;map.theta.units=degree_Celsius&amp;map.theta.plotlast=&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+land&amp;map.newurl.plot=contours&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200&amp;my.help=plot">CHECK</a></font>
+<br />Note the contents of the text box.  As you make selections in the pull-down 
+menus you will see these commands change to indicate your selection.  You will also see these commands 
+in Method 2 when we discuss how to use these tools in expert mode.
+</p><p>
+<span class="instruct">Experiment with the pull-down menus to get a feel for the options of color, 
+thickness, and line type.
+<br />Return to the Feb potential temperature variable page. </span>
+<font size="-1"><a href="/SOURCES/.LEVITUS94/.MONTHLY/.theta/T/%28Feb%29VALUES/Z/%280%29VALUES/">CHECK</a></font>
+</p><p>
+<span class="tb"><u>Method 2: Expert Mode</u></span>
+<br />As in Example 1, the contour characteristic options available in the menus 
+of the data viewer can be put directly into expert mode. The proper order of these options is as 
+follows:
+<pre class="ingridcode">
+X Y fig: <i>contour_descript contour_descript</i> contours <i>overlay_descript overlay_type</i> :fig
+</pre>
+</p><p>
+Try creating a map of potential temperature in yellow dashed medium contours with 
+coasts and countries outlined in solid thin blue lines.
+<br /><span class="instruct">Enter expert mode.
+<br />Enter the following lines below the text already there.</span>
+<pre class="ingridcode">
+X Y fig: yellow uniform dashed medium contours blue solid thin coasts countries :fig
+</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.MONTHLY/.theta/T/%28Feb%29VALUES/Z/%280%29VALUES/X/Y/fig:/yellow/uniform/dashed/medium/contours/blue/solid/thin/coasts/countries/:fig/">CHECK</a></font>
+</p><p>
+You can also specify the contour interval in expert mode as well.  For example, to specify 
+a contour interval of 10°,
+<br /><span class="instruct">Put the following line before the X Y fig specifications.</span>
+<pre class="ingridcode">
+DATA 10. STEP
+</pre>
+<span class="instruct">Click "OK". </span> <font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.MONTHLY/.theta/T/%28Feb%29VALUES/Z/%280%29VALUES/DATA/10./STEP/X/Y/fig:/yellow/uniform/dashed/medium/contours/blue/solid/thin/coasts/countries/:fig/">CHECK</a></font>
+</p>
+</div>
+<div id="EX3" class="ui-tabs-panel">
+<h2>Example 3: Create line, scatter, and bar plots of monthly mixed layer 
+depth data near 80°E, 20°S.</h2>
+<p>
+<span class="instruct">Start at the <a href="/SOURCES/.LEVITUS94/" target="levitus">Levitus*</a> dataset.
+<br />Select the MONTHLY Mixed Layer Depth data variable.
+<br />Select the grid point near 80°E, 20°S. </span><font size="-1"><a href="/SOURCES/.LEVITUS94/.MONTHLY/.Zmix/Y/%2820S%29VALUES/X/%2880E%29VALUES/">CHECK</a></font>
+</p><p>
+<a href="/SOURCES/.LEVITUS94/.MONTHLY/.Zmix/Y/%2820S%29VALUES/X/%2880E%29VALUES/" target="levitus">START</a>
+</p><p>
+<span class="tb"><u>Method 1: Data Viewer</u></span>
+<br />The three Views icons in the function bar represent the three types of plots 
+we want to create. Feel free to use these links to look at the plots.  Right now we will take 
+a closer look at the line plot and its options.
+</p><p>
+<span class="instruct">Select the icon for the line plot.
+<br />Select the "plot" button. </span><font size="-1"><a href="/SOURCES/.LEVITUS94/.MONTHLY/.Zmix/Y/%2820S%29VALUES/X/%2880E%29VALUES/figviewer.html?my.help=&amp;map.Zmix.units=m&amp;map.Zmix.plotlast=78.17088&amp;map.url=T+fig-+line+-fig&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.Zmix.plotfirst=9.650001&amp;map.T.plotfirst=Jan&amp;map.T.units=months+since+01-Jan&amp;map.T.calendar=360&amp;map.T.plotlast=1+Jan&amp;map.newurl.grid0=T&amp;map.newurl.plot=line&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200&amp;my.help=plot">CHECK</a></font>
+<br />As in the previous examples, note the contents of the text box.  As you make 
+selections in the pull-down menus you will see these commands change to indicate your selection.  
+You will also see these commands in Method 2 when we discuss how to use these tools in expert 
+mode.
+</p><p>
+<span class="instruct">Experiment with the pull-down menus to get a feel for the options of color, 
+thickness, and line type.
+<br />Return to the Mixed Depth Layer variable page. </span><font size="-1"><a href="/SOURCES/.LEVITUS94/.MONTHLY/.Zmix/Y/%2820S%29VALUES/X/%2880E%29VALUES/">CHECK</a></font>
+</p><p>
+<span class="tb"><u>Method 2: Expert Mode</u></span>
+<br />
+Similar to the previous examples, we follow the same general syntax in Ingrid to create 
+these types of plots. However, there are some slight, yet important differences. Let's look at 
+an example of each plot.
+</p><p>
+<u>Line Plot</u>
+<br />Try creating a line plot with a red medium-thick line.
+<br />Syntax: <span class="ingridcode">T fig: <i>line_descript line_descript</i> line :fig</span>
+</p><p>
+<span class="instruct">Enter expert mode.
+<br />Enter the following lines below the text already there.</span>
+<pre class="ingridcode">
+T fig: red medium-thick line :fig
+</pre>
+<br /><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.MONTHLY/.Zmix/Y/%2820S%29VALUES/X/%2880E%29VALUES/T/fig:/red/medium-thick/line/:fig/"></a></font>
+<br /><span class="instruct">Return to the Mixed Depth Layer variable page. </span><font size="-1"><a href="/SOURCES/.LEVITUS94/.MONTHLY/.Zmix/Y/%2820S%29VALUES/X/%2880E%29VALUES/">CHECK</a></font>
+</p><p>
+<u>Bar Plot</u>
+<br />Try creating a bar plot with the olr_anomaly colorscale.
+<br />Syntax: <span class="ingridcode"><i>colorscale</i> dup T fig: colorbars2 :fig</span>
+<br />Note the use of <i>dup</i> in the syntax. This Ingrid command 
+duplicates data streams and is necessary when making a bar plot where the color of each bar 
+is dependent on the value of the variable, or, in other words, the bar's height.  Ingrid duplicates 
+the data you want to plot and then uses one copy to plot the height of the bar and the other to 
+plot its color.  It is possible to create a bar plot where the height and color of the bars represent 
+different information.  For example, this is a <a href="http://ingrid.ldeo.columbia.edu/SOURCES/.Indices/.india/.rainfall/dup/mean/sub/SOURCES/.KAPLAN/.Indices/.NINO3/.avOS/T/-1236.5/383.5/12/RANGESTEP/startcolormap/-3/3/RANGEEDGES/white/black/navy/-3/value/blue/-2.4/bandmax/DeepSkyBlue/-1.8/bandmax/aquamarine/-0.9/bandmax/SeaGreen/-0.5/bandmax/PaleGreen/dup/0/bandmax/moccasin/dup/0.5/bandmax/yellow/DarkOrange/1./bandmax/red/2.1/bandmax/DarkRed/3./bandmax/brown/endcolormap/T/-4.5/shiftdata/figviewer.html?my.help=simple&amp;map.rainfall.units=mm&amp;map.rainfall.plotlast=172.3484&amp;map.url=T+fig-+colorbars2+-fig&amp;map.domain=+%7B+/rainfall+-243.6516+172.3484+plotrange+/avOS+-2.988048+2.988048+plotrange+%7D&amp;map.domainparam=+/plotaxislength+432+psdef+/plotborder+72+psdef+/XOVY+null+psdef&amp;map.zoom=Zoom&amp;map.rainfall.plotfirst=-243.6516&amp;map.T.plotfirst=17+Jul+1856&amp;map.T.units=months+since+1960-01-01&amp;map.T.plotlast=17+Aug+1991&amp;map.avOS.plotfirst=-2.988048&amp;map.avOS.units=degreeC&amp;map.avOS.plotlast=2.988048&amp;map.newurl.grid0=T&amp;map.newurl.plot=colorbars2&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto" target="separate">bar plot</a> 
+where the height of the bars indicates summer monsoon rainfall and the color of 
+the bars indicates SSTA. Right now let's create a more simple bar plot.
+</p><p>
+<span class="instruct">Enter expert mode.
+<br />Enter the following lines below the text already there.</span>
+<pre class="ingridcode">
+olr_anomaly dup T fig: colorbars2 :fig
+</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.MONTHLY/.Zmix/Y/%2820S%29VALUES/X/%2880E%29VALUES/olr_anomaly/dup/T/fig:/colorbars2/:fig/">CHECK</a></font>
+</p><p>
+<u>Scatter Plot</u>
+<br />Try creating a scatter plot in expert mode.
+<br />Syntax: <span class="ingridcode">T exch fig: scatter :fig</span>
+<br />Note the use of <i>exch</i> in the syntax. The <i>exch</i> command exchanges 
+items in the stack.  You can think of the stack as the order of the information presented to Ingrid. In 
+this case, the Mixed Layer Depth variable is the first item in the stack and the time grid is second. 
+When a scatter plot is made, it puts the first item in the stack on the horizontal axis and the 
+second on the vertical axis.  However, it is typical for a time series such as the one we are creating to 
+place time on the horizontal axis. Therefore, we must exchange the two items in the stack. Feel 
+free to execute the following command with and without the exchange and observe the difference.
+</p><p>
+<span class="instruct">Enter expert mode.
+<br />Enter the following lines below the text already there.</span>
+<pre class="ingridcode">T exch fig: scatter :fig
+</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.MONTHLY/.Zmix/Y/%2820S%29VALUES/X/%2880E%29VALUES/T/exch/fig:/scatter/:fig/">CHECK</a></font>
+<br />As with the bar plot, it is possible to create a scatter plot where color is  
+indicative of another data variable.  For example, this <a href="http://ingrid.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.STATION/a:/.lon/:a:/.lat/:a:/.mean/.prcp/:a/T/%28Dec%201901%29%28Mar%201994%29RANGE/T/4/boxAverage/T/12/STEP/SOURCES/.KAPLAN/.Indices/.NINO3/.avOS/T/%28Dec%201856%29%28Dec%201991%2912/RANGESTEP/T/%28pointwidth%29cvn/4/def/1.5/shiftdata%5BT%5Dcorrelate/figviewer.html?my.help=simple&amp;map.lat.units=degree_north&amp;map.lat.plotlast=90N&amp;map.url=fig-+scattercolor+coasts+-fig&amp;map.domainparam=+/plotaxislength+432+psdef+/plotborder+72+psdef+/XOVY+null+psdef&amp;map.lat.plotfirst=90S&amp;map.lon.plotfirst=180W&amp;map.lon.units=degree_east&amp;map.lon.modulus=360&amp;map.lon.plotlast=180&amp;map.correlation.plotfirst=-0.9960159&amp;map.correlation.units=unitless&amp;map.correlation.plotlast=0.9960159&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200" target="separate">scatter plot</a> 
+uses latitude and longitude to scatter the data points while the color of each point 
+represents the correlation of precipitation and Nino3 indices.
+</p>
+</div>
+<div id="EX4" class="ui-tabs-panel">
+<h2>Example 4: Create a map of 1000mb wind vectors and precipitable water (color shading) in the 
+southeastern United States on Aug 26, 1992.</h2>
+<p>We introduce another new dataset for this example- the NCEP-NCAR Reanalysis (CDAS-1).
+</p><p>
+<span class="instruct">Find the CDAS-1 dataset using one of the methods highlighted in Part I or go 
+directly to it <a href="http://ingrid.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/" target="cdas">here*</a>. </span>
+<font size="-1"><a href="http://ingrid.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/">CHECK</a></font>
+<br /><span class="instruct">Select DAILY data variables.
+<br />Select Intrinsic data variables. </span><font size="-1"><a href="">CHECK</a></font>
+<br />At this point, you should be able to locate the variables we want under the datasets 
+and variables heading. Precipitable water is located under the total_air_column link and the u and 
+v components of the wind that we want are under the PressureLevel link.  In general, it is best to 
+plot color shading first and then the contours, vectors, etc. Therefore, we should select the 
+variables (or put them into the stack) in that order as well.
+</p><p>
+<span class="instruct">Select the PWAT data variable. </span><font size="-1"><a href="http://ingrid.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.total_air_column/.PWAT/">CHECK</a></font>
+<br /><span class="instruct">Select the region defined by 95°-75°W, 25°-35°N. 
+<br />Select the date Aug 26, 1992. </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.total_air_column/.PWAT/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/">CHECK</a></font>
+<br /><span class="instruct">While in expert mode, select the u and v components of the wind and limit 
+them to the same X, Y, and T limits as the PWAT data variable.
+<br />Select the 1000 mb pressure level for the wind component variables. </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.total_air_column/.PWAT/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.PressureLevel/.u/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/P/%281000%29VALUE/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.PressureLevel/.v/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/P/%281000%29VALUE/">CHECK</a></font>
+</p><p>
+<a href="/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.total_air_column/.PWAT/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.PressureLevel/.u/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/P/%281000%29VALUE/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.PressureLevel/.v/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/P/%281000%29VALUE/" target="cdas">START</a>
+</p><p>
+Let's also put the coast and state lines on this map.
+</p><p>
+<span class="instruct">Enter the following line in the text box below the text already there.</span>
+<pre class="ingridcode">
+X Y fig: colors vectors coasts states :fig
+</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.total_air_column/.PWAT/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.PressureLevel/.u/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/P/%281000%29VALUE/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.DAILY/.Intrinsic/.PressureLevel/.v/T/%2826%20Aug%201992%29VALUE/X/%28-95%29%28-75%29RANGE/Y/%2825%29%2835%29RANGE/P/%281000%29VALUE/X/Y/fig:/colors/vectors/coasts/states/:fig/">CHECK</a></font>
+<br />You have just creating a map of the low level winds and precipitable water 
+associated with the Louisiana landfall of Hurricane Andrew.  This same hurricane produced incredible 
+amounts of damage in the southern counties of Florida.  Note we could have choosen a specific colorscale 
+by indicated it before the <i>fig</i> command as in <a href="#EX1">Example 1</a>.
+</p>
+</div>
+<div id="EX5" class="ui-tabs-panel">
+<h2>Example 5: Create a cross section displaying the spring temperature (color shading) 
+and salinity (contours) of the Indian Ocean at the equator.</h2>
+<p>
+<span class="instruct">Start with the <a href="http://ingrid.ldeo.columbia.edu/SOURCES/.LEVITUS94/" target="levitus">Levitus94*</a> 
+dataset.
+<br />Select the SEASONAL data.</span>
+<br />As in the Example 4, we want to plot color shading (i.e., temperature) before the 
+contours (i.e., salinity).  Therefore, let's select the temperature variable first.
+</p><p>
+<span class="instruct">Select the Temperature data variable.
+<br />Select the spring season (Apr-Jun).
+<br />Select the rough longitudinal span of the Indian Ocean, 50°-90°E.
+<br />Select the equator. </span><font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.SEASONAL/.temp/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/">CHECK</a></font>
+<br /><span class="instruct">While in expert mode, select the salinity variable and limit it to the same 
+X, Y, and T limits as the temperature variable. </span>
+<font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.SEASONAL/.temp/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/SOURCES/.LEVITUS94/.SEASONAL/.sal/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/">CHECK</a></font>
+</p><p>
+<a href="/expert/SOURCES/.LEVITUS94/.SEASONAL/.temp/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/SOURCES/.LEVITUS94/.SEASONAL/.sal/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/" target="levitus">START</a>
+</p><p>
+<span class="instruct">Enter the following line in the text box below the text already there. </span>
+<pre class="ingridcode">X Z fig: colors contours :fig
+</pre>
+<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.SEASONAL/.temp/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/SOURCES/.LEVITUS94/.SEASONAL/.sal/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/X/Z/fig:/colors/contours/:fig/"></a></font>
+<br />You have just a created cross section that illustrates how temperature and salinity 
+varies with depth in the Indian Ocean at the equator in the boreal spring. However, we have put the surface 
+of the ocean at the bottom of the plot.  Let's enter the data viewer to fix this and take a closer 
+look at the data.
+</p><p>
+<span class="instruct">Click on the plot to enter the data viewer.
+<br /> Put "0" and "5500" in the appropriate text boxes along the vertical axis to put the surface of the 
+ocean at the top of the plot. </span><font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.SEASONAL/.temp/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/SOURCES/.LEVITUS94/.SEASONAL/.sal/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/X/Z/fig:/colors/contours/:fig/figviewer.html?my.help=&amp;map.Z.units=m&amp;map.Z.plotlast=0&amp;map.url=&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef+%2FXOVY+null+psdef&amp;map.zoom=Zoom&amp;map.Z.plotfirst=5500&amp;map.X.plotfirst=49E&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=91E&amp;map.temp.plotfirst=1.1994&amp;map.temp.units=Celsius_scale&amp;map.temp.plotlast=29.6696&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a></font>
+<br />You may notice that the largest gradients in these two parameters lie in the first few 
+meters of the ocean.  Let's look at this area specifically.
+</p><p>
+<span class="instruct">Use the same text boxes to zoom-in on the upper 200m of the ocean. </span>
+<font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.SEASONAL/.temp/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/SOURCES/.LEVITUS94/.SEASONAL/.sal/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/X/Z/fig:/colors/contours/:fig/figviewer.html?my.help=&amp;map.Z.units=m&amp;map.Z.plotlast=0&amp;map.url=&amp;map.domain=+%7B+%2Ftemp+1.1994+29.6696+plotrange+Z+500+0+plotrange+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef+%2FXOVY+null+psdef&amp;map.zoom=Zoom&amp;map.Z.plotfirst=200&amp;map.X.plotfirst=49E&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=91E&amp;map.temp.plotfirst=1.1994&amp;map.temp.units=Celsius_scale&amp;map.temp.plotlast=29.6696&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a></font>
+<br />We can even adjust the colorscale to better see these data.
+</p><p>
+<span class="instruct">Use the scale text boxes to make the lower limit 10°C. </span>
+<font size="-1"><a href="/expert/SOURCES/.LEVITUS94/.SEASONAL/.temp/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/SOURCES/.LEVITUS94/.SEASONAL/.sal/T/%28Apr-Jun%29VALUE/X/%2850%29%2890%29RANGE/Y/%280%29VALUE/X/Z/fig:/colors/contours/:fig/figviewer.html?my.help=&amp;map.Z.units=m&amp;map.Z.plotlast=0&amp;map.url=&amp;map.domain=+%7B+%2Ftemp+1.1994+29.6696+plotrange+Z+200+0+plotrange+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef+%2FXOVY+null+psdef&amp;map.zoom=Zoom&amp;map.Z.plotfirst=200&amp;map.X.plotfirst=49E&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=91E&amp;map.temp.plotfirst=10&amp;map.temp.units=Celsius_scale&amp;map.temp.plotlast=29.6696&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a></font>
+<br />This should you give a good idea of the tools conveniently available to you 
+in the data viewer that allow you adjust and enhance the plots created with expert mode.
+</p>
+</div>
+<div id="EX6" class="ui-tabs-panel">
+<h2>Example 6: Create a global animation of weekly SST data from 2001.</h2>
+<p>
+<span class="instruct">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a> 
+dataset main page.
+<br />Select the weekly SST data variable.
+<br />Select the Jan 1-Dec 31 2001 time period. </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.weekly/.sst/T/%281%20Jan%202001%29%2831%20Dec%202001%29RANGE/">CHECK</a></font>
+</p><p>
+<a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.weekly/.sst/T/%281%20Jan%202001%29%2831%20Dec%202001%29RANGE/" target="station">START</a>
+</p><p><span class="instruct">Select the views icon with the land in black. </span>
+<br />The viewer will automatically plot the last time step of your selection. In this 
+case, it plots the weekly data centered on Jan 2, 2002.
+</p><p>
+<span class="instruct">To create an animation, enter "1 Jan 2001 to 2 Jan 2002" in the text box above 
+the image.
+<br />Click "Redraw". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.weekly/.sst/T/%281%20Jan%202001%29%2831%20Dec%202001%29RANGE/figviewer.html?my.help=more+options&amp;map.T.plotvalue=1+Jan+2001+to+2+Jan+2002&amp;map.Y.units=degree_north&amp;map.Y.plotlast=90N&amp;map.url=X+Y+fig-+colors+land+-fig&amp;map.domain=+%7B+%2FT+7367.+plotvalue+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=90S&amp;map.X.plotfirst=180W&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=180&amp;map.sst.plotfirst=-2&amp;map.sst.units=Celsius_scale&amp;map.sst.plotlast=35&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+land&amp;map.newurl.plot=colors&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.XOVY=auto&amp;map.color_smoothing=1&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a></font>
+<br />Your image should now be animated. You can also adjust the speed of the animation 
+with the tools in the data viewer.  Note in the table under the image the options with the heading 
+"animation frame times". Try using these tools.
+</p><p>
+<span class="instruct">Slow down the animation by replacing the default "25" values with a larger number.
+<br />Click "Redraw".</span>
+<br />Keep in mind that nearly any image you create can be animated in this way.
+</p>
+</div>
+<div id="EX7" class="ui-tabs-panel">
+<h2>Example 7: Create a custom colorscale for temperature anomaly data.</h2>
+<p>While there are many useful colorscales available via the data viewer pull-down menus, 
+you may want to customize a colorscale at some point. Let's first look at an example of how a custom 
+colorscale looks in the data viewer and in expert mode and then use it as a reference to create another 
+custom scale. 
+</p><p>
+The CAMS monthly temperature anomaly map is a commonly used map in the maproom.
+</p><p>
+<span class="instruct">Click <a href="/maproom/.Global/.Atm_Temp/Anomaly.html" target="CAMS">here</a> 
+for the CAMS temperature anomaly image and <a href="/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/startcolormap/-10./10./RANGE/white/purple/purple/-10./VALUE/cyan/-1./VALUE/white/white/1./bandmax/yellow/1./VALUE/red/10./VALUE/firebrick/endcolormap/" target="CAMS_expert">here</a> for the Ingrid code in expert mode.</span>
+<br />Keep in mind that all of the figure commands are not shown here. Only those pertinent 
+to the colorscale are shown.  Let's go through this code line by line to describe what each does and how it is displayed on the map.
+</p><p>
+<table align="center" border="2"><tr align="left"><td><span class="ingridcode">startcolormap</span></td>
+<td>Starts the series of Ingrid code that defines the colorscale.</td></tr>
+<tr align="left"><td><span class="ingridcode">-10. 10. RANGE</span></td>
+<td>Sets the upper and lower limits of the colorscale.</td></tr>
+<tr align="left"><td><span class="ingridcode">white purple</span></td>
+<td>Sets white as the color for the areas with missing data and purple as the color for data values less than -10°C.</td></tr>
+<tr align="left"><td><span class="ingridcode">purple -10. VALUE</span></td>
+<td>Sets purple as the color at the value of -10°C.</td></tr>
+<tr align="left"><td><span class="ingridcode">cyan -1. VALUE</span></td>
+<td>Sets cyan as the color at the value of -1°C.  The colorscale 
+will automatically blend between the -10°C and -1°C data values.</td></tr>
+<tr align="left"><td><span class="ingridcode">white white 1. bandmax</span></td>
+<td>Sets white as the color for values greater than 
+-1°C and less than 1°C.</td></tr>
+<tr align="left"><td><span class="ingridcode">yellow 1. VALUE</span></td>
+<td>Sets yellow as the color at the value of 1°C.</td></tr>
+<tr align="left"><td><span class="ingridcode">red 10. VALUE</span></td>
+<td>Sets red as the color at the value of 10°C. The colorscale 
+will automatically blend between the 1°C and 10°C data values.</td></tr>
+<tr align="left"><td><span class="ingridcode">firebrick</span></td>
+<td>Sets firebrick as the color for data values greater than 10°C.</td></tr>
+<tr align="left"><td><span class="ingridcode">endcolormap</span></td>
+<td>Ends the series of Ingrid code that defines the colorscale.</td></tr>
+</table>
+</p><p>
+Create a color scale for these same data like the one below. It has the following attributes:
+<br />1. data range of -5° to 5°C
+<br />2. missing data indicated in SlateGrey
+<br />3. data values greater or less than data limits in grey
+<br />4. colors representing data greater than -5°C and less than -4°C blend from NavyBlue to 
+CornflowerBlue
+<br />5. colors representing data greater than -4°C and less than -0.5°C blend from CornflowerBlue 
+to LightCyan
+<br />6. colors representing data greater than -0.5°C and less than 0.5°C blend from LightCyan to
+LightGoldenrodYellow
+<br />7. colors representing data greater than 0.5°C and less than 4°C blend from LightGoldenrodYellow 
+to salmon
+<br />8. data values greater than 4°C in IndianRed
+</p><p>
+<img src="colorscale.gif" />
+</p><p>
+<span class="instruct">Start with the CAMS temperature anomaly data <a href="/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/" target="CAMS">here</a>.
+<br />Enter expert mode and use the above example to write Ingrid commands that will create the above-defined 
+colorscale. </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/startcolormap/-5./5./RANGE/SlateGrey/grey/NavyBlue/-5./VALUE/CornflowerBlue/-4./VALUE/LightCyan/-0.5/VALUE/LightGoldenrodYellow/0.5/VALUE/salmon/4./VALUE/IndianRed/IndianRed/5./bandmax/grey/endcolormap/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">CHECK</a> <a href="/expert/SOURCES/.NOAA/.NCEP/.CPC/.CAMS/.anomaly/.temp/startcolormap/-5./5./RANGE/SlateGrey/grey/NavyBlue/-5./VALUE/CornflowerBlue/-4./VALUE/LightCyan/-0.5/VALUE/LightGoldenrodYellow/0.5/VALUE/salmon/4./VALUE/IndianRed/IndianRed/5./bandmax/grey/endcolormap/">EXPERT</a></font>
+<br />You can find a chart of many other colors that are available in Ingrid 
+<a href="colorchart.html">here</a>.
+</p>
+</div>
+<div id="EX8" class="ui-tabs-panel">
+<h2>Example 8: Create a land mask for SST data.</h2>
+<p>The land overlays described in previous examples are excellent tools for visualizing data 
+in reference to land masses.  However, these overlays only act visually and do not alter the data itself. 
+If you download data after using a land overlay in the data viewer, you will still receive the original 
+data values at the grid points that coincide with land. There may be times when you would like to adjust 
+the data to account for land masses. We use the Reyn_Smith dataset again here. In this dataset, all grid 
+points have SST data, even those that coincide with land. This is often an undesirable characteristic and 
+we will therefore create a land mask that will give SST data at grid points that coincide with land a 
+value of NaN.
+</p><p>
+<span class="instruct">Start with the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith*</a> dataset.
+<br />Select the monthly SST data variable. </span><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/">CHECK</a>
+</p><p>
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/" target="gridded">START</a>
+</p><p>
+Unfortunately, there is no data in the Reyn_Smith dataset that we can use to distinguish 
+grid points that coincide with the ocean from those that coincide with land.  We need another dataset 
+for this information. The WORLDBATH dataset has elevation data that we can use to make this distinction.
+</p><p>
+A point that was discussed repeatedly in Part II is how important it is that grids match 
+when variables are to be compared. Therefore, we should take note of the spatial grids of the Reyn_Smith 
+SST data: 
+<br />Longitude grid: /X (degree_east) periodic 179.5W to 179.5E by 1. N= 360 pts :grid 
+<br />Latitude grid: /Y (degree_north) ordered 89.5S to 89.5N by 1. N= 180 pts :grid
+</p><p>
+<span class="instruct">While in the expert mode, enter the following line after the text already there 
+to select the topography data in the WORLDBATH dataset.
+<pre class="ingridcode">SOURCES .WORLDBATH .bath
+</pre>
+Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.WORLDBATH/.bath/">CHECK</a></font>
+<br />Note the spatial grids of the topography data:
+<br />Longitude grid: /X (degree_east) periodic 0 to 0.08334351W by 0.08333333 N= 4320 pts :grid 
+<br />Latitude grid: /Y (degree_north) ordered 90S to 90N by 0.08333334 N= 2161 pts :grid
+</p><p>
+We can not use these two variables together until their grids match. That can be done with 
+the Ingrid command, <i>regridLinear</i>, that regrids the current data variable to match the grids of the 
+variable above it in the stack. In this case, the X and Y grids of the topography data will be regridded 
+to match those of the SST data.
+</p><p>
+<span class="instruct">Enter the following line below the text that is already there.
+<pre class="ingridcode">[X Y]regridLinear</pre>
+Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.WORLDBATH/.bath%5BX/Y%5DregridLinear/">CHECK</a></font>
+</p><p>
+Now that the spatial grids match, we continue with building the mask.  First, we want to 
+mask out the land grid points in the topography dataset. Land grid points should be those with an 
+elevation greater than zero.
+</p><p>
+<span class="instruct">Enter the following line below the text that is already there.
+<pre class="ingridcode">0 maskgt</pre>
+Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.WORLDBATH/.bath%5BX/Y%5DregridLinear/0/maskgt/">CHECK</a></font>
+<br />You now have a topography dataset that only contains data for the ocean grid points. We 
+will use the <i>add</i> command to combine these data with the SST data. However, we do not need to know 
+the actual elevation value at each grid point. Therefore, if we multiply the topography dataset by zero 
+we will have dataset consisting of 0's and NaN's that we can, in turn, add to the SST dataset to obtain 
+a land-masked SST dataset. Let's try it.
+</p><p>
+<span class="instruct">Enter the following lines below the text that is already there.
+<pre class="ingridcode">
+0 mul
+add
+</pre>
+Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.WORLDBATH/.bath%5BX/Y%5DregridLinear/0/maskgt/0/mul/add/">CHECK</a></font>
+<br /><span class="instruct">Select the color views icon with no land overlays to see the resulting SST 
+dataset. </span>
+<br />You should see the land in white as this is the default color for missing data in the SST 
+colorscale.
+</p>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
