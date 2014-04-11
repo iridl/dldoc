@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Downloading Data</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="mvd03" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialMVD" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/Tutorial/">Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro">Introduction</a></li>
+<li> <a HREF="#Files">Data Files</a></li>
+<li> <a HREF="#Images">Data Images</a></li>
+<li> <a HREF="#Formats">Data Formats</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Downloading Data</h2>
+<p property="term:description">
+In addition to the tools that select, manipulate, and visualize data, the Data Library makes those results and all data available in a variety of formats. 
+</p>
+<p>
+For the most part, the process of downloading data is very straight forward. A brief discuss is offered 
+here.
+</p>
+</div>
+<div id="Files" class="ui-tabs-panel">
+<h2>Data Files</h2>
+<p>
+<span class="t">Let's use the popular Reanalysis dataset to take a closer look at the available data formats. </span>
+</p><p>
+<span class="instruct">Start with the <a href="/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.mc6190/.Intrinsic/.MSL/.pressure/" target="CDAS">monthly climatological mean sea level pressure Reanalysis data*</a>.
+<br />Select the Tables link in the function bar.</span>
+<br /><span class="t">There are three different types of tables available here.  The array tables present data in 
+your browser and you can select the orientation of the grids with the associated links. Feel free to 
+select these links to get a feel of how the data is presented. Selecting one of the links for the 
+tab-separated tables will immediately give you the opportunity to download that table. The columnar tables, 
+like the array tables, are shown in your browser. However, there are some added features, including 
+selecting file type and missing data markers, under the "columnar tables with options" link. While these 
+three types of tables are often very convenient, they are best used for small amounts of data. Let's look 
+at the options more suitable for downloading large data files.</span>
+</p><p>
+<span class="instruct">Go back to the mean sea level pressure page using the Back button on your browser. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.mc6190/.Intrinsic/.MSL/.pressure/">CHECK</a></font>
+<br /><span class="instruct">Select the Data Files link in the function bar.</span>
+<br /><span class="t">The amount of data you have selected will be at the top of this page. In this case, we have 
+selected 504,576 bytes of data. This feature can be extremely helpful when determining how large the resulting 
+data file will be. Next, we see an alert to potential problems if we intend on using specific software 
+(e.g., COARDS, GRADS). If you plan on using the software that is shown in this section, then you may 
+wish to utilize these options to adjust the format of your data.</span>
+</p><p>
+<span class="t">All of the data formats available here primarily differ in one respect- how much ancillary 
+information they contain. The ancillary information includes much of what you see on a data variable 
+page including grid and data characteristic information.  Two formats/protocols, DODS and netCDF, are 
+generally available if you would prefer to store this information. You can download data in these formats 
+by selecting the appropriate link. Some of the table options we saw before are also available here and store 
+some of the ancillary information.  In addition, GIS users may find it convenient to download data with 
+an ArcInfo Header via the "ArcInfo ascii GRID datafile" link. Data can also be downloaded with no 
+ancillary information in binary, table, or text format.</span>
+</p>
+</div>
+<div id="Images" class="ui-tabs-panel">
+<h2>Data Images</h2>
+<p>
+<span class="t">We start with the <a href="/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.mc6190/.Intrinsic/.MSL/.pressure/T/%28Jan%20%29VALUES/figviewer.html?my.help=&amp;map.Y.units=degree_north&amp;map.Y.plotlast=90N&amp;map.url=X+Y+fig-+colors+land+-fig&amp;map.domain=+%7B+Y+-90.+90.+plotrange+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=90S&amp;map.X.plotfirst=1.25W&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=1.25W&amp;map.pressure.plotfirst=98704.93&amp;map.pressure.units=Pa&amp;map.pressure.plotlast=103623.7&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+land&amp;map.newurl.plot=colors+%7C+contours&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200" target="CDAS">image*</a> 
+of just the Jan climatological mean sea level pressure for this discussion.</span>
+</p><p>
+<span class="instruct">Select the "more options" button in the table below the image.</span>
+<br /><span class="t">You can now see all of the options for saving an image. There are three options for 
+creating a single page with the image: 1) documented, 2) image only, and 3) data-linked image. You can 
+find these options in the Page Formats row of the table. There are also PostScript, JPEG, and GIF formats 
+available for saving the image and scale separately.  You can find these options in the bottom two rows 
+of the table.</span>
+</p><p>
+<span class="t">If you have any further questions about downloading data, you may want to look at the 
+<a href="/dochelp/QA/Technical/">previously-asked questions</a> about this 
+topic.</span>
+</p></div>
+<div id="Formats" class="ui-tabs-panel">
+<h2>Data Formats Available in the Data Library</h2>
+The user can download data in any of the following formats:
+<table>
+<tr><th align="center" width="45%">FORMAT</th><th align="center" width="45%">APPLICATION</th></tr>
+<tr><td>ascii with ArcInfo Header</td><td>ArcInfo</td></tr>
+<tr><td>IDA</td><td>WinDisp, GIS applications</td></tr>
+<tr><td>ERDAS LAN</td><td>GIS applications</td></tr>
+<tr><td>netCDF</td><td></td></tr>
+<tr><td>tables</td><td>Spreadsheets</td></tr>
+<tr><td>binary random access</td><td></td></tr>
+<tr><td>DEC ALPHA direct access</td><td></td></tr>
+<tr><td>binary FORTRAN sequential access</td><td></td></tr>
+<tr><td>DEC ALPHA sequential access</td><td></td></tr>
+<tr><td>JPEG</td><td></td></tr>
+<tr><td>GIF</td><td></td></tr>
+<tr><td>PS</td><td></td></tr>
+</table>
+<p>
+Data can also be accessed using a DODS (<a href="http://opendap.org/">OPenDAP</a>) client from a variety of 
+software, including Matlab, GrADS, and Ferret.
+</p>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
