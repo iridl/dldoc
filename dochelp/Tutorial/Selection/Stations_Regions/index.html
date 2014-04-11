@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+   <meta name="author" content="Emily K. Grover" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selecting Stations and Regions</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="ls01" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialSelection" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/Tutorial/">Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection" about="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialSelection"> 
+                <legend property="term:label">Select</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a HREF="#Station">Station Data</a></li>
+<li> <a HREF="#Gridded">Gridded Data</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Selecting Stations and Regions</h2>
+<p property="term:description">This section is divided into two parts representing station and gridded data.  If 
+you are only interested in using gridded data, then you may want to use the tab to 
+skip ahead to that section.  Otherwise, it is suggested that you work through both sections 
+to become acquainted with the operations for both types of data.
+</p>
+</div>
+<div id="Station" class="ui-tabs-panel">
+<h2>Station Data</h2>
+<p class="instruct">Select <b><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">NOAA
+NCDC DAILY GLOBALSOD*</a></b>.</p>
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Station_Single">Selecting stations</a></li>
+<li> <a HREF="#Station_Region">Selecting a region</a></li>
+</ul>
+<div id="Station_Single" class="ui-tabs-panel">
+<h2>Selecting stations</h2>
+<p id="PE">
+<div class="ex"><u>Example: Select the stations in Buenos Aires, Argentina.</u></div>
+<div class="tb"><u>Method 1: Searches</u></div>
+<span class="instruct">Select the "Searches" link to the right of the dataset map.</span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/searches.html?searchpar.lon.low=-180&amp;searchpar.lon.high=180&amp;searchpar.lat.low=-90&amp;searchpar.lat.high=90">CHECK</a></font>
+<br /><span class="t">This page has many options with which you can search for stations. 
+We should use the WMO Station Name option for this example.</span>
+</p><p>
+<span class="instruct">Enter "Buenos Aires" into the "WMO Station Name" text box in the 
+search table and select the "Search NOAA NCDC DAILY GLOBALSOD" button.</span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/searches.html?searchpar.Name.value=Buenos+Aires&amp;searchpar.lon.low=-180&amp;searchpar.lon.high=180&amp;searchpar.lat.low=-90&amp;searchpar.lat.high=90&amp;searchpar.call.value=&amp;searchpar.country_state.value=&amp;searchpar.elev.low=&amp;searchpar.elev.high=&amp;VGRID=IWMO&amp;page=1">CHECK</a></font>
+<br /><span class="t">You can see that there are three stations in Buenos Aires in this dataset 
+and the information offered about each station in the search results includes its lat/lon 
+coordinates, station call letters, and elevation. There are two ways to obtain data for
+some or all of these stations. If we want to obtain data for all
+three of those stations, then it is most efficient to:</span>
+</p><p>
+<span class="instruct">Select the "Dataset (and map) with all data found in search" link 
+below the search table. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/Name/%28Buenos%20Aires%29/masknotfound/SELECT/lon/-180/180/masknotrange/SELECT/lat/-90/90/masknotrange/SELECT/">CHECK</a></font>
+<br /><span class="instruct">Go back to search page by selecting the "Searches" link again.</span>
+</p><p>
+<span class="t">If we want to select only the Ezeiza and Moron stations, then we should:</span>
+</p><p>
+<span class="instruct">Select the WMO ID boxes for the Ezeiza and Moron stations and select the 
+"Get Marked Stations" button.</span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO/875740/875760/VALUES/">CHECK</a></font>
+<br /><span class="t">Note the source bar. The lowest level indicates your station selection. 
+They may be difficult to make out, but the stations you selected are indicated by black dots 
+on the dataset map as well.</span>
+</p><p>
+<span class="tb"><u>Method 2: Expert Mode</u></span>
+<br /><span class="t">This method can be used if you know the WMO IDs of the stations for 
+which you want data. Note, however, that the WMO station identifiers in the datasets drop 
+the last two digits which are typically zeros. The ID numbers for the three Buenos Aires
+stations are 875740, 875760, and 875850.</span>
+<br /><span class="instruct">Go back to GLOBALSOD dataset main page via the source bar. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/">CHECK</a></font>
+<br /><span class="instruct">Select the "Expert Mode" link in the function bar.
+<br />Enter the following line in the text box below the text already there.</span>
+<div class="ingridcode">IWMO 875740 875760 875850 VALUES</div>
+<span class="instruct">Click "OK". </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO/875740/875760/875850/VALUES/">CHECK</a></font>
+<br /><span class="t">Again, note that the lowest level of the source bar indicates your 
+station selection.</span>
+</p>
+</div>
+<div id="Station_Region" class="ui-tabs-panel">
+<h2>Selecting a region</h2>
+<p>
+<span class="ex"><u>Example: Select all of the stations in the region defined by 70°-20°W, 
+10°S-10°N.</u></span>
+<br /><span class="tb"><u>Method 1: Data Viewer</u></span>
+<br /><span class="instruct">Go back to the GLOBALSOD dataset main page via the source bar.</span>
+<br /><span class="t">The utilities of this map are described in the previous section. 
+If you are unfamiliar with how to use this map or need to review these options, 
+then please refer to this 
+<a href="/dochelp/Tutorial/Datasets/Structure/#Viewer">previous discussion</a>. 
+While it 
+is possible to select a single station using the data viewer, this tool is most 
+appropriately used when selecting numerous stations from a specific geographic 
+location.</span>
+</p><p>
+<span class="instruct">Enter "10N", "10S", "70W", and "20W" into their appropriate 
+lat/lon text boxes in the data viewer and click "Redraw"</span>.
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/index.html?map.Y.units=degree_north&amp;map.Y.plotlast=10N&amp;map.url=datasetselectplot&amp;map.domain=+%7B+X+-280.+80.+plotrange+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=10S&amp;map.X.plotfirst=70W&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=20W&amp;labeltype=Label&amp;ptlbls=no+labels&amp;VGRID=IWMO">CHECK</a></font>
+<br /><span class="t">This new map allows you to see all of the stations (black dots) 
+in this lat/lon defined region. You have the option to click on one of those dots 
+to select a single station. but right now we will continue with the steps that 
+allow you to select all of the stations in the region.</span>
+</p><p>
+<span class="instruct">Select the "List of stations in current view" link below 
+the map.</span> <font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/searches.html?searchpar.lon.low=290.&amp;searchpar.lon.high=340.&amp;searchpar.lat.low=-10&amp;searchpar.lat.high=10">CHECK</a></font>
+<br /><span class="t">You now have search results in the same format as when you 
+searched for the stations in Buenos Aires. As in that example, you may select any number 
+of those stations by clicking on their WMO ID box and then the "Get Marked 
+Stations" button. We will continue through the steps that allow you to select 
+all of the stations in this region.</span>
+</p><p>
+<span class="instruct">Select the "Dataset (and map) with all data found in search" 
+link below the gray table. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/lon/290./340./masknotrange/SELECT/lat/-10/10/masknotrange/SELECT/">CHECK</a></font>
+<br /><span class="t">You have now selected stations from a region in northeastern 
+South America. Note that the page now looks very much like the dataset main page 
+on which we started, with the exception of the source bar. Your station selection 
+resides in the lowest level of the source bar. You should also note that only 
+stations within your selected region appear on the dataset map.</span>
+</p><p>
+<span class="tb"><u>Method 2: Searches</u></span>
+<br /><span class="instruct">Go back to the GLOBALSOD dataset main page using the source bar.
+<br />Select the "Searches" link to the right of the dataset map.</span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/searches.html?searchpar.lon.low=-180&amp;searchpar.lon.high=180&amp;searchpar.lat.low=-90&amp;searchpar.lat.high=90">CHECK</a></font>
+<br /><span class="t">We should use the lat/lon limits search option for this example. </span>
+</p><p>
+<span class="instruct">Enter "-70" (top left box), "-20" (bottom left box), "-10" (upper 
+right box), and "10" (bottom right box) into the appropriate lat/lon text boxes and 
+select the "Search NOAA NCDC DAILY GLOBALSOD" button. (Note the different lat/lon format 
+from that in the data viewer example above.)</span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/searches.html?searchpar.Name.value=&amp;searchpar.lon.low=-70&amp;searchpar.lon.high=-20&amp;searchpar.lat.low=-10&amp;searchpar.lat.high=10&amp;searchpar.call.value=&amp;searchpar.country_state.value=&amp;searchpar.elev.low=&amp;searchpar.elev.high=&amp;VGRID=IWMO&amp;page=1">CHECK</a></font>
+<br /><span class="t">You now have search results that are identical to those 
+found by Method 1. Below the the search results table you can see 
+that there are 177 stations within these lat/lon limits.
+The steps to select only specific stations or all of the stations is identical
+as in Method 1 of of the <a href="#PE">previous example</a>.</span>
+</p><p>
+<span class="tb"><u>Method 3: Expert Mode</u></span>
+<br /><span class="instruct">Go back to the NOAA NCDC DAILY GLOBALSOD dataset main 
+page using the blue navigation bar.
+<br />Select the "Expert Mode" link in the function bar .
+<br />Enter the following lines in the text box below the text already there.</span>
+<br /><span class="ingridcode">lon
+<br />290 340 masknotrange
+<br />SELECT
+<br />lat 
+<br />-10 10 masknotrange
+<br />SELECT</span>
+<br /><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/lon/290/340/masknotrange/SELECT/lat/-10/10/masknotrange/SELECT/">CHECK</a></font>
+</p><p>
+<div class="t">Note the convention for indicating
+the latitude and longitude. The latitude is given in order from south
+to north with latitudes in the southern hemisphere assigned negative values.
+The longitude is given in order from west to east and as °E.
+There is another way to indicate longitude as well. This additional
+sign convention still gives the limits in order from west to east, but
+assigns negative values to longitudes in the western hemisphere.
+Try this other sign convention.</div>
+</p><p>
+<span class="instruct">Replace <i>290 340 masknotrange</i> with the following line.</span>
+<br /><span class="ingridcode">-70 -20 masknotrange</span>
+<br /><span class="instruct">Click "OK". </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/lon/-70/-20/masknotrange/SELECT/lat/-10/10/masknotrange/SELECT/">CHECK</a></font>
+<br /><span class="t">You have the same data selection as in the previous methods 
+and should see your selection in the source bar, dataset map, and the grid 
+information.</span>
+</p><p>
+<div class="t">We will return to a discussion of selecting a data variable for 
+station data in the next section after the following discussion of selecting 
+grid points/regions in a gridded dataset. If you are not interested in gridded 
+datasets, you may want to skip directly to this 
+<a href="/dochelp/Tutorial/Selection/Data_Variables/">next section</a>.</div>
+</p>
+</div>
+</div>
+<div id="Gridded" class="ui-tabs-panel">
+<h2>Gridded Data</h2>
+<p>
+<span class="instruct">Select <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">NOAA
+NCEP EMC CMB GLOBAL Reyn_SmithOIv1*</a>. </span>
+</p><p>
+You should note that all of the options used in the previous 
+example to search for stations were dependent on characteristics of the 
+individual stations. Because we are now dealing with a gridded dataset, 
+these characteristics and their associated searching mechanisms are not 
+applicable, except for the lat/lon coordinates. Selecting lat/lon limits 
+is the only way to select a specific region for a gridded dataset. Let's 
+take a look at the different methods that can be used to select lat/lon 
+limits for gridded datasets. (Note: Some of these methods are similar to 
+those used with station datasets.)
+</p>
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Gridded_Single">Selecting a single grid point</a></li>
+<li> <a HREF="#Gridded_Region">Selecting a region</a></li>
+</ul>
+<div id="Gridded_Single" class="ui-tabs-panel">
+<h2>Selecting a single grid point</h2>
+<p>
+<span class="ex"><u>Example: Select data at the grid point nearest to 120°E, 
+25°N.</u></span>
+<br /><span class="tb"><u>Method 1: Data Selection Link</u></span>
+<br /><span class="instruct">Select the "Data Selection" link in the function bar.</span>
+<br /><span class="t">We will discuss this link again in the next section "Selecting 
+a Data Variable". In this operation, we must select a data variable before 
+selecting our geographic region of interest. Let's use the climatological SST 
+data as an example.</span>
+</p><p>
+<span class="instruct">Select the "climatology Sea Surface Temperature" link. </span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/climatology+.sst/?help+dataselection">CHECK</a></font>
+<br /><span class="instruct">Enter "120E" and "25N" in the appropriate text boxes in the Setting 
+Ranges table.
+<br />Note the default ranges in the gray Data Selection box at the top of the page.
+<br />Select the "Restrict Ranges" button. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/climatology+.sst/dataselection.html?limit.X.value=120E&amp;limit.Y.value=25N&amp;limit.T.value=Jan+to+Dec">CHECK</a></font>
+<br /><span class="t">The ranges in the Data Selection box are now indicative of 
+the coordinates you entered.</span>
+</p><p>
+<span class="instruct">Select the "Stop Selecting" button in the Data Selection box. </span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/Y/%2825N%29VALUES/X/%28120E%29VALUES/">CHECK</a></font>
+<br /><span class="t">You have selected data at a single grid point in the Formosa 
+Strait and, as always, this is indicated in the source bar and in the grid 
+information. Note that the point we entered does not exactly coincide with the location of a 
+grid point.  The grid point nearest to our selected point is automatically chosen.
+Remember that you can find information on the grid resolution of the dataset on the 
+dataset main page under the Grids heading.</span>
+</p><p>
+<span class="tb"><u>Method 2: Expert Mode</u></span>
+<br /><span class="instruct">Go back to the Reyn_Smith dataset main page using the source bar.</span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/">CHECK</a></font>
+<br /><span class="instruct">Select the "Expert Mode" link in the function bar . </span> 
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/">CHECK</a></font>
+<br /><span class="instruct">Enter the following sets of lines in the text box below the 
+text already there. (Again, we must select a variable and use climatological sst as an example.)</span>
+<br /><span class="ingridcode">.climatology .sst
+<br />Y (25N) VALUES
+<br />X (120E) VALUES</span>
+<br /><span class="instruct">Click "OK". </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/Y/%2825N%29VALUES/X/%28120E%29VALUES/">CHECK</a></font>
+<br /><span class="t">You have selected the same grid point as in Method 1 and should 
+see your selection in the source bar and in the grid information.</span>
+</p></div>
+<div id="Gridded_Region" class="ui-tabs-panel">
+<h2>Selecting a region</h2>
+<p>
+<span class="ex"><u>Example: Select the data in the region defined by 70°-20°W,
+ 10°S-10°N.</u></span>
+<br /><span class="tb"><u>Method 1: Data Viewer</u></span>
+<br /><span class="t">When dealing with a gridded dataset we must select a 
+data variable before being able to use the Data Viewer. We will talk 
+more about the information available when selecting a data variable in 
+the next section, but for right now we will use the climatological
+sea surface temperature data as an example.</span>
+</p><p>
+<span class="instruct">Go back to the Reyn_Smith dataset main page using the 
+source bar.</span> <font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/">CHECK</a></font>
+<br /><span class="instruct">Select the "climatology" link under the Datasets 
+and variables heading.
+<br />Select one of the [X,Y] views links (e.g., colored or  contoured) in the 
+function bar (lower left corner of the bar). </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/figviewer.html?plottype=colors">CHECK</a></font>
+<br /><span class="t">You have now entered the data viewer. Keep in mind that 
+you can always reach the data viewer by selecting one of the views links in 
+the function bar. </span>
+</p><p>
+<span class="instruct">Enter "10N", "10S", "70W", and "20W" into their 
+appropriate lat/lon text boxes and click "Redraw". </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/figviewer.html?my.help=&amp;map.T.plotvalue=Jan&amp;map.Y.units=degree_north&amp;map.Y.plotlast=10N&amp;map.url=a-+.sst+-a+X+Y+fig-+colors+land+-fig&amp;map.domain=+%7B+%2FT+0.5+plotvalue+%7D&amp;map.domainparam=+%2Fplotaxislength+432+psdef+%2Fplotborder+72+psdef&amp;map.zoom=Zoom&amp;map.Y.plotfirst=10S&amp;map.X.plotfirst=70W&amp;map.X.units=degree_east&amp;map.X.modulus=360&amp;map.X.plotlast=20W&amp;map.sst.plotfirst=-2&amp;map.sst.units=Celsius_scale&amp;map.sst.plotlast=35&amp;map.newurl.grid0=X&amp;map.newurl.grid1=Y&amp;map.newurl.land=draw+land&amp;map.newurl.vars.0=.sst&amp;map.newurl.plot=colors&amp;map.plotaxislength=432&amp;map.plotborder=72&amp;map.fnt=Helvetica&amp;map.fntsze=12&amp;map.color_smoothing=1&amp;map.XOVY=auto&amp;map.iftime=25&amp;map.mftime=25&amp;map.fftime=200">CHECK</a></font>
+<br /><span class="t">You have now selected gridded climatological sea surface 
+temperature data for the Atlantic Ocean off of northeastern South America. 
+To exit the data viewer and save this geographic selection...</span>
+</p><p>
+<span class="instruct">Select the "data in view" button in the table at 
+the bottom of the page. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/T/0.5/VALUE/X/-70./-20./RANGE/Y/-10/10/RANGE/.sst/">CHECK</a></font>
+<br /><span class="t">Note that the lowest levels of the source bar indicate 
+your data selections.</span>
+</p><p>
+<span class="tb"><u>Method 2: Data Selection Link</u></span>
+<br /><span class="instruct">Go back to the Reyn_Smith dataset main page via 
+the navigation banner or the source bar.
+<br />Select the "Data Selection" link in the function bar.</span>
+<br /><span class="t">We will discuss this step again in the next section 
+"Selecting a Data Variable". As in Method 1, we must select a data variable 
+before selecting our geographic region of interest. Let's use the 
+climatological data again.</span>
+</p><p>
+<span class="instruct">Select the "climatology Sea Surface Temperature" link.</span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/climatology+.sst/?help+dataselection">CHECK</a></font>
+<br /><span class="t">Take a moment to look at the hints offered below the 
+Setting Ranges table as they include valuable information. According to 
+the hints we should enter our lat/lon limits in the following way:</span>
+</p><p>
+<span class="instruct">Enter "70W to 20W" and "10S to 10N" in the appropriate 
+text boxes in the Setting Ranges table.
+<br />Note the default ranges in the gray Data Selection box at the top of 
+the page.
+<br />Select the "Restrict Ranges" button. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/climatology+.sst/dataselection.html?limit.X.value=70W+to+20W&amp;limit.Y.value=10S+to+10N&amp;limit.T.value=Jan+to+Dec">CHECK</a></font>
+<br /><span class="t">The ranges in the Data Selection box should now be 
+indicative of the limits you entered. </span>
+</p><p>
+<span class="instruct">Select the "Stop Selecting" button in the Data Selection 
+box. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/Y/%2810S%29%2810N%29RANGE/X/%2870W%29%2820W%29RANGE/">CHECK</a></font>
+<br /><span class="t">You have again selected gridded data for the Atlantic 
+Ocean off of northeastern South America and this region of data is again 
+indicated in the source bar.</span>
+</p><p>
+<span class="tb"><u>Method 3: Expert Mode</u></span>
+<br /><span class="instruct">Go back to the Reyn_Smith dataset main page.
+<br />Select the "Expert Mode" link in the function bar .
+<br />As noted above, there is more than one acceptable 
+lat/lon convention.
+<br />Enter one of the following sets of lines in the text 
+box below the text already there.</span>
+<pre class="ingridcode">
+Y (10S) (10N) RANGE
+X (70W) (20W) RANGE
+</pre>
+<span class="t">OR</span>
+<pre class="ingridcode">
+Y (-10) (10) RANGE
+X (-70) (-20) RANGE
+</pre>
+<span class="instruct">Click "OK". </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/Y/%2810S%29%2810N%29RANGE/X/%2870W%29%2820W%29RANGE/">CHECK</a></font>
+</p>
+<p>Note that the lowest levels of the source bar will match which 
+convention you chose to follow. Again, you have selected data for a region 
+identical to those in Methods 1 and 2.
+</p>
+</div>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
+

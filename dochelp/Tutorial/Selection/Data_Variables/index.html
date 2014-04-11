@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selecting Data Variables</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="ls02" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icton" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialSelection" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/Tutorial/">Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li> <a href="#Var_Single">Selecting a single variable</a></li>
+<li> <a href="#Var_Multiple">Selecting more than one variable</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Selecting Data Variables</h2>
+<p property="term:description">
+At this point, you should feel comfortable with the many ways to select data 
+for specific locations. Let us now look at the ways of selecting data variables. 
+These techniques are independent of the data type and we therefore use just one of the datasets
+to illustrate them.</p>
+<p>
+Note: When using station data, it is often best to select your desired station(s) before selecting a 
+data variable.</p>
+</div>
+<div id="Var_Single" class="ui-tabs-panel">
+<h2>Selecting a single variable</h2>
+<p>
+<span class="instruct">Start at the GLOBALSOD dataset <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">main
+page*</a>.</span>
+</p><p>
+<span class="ex"><u>Example: Select the maximum wind gust variable from the GLOBALSOD dataset.</u></span>
+<br /><span class="tb"><u>Method 1: Dataset and Variables Links</u></span>
+<br /><span class="instruct">Select the "maximum" link under the Datasets and 
+variables heading.
+<br />Select the "gust" link under the Datasets and variables heading.
+<br />Select the "Wind Speed" link under the Datasets and variables heading.</span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.gust/.wspeed/">CHECK</a></font>
+</p><p>
+<span class="tb"><u>Method 2: Data Selection Link</u></span>
+<br /><span class="instruct">Go back to the GLOBALSOD dataset main page.
+<br />Select the "Data Selection" link in the function bar. </span>
+<font size="-1"> <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/?help+datasetdataselection">CHECK</a></font>
+<br /><span class="instruct">Select the "maximum gust Wind Speed" link from the list 
+of variables.</span>
+<br /><span class="t">You are now at the data selection page. At this point you have the option
+to select a specific time period and this is discussed in more detail in the
+<a href="/dochelp/Tutorial/Selection/Time_Period/">next section</a>. 
+Right now let's continue with the techniques to select data variables.</span>
+</p><p>
+<span class="instruct">Select the "Stop Selecting" button in the Data Selection box.</span> 
+<font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.gust/.wspeed/">CHECK</a></font>
+<br /><span class="t">This brings us to the same results found by Method 1.</span>
+</p><p>
+<span class="tb"><u>Method 3: Expert Mode</u></span>
+<br /><span class="instruct">Go back to the GLOBALSOD dataset main page.
+<br />Select the "Expert Mode" link in the function bar.
+<br />In the text box at the top of the page, enter the following line below the text 
+already there.</span>
+<br /><span class="ingridcode">.maximum .gust .wspeed</span>
+<br /><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/.maximum/.gust/.wspeed/">CHECK</a></font>
+<br /><span class="t">Again, this offers us the same results found by the previous 
+two methods.</span>
+</p><p><span class="t">You can use expert mode to select a data variable in this manner any time 
+you know the variable is identified in the dataset.  Note that this information is given 
+under the Datasets and variables heading.  Simply see how a variable is defined, add 
+appropriate "."s as in this example and put it in expert mode.</span>
+</p>
+</div>
+<div id="Var_Multiple" class="ui-tabs-panel">
+<h2>Selecting more than one variable</h2>
+<p>
+<span class="t">This technique is typically used for comparing two different data 
+strings arithmetically or visually. These operations are covered in more detail in 
+<a href="/dochelp/Tutorial/MVD/Visualization/">Part III</a>. 
+The following example illustrates the selection procedure only.</span>
+</p><p>
+<span class="t">Knowledge of the location of a dataset is important in this technique. 
+As you continue to use the Data Library, you will become familiar with the directory 
+structure of the datasets that you use most often. We will work through this example under
+the assumption that you are not very familiar with the location of the dataset in the 
+SOURCES directory tree. Remember we noted that the source bar is your key to knowing where 
+you are in the data library? We will use to our advantage here.</span>
+</p><p>
+<span class="t">Let's use the Reyn_Smith dataset this time. As always, start on the dataset's 
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">main
+page*</a>.</span>
+</p><p>
+<span class="ex"><u>Example: Select the monthly climatological SST and monthly observed 
+SST data variable from the Reyn_Smith dataset.</u></span>
+</p><p>
+<span class="instruct">Use the links under the Datasets and variables heading to select 
+the climatological SST variable. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/">CHECK</a></font>
+<br /><span class="instruct">Write down the directory structure indicated in the source bar. 
+(Note that the structure actually begins with "SOURCES", but it is not seen due to a lack 
+of room in the bar.)
+<br />Go back to the dataset main page.
+<br />Use the links under the Datasets and variables heading to select the monthly SST variable. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/">CHECK</a></font>
+<br /><span class="instruct">Enter expert mode.</span>
+<br /><span class="t">Note the similarity between the directory structure in the source bar 
+and the text in the text box. You can refer to any dataset or variable in expert mode in 
+this way. Simply take the location of the dataset/variable as indicated by the source
+bar and add "." at the beginning of each directory level. We will use the directory structure 
+information you just wrote down to add the climatological SST variable here.</span>
+</p><p>
+<span class="instruct">Enter the following line in the text box below the text that is already 
+there. With the exception of the ".", this should have been what you wrote down.</span>
+<br /><span class="ingridcode">SOURCES .NOAA .NCEP .EMC .CMB .GLOBAL .Reyn_SmithOIv1 .climatology .sst</span>
+<br /><span class="instruct">Click "OK". </span>
+<font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.climatology/.sst/">CHECK</a></font>
+<br /><span class="t">You have new selected both variables and should see both variables 
+indicated at the very top of the page. As mentioned above, operations that use this 
+technique are illustrated in subsequent sections.</span>
+</p>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
+

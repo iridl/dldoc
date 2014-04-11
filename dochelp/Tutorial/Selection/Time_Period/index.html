@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selecting a Time Period</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a01" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialSelection" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/Tutorial/">Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+<li> <a HREF="#Intro"> Introduction</a></li>
+<li><a href="#Continuous">Selecting a Continuous Time Period</a></li>
+<li><a href="#Discontinuous">Selecting a Discontinuous Time Period</a></li>
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Selecting a Time Period</h2>
+<p property="term:description">You should now feel comfortable with selecting data for a specific 
+region and for a specific variable. The last parameter to which data is 
+typically constrained is the time period. You saw in a few of the examples  
+in previous sections that time period selection typically occurs along with 
+other steps. We have kept this step separate here to ensure that all of the 
+methods by which a time period can be chosen are covered. As in the previous 
+section, these techniques are the same for both station and gridded datasets.
+</p>
+<p>Note: When using station data, it is often best to select your desired station(s) before selecting a 
+time period.</p>
+</div>
+<div id="Continuous" class="ui-tabs-panel">
+<h2>Selecting a Continuous Time Period</h2>
+<p>
+<span class="t">Start at the <a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/" target="gridded">Reyn_Smith
+dataset main page*</a>.</span>
+</p><p>
+<span class="ex"><u>Example: Select data for the time period November 17, 1982- 
+December 29 , 2001.</u></span>
+<br /><span class="t">The weekly SST variable is used in this example.</span>
+</p><p>
+<span class="tb"><u>Method 1: Data Selection Link</u></span>
+<br /><span class="instruct">Select the "Data Selection" link in the function bar 
+and then the "weekly SST" link. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/weekly+.sst/?help+dataselection">CHECK</a></font>
+<br /><span class="t">Note that the default values in the time grid text boxes 
+are the limits of the dataset.</span>
+</p><p>
+<span class="instruct">Enter "17 Nov 1982 to 29 Dec 2001" in the appropriate text 
+box in the Setting Ranges Table.
+<br />Select the "Restrict Ranges" button. </span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/weekly+.sst/dataselection.html?limit.X.value=179.5W+to+179.5E&amp;limit.Y.value=89.5S+to+89.5N&amp;limit.T.value=17+Nov+1982+to+29+Dec+2001">CHECK</a></font>
+<br /><span class="t">Note that the limits of the time grid in the Data Selection 
+box match the closest Wednesday to your selected time limits as weekly data are 
+stored on the date of the Wednesday of each week.</span>
+</p><p>
+<span class="instruct">Select the "Stop Selecting" button.</span>
+<font size="-1"><a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.weekly/.sst/T/%2817%20Nov%201982%29%2829%20Dec%202001%29RANGE/">CHECK</a></font>
+<br /><span class="t">You have now selected weekly SST data for the time period 
+November 17, 1982- December 29, 2001 and can see these selections in the source bar.</span>
+</p><p>
+<span class="tb"><u>Method 2: Expert Mode</u></span>
+<br /><span class="t">In this example, we can do all of our selections in expert mode.</span>
+</p><p>
+<span class="instruct">Go back to the Reyn_Smith dataset main page.
+<br />Select the "Expert Mode" link in the function bar.
+<br />Note how the dataset is represented at the very top of the page.
+<br />Enter the following lines in the text box below the text already in the box.</span>
+<br /><span class="ingridcode">.weekly .sst
+<br />T (17 Nov 1982) (29 Dec 2001) RANGE</span>
+<br /><span class="instruct">Click "OK".</span><font size="-1"> <a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.weekly/.sst/T/%2817%20Nov%201982%29%2829%20Dec%202001%29RANGE/">CHECK</a></font>
+<br /><span class="t">You now have the same selection results as those found with 
+Method 1. Note that your selections are now in the source bar as well as at 
+the top of the page.</span>
+</p>
+</div>
+<div id="Discontinuous" class="ui-tabs-panel">
+<h2>Selecting a Discontinuous Time Period</h2>
+<p>
+<span class="t">Let us use the <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/" target="station">GLOBALSOD*</a>
+dataset for this example.</span>
+</p><p>
+<span class="ex"><u>Example: Create a time series of data on Sept. 3 -Sept. 4 
+including the years 1995-1999.</u></span>
+</p><p>
+<span class="instruct">Enter expert mode. </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO+466960+VALUE/.mean/.temp/">CHECK</a></font>
+<br /><span class="instruct">Enter the following line in the text box below the 
+text already there.</span>
+<br /><span class="ingridcode">T (3-4 Sep 1995-1999) RANGE</span>
+<br /><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/IWMO/466960/VALUE/.mean/.temp/T/%283-4%20Sep%201995-1999%29RANGE/">CHECK</a></font>
+<br /><span class="t">Note that your date selection is not only seen in the 
+source bar, but in the time grid information at the bottom of the page as 
+well. Let's look at another example of this technique with the 
+<a href="/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/">Reyn_Smith</a>
+dataset.</span>
+</p><p>
+<span class="ex"><u>Example: Create a time series of September data including 
+the years 1990-1999.</u></span>
+</p><p>
+<span class="instruct">Go back to GLOBALSOD dataset main page.
+<br />Enter expert mode. </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/">CHECK</a></font>
+<br /><span class="instruct">Enter the following line in the text box below the 
+text already there.</span>
+<br /><span class="ingridcode">T (Sep 1990-1999) RANGE</span>
+<br /><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/T/%28Sep%201990-1999%29RANGE/">CHECK</a></font>
+<br /><span class="t">Again, note that your date selection is not only seen 
+in the source bar, but in the time grid information as well.</span>
+</p><p>
+<span class="ex"><u>Example: Create a time series of data that includes every 
+Monday in 1999.</u></span>
+</p><p>
+<span class="instruct">Go back to GLOBALSOD dataset main page.
+<br />Enter expert mode. </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/">CHECK</a></font>
+<br /><span class="instruct">Enter the following lines in the text box below 
+the text already there.</span>
+<br /><span class="ingridcode">T (4 Jan 1999) (31 Dec 1999) RANGE
+<br />T 7 STEP</span>
+<br /><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCDC/.DAILY/.GLOBALSOD/T/%284%20Jan%201999%29%2831%20Dec%201999%29RANGE/T/7/STEP/">CHECK</a></font>
+<br /><span class="t">The STEP command selects every n time steps, where n is the indicated 
+period (e.g., 7), beginning with the first available . Therefore,
+we specified our range to begin on Jan 4, which is a Monday.</span>
+</p><p>
+With the techniques highlighted thus far, you should have an excellent 
+understanding of how to navigate through the pages the of the Data Library 
+and how to make basic data selections. The next logical step then would be 
+to manipulate the data statistically or arithmetically, create plots of these 
+data, or download the data you have selected. Part III focuses on these tasks.
+</p>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
