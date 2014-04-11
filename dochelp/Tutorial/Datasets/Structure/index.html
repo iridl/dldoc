@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dataset Structure</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a01" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialDatasets" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/Tutorial/">Tutorial</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Tutorial</legend> 
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+    <ul class="ui-tabs-nav">
+</ul>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Dataset Structure</h2>
+<p property="term:description">You should now be more comfortable
+with finding datasets in the Data Library. Let us take a closer look
+at the information and utilities available to you when you select a dataset. You will not 
+use these utilities in this section, but it is important to know what they do and where they 
+are for Parts II and III. The NOAA NCDC DAILY FSOD dataset is a commonly used dataset and 
+is the example for this section.</p>
+<p class="instruct">Select <a href="/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/" target="new">NOAA
+NCDC DAILY FSOD*</a>.</p>
+<br /><div class="t">There is a wealth of information
+about the dataset on its main page. Let's look at all of the elements
+from top to bottom.</div>
+<p>
+<span class="tb"><u>Function Bar</u></span>
+<br />
+<p>
+<table bgcolor="#CCCCCC" border="0" cellspacing="0"><tr><td><table border="2" bgcolor="#FEFEFE">
+<tr><td><b>NOAA NCDC DAILY FSOD</b> options<br /></td>
+<td align="left"><font color="#990000"><u>Help</u></font></td>
+<td align="left"><font color="#990000"><u>Expert Mode</u></font></td>
+<td><br /></td></tr>
+<tr><td align="right"><img src="http://iridl.ldeo.columbia.edu/icons/pcolor.gif" width="100" height="25" border="1" /> 
+<img src="http://iridl.ldeo.columbia.edu/icons/pcontour.gif" width="100" height="25" border="1" /> 
+<img src="http://iridl.ldeo.columbia.edu/icons/line.gif" width="100" height="25" border="1" /> 
+<img src="http://iridl.ldeo.columbia.edu/icons/scatter.gif" width="100" height="25" border="1" /> </td>
+<td align="left"><font color="#990000"><u>Data Selection</u></font></td>
+<td align="left"><font color="#990000"><u>Data Downloads &amp; Files</u></font></td>
+<td align="left"><font color="#990000"><u>Data Tables</u></font></td>
+</tr></table></td></tr></table>
+<br />
+The function bar has its greatest utility after the desired data variable and station(s) 
+or region have been selected, however it is important to be aware of what options are available.  
+Therefore, a brief explanation of these tools is offered here. (Note that the links 
+in the example above are inactive.)
+<p>
+<u>Views</u>: The views icons on the left side of the function bar take you to an image of the 
+selected data and a data viewer similar to that seen on this page. Let's quickly go over the different 
+types of images seen here.  The colored and contoured images generally display a spatial 
+(e.g., [X,Z], [lon,lat]) image as either colors or contours.  The line graph typically illustrates a 
+time series (e.g., [data value,T]) image. Other types of views icons will appear depending on your 
+data selection.  It is important to remember that the image in the icon is representative of the image 
+to which the icon is linked.  We will talk much more about these links and their visualization capabilities 
+in <a href="/dochelp/Tutorial/MVD/Visualization/">Part III</a>.
+</p><p>
+<div class="instruct">Select the "Expert Mode" link.</div>
+<br /><u>Expert Mode</u>: This option switches the interface into a mode that allows you to 
+enter data-manipulating Ingrid commands directly rather than clicking on a series of pages to perform 
+an identical task. 
+You must not already be familiar with Ingrid at this point.  These commands will be introduced 
+throughout the tutorial.
+</p><p>
+When in Expert Mode there is a list of active datasets at the top of the page and a 
+text window containing the command equivalent of the current page where the commands 
+can be edited. Right now, you should see only one dataset, FSOD, noted as the active dataset. 
+Because no variable has been selected, you can see all of the possible variables listed 
+in this location as well. Much more detail about expert mode, including specific examples, will be
+given in Parts <a href="/dochelp/Tutorial/Selection/">II</a> and 
+<a href="/dochelp/Tutorial/MVD/">III</a>.</p>
+</p><p>
+<div class="instruct">Select the "Data Selection" link.</div>
+<br /><div class="t"><u>Data Selection</u>: This option allows you to pick out a subset of the full dataset. 
+Right now this option displays the available data variables that you also see on the dataset
+main page. In Part II, you will learn how to use this option to select data for specific locations 
+and time periods.</div>
+</p><p>
+<div class="instruct">Go back to the dataset main page by selecting the "FSOD" link in the source bar 
+or the dataset link in the navigation banner.
+<br />Select the "Data Downloads &amp; Files" link.</div>
+<br /><div class="t"><u>Data Downloads &amp; Files</u>: This option allows you to download the dataset 
+in a variety of formats. You will learn much more about this option in 
+<a href="/dochelp/Tutorial/MVD/Download/">Part III</a>.</div>
+</p><p class="instruct">Go bac k to the dataset main page by selecting the "FSOD" link in the source 
+bar or the dataset link in the navigation banner.
+<br />Select the "Data Tables" link.</p>
+<br /><u>Data Tables</u>: This option allows you to view the data as a table in a 
+variety of formats. You will learn much more about this option in Part III.
+</p><p>
+The function bar is largely used to select, manipulate, and visualize data and will therefore 
+be covered in much greater detail in Parts II and III. Keep in mind that many of the contents 
+of the links in the function bar will appear signifcantly different after you have selected your 
+data variable and station(s) or region.  The goal here was just to introduce you the options 
+available in the function bar.</p>
+<p>
+<div class="instruct">Go back to the dataset main page by selecting the "FSOD" link in the source 
+bar or the dataset link in the navigation banner.</div>
+</p><p>
+<a NAME="Source Bar"></a><div class="tb"><u>Source Bar</u></div>
+<table bgcolor="#CCCCCC" border="0"><tr><td><table border="2" bgcolor="#FEFEFE"><tr align="center">
+<td bgcolor="#D7D7D7"><a href="/SOURCES/" OnMouseOver="self.status='SOURCES'; return true"> SOURCES</a></td>
+<td bgcolor="#DEDEDE"><a href="/SOURCES/.NOAA/" OnMouseOver="self.status='NOAA'; return true">NOAA</a></td>
+<td bgcolor="#E7E7E7"><a href="/SOURCES/.NOAA/.NCDC/" OnMouseOver="self.status='NOAA NCDC:  National Climatic Data Center'; return true">NCDC</a></td>
+<td bgcolor="#EEEEEE"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/" OnMouseOver="self.status='NOAA NCDC DAILY:  global daily WMO weather station data'; return true">DAILY</a></td>
+<td bgcolor="#FEFEFF"><b><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/" OnMouseOver="self.status='FSOD from NOAA NCDC DAILY:  global daily WMO weather station data'; return true">FSOD</a></b>
+<sup><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/.dataset_documentation.html" OnMouseOver="self.status='Documentation for FSOD from NOAA NCDC DAILY:  global daily WMO weather station data'; return true">*</a></sup> 
+<font color="green">[map]</font></td></tr></table></td></tr></table>
+</p><p>
+The source bar, as described in the previous section, indicates to the user the 
+location of the current dataset in the Data Library and offers the opportunity to go to any of
+the higher levels in the hierarchy by selecting one of the links. For example, you can view 
+other NCDC datasets by selecting the "NCDC" link and other daily NCDC datasets 
+by selecting the "DAILY" link. You should also notice the asterisk next to last link in the
+dataset path. This indicates that the documentation for the dataset
+is available and you can go to it by selecting the asterisk link.
+</p><p>
+The source bar is an extremely valuable navigation tool in the Data Library. Try using its options...
+</p>
+<p>
+<div class="instruct">Select the "NCDC" link in the source bar.</div>
+<br /><div class="t">These are the other subsets of data available from NCDC.</div>
+</p><p>
+<div class="instruct">Go back to the FSOD dataset main page (back button).
+<br />Select the "*" link in the source bar.</div>
+<br /><div class="t">This the documentation for the FSOD dataset.</div>
+</p><p>
+<div class="instruct">Go back to the FSOD dataset main page.</div>
+<br />
+</p><p><a NAME="Viewer"></a><span class="tb"><u>Dataset Map/Data Viewer</u></span>
+<br /><span class="t">A dataset map will appear when the selected dataset is comprised of station data. 
+Those datasets with gridded data will have a main page with an identical structure with
+the exception of this map. For example, look at the main page for the 
+<a href="/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Diagnostic/" target="new2">NOAA
+NCEP-NCAR CDAS-1 MONTHLY Diagnostic*</a> dataset, which is a gridded dataset. You should 
+note the options and structure of this page are identical to those of the FSOD dataset, 
+with the exception of the dataset map.</span>
+</p><p>
+<span class="t">The data viewer is an interactive interface that helps you find data for a specific location. 
+The black dots on the map represent stations for which there is data in the dataset. The FSOD 
+dataset primarily contains data from the United States and you can see that by the density of 
+dots in the United States on the dataset map. You can select any of those stations by clicking 
+on them. However, that may not be easy if the stations are as dense as they are here. Therefore, 
+there a few options that make finding specific station(s) easier. First, you can zoom in on the 
+map using the Zoom pull-down menu on the left side.</span>
+</p><p>
+<div class="instruct">Select a zoom magnitude from the Zoom pull-down.
+<br />Click "Redraw".</div>
+<br /><div class="t">You can also limit the map by selecting latitude and longitude values and place 
+labels on the map to help you identify stations.</div>
+</p><p>
+<div class="instruct">Select new lat/lon limits and click "Redraw".
+<br />Select one of the label methods in the pull-down menu on the right side. Its default says "no labels".
+<br />Click "Redraw".</div>
+<br /><div class="t">These options can be combined to easily select any number of stations. There is 
+also a "Searches" link on the dataset map that will allow you to search for stations in a number 
+of ways. These methods will be highlighted and fully discussed in the 
+<a href="/dochelp/Tutorial/Selection/">next section</a>.</div>
+</p><p class="instruct">Go back to the default dataset map by clicking on the "FSOD" link in the source bar.
+</p><p>
+<div class="tb"><u>Documents</u></div>
+<span class="instruct">Select the "outline" link. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/outline.html">CHECK</a></font>
+<br /><div class="t">This is one way to view the available variables within the dataset. The bracketed 
+text with each variable indicates the grids that are associated with that variable. The idea
+of grids will be addressed <a href="#Grids">later in this section</a>.</div>
+</p><p>
+<span class="instruct">Go back to the dataset main page.
+<br />Select the "dataset documentation" link. </span><font size="-1"><a href="/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/.dataset_documentation.html">CHECK</a></font>
+<br /><div class="t">This is the same documention for the FSOD dataset that reached via the 
+"*" in the source bar and the "NOAA NCDC DAILY FSOD documentation" link in the blue 
+navigation bar.</div>
+</p><p>
+<div class="instruct">Go back to the dataset main page.</div>
+</p><p>
+<span class="tb"><u>Datasets and variables</u></span>
+<br /><span class="t">This is the same list of variables that you saw on the outline page. There is a link to each 
+variable, as well as the abbreviated name of the variable in the dataset, and its grids (in 
+brackets). You may notice that in this list the grids are time and WBAN instead of time and 
+station as on the outline page. WBAN and station are synonymous- WBAN are the ids for stations. 
+(Note: IWMO is another type of station ID and you may therefore see it in the station grid 
+descriptions of other datasets.)</span>
+</p><p>
+<span class="t">You may chose a variable from this list, but it is often easier to select the station(s) or 
+region first. Right now, let's just look to see what information is available when we select a 
+variable.</span>
+</p><p class="instruct">Select the pressure variable.</p>
+<p>This is the typical information given for each variable. You are given the 
+specific information about the grids as well as how the data are scaled, how missing values 
+are replaced, and the units of the data.
+</p><p>
+<div class="instruct">Go back to the dataset main page.</div>
+</p><p>
+<a NAME="Grids"></a><span class="tb"><u>Grids</u></span>
+<br /><span class="t">You can think of grids as the ways in which the data are dependent. In this example, 
+the data vary with each station as well as with time. The information after each grid
+indicates the units and range of the grid. For example, the time grid has units of julian 
+days and has data from 1 Jan 1869 through 31 Dec 1999, which creates 47846 different time 
+grid points. (Note: month is another common temporal grid unit.)</span>
+</p><p>
+Grids vary from dataset to dataset, but there is a fundamental difference between those for 
+station data and those for gridded data.
+</p><p>
+<span class="instruct">Select <a href="/SOURCES/.NOAA/.NCEP/.CPC/.GLOBAL/.daily/" target="new2">NOAA
+NCEP CPC GLOBAL daily*</a> here.</span>
+<br />This is a gridded dataset and, accordingly, it has latitude and longitude 
+grids instead of a station grid. You can see this in the grid brackets with the Daily OLR 
+variable as well as in the information below the Grids heading. The description of the latitude and longitude 
+grid gives the spatial resolution of the data as well as the spatial range and number of grid 
+points in each direction.
+<br /><div class="instruct">Close NOAA NCEP CPC GLOBAL daily.</div>
+</p>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
