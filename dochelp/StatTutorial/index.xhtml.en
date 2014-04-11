@@ -29,13 +29,12 @@
 <input class="titleLink itemImage" name="bbox" type="hidden" />
 </form>
 <div class="controlBar">
-           <fieldset class="navitem">
-                <legend>Data Library</legend> 
+           <fieldset class="navitem"  id="toSectionList">
+                <legend>Data Library</legend>
                       <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
             </fieldset> 
-           <fieldset class="navitem"> 
+           <fieldset class="navitem" id="chooseSection"> 
                 <legend about="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial"><span property="term:label">Tutorials</span></legend> 
-                     <span class="navtext">Statistics Tutorial</span>
             </fieldset> 
  </div>
 <div class="searchDescription">

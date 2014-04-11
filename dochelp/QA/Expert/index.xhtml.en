@@ -10,18 +10,16 @@
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tutorial</title>
+<title>Manipulating Data in the Data Library</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
 <link rel="canonical" href="index.html" />
-      <meta property="maproom:Sort_Id" content="a04" />
+      <meta property="maproom:Sort_Id" content="a03" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
 <link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
 <link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
-<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
-<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 </head>
 <body>
@@ -33,30 +31,30 @@
 <div class="controlBar">
            <fieldset class="navitem" id="toSectionList">
                 <legend>Help Resources</legend> 
-                      <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/">Questions and Answers</a>
             </fieldset> 
             <fieldset class="navitem" id="chooseSection"> 
-                <legend>Help Resources</legend> 
+                <legend>Q&amp;A</legend> 
             </fieldset> 
  </div>
 <div class="searchDescription">
-<h2 property="term:title">Navigating Through the IRI Data Library: A Tutorial</h2>
-<p>
-The Data Library is an extremely powerful tool 
-that allows you to access, manipulate, and view a wide array of earth science data in a variety of 
-formats (e.g., data files, tables), visual plots (e.g., contour, color, vector), and plot formats 
-(e.g., PostScript, GIF). <span property="term:description">The goal of this tutorial is to 
-introduce you to the structure of the Data Library and the many ways to navigate through it.</span>
+<h2 property="term:title">Manipulating Data in the Data Library</h2>
+<p property="term:description">
+A selection of previously-asked questions about
+manipulating data in the Data Library.</p>
+<p> Most of these examples begin
+their explanation after the desired data has been found in the Data Library.
+If you are having trouble finding the data for which you are looking, then
+you may want to refer to the 
+"<a href="/dochelp/Tutorial/Datasets/Location/">Locating Data</a>" 
+section of the Data Library Tutorial and then return to these examples for further 
+explanation.
 </p>
 </div>
-<div class="rightcol tabbedentries" about="/dochelp/Tutorial/">
-<a rel="maproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialDatasets" ></a>
-<a rel="maproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialSelection" ></a>
-<a rel="maproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialMVD" ></a>
+<div class="rightcol tabbedentries" about="/dochelp/QA/Expert/">
 </div>
 <div class="optionsBar">
 <fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
 </div>
 </body>
 </html>
-

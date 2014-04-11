@@ -57,7 +57,7 @@ The ultimate vision is to automatically create a web of hypertext that
 connects final results to analyses to the original data.</p>
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/">
-<a rel="maproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" ></a>
+<a rel="notmaproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" ></a>
 </div>
 <div class="optionsBar">
 <fieldset class="navitem" id="share"><legend>Share</legend></fieldset>

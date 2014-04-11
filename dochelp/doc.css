@@ -4,7 +4,7 @@ font-family: inherit;
 }
 pre.ingridcode {
 border: 0pt;
-margin-left: 5pt;
+margin-left: 10pt;
 }
 .dlimage.example {
 margin-left: auto;
@@ -12,6 +12,8 @@ margin-right: auto;
 display: block;
 float: none
 }
+.indent {
+padding-left: 10pt;
 /*
 	.instruct	{font: 12pt helvetica, sans-serif; color: #FF0000; }
 	h1		{font: 20pt helvetica, sans-serif; color: #660000; }
