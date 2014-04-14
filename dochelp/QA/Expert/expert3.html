@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I am using gridded data?  How do I create a spatial average?</title>
+<meta property="maproom:Sort_Id" content="expert03" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">I am using gridded data?  How do I create a spatial average?</h2>
+<p property="term:description">
+You can do this two different ways.</p><p> One utilizes Ingrid in the Expert
+Mode and the requires a series of selections from the Data Selection interface.
+These methods are shown in multiple examples in the Data Library Tutorial
+(<a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Selection/">data
+selection</a>, <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Manipulation/#Spatial">spatial
+average</a>).
+</p><p>
+Using DASILVA SMD94 data as an example,
+let's start <a href="http://iridl.ldeo.columbia.edu/SOURCES/.DASILVA/.SMD94/.anomalies/.u3/" target="new">here</a>.
+and assume we want a spatial average of the following region: 2S - 2N,
+40E - 60E.</p>
+<p>First Method</p>
+<ol>
+<li>Click on the "Expert Mode" link in the table
+at the top of the page. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.DASILVA/.SMD94/.anomalies/.u3/">Check
+Step</a>.</li>
+<li>In the text box at the top of the page enter
+the follow lines underneath the present text.
+<pre class="ingridcode">
+Y (2S) (2N) RANGE
+X (40E) (60E) RANGE
+[X Y] average
+</pre>
+Click "OK". <a href="/expert/SOURCES/.DASILVA/.SMD94/.anomalies/.u3/Y/%282S%29%282N%29RANGE/X/%2840E%29%2860E%29RANGE%5BX/Y%5Daverage/">Check
+Step</a>.
+</li><li>You have created spatially
+averaged data and can view the data by clicking on on the "Views" links,
+view the data in tablular format by clicking on the "Tables" link, or download
+the data in a variety of formats by clicking on the "Data Files" link.</li>
+</ol>
+<p>Second Method</p>
+<ol>
+<li>From the start page linked
+above, click on the "Data Selection" link in the table at the top of the
+page. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.DASILVA/.SMD94/.anomalies/.u3/?help+dataselection">Check
+Page</a>.</li>
+<li>Enter "40E to 60E" and
+"2S to 2W" in the lon and lat text boxes. (You can also enter temporal
+limites here as well.) Click "Restrict Ranges". Your page should
+have these new limits in the gray box at the top of the page.  
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.DASILVA/.SMD94/.anomalies/.u3/dataselection.html?limit.X.value=40E+to+60E&amp;limit.Y.value=2S+to+2N&amp;limit.T.value=Jan+1945+to+Dec+1993">Check Step</a>.</li>
+<li>Click "Stop Selecting".
+This will bring you back to the database page. Click "Filters" in the table at the top of the page. 
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.DASILVA/.SMD94/.anomalies/.u3/Y/%282S%29%282N%29RANGE/X/%2840E%29%2860E%29RANGE/?help+filters">Check Step</a>.
+</li>
+<li>Select the "XY" link in
+the "Average over" line. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.DASILVA/.SMD94/.anomalies/.u3/Y/%282S%29%282N%29RANGE/X/%2840E%29%2860E%29RANGE/[X+Y+]average/">Check Page</a>.
+</li></ol>
+<p>You have created spatially averaged data and can view the data by clicking
+on on the "Views" links, view the data in tablular format by clicking on
+the "Tables" link, or download the data in a variety of formats by clicking
+on the "Data Files" link.
+</p><p><i>--Michael Bell / Emily Grover</i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I am using monthly data. How do I create seasonal averages?</title>
+<meta property="maproom:Sort_Id" content="expert02" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">I am using monthly data. How do I create seasonal averages?</h2>
+<p>
+<span  property="term:description">This example begins with 
+the dataset, station, and variable already selected.</span> For more information about these steps, 
+please refer to the Data Library Tutorial (finding <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Datasets/Location/">datasets</a>
+, selecting <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Selection/Stations_Regions/#Station">stations</a> 
+and <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Selection/Data_Variables/">variables</a>.
+</p><p>
+Let's
+use NOAA/NCDC/GSPS/MONTHLY/STATION data for an example. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.STATION/IWMO/7250309/VALUES/.mean/.temp/" target="new">Here</a>
+is the mean temperature data for New York. Seasonally averaged data
+can be found by following these steps:</p>
+<ol>
+<li>Reduce the data to include only full years. For example, 
+let's reduce the data to Jan 1950 - Dec 1969. To do this, click on the "Data Selection" 
+link in the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Datasets/Structure/">Function Bar</a>. 
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.STATION/IWMO/7250309/VALUES/.mean/.temp/?help+dataselection">Check Step</a>
+</li>
+<li>Enter "Jan 1950 to Dec 1969" in the range box
+in the Setting Ranges table and click on the Restrict Ranges button.
+These new dates should now appear in the gray box. Click the "Stop
+Selecting" button. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.STATION/IWMO/7250309/VALUES/.mean/.temp/T/%28Jan%201950%29%28Dec%201969%29RANGE/">Check Step</a></li>
+<li>Select the Expert Mode link in the Function Bar.</li>
+<li>Enter the following line in the text box at the
+top of the page underneath the last line of text. 
+<br /><font color="#009900">T 3. boxAverage</font>
+<br /> Click "OK". <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GCPS/.MONTHLY/.STATION/IWMO/7250309/VALUES/.mean/.temp/T/%28Jan%201950%29%28Dec%201969%29RANGE/T/3./boxAverage/">Check Page</a></li>
+</ol>
+<p>You have now created a 3-month average
+beginning with the first 3-month period, i.e., Jan-Mar 1950. If we
+had wanted our winter season to be Dec-Feb instead of Jan-Mar, then we
+would have entered "Dec 1949 to Nov 1969" in Step 2.
+</p><p>
+You can now either view the seasonal
+data by clicking on one of the Views links underneath the text box, view
+the seasonal data in tabular format by clicking on the "Tables" link, or
+download the data in a variety of formats by clicking on the "Data Files"
+link.</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
