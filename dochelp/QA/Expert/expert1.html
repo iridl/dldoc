@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I am using monthly data. How do I create a monthly average over several years?</title>
+<meta property="maproom:Sort_Id" content="expert01" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">I am using monthly data. How do I create a monthly average over several years?</h2>
+<p property="term:description">
+Let's
+use the NOAA/NCDC/GHCN/v2 dataset as an example.</p>
+<p> This example begins with the dataset, station, 
+and variable already selected.  If you would like more information about these steps, please 
+refer to the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/index.html">Data Libarary Tutorial</a>.
+</p><p>
+Here I have the
+mean temperature for Nairobi:</p>
+<p>
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GHCN/.v2/IWMO+63740000+VALUE/.adjusted/.mean/.temp/" target="new">http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GHCN/.v2/IWMO+63740000+VALUE/.adjusted/.mean/.temp/</a></p>
+<p>
+Again, as an example, let's create monthly climatological values of mean temperature 
+for the time period 1970-2000. There are a variety of ways to obtain this information and one of those methods
+requires the following steps:</p>
+<ol>
+<li>Select the Data Selection link in the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Datasets/Structure/">Function Bar</a>.
+</li>
+<li>Enter the following text in the Time range text box and click the 
+Restrict Ranges button.
+<br /><font color="#009900">Jan 1970 to Dec 2000</font>
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GHCN/.v2/IWMO+63740000+VALUE/.adjusted/.mean/.temp/dataselection.html?limit.T.value=Jan+1970+to+Dec+2000&amp;limit.VER.value=0.0+to+6.&amp;limit.IWMO.value=63740000+to+63740000">Check Page</a>
+</li><li>Click the Stop Selecting button to return to the main dataset page 
+interface.</li>
+<li>Select the Filters link in the Funtion Bar.</li>
+<li>Select the Monthly Climatology link. 
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GHCN/.v2/IWMO/63740000/VALUE/.adjusted/.mean/.temp/T/%28Jan%201970%29%28Dec%202000%29RANGE/yearly-climatology/">Check Step</a></li>
+<li>If you would like to see a plot of the climatological monthly mean 
+temperature, then click on one of the "Views" links at the very top of the page. If you would 
+like to see a table of these values, then click on the "Tables" link in the table at the top of 
+the page, view the terms associated with the data, and then click on "columnar table".</li>
+<li>You can also download the data in a variety of formats
+by clicking on the "Data Files" link in the table at the top of the page.
+</li>
+</ol>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

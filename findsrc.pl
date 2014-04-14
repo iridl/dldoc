@@ -23,7 +23,7 @@ if($ARGV[0] eq 'src'){
 }
 elsif($ARGV[0] eq 'bld') {
 # bld -- outputs target (to be build from xhtml) html files
-    foreach $vval (keys %output){
+    foreach $vval (sort keys %output){
 	if($output{$vval}){
 	    print "$vval\n";
 	}
