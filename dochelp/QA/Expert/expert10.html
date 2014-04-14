@@ -10,9 +10,9 @@
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta property="term:description" content="Using the FSOD dataset for New York, we can obtain both minimum and maximum temperature data." />
-<title>How do I find the average of two data fields?</title>
-<meta property="maproom:Sort_Id" content="expert08" />
+<meta property="term:description" content="Let's use the OBERHUBER dataset as an example and correlate latent heat flux and sea surface temperature." />
+<title>How do I correlate two different variables in a datset?</title>
+<meta property="maproom:Sort_Id" content="expert10" />
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
 <link rel="canonical" href="" />
@@ -39,25 +39,30 @@
             </fieldset> 
  </div>
 <div id="Intro" class="ui-tabs-panel">
-<h2 property="term:title">How do I find the average of two data fields?</h2>
+<h2 property="term:title">How do I correlate two different variables in a datset?</h2>
 <p>
-Using the NOAA/NCDC/DAILY/FSOD <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/WBAN+94728+VALUE/" target="new">dataset</a>
-for New York, we can obtain both minimum and maximum temperature data.
-This example will find the mean temperature from these data.</p>
+Let's use the <a href="http://iridl.ldeo.columbia.edu/SOURCES/.OBERHUBER/" target="new">OBERHUBER
+dataset</a> as an example and correlate latent heat flux and sea surface
+temperature.</p>
 <ol>
-<li>From the linked page above, click on the "Expert
-Mode" link in the table. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/WBAN+94728+VALUE/">Check Page</a></li>
-<li>Put the following text below the text that is already there. Click "OK".
+<li>Note the variable abbreviations
+in the Dataset and variables list: sea surface temperature =
+sst, latent heat flux = lhfx.
+</li>
+<li>Enter Expert Mode by selecting
+the "Expert Mode" link in the table at the top of the page.</li>
+<li>Enter the following lines
+in the text box below the text that is already there and then click "OK".
 <pre class="ingridcode">
-add
-2 div
-</pre>>
-<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/.TMAX/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/.TMIN/add/2/div/WBAN/%2894725%29VALUES/">Check Page</a>.
-</li></ol>
-<p>
-More information about arithmetically manipulating your data can be found 
-in <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Manipulation/#Arithmetic">Part III</a> of the Data Library Tutorial.
-</p>
+SOURCES .OBERHUBER .lhfx
+SOURCES .OBERHUBER .sst
+[T] correlate
+</pre>
+Your page should look like <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.OBERHUBER/.lhfx/SOURCES/.OBERHUBER/.sst%5BT%5Dcorrelate/">this</a>.
+To see an image of this correlation, click on one of the "Views" images
+underneath the expert mode text box.
+</li>
+</ol>
 </div>
 <div class="optionsBar">
 <fieldset class="navitem" id="share"><legend>Share</legend></fieldset>

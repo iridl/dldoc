@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How do I find all stations that have record maximum and minimum temperatures within a specific range?</title>
+<meta property="maproom:Sort_Id" content="expert11" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">How do I find all stations that have record maximum and minimum temperatures within a specific range?</h2>
+<p>
+<span property="term:description">A good place to start is the U.S. National Climatic Data Center Global Historical
+Climatology Network dataset</span> (<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GHCN/.v2/" target="new">NCDC
+GHCN</a>). This dataset contains monthly station
+temperatures, including monthly high and low temperature values.
+The earliest records for this dataset begin in 1840 and it extends to the
+present day.</p>
+<p>Note that there are raw temperature data as well as temperature
+data for the effects of urban heat islands, etc. In this example,
+let's use the adjusted temperature dataset.</p>
+<ol>
+<li>
+Enter the Expert Mode by selecting the "Expert
+Mode" link in the table at the top of the page.
+</li>
+<li>Enter the following lines in the text box underneath
+the text already in the box and then click "OK".
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GHCN/.v2/.adjusted/.Max/.temp%5BT%5Dmaxover/26.667/maskgt/SOURCES/.NOAA/.NCDC/.GHCN/.v2/.adjusted/.Min/.temp%5BT%5Dminover/10/masklt/mul/">Check Step</a>
+<pre>
+SOURCES .NOAA .NCDC .GHCN .v2 .adjusted .Max .temp
+ [T]maxover
+ 26.667 maskgt
+ SOURCES .NOAA .NCDC .GHCN
+.v2 .adjusted .Min .temp
+ [T]minover
+ 10 masklt
+ mul
+</pre>
+<p>
+These lines have selected the adjusted maximum and minimum
+temperature datasets and the record maximum and minimum values have been
+found for each of the stations in the dataset. Next, all the stations
+with maximum temperatures above 80 F (26.667 C) and stations with minimum
+temperatures below 50 F (10 C) have been masked out, leaving two lists
+of stations based on these criteria. To see which of these stations
+are common to both lists, the values of the two lists are multiplied together,
+which filters out those stations that are not common to both.
+</p></li>
+<li>
+Click on the "Tables" link in the table below
+the text box, then click on "I Agree...", and then on "columnar table".
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.GHCN/.v2/.adjusted/.Max/.temp%5BT%5Dmaxover/26.667/maskgt/SOURCES/.NOAA/.NCDC/.GHCN/.v2/.adjusted/.Min/.temp%5BT%5Dminover/10/masklt/mul/IWMO+exch+table-+text+text+skipanyNaN+-table+.html">Check Step</a>
+<p>
+You can see that only one station (98328000) had both
+record maximum and minimum temperatures within the range your range.
+</p>
+</li>
+<li>Go back to the GHCN dataset page using the NCDC GHCN link above.</li>
+<li>Select the "Searches" link next to the map of
+the stations.</li>
+<li>Type in the station ID number (98328000) and
+click "Get IWMO". <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.GHCN/.v2/IWMO/%2898328000%29VALUE/">Check Step</a>
+</li>
+</ol>
+Under Dataset and variables, you can see that the name
+of this station is Baquio, which is in the Phillippines.
+<p>
+More information about the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Manipulation/#Find">maxover/minover</a> 
+and <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Manipulation/#Mask">maskgt/masklt</a> 
+functions can be found in the Data Library Tutorial.
+</p>
+<p>
+<i>-- Michael Bell / Emily Grover</i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

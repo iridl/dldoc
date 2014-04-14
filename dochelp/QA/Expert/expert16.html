@@ -10,9 +10,8 @@
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta property="term:description" content="Using the FSOD dataset for New York, we can obtain both minimum and maximum temperature data." />
-<title>How do I find the average of two data fields?</title>
-<meta property="maproom:Sort_Id" content="expert08" />
+<title>How do I calculate a seasonal average from certain composite years and then subtract it from that of another set of years?</title>
+<meta property="maproom:Sort_Id" content="expert16" />
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
 <link rel="canonical" href="" />
@@ -39,24 +38,48 @@
             </fieldset> 
  </div>
 <div id="Intro" class="ui-tabs-panel">
-<h2 property="term:title">How do I find the average of two data fields?</h2>
+<h2 property="term:title">How do I calculate a seasonal average from certain composite years and then subtract it from that of another set of years?</h2>
+<p property="term:description">
+Start with the UMD Carton Global Ocean Analysis dataset</p>
 <p>
-Using the NOAA/NCDC/DAILY/FSOD <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/WBAN+94728+VALUE/" target="new">dataset</a>
-for New York, we can obtain both minimum and maximum temperature data.
-This example will find the mean temperature from these data.</p>
-<ol>
-<li>From the linked page above, click on the "Expert
-Mode" link in the table. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/WBAN+94728+VALUE/">Check Page</a></li>
-<li>Put the following text below the text that is already there. Click "OK".
-<pre class="ingridcode">
-add
-2 div
-</pre>>
-<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/.TMAX/SOURCES/.NOAA/.NCDC/.DAILY/.FSOD/.TMIN/add/2/div/WBAN/%2894725%29VALUES/">Check Page</a>.
-</li></ol>
+Its temperature data variable is <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UMD/.Carton/.goa/.beta7/.t/" target="new">here</a>.
+</p><ol>
+<li>Select the 5S to 5N latitudinal range and the JAS
+season from the years in the first set (1990, 1996, 1997, 2000) and find
+the average of this subset of data by entering the following lines below
+the text already in expert mode.
+<pre>
+Y (5S) (5N) RANGE
+T (Jul-Sep 1990) (Jul-Sep 1996)
+(Jul-Sep 1997) (Jul-Sep 2000) VALUES
+[Y T]average
+</pre>
+</li>
+<li>Select the same subset of data for
+the years in the second set (1994, 1995, 1998, 1999) and find the average
+by entering the following lines below the text already in expert
+mode.
+<pre>
+SOURCES .UMD .Carton .goa .beta7
+.t
+Y (5S) (5N) RANGE
+T (Jul-Sep 1994) (Jul-Sep 1995)
+(Jul-Sep 1998) (Jul-Sep 1999) VALUES
+[Y T]average
+</pre>
+</li>
+<li>To subtract the second average in
+the stack (1994, 1995, 1998, 1999) from the first average in the stack
+(1990, 1996, 1997, 2000) by adding the following Ingrid command below the
+text you just entered in expert mode.
+<pre>sub</pre>
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UMD/.Carton/.goa/.beta7/.t/Y/%285S%29%285N%29RANGE/T/%28Jul-Sep%201990%29%28Jul-Sep%201996%29%28Jul-Sep%201997%29%28Jul-Sep%202000%29VALUES%5BY/T%5Daverage/SOURCES/.UMD/.Carton/.goa/.beta7/.t/Y/%285S%29%285N%29RANGE/T/%28Jul-Sep%201994%29%28Jul-Sep%201995%29%28Jul-Sep%201998%29%28Jul-Sep%201999%29VALUES%5BY/T%5Daverage/sub/">Check</a>
+</li>
+</ol>
 <p>
-More information about arithmetically manipulating your data can be found 
-in <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Manipulation/#Arithmetic">Part III</a> of the Data Library Tutorial.
+There other methods to making the data selections above.  
+For more information, please refer to the 
+<a href="/dochelp/Tutorial/">Data Library Tutorial</a>.
 </p>
 </div>
 <div class="optionsBar">
