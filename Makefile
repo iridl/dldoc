@@ -1,11 +1,24 @@
 htmlbld = $(shell perl ./findsrc.pl bld)
+texbld  = $(shell perl ./findsrc.pl bldlang)
 src = $(shell perl ./findsrc.pl src)
 out = $(shell perl ./findsrc.pl out)
 
 all:	$(htmlbld) topindex.owl
 
+install-ingrid:	all $(texbld)
+	echo need $(out) $(texbld) topindex.owl
+
+install-apache:	all
+	echo need $(out) topindex.owl
+
 %.html.en:	%.xhtml.en tabs.xml tab.xslt
 	saxon_transform $< tab.xslt topdir="`pwd`" > $@
+
+%/index.tex:	findsrc.pl tabs.xml
+		perl ./findsrc.pl bldlangindex ./$@ > $@ 
+
+index.tex:	findsrc.pl tabs.xml
+		perl ./findsrc.pl bldlangindex ./$@ > $@ 
 
 tabs.xml:	tabs.nt
 		rapper -i ntriples -o rdfxml-abbrev tabs.nt > tabs.xml
