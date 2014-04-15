@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="term:description" content="I found the following explanation on the FAQ page"/>
+<title>What is the formula for monthly isentropic potential vorticity in the Reanalysis dataset?</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Technical/">Technical Questions</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Technical Questions</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">What is the formula for monthly isentropic potential vorticity in the Reanalysis dataset?</h2>
+<p property="term:description">
+I found
+the following explanation on the <a href="http://dss.ucar.edu/pub/reanalysis/FAQ.html">FAQ</a>
+page on the <a href="http://dss.ucar.edu/pub/reanalysis">NCAR Reanalysis
+site</a>.
+</p><p>  "How does NCEP/NCAR reanalaysis compute the potential
+vorticity on isentropic surfaces?" [12/06/96]</p>
+<p>First the static stability N**2=g/T*(dT/dz+g/cp) is computed
+on model levels. Then the winds, temperature and static stability are interpolated
+to isentropic surfaces linearly in log(theta). (Outside the model domain,
+the fields are held constant for now and will later
+be compressed out of the final product.) Then the absolute
+vorticity zeta is spectrally computed on the isentropic surfaces, where
+the
+shortest wavelength in the spectral domain is about 4
+grid lengths. (The vorticity is computed in the T36 spectral domain for
+the 2.5x2.5 degree grid.) The density rho=(T/theta)**(cp/R)*p0/(R*T)
+is also computed at this time directly on the isentropic surfaces. Finally,
+the NCEP potential vorticity is computed as zeta*N**2/(g*rho).
+Thus the units of NCEP PV are m**2/s/kg, which is different from the
+usual units of K*m**2/s/kg; one must multiply the NCEP
+PV by theta to compare them. The NCEP PV is still a form of the Ertel potential
+vorticity, since log(theta) is as well conserved as theta.
+Packing the PV in these units is simpler. The NCEP PV is currently rounded
+to the nearest 1e-10 m**2/s/kg for packing. The physical
+constants used are g=9.8, R=287.05, cp=1004.6 and omega=7.2921e-5. (by
+Dr.Mark Iredell)
+</p><p><i>-- Michael Bell</i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How do I create an annual composite of monthly data?</title>
+<meta property="maproom:Sort_Id" content="expert17" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">How do I create an annual composite of monthly data?</h2>
+<p>
+<span  property="term:description">This
+operation can be done with a few ingrid commands in expert mode and they
+can be seen at the following link</span>: <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.UMD/.Carton/.goa/.beta7/.u/a:/T/%281980%29VALUES/:a:/T/%281970%29VALUES/T/120/shiftGRID/add/:a:/T/%281960%29VALUES/T/240/shiftGRID/add/:a:/T/%281950%29VALUES/T/360/shiftGRID/add/:a/4/div/
+">http://iridl.ldeo.columbia.edu/expert/SOURCES/.UMD/.Carton/.goa/.beta7/.u/a:/T/%281980%29VALUES/:a:/T/%281970%29VALUES/T/120/shiftGRID/add/:a:/T/%281960%29VALUES/T/240/shiftGRID/add/:a:/T/%281950%29VALUES/T/360/shiftGRID/add/:a/4/div/</a>
+</p>
+<p>Let's go through this a bit of detail.</p>
+<pre>
+SOURCES .UMD .Carton .goa .beta7 .u
+</pre>
+Selects the zonal wind variable
+of the UMD Carton dataset.
+<pre> 
+a:
+   T (1980) VALUES
+ :a:
+ T (1970) VALUES
+ T 120 shiftGRID
+ add
+ :a:
+ T (1960) VALUES
+ T 240 shiftGRID
+ add
+ :a:
+ T (1950) VALUES
+ T 360 shiftGRID
+ add
+ :a
+</pre>
+Each of the sections of text separated
+by a: :a selects the months from the indicated years and adds them together.
+The a: :a: :a: :a: :a construction allows you to select different
+time periods. The shiftGRID commands (e.g., T 120 shiftGRID) artificially
+shift the time grid to match among the different selections of data.
+For example, 1950 is shifted 30 years forward using "T 360 shiftGRID" so
+its values can be added to those of 1980.
+<pre>4 div</pre>
+This line divides the resulting
+sum by 4 to find an average for the 4 year composite.
+<p>
+You can now view or download the
+resulting composite by selecting one of the views links or the Data Files
+link in the function bar.
+</p>
+<p><i>-- Michael Bell and Emily Grover</i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

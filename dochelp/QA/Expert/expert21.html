@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How do I select data that is within a particular range of values?</title>
+<meta property="maproom:Sort_Id" content="expert01" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">How do I select data that is within a particular range of values?</h2>
+<p property="term:description">
+The
+ECOSYSTEMS dataset contains vegetative index data. Let's use this
+as an example by only displaying indices representative of grassland vegetation.
+</p><p>This example begins with the dataset and variable already selected.
+If you would like to learn more about how to find datasets in the Data
+Library, please refer to <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Datasets/Location/">Part
+I</a> of the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/">Data
+Library Tutorial</a>.</p>
+<p>
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.ECOSYSTEMS/.Matthews/.vegetation/" target="new">Click
+here to start example.</a>
+</p>
+<ol>
+<li>Enter expert mode by selecting the
+Expert Mode link in the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Datasets/Structure/">Function
+Bar</a>. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.ECOSYSTEMS/.Matthews/.vegetation/">Check
+Step</a></li>
+<li>Note in the key that index values
+from 23 to 28 represent grassland vegetation.</li>
+<li>Select data with these values by
+entering the following text below the text that is already there.
+Then click "OK".
+<pre class="ingridcode">23 28 masknotrange</pre>
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.ECOSYSTEMS/.Matthews/.vegetation/23/28/masknotrange/">Check
+Step</a>
+</li>
+<li>Select one of the graphics icons
+in the function bar - the icon with color data representation and the coasts
+outlined will produce the nicest image for these data. <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.ECOSYSTEMS/.Matthews/.vegetation/23/28/masknotrange/figviewer.html?map.url=X+Y+fig-+colors+coasts+-fig&amp;my.help=more+options">Check
+Step</a></li>
+</ol>
+<p>
+Note the range is inclusive (i.e., the values of 23 and
+28 are included in the range). This example can be applied to other
+data types as well. For more information about other masking functions,
+see <a href="ttp://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Manipulation/#Mask">Part
+III</a> of the Data Library Tutorial.</p>
+<p>
+<i>--Michael Bell / Emily Grover</i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

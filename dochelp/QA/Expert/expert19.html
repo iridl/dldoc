@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I want to do a series of arithmetic operations on my data. Can you help me?</title>
+<meta property="maproom:Sort_Id" content="expert19" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">I want to do a series of arithmetic operations on my data. Can you help me?</h2>
+<p property="term:description">
+Let's
+use zonal and meridional wind data from the NCEP-NCAR Reanalysis.</p>
+<p>
+This example begins in expert mode with the dataset and
+u- and v-wind components selected at the the 1000 hPa pressure level.
+You can find more information about these steps in the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/">Data
+Library Tutorial</a>. <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Datasets/Location/">Part
+I</a> will show you how to locate datasets and <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Selection/">Part
+II</a> will show you how to select data and variables.
+</p><p>
+Click <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.PressureLevel/.u/P/%281000%29VALUE/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.PressureLevel/.v/P/%281000%29VALUE/" target="new">here</a>
+to start the step-by-step example.</p>
+<ol>
+<li>Square each of the wind components
+by putting the following text below the "P (1000) VALUE" lines in the text
+box.
+<pre class="ingridcode">dup mul</pre>
+<a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.PressureLevel/.u/P/%281000%29VALUE/dup/mul/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.PressureLevel/.v/P/%281000%29VALUE/dup/mul/">Check Step</a>
+</li>
+<li>Add the two resulting squares by
+putting the following text below the text already in the text box.
+<pre class="ingridcode">add</pre>
+</li>
+<li>Calculate the sqaure-root of the
+resulting sum by putting the following text below the text already in the
+text box.
+<pre class="ingridcode">sqrt</pre>
+</li>
+<li>Click "OK". <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.PressureLevel/.u/P/%281000%29VALUE/dup/mul/SOURCES/.NOAA/.NCEP-NCAR/.CDAS-1/.MONTHLY/.Intrinsic/.PressureLevel/.v/P/%281000%29VALUE/dup/mul/add/sqrt/">Check
+Step</a>
+</li></ol>
+<p>You should see the calculations represented in the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Datasets/Structure/#Source Bar">source
+bar</a>.</p>
+<p>
+Information about other simple arithmetic operations can
+be found in <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/Manipulation/#Arithmetic">Part
+III</a> of the Data Library Tutorial.
+</p>
+<p><i>--Michael Bell / Emily Grover</i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

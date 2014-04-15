@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Can I select data from only the most recent time increment?</title>
+<meta property="maproom:Sort_Id" content="expert22" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Can I select data from only the most recent time increment?</h2>
+<p property="term:description">
+Yes, there is an Ingrid command that will retrieve data from the most recent time increment 
+included in a dataset.</p>
+<p> This command is particular useful for datasets that continuously being 
+updated. For this example. let's demonstrate how you can retrieve the most recent sea surface 
+temperature data from the Reynolds Smith v2 dataset. This example begins with the dataset and data 
+variable already selected. If you would like to learn more about finding datasets and selecting data 
+variables, please refer to the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/">Data
+Library Tutorial</a>.
+</p><p>
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/" target="new">Click
+here to start example.</a></p>
+<ol>
+<li>Click on the
+Data Selection link in the <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/Datasets/Structure/">Function
+Bar</a>. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/?help+dataselection">Check
+Step</a></li>
+<li>Put the following text in place of the text 
+already in the Time range box. Then click the "Restrict Ranges" button.
+<pre class="ingridcode">last</pre>
+The most recent time increment included in the dataset is now 
+indicated in the grey box at the top of the page.</li>
+<li>Click the "Stop
+Selecting" button. <a href="http://iridl.ldeo.columbia.edu/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv2/.monthly/.sst/T/%28last%29VALUES/">Check
+Step</a>
+<p>
+Note the use of the word "last"
+in the URL for this page. You can use this same URL at any time in
+the future to select data from the most recent time increment.
+</p></li>
+<li>To view these
+data select one of the Views icons in the function bar. To download
+these data select the Data Files or Tables link in the Function Bar.
+You can find more information about these options in <a href="http://iridl.ldeo.columbia.edu/dochelp/Tutorial/MVD/">Part
+III</a> of the Data Library Tutorial.
+</li></ol>
+<p>
+<i><font color="#000000">-- Michael Bell / Emily Grover</font></i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

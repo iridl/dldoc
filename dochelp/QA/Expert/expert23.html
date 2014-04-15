@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="term:description" content="Accessing data from another DODS/OPeNDAP Server is fairly simple." />
+<title>How do I use the Data Library to access data on another DODS/OPeNDAP Server?</title>
+<meta property="maproom:Sort_Id" content="expert23" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">How do I use the Data Library to access data on another DODS Server?</h2>
+<p property="term:description">
+Accessing
+data from another <a href="http://www.unidata.ucar.edu/packages/dods/">DODS</a>
+Server is fairly simple. The Data Library does not contain all of
+the entire NCEP-NCAR Reanalysis and this is one of the most common datasets
+accessed in this way. Let's use it as an example here.</p>
+<p>
+Information about the Reanalysis data available on the
+CDC DODS Server can be found at <a href="http://www.cdc.noaa.gov:80/dods/">http://www.cdc.noaa.gov:80/dods/</a>
+.</p>
+<ol>
+<li>Locate the data that you want to
+access. For this example, we are going to access the Daily Meridional
+Gravity Wave Stress at the Surface data found at
+<a href="http://www.cdc.noaa.gov:80/dods/Datasets/ncep.reanalysis.dailyavgs/surface_gauss/vgwd.sfc.gauss">http://www.cdc.noaa.gov:80/dods/Datasets/ncep.reanalysis.dailyavgs/surface_gauss/vgwd.sfc.gauss</a>
+</li><li>Enter expert mode. You
+can get there directly by going <a href="http://iridl.ldeo.columbia.edu/expert" target="new">here</a>.</li>
+<li>Enter the following text in text
+box and then click "OK".
+<pre class="ingridcode">(http://www.cdc.noaa.gov:80/dods/Datasets/ncep.reanalysis.dailyavgs/surface_gauss/vgwd.sfc.gauss)
+readdods
+</pre>
+<a href="http://iridl.ldeo.columbia.edu/expert/%28http://www.cdc.noaa.gov:80/dods/Datasets/ncep.reanalysis.dailyavgs/surface_gauss/vgwd.sfc.gauss%29readdods/">Check
+Step</a>
+</li>
+</ol>
+<p>You can use DODS clients to access
+data in the Data Library from various software packages, including GrADS,
+matlab, and ferret. More information about using DODS clients to
+access data can be found <a href="http://iridl.ldeo.columbia.edu/SOURCES/dods">here</a>.
+</p><p>
+<i>-- Michael Bell / Emily Grover</i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>

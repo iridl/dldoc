@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Is it possible to change axis labels in the data viewer?</title>
+<meta property="maproom:Sort_Id" content="expert18" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
+<link rel="canonical" href="" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform" action="" >
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+<input class="map" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Q&amp;A</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/QA/Expert/">Manipulating Data</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Manipulating Data</legend> 
+            </fieldset> 
+ </div>
+<div id="Intro" class="ui-tabs-panel">
+<h2 property="term:title">Is it possible to change axis labels in the data viewer?</h2>
+<p property="term:description">
+The axis labels used in the data viewer can be changed, though you must
+use expert mode to make the changes.  For example, let's change one
+of the axis labels used in the Sandwell Seafloor dataset.</p>
+<p>You can see that the latitude label and units in a <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Sandwell/.seafloor/.height/X/305.5012/330.4988/RANGE/Y/0.001971245/24.99803/RANGE/figviewer.html?map.url=X+Y+fig-+colors+-fig&amp;my.help=more+options">plot</a>
+of these data are less than ideal.  To change this axis label, go
+back to the dataset page and select the Expert Mode link in the Function
+Bar at the top of the page.</p>
+<p>Click <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Sandwell/.seafloor/.height/X/305/330/RANGE/Y/0/25/RANGE/" target="new">here</a>
+to begin example.</p>
+<ol>
+<li>Rename the grid representing latitude
+(e.g., North) to "Latitude" by putting the following Ingrid command in
+the text box below the text that is already there.
+<pre class="ingridcode">Y   /long_name (Latitude)
+def</pre>
+</li><li>Redefine the units of the Latitude grid
+to "degree_north" by putting the following Ingrid command in the text box
+below the text that is already there.
+<pre class="ingridcode">Y    /units (degree_north)
+def</pre>
+<p>To explain the next step, you should have some background
+as to how Ingrid works.  Ingrid uses an <i>operand stack</i> 
+which holds objects that are the operands and results of Ingrid operators. 
+When an operator requires one or more operands, it obtains them be popping
+them off the top of the operand stack.* Therefore, in this case, the data
+must be on the top of the stack in order for Ingrid to create an image
+with it.
+</p><p>You have now renamed both the grid name and units that
+are used to create the label.  In doing so, however, you have placed
+two items on top of the data in the stack.  In other words...
+</p><p>The current order in the stack is:
+<br />Results of Step 2
+<br />Results of Step 1
+<br />Data
+</p><p>To plot the data, we want the stack to be:
+<br />Data
+<br />Results of Step 2
+<br />Results of Step 1
+</p><p>To put the data that is be plotted back on the top of
+the stack,  we use a command called "index", which counts down to
+the indicated element in the stack and pushes a copy of that element on
+the top of the stack.</p>
+</li><li>Push a copy
+of the data to the top of the stack by putting the following Ingrid command
+in the text box below the text that is already there. Note: the element
+on the top of the stack is labeled as element 0, so the data is element
+2.
+<pre class="ingridcode">
+2 index
+</pre>
+</li>
+<li>Click "OK".
+<p>Your page should now look like <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Sandwell/.seafloor/.height/X/305/330/RANGE/Y/0/25/RANGE/Y//long_name/%28Latitude%29def/Y//units/%28degree_north%29def/2/index/">this</a>.
+</p></li><li>Select the desired <a href="http://iridl.ldeo.columbia.edu/expert/SOURCES/.Sandwell/.seafloor/.height/X/305/330/RANGE/Y/0/25/RANGE/Y//long_name/%28Latitude%29def/Y//units/%28degree_north%29def/2/index/figviewer.html?map.url=X+Y+fig-+colors+-fig&amp;my.help=more+options">view</a>
+from the views links in the Function Bar and note how the latitude label
+has changed.</li>
+</ol>
+<p>*From PostScript Language Reference Manual</p>
+<p><i>-- Michael Bell/Emily Grover</i>
+</p>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
