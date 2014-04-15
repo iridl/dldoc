@@ -22,6 +22,7 @@
 <link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" />
+<link rel="term:icon" href="/dochelp/Flaticon_5169-32.png" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 </head>
 <body>
