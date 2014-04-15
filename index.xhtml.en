@@ -86,8 +86,11 @@ GIS-compatible formats.</li>
   <a rel="section" href="maproom/"></a>
   <a rel="section" href="http://iridl.tumblr.com/"></a>
   <a rel="section" href="SOURCES/"></a>
+  <a rel="section" href="docfind/databrief/"></a>
+  <a rel="section" href="ontologies/query2.pl?type=iridl%3Adataset&amp;taxa=iridl%3ADataset_Search&amp;showlevel=20&amp;nestunder=facet&amp;showcounts=on"></a>
   <a rel="section" href="dochelp/Tutorial/index.xhtml.en"></a>
   <a rel="section" href="dochelp/StatTutorial/index.xhtml.en"></a>
+  <a rel="section" href="dochelp/Documentation/funcindex,html"></a>
 <div about="maproom/">
   <a rel="canonical" href="maproom/"></a>
       <meta property="maproom:Sort_Id" content="a01" />
@@ -108,6 +111,24 @@ The climate and society maproom is a collection of maps and other figures that m
       <meta property="maproom:Sort_Id" content="a03" />
 <h2 property="term:title">Data by Source</h2>
 <p property="term:description">Datasets organized by source, i.e. creator and/or provider.</p>
+</div>
+<div about="dochelp/Documentation/funcindex,html">
+  <a rel="canonical" href="dochelp/Documentation/funcindex,html"></a>
+      <meta property="maproom:Sort_Id" content="a06" />
+<h2 property="term:title">Function Documentation</h2>
+<p property="term:description">Detailed documentation for functions that can be used to analyze data within the Data Library.</p>
+</div>
+<div about="docfind/databrief/">
+  <a rel="canonical" href="docfind/databrief/"></a>
+      <meta property="maproom:Sort_Id" content="a03b" />
+<h2 property="term:title">Data by Category</h2>
+<p property="term:description">Selected data for particular topics within the Data Library.</p>
+</div>
+<div about="ontologies/query2.pl?type=iridl%3Adataset&amp;taxa=iridl%3ADataset_Search&amp;showlevel=20&amp;nestunder=facet&amp;showcounts=on">
+  <a rel="canonical" href="ontologies/query2.pl?type=iridl%3Adataset&amp;taxa=iridl%3ADataset_Search&amp;showlevel=20&amp;nestunder=facet&amp;showcounts=on"></a>
+      <meta property="maproom:Sort_Id" content="a03c" />
+<h2 property="term:title">Dataset Browser</h2>
+<p property="term:description">Our Dataset browser, allowing you to select data by many criteria.</p>
 </div>
 </div>
 <div class="optionsBar">
