@@ -14,6 +14,9 @@ install-apache:	all
 %.html.en:	%.xhtml.en tabs.xml tab.xslt
 	saxon_transform $< tab.xslt topdir="`pwd`" > $@
 
+%.html:	%.xhtml tabs.xml tab.xslt
+	saxon_transform $< tab.xslt topdir="`pwd`" > $@
+
 %/index.tex:	findsrc.pl tabs.xml
 		perl ./findsrc.pl bldlangindex ./$@ > $@ 
 

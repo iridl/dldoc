@@ -3,7 +3,7 @@
 open filelist,"find . -regex '.*\\.x?html[^~]*\$' |";
 while(<filelist>){
     chop;
-    if(/^(.+).xhtml(\..+)$/){
+    if(/^(.+).xhtml(\..+)?$/){
 	$out = "$1.html$2";
 	$output{"$out"} = "1";
 	$hasoutput{"$_"} = "1";
