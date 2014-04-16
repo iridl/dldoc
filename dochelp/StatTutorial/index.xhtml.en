@@ -40,7 +40,8 @@
  </div>
 <div class="searchDescription">
 <h2 property="term:title">Statistical Techniques in the Data Library: A Tutorial</h2>
-<p property="term:description">Statistical techniques are essential tools for ananalyzing large datasets; this statistics tutorial thus covers essential skills for many data library users.</p>
+<p property="term:description">
+Statistical techniques are essential tools for analyzing large datasets; this statistics tutorial thus covers essential skills for many data library users.</p>
 <p>
 The Data Library is an online tool that provides access to an abundance of climate-related data via 
 one easy-to-use interface.  Ingrid, the programming language on which the Data Library is built, contains a variety of functions that can be used to manipulate data.
