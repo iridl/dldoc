@@ -40,6 +40,7 @@
  </div>
 <div class="searchDescription">
 <h2 property="term:title">Statistical Techniques in the Data Library: A Tutorial</h2>
+<p property="term:description">Statistical techniques are essential tools for ananalyzing large datasets; this statistics tutorial thus covers essential skills for many data library users.</p>
 <p>
 The Data Library is an online tool that provides access to an abundance of climate-related data via 
 one easy-to-use interface.  Ingrid, the programming language on which the Data Library is built, contains a variety of functions that can be used to manipulate data.
@@ -47,10 +48,9 @@ These Ingrid functions are simple to perform because they are executed directly 
 The wide variety of available functions makes the Data Library beneficial to the novice and advanced user.
 </p><p>
 While the first Data Library tutorial, <a href="../Tutorial/">Navigating Through the Data Library</a>, is 
-is primarily focused on introducing the Data Library to new users, <span  property="term:description">this statistics-based tutorial
-explores more in-depth topics.
-Its purpose is to help facilitate the use of statistical functions within the Data Library, 
-and even though it concentrates on some advanced techniques, the sections still cover many basic skills.</span>
+is primarily focused on introducing the Data Library to new users, this statistics-based tutorial
+facilitates the use of statistical functions within the Data Library, 
+and even though it concentrates on some advanced techniques, the sections still cover many basic skills.
 </p><p>
 The following topics are included in the tutorial: measures of central tendency, measures of dispersion, 
 climatologies, standardized anomalies, correlations, climate indices, frequency distributions,
