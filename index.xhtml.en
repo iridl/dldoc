@@ -72,6 +72,7 @@ width: 95%;
 The IRI Data Library is a powerful and freely accessible online data repository and analysis tool that allows a user to view, analyze, and download hundreds of terabytes of climate-related data through a standard web browser.</p>
 <p> It is a powerful tool that 
 offers the following capabilities at no cost to the user:
+</p>
 <ul><li>access any number of datasets;</li>
 <li>create analyses of data ranging from simple averaging to more advanced EOF analyses using the Ingrid Data Analysis Language;</li>
 <li>monitor present climate conditions with maps and analyses in the <a href="/maproom/">Maproom</a>;</li>
@@ -79,10 +80,7 @@ offers the following capabilities at no cost to the user:
 <li>download data in a variety of commonly-used <a href="dochelp/Tutorial/MVD/Download/formats.html">formats</a>, including 
 GIS-compatible formats.</li>
 </ul>
-</p>
-<div><i><font size="-1">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com/free-icon/mathematics-on-class-whiteboard_43378" title="Flaticon">www.flaticon.com</a></font></i></div>
-                </div>
-
+</div>
 <div class="rightcol tabbedentries" about="/" >
   <a rel="section" href="maproom/"></a>
   <a rel="section" href="http://iridl.tumblr.com/"></a>
@@ -140,6 +138,6 @@ The climate and society maproom is a collection of maps and other figures that m
 
 </fieldset>
 </div>
- </body>
-
- </html>
+<div><i><font size="-1">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com/free-icon/mathematics-on-class-whiteboard_43378" title="Flaticon">www.flaticon.com</a></font></i></div>
+</body>
+</html>
