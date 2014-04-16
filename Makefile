@@ -1,3 +1,4 @@
+BUILD_DIR ?= .
 htmlbld = $(shell perl ./findsrc.pl bld)
 texbld  = $(shell perl ./findsrc.pl bldlang)
 src = $(shell perl ./findsrc.pl src)
@@ -6,10 +7,13 @@ out = $(shell perl ./findsrc.pl out)
 all:	$(htmlbld) topindex.owl
 
 install-ingrid:	all $(texbld)
-	echo need $(out) $(texbld) topindex.owl
+	echo installing ingrid-style to $(BUILD_DIR)
+	tar cf - $(out) $(texbld) topindex.owl | tar xvf - -C $(BUILD_DIR)/html
 
 install-apache:	all
-	echo need $(out) topindex.owl
+	echo installing apache-style to $(BUILD_DIR)
+	tar cf - $(out) $(texbld) topindex.owl | tar xvf - -C $(BUILD_DIR)/html
+
 
 %.html.en:	%.xhtml.en tabs.xml tab.xslt
 	saxon_transform $< tab.xslt topdir="`pwd`" > $@
