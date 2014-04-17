@@ -5,17 +5,18 @@ src = $(shell perl ./findsrc.pl src)
 out = $(shell perl ./findsrc.pl out)
 png = $(shell find . -name '*png')
 gif = $(shell find . -name '*gif')
+css = $(shell find . -name '*css')
 imgs = $(png) $(gif)
 
 all:	$(htmlbld) topindex.owl
 
-install-ingrid:	all $(texbld) $(imgs)
+install-ingrid:	all $(texbld) $(imgs) $(css)
 	echo installing ingrid-style to $(BUILD_DIR)
-	tar cf - $(out) $(texbld) $(imgs) topindex.owl | tar xvf - -C $(BUILD_DIR)/html
+	tar cf - $(out) $(texbld) $(imgs) $(css) topindex.owl | tar xvf - -C $(BUILD_DIR)/html
 
-install-apache:	all $(imgs)
+install-apache:	all $(imgs) $(css)
 	echo installing apache-style to $(BUILD_DIR)
-	tar cf - $(out) $(imgs) $(texbld) topindex.owl | tar xvf - -C $(BUILD_DIR)/html
+	tar cf - $(out) $(imgs) $(css) topindex.owl | tar xvf - -C $(BUILD_DIR)/html
 
 
 %.html.en:	%.xhtml.en tabs.xml tab.xslt
