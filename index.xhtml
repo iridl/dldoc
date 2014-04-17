@@ -23,22 +23,6 @@
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <script type="text/javascript" src="/localconfig/ui.js"></script>
-<style>
-.search {
-margin-top: 5pt;
-float: right;
-width: 35%;
-}
-.search div {
-margin-top: 2px;
-}
-@media only all and (max-width: 600px) {
-.search {
-float: none;
-width: 95%;
-}
-}
-</style>
 </head>
 <body>
 
@@ -51,21 +35,7 @@ width: 95%;
                 <legend>IRI/LDEO</legend> 
                      <span class="navtext">Climate Data Library</span>
             </fieldset> 
-	   <fieldset class="navitem search">
-	     <div><script>
-  (function() {
-    var cx = '002439769827255946943:6z9nl_kcvry';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//www.google.com/cse/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:searchbox-only></gcse:searchbox-only>
-	       </div>
+	   <fieldset class="navitem" id="GoogleSearch">
 	     </fieldset>
  </div>
  <div id="content" class="searchDescription">
