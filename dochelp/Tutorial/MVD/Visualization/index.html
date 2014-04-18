@@ -29,7 +29,7 @@
 <script type="text/javascript" src="/localconfig/ui.js"></script>
 </head>
 <body>
-<form name="pageform" id="pageform">
+<form name="pageform" id="pageform" action="">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="titleLink itemImage" name="bbox" type="hidden" />
 <input class="map" name="bbox" type="hidden" />
@@ -45,15 +45,15 @@
  </div>
 <div class="ui-tabs">
     <ul class="ui-tabs-nav">
-<li> <a HREF="#Intro"> Introduction</a></li>
-<li> <a HREF="#EX1">1. Color Map</a></li>
-<li> <a HREF="#EX2">2. Contour Map</a></li>
-<li> <a HREF="#EX3">3. Line,Scatter,Bar</a></li>
-<li> <a HREF="#EX4">4. Vector plot</a></li>
-<li> <a HREF="#EX5">5. Cross Section</a></li>
-<li> <a HREF="#EX6">6. Animation</a></li>
-<li> <a HREF="#EX7">7. Custom Color Scale</a></li>
-<li> <a HREF="#EX8">8. Land Mask</a></li>
+<li> <a href="#Intro"> Introduction</a></li>
+<li> <a href="#EX1">1. Color Map</a></li>
+<li> <a href="#EX2">2. Contour Map</a></li>
+<li> <a href="#EX3">3. Line,Scatter,Bar</a></li>
+<li> <a href="#EX4">4. Vector plot</a></li>
+<li> <a href="#EX5">5. Cross Section</a></li>
+<li> <a href="#EX6">6. Animation</a></li>
+<li> <a href="#EX7">7. Custom Color Scale</a></li>
+<li> <a href="#EX8">8. Land Mask</a></li>
 </ul>
 <div id="Intro" class="ui-tabs-panel">
 <div style="float:left; margin-right: 10pt;">
@@ -136,10 +136,11 @@ will be drawn when you select the "plot" button.
 </p><p>
 <span class="tb"><u>Method 3: Expert Mode</u></span>
 <br /><span class="instruct">While in expert mode, enter the following line below the text already there.</span>
+</p>
 <pre class="ingridcode">
 X Y fig: colors land :fig
 </pre>
-<span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/X/Y/fig-/colors/land/-fig/">CHECK</a></font>
+<p><span class="instruct">Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.ssta/T/%28Jun%201998%29VALUES/X/Y/fig-/colors/land/-fig/">CHECK</a></font>
 <br />From this page, you can click on the map to enter the data viewer. To produce a map with the 
 continents outlined, replace <i>X Y fig: colors land :fig</i> with
 <span class="ingridcode">X Y fig: colors coasts :fig</span>.
@@ -533,12 +534,12 @@ the actual elevation value at each grid point. Therefore, if we multiply the top
 we will have dataset consisting of 0's and NaN's that we can, in turn, add to the SST dataset to obtain 
 a land-masked SST dataset. Let's try it.
 </p><p>
-<span class="instruct">Enter the following lines below the text that is already there.
+<span class="instruct">Enter the following lines below the text that is already there.</span></p>
 <pre class="ingridcode">
 0 mul
 add
 </pre>
-Click "OK". </span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.WORLDBATH/.bath%5BX/Y%5DregridLinear/0/maskgt/0/mul/add/">CHECK</a></font>
+<p><span class="instruct">Click "OK".</span><font size="-1"><a href="/expert/SOURCES/.NOAA/.NCEP/.EMC/.CMB/.GLOBAL/.Reyn_SmithOIv1/.monthly/.sst/SOURCES/.WORLDBATH/.bath%5BX/Y%5DregridLinear/0/maskgt/0/mul/add/">CHECK</a></font>
 <br /><span class="instruct">Select the color views icon with no land overlays to see the resulting SST 
 dataset. </span>
 <br />You should see the land in white as this is the default color for missing data in the SST 
