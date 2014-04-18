@@ -60,6 +60,14 @@ connects final results to analyses to the original data.</p>
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/">
 <a rel="notmaproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" ></a>
+  <a rel="section" href="Documentation/funcindex.html"></a>
+<div about="Documentation/funcindex.html">
+  <a rel="canonical" href="Documentation/funcindex,html"></a>
+      <meta property="maproom:Sort_Id" content="a06" />
+<link rel="term:icon" href="Flaticon_43378-32.png" />
+<h2 property="term:title">Function Documentation</h2>
+<p property="term:description">Detailed documentation for functions that can be used to analyze data within the Data Library.</p>
+</div>
 </div>
 <div class="optionsBar">
 <fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
