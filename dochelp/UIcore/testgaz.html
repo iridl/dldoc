@@ -103,6 +103,7 @@ frwk= &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#>
     }
 }
 </script>
+This menu
 <span class="regionTemplate">
 <select name="bbox" class="pageformcopy">
   <option class="current"></option>
@@ -114,9 +115,51 @@ frwk= &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#>
   </optgroup>
 </select>
 </span>
+submits this Serql query and bbox binding
 <div property="iridl:QueryAsText">This gets replaced</div>
+It then applies this JSON-LD frame
+<pre>
+{
+"@type": "gazfw:currentPlace",
+"@context": {
+"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"gazfw": "http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"gazfw:contains": {"@container": "@set"},
+"gazfw:partOf": {"@container": "@set"}
+}
+}
+</pre>
+to get the following framed JSON-LD
 <div property="iridl:JsonAsText">This gets replaced</div>
 </div>
+    Note that the frame changed the JSON-LD properties @id and @graph to id and graph respectively so that we could process them with PURE, which treats @ specially.
+That JSON is then parsed with a PURE directive and template to generate the menu.
+<pre>
+{
+    "select": {
+	"region &lt;- regions.graph": {
+	    "option.current": "region.rdfs:label",
+	    "option.current@value": "region.id",
+	    "optgroup.subregion@label": "region.rdfs:label",
+	    "option.sub": {
+		"opt &lt;- region.gazfw:contains": {
+		    "@value": "opt.id",
+		    ".": "opt.rdfs:label"
+		}
+	    },
+	    "option.parent": {
+		"popt &lt;- region.gazfw:partOf": {
+		    "@value": "popt.id",
+		    ".": "popt.rdfs:label"
+		}
+	    }
+	}
+    }
+}
+</pre>
 <div class="optionsBar">
 <fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
 </div>
