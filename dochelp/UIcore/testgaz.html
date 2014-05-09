@@ -135,8 +135,14 @@ It then applies this JSON-LD frame
 to get the following framed JSON-LD
 <div property="iridl:JsonAsText">This gets replaced</div>
 </div>
-    Note that the frame changed the JSON-LD properties @id and @graph to id and graph respectively so that we could process them with PURE, which treats @ specially.
-That JSON is then parsed with a PURE directive and template to generate the menu.
+<p>    Note that the frame changed the JSON-LD properties @id and @graph
+to id and graph respectively so that we could process them with PURE,
+which treats @ specially.  The outermost label 'regions' comes from
+the id for the serql query, so that multiple queries can contribute to
+a collection of JSON.
+</p>
+<p>
+That JSON is then parsed with a PURE directive and template to generate the menu.</p>
 <pre>
 {
     "select": {
@@ -160,7 +166,7 @@ That JSON is then parsed with a PURE directive and template to generate the menu
     }
 }
 </pre>
-    The directive is nested.  The outer loop is over <b>graph</b>
+    The directive is nested. The outer loop is then over <b>graph</b>
     which is an array that JSON-LD forces us to have, even though
 there is only one element. So we put an extra span around the select
 we want to template, so that we have an outer select tag to match on,
