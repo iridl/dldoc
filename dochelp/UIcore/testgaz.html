@@ -160,6 +160,15 @@ That JSON is then parsed with a PURE directive and template to generate the menu
     }
 }
 </pre>
+    The directive is nested.  The outer loop is over <b>graph</b>
+    which is an array that JSON-LD forces us to have, even though
+there is only one element. So we put an extra span around the select
+we want to template, so that we have an outer select tag to match on,
+presumably only once.  Inside that loop, we define region, and use it
+for the label and id for the current bbox, and use its label for the
+contains option group.  We also loop over contains
+and partOf, filling out the options if they are available -- the frame
+declarations insure that both will be arrays.
 <div class="optionsBar">
 <fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
 </div>
