@@ -37,7 +37,7 @@
  </div>
 <div class="searchDescription">
   <h2 property="term:title">UI core documentation</h2>
-<p property="term:description"></p>.
+<p property="term:description">Examples of using our UI core, which is the basis of Data Library and Map Room pages.</p>.
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/UIcore/">
 </div>
