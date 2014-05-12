@@ -154,6 +154,9 @@ It then applies this JSON-LD frame
 }
 }
 </pre>
+Note that the frame changes the JSON-LD properties @id and @graph
+to id and graph respectively so that we could process them with PURE,
+which treats @ specially.
 </div>
 <div id="jsonldtext" class="ui-tabs-panel">
 to get the following framed JSON-LD
