@@ -29,6 +29,19 @@
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="titleLink itemImage regionQuery share" name="bbox" type="hidden" value="gaz:Caribbean_310_0"/>
 </form>
+<script type="application/ld-json" property="iridl:hasJsonldContext">
+{
+"@context": {
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"gazfw": "http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"state":{"@id": "iridl:state", "@container": "@index"},
+"Set-Language": {"@id": "iridl:Set-Language"},
+"bbox": {"@id": "iridl:bbox", "@type": "@id"}
+}
+}
+</script>
 <div class="controlBar">
            <fieldset class="navitem">
                 <legend>Help</legend> 
@@ -42,11 +55,6 @@
                 <legend>Region</legend> 
             </fieldset> 
  </div>
-<div class="searchDescription">
-<h2 property="term:title">Sample Gaz Menu</h2>
-<p property="term:description">An active example which uses SeRQL queries to build a cascading menu based on an RDF database</p>
-</div>
-<div>
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-gaz"></a>
 <script id="regions" type="application/serql" class="regionQuery" property="iridl:hasSerqlQuery">
 CONSTRUCT {bbox}  frwk:contains {entity} rdfs:label {elabel}
@@ -102,7 +110,18 @@ frwk= &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#>
     }
 }
 </script>
-This menu
+<div class="ui-tabs">
+<ul class="ui-tabs-nav">
+<li> <a HREF="#menu">Menu</a></li>
+<li> <a HREF="#query">Query</a></li>
+<li> <a HREF="#frame">Frame</a></li>
+<li> <a HREF="#jsonldtext">JSON-LD</a></li>
+<li> <a HREF="#directive">Directive</a></li>
+</ul>
+<div id="menu" class="ui-tabs-panel">
+<h2 property="term:title">Sample Gaz Menu</h2>
+<p property="term:description">An active example which uses SeRQL queries to build a cascading menu based on an RDF database</p>
+<p>This menu
 <span class="regionTemplate">
 <select name="bbox" class="pageformcopy">
   <option class="current"></option>
@@ -114,8 +133,12 @@ This menu
   </optgroup>
 </select>
 </span>
+</p></div>
+<div id="query" class="ui-tabs-panel">
 submits this Serql query and bbox binding
 <div property="iridl:QueryAsText">This gets replaced</div>
+</div>
+<div id="frame" class="ui-tabs-panel">
 It then applies this JSON-LD frame
 <pre>
 {
@@ -131,15 +154,18 @@ It then applies this JSON-LD frame
 }
 }
 </pre>
+</div>
+<div id="jsonldtext" class="ui-tabs-panel">
 to get the following framed JSON-LD
 <div property="iridl:JsonAsText">This gets replaced</div>
-</div>
 <p>    Note that the frame changed the JSON-LD properties @id and @graph
 to id and graph respectively so that we could process them with PURE,
 which treats @ specially.  The outermost label 'regions' comes from
 the id for the serql query, so that multiple queries can contribute to
 a collection of JSON.
 </p>
+</div>
+<div id="directive" class="ui-tabs-panel">
 <p>
 That JSON is then parsed with a PURE directive and template to generate the menu.</p>
 <pre>
@@ -174,6 +200,8 @@ for the label and id for the current bbox, and use its label for the
 contains option group.  We also loop over contains
 and partOf, filling out the options if they are available -- the frame
 declarations insure that both will be arrays.
+</div>
+</div>
 <div class="optionsBar">
 <fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
 </div>
