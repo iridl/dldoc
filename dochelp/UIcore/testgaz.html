@@ -29,14 +29,13 @@
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="titleLink itemImage regionQuery share" name="bbox" type="hidden" value="gaz:Caribbean_310_0"/>
 </form>
-<script type="application/ld-json" property="iridl:hasJsonldContext">
+<script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
 {
 "@context": {
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "gazfw": "http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-"state":{"@id": "iridl:state", "@container": "@index"},
 "Set-Language": {"@id": "iridl:Set-Language"},
 "bbox": {"@id": "iridl:bbox", "@type": "@id"}
 }
@@ -114,6 +113,7 @@ frwk= &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#>
 <ul class="ui-tabs-nav">
 <li> <a HREF="#menu">Menu</a></li>
 <li> <a HREF="#query">Query</a></li>
+<li> <a HREF="#formcontext">Form Context</a></li>
 <li> <a HREF="#frame">Frame</a></li>
 <li> <a HREF="#jsonldtext">JSON-LD</a></li>
 <li> <a HREF="#directive">Directive</a></li>
@@ -138,8 +138,24 @@ frwk= &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#>
 submits this Serql query and bbox binding
 <div property="iridl:QueryAsText">This gets replaced</div>
 </div>
+<div id="formcontext" class="ui-tabs-panel">
+Note that it uses this Context to convert variables for Sesame, who wants its variable binding values in ntriples format.
+<pre>
+{
+"@context": {
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"gazfw": "http://iridl.ldeo.columbia.edu/ontologies/irigaz_frwk.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"Set-Language": {"@id": "iridl:Set-Language"},
+"bbox": {"@id": "iridl:bbox", "@type": "@id"}
+}
+}
+</pre>
+The critical statement is that bbox is @type @id, and the namespace gaz that we happen to be using.
+</div>
 <div id="frame" class="ui-tabs-panel">
-It then applies this JSON-LD frame
+It then applies this JSON-LD frame to format the response
 <pre>
 {
 "@type": "gazfw:currentPlace",
@@ -160,7 +176,9 @@ which treats @ specially.
 </div>
 <div id="jsonldtext" class="ui-tabs-panel">
 to get the following framed JSON-LD
+<pre>
 <div property="iridl:JsonAsText">This gets replaced</div>
+</pre>
 <p>    Note that the frame changed the JSON-LD properties @id and @graph
 to id and graph respectively so that we could process them with PURE,
 which treats @ specially.  The outermost label 'regions' comes from
