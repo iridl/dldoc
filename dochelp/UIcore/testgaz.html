@@ -54,7 +54,7 @@
                 <legend>Region</legend> 
             </fieldset> 
  </div>
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-gaz"></a>
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-gaz-partitions"></a>
 <script id="regions" type="application/serql" class="regionQuery" property="iridl:hasSerqlQuery">
 CONSTRUCT {bbox}  frwk:contains {entity} rdfs:label {elabel}
 FROM 
@@ -139,7 +139,7 @@ submits this Serql query and bbox binding
 <div property="iridl:QueryAsText">This gets replaced</div>
 </div>
 <div id="formcontext" class="ui-tabs-panel">
-Note that it uses this Context to convert variables for Sesame, who wants its variable binding values in ntriples format.
+This Context is used to convert variable values from their abbreviated form to their fully expanded form.  In this case, it is used for Sesame, who wants its variable binding values in ntriples format which is fully expanded.
 <pre>
 {
 "@context": {
@@ -152,7 +152,7 @@ Note that it uses this Context to convert variables for Sesame, who wants its va
 }
 }
 </pre>
-The critical statement is that bbox is @type @id, and the namespace gaz that we happen to be using.
+The critical statement is that bbox is @type @id, and the namespace gaz that we happen to be using for the values of bbox.
 </div>
 <div id="frame" class="ui-tabs-panel">
 It then applies this JSON-LD frame to format the response
