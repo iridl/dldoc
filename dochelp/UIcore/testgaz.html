@@ -27,7 +27,7 @@
 <body>
 <form name="pageform" id="pageform">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
-<input class="titleLink itemImage regionQuery share" name="bbox" type="hidden" value="gaz:Caribbean_310_0"/>
+<input class="titleLink itemImage regionQuery share" name="bbox" type="hidden" value="gaz:PoliticalWorldInstance"/>
 </form>
 <script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
 {
@@ -56,17 +56,19 @@
  </div>
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-gaz-partitions"></a>
 <script id="regions" type="application/serql" class="regionQuery" property="iridl:hasSerqlQuery">
-CONSTRUCT {bbox}  frwk:contains {entity} rdfs:label {elabel}
-FROM 
-{entity} frwk:partOf {bbox} ; rdfs:label {elabel}
-UNION
 CONSTRUCT {bbox} rdf:type {frwk:currentPlace}; rdfs:label {blabel}
 FROM
-{bbox} rdfs:label {blabel}
+{bbox} rdfs:label {blabel} ; rdf:type {cpclass}
 UNION
-CONSTRUCT {bbox} frwk:partOf {pbox} rdfs:label {pplabel}
+CONSTRUCT {bbox}  rdf:type {cpclass} ; frwk:contains {entity} rdfs:label {elabel} ; rdf:type {eclass}
+FROM 
+{entity} frwk:partOf {bbox} ; rdfs:label {elabel},
+{entity} rdf:type {eclass} frwk:sophisticates {cpclass}
+UNION
+CONSTRUCT {bbox} frwk:partOf {pbox} rdfs:label {pplabel} ; rdf:type {pclass}
 FROM
-{bbox} frwk:partOf {pbox} rdfs:label {pplabel}
+{bbox} frwk:partOf {pbox} rdfs:label {pplabel} ; rdf:type {pclass},
+{cpclass} frwk:sophisticates {pclass}
 USING NAMESPACE
 gaz= &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>,
 rdfs=&lt;http://www.w3.org/2000/01/rdf-schema#>,
