@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:gaz="http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faceted Browser</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="canonical" href="facetedbrowser.html" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="searchState titleLink share" name="taxa" type="hidden" value=""/>
+<input class="searchState titleLink share" name="itemClass" type="hidden" value=""/>
+<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
+</form>
+<script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
+{
+"@context": {
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"Set-Language": {"@id": "iridl:Set-Language"},
+"taxa": {"@id": "term:Taxa", "@type": "@id"},
+"itemClass": {"@id": "term:itemClass", "@type": "@id"},
+"sem": {"@id": "term:Semantic", "@type": "@id"}
+}
+}
+</script>
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
+<script id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
+CONSTRUCT {taxa} rdfs:label {tlabel} ;rdf:type {term:Taxa}
+FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
+{object} rdf:type {objectClass},
+[ {objectClass} rdfs:label {clabel} ],
+[ {taxa} rdfs:label {tlabel} ]
+WHERE isuri(objectClass)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:Taxa",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"rdfs:label": { "@language": "en" }
+}
+}
+</script>
+<script id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
+CONSTRUCT {objectClass} rdfs:label {clabel} ; rdf:type {term:ItemClass}
+FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
+{object} rdf:type {objectClass,term:SearchItem} rdfs:subClassOf {term:SearchItem},
+[ {objectClass} iridl:member_label {clabel} ],
+[ {taxa} rdfs:label {tlabel} ]
+WHERE isuri(objectClass)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:ItemClass",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"rdfs:label": { "@language": "en" }
+}
+}
+</script>
+<script class="taxaTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"option": {
+"tax &lt;- taxa.graph": {
+".": "tax.rdfs:label",
+"@value": "tax.id"
+}
+}
+}
+</script>
+<script class="itemClassTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"option.current": {
+"theitem &lt;- itemClasses.graph": {
+".": "theitem.rdfs:label",
+"@value": "theitem.id"
+}
+}
+}
+</script>
+<script id="spanningSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT {semantic} rdf:type {term:spanningSemantic} ; term:implies {sparent}
+FROM 
+{object} rdf:type {itemClass} ; term:isDescribedBy {semantic} rdf:type {taxa},
+{object} term:isDescribedBy {sem},
+[{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}]
+WHERE NOT EXISTS (
+SELECT adataset FROM {adataset} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type{taxa},
+[{adataset} iridc:hasPart{sdataset}]
+WHERE sdataset=NULL
+MINUS
+SELECT adataset FROM
+{adataset} rdf:type {itemClass} ; term:isDescribedBy {semantic} ; term:isDescribedBy {sem} rdf:type {taxa}
+)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:spanningSemantic",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"rdfs:label": { "@language": "en" }
+}
+}
+</script>
+<div class="controlBar">
+           <fieldset class="navitem">
+                <legend>Help</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/UIcore/">UI Core</a>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>UI Core</legend> 
+                     <span class="navtext">Faceted Browser</span>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Taxa</legend> 
+<span class="taxaTemplate">
+<select name="taxa" class="pageformcopy containsAllValids">
+  <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Items</legend> 
+<span class="itemClassTemplate">
+<select name="itemClass" class="pageformcopy containsAllValids">
+  <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+ </div>
+<div class="ui-tabs">
+<ul class="ui-tabs-nav">
+<li> <a HREF="#menu">Menu</a></li>
+<li> <a HREF="#query">Query</a></li>
+<li> <a HREF="#formcontext">Form Context</a></li>
+<li> <a HREF="#frame">Frame</a></li>
+<li> <a HREF="#jsonldtext">JSON-LD</a></li>
+<li> <a HREF="#directive">Directive</a></li>
+</ul>
+<div id="menu" class="ui-tabs-panel">
+<h2 property="term:title">Faceted Browser</h2>
+<p property="term:description">uses isDescribedBy relationships to create a faceted browse</p>
+<p>This menu
+</p></div>
+<div id="query" class="ui-tabs-panel">
+submits this Serql query and bbox binding
+<div property="iridl:QueryAsText">This gets replaced</div>
+</div>
+<div id="formcontext" class="ui-tabs-panel">
+This Context is used to convert variable values from their abbreviated form to their fully expanded form.  In this case, it is used for Sesame, who wants its variable binding values in ntriples format which is fully expanded.
+</div>
+<div id="frame" class="ui-tabs-panel">
+It then applies this JSON-LD frame to format the response
+</div>
+<div id="jsonldtext" class="ui-tabs-panel">
+to get the following framed JSON-LD
+<pre>
+<div property="iridl:JsonAsText">This gets replaced</div>
+</pre>
+<p>    Note that the frame changed the JSON-LD properties @id and @graph
+to id and graph respectively so that we could process them with PURE,
+which treats @ specially.  The outermost label 'regions' comes from
+the id for the serql query, so that multiple queries can contribute to
+a collection of JSON.
+</p>
+</div>
+<div id="directive" class="ui-tabs-panel">
+<p>
+That JSON is then parsed with a PURE directive and template to generate the menu.</p>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
+
+
+
