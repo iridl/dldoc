@@ -118,7 +118,7 @@ USING NAMESPACE
 }
 </script>
 <script id="spanningSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT {semantic} rdf:type {term:spanningSemantic} ; term:implies {sparent}
+CONSTRUCT {semantic} rdf:type {term:spanningSemantic} ; term:implies {sparent} rdf:type {term:generalSpanningSemantic}
 FROM 
 {object} rdf:type {itemClass} ; term:isDescribedBy {semantic} rdf:type {taxa},
 {object} term:isDescribedBy {sem},
