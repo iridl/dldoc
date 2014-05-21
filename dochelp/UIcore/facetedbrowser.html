@@ -122,6 +122,65 @@ CONSTRUCT {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; te
 FROM 
 {semantic} rdfs:label {slabel},
 [{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}]
+WHERE semantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+)
+AND  NOT EXISTS (
+SELECT adataset FROM 
+{adataset} term:isDescribedBy {sem} rdf:type{taxa},
+{adataset} rdf:type {itemClass},
+[{adataset} iridc:hasPart{sdataset}]
+WHERE sdataset=NULL
+MINUS
+SELECT adataset FROM
+{adataset} term:isDescribedBy {semantic} ; rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}
+)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:spanningSemantic",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"rdfs:label": { "@language": "en" }
+}
+}
+</script>
+<script id="impliedBySemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT {semantic} rdfs:label {slabel}
+FROM 
+{semantic} rdfs:label {slabel}
+WHERE semantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+)
+UNION
+CONSTRUCT {semantic} rdf:type {term:TopSemantic}
+FROM 
+{semantic} rdfs:label {slabel},
+[{semantic} term:implies {sparent} rdf:type {taxa}]
+WHERE sparent=NULL AND semantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+)
+UNION
+CONSTRUCT {semantic} term:directlyImpliedBy {schild}
+FROM 
+{schild} term:directlyImplies {semantic}, {semantic,schild} rdf:type {taxa}
+WHERE schild IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+)
+UNION
+CONSTRUCT {semantic} rdf:type {term:spanningSemantic}
+FROM 
+{semantic} rdfs:label {slabel}
 WHERE semantic IN (SELECT semantic FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semantic} rdf:type {taxa}
 )
@@ -142,7 +201,7 @@ USING NAMESPACE
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"@type": "term:spanningSemantic",
+"@type": "term:TopSemantic",
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
