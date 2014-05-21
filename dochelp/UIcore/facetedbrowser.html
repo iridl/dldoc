@@ -118,18 +118,22 @@ USING NAMESPACE
 }
 </script>
 <script id="spanningSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT {semantic} rdf:type {term:spanningSemantic} ; term:implies {sparent} rdf:type {term:generalSpanningSemantic}
+CONSTRUCT {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"}
 FROM 
-{object} rdf:type {itemClass} ; term:isDescribedBy {semantic} rdf:type {taxa},
-{object} term:isDescribedBy {sem},
+{semantic} rdfs:label {slabel},
 [{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}]
-WHERE NOT EXISTS (
-SELECT adataset FROM {adataset} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type{taxa},
+WHERE semantic IN (SELECT semantic FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semantic} rdf:type {taxa}
+)
+AND  NOT EXISTS (
+SELECT adataset FROM 
+{adataset} term:isDescribedBy {sem} rdf:type{taxa},
+{adataset} rdf:type {itemClass},
 [{adataset} iridc:hasPart{sdataset}]
 WHERE sdataset=NULL
 MINUS
 SELECT adataset FROM
-{adataset} rdf:type {itemClass} ; term:isDescribedBy {semantic} ; term:isDescribedBy {sem} rdf:type {taxa}
+{adataset} term:isDescribedBy {semantic} ; rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
