@@ -20,10 +20,10 @@ install-apache:	all $(imgs) $(css)
 
 
 %.html.en:	%.xhtml.en tabs.xml tab.xslt
-	saxon_transform $< tab.xslt topdir="`pwd`" > $@
+	saxon_transform $< tab.xslt topdir="`pwd`" | sed -e '1 N;s/[\n]* *SYSTEM[^>]*//' - > $@
 
 %.html:	%.xhtml tabs.xml tab.xslt
-	saxon_transform $< tab.xslt topdir="`pwd`" > $@
+	saxon_transform $< tab.xslt topdir="`pwd`" | sed -e '1 N;s/[\n]* *SYSTEM[^>]*//' - > $@
 
 %/index.tex:	findsrc.pl tabs.xml
 		perl ./findsrc.pl bldlangindex ./$@ > $@ 
