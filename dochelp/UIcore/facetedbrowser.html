@@ -23,6 +23,25 @@
 <link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
+<style>
+body[loading]::after {
+content: "Loading " attr(loading);
+display: block;
+border: 4pt;
+border-style: outset;
+border-color; DarkGrey;
+text-align: center;
+color: red;
+padding: 20pt;
+position: fixed;
+top: 15%;
+left: 35%;
+right: 35%;
+z-index: 100;
+background-color: WhiteSmoke;
+border-radius: 10px;
+}
+</style>
 </head>
 <body>
 <form name="pageform" id="pageform">
@@ -118,15 +137,16 @@ USING NAMESPACE
 }
 </script>
 <script id="spanningSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"}
+CONSTRUCT {facet} rdf:type {term:Facet} ; term:hasNonChoice {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"}
 FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
 [{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}]
 WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
 AND  NOT EXISTS (
-SELECT adataset FROM 
+SELECT adataset FROM  
 {adataset} term:isDescribedBy {sem} rdf:type{taxa},
 {adataset} rdf:type {itemClass},
 [{adataset} iridc:hasPart{sdataset}]
@@ -142,7 +162,7 @@ USING NAMESPACE
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"@type": "term:spanningSemantic",
+"@type": "term:Facet",
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
@@ -214,7 +234,7 @@ USING NAMESPACE
 }
 }
 </script>
-<script id="allSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+<script id="allSemantics" type="application/serql" class="searchState" property="iridl:hasNoSerqlQuery">
 CONSTRUCT {semantic} rdfs:label {slabel}
 FROM 
 {semantic} rdfs:label {slabel}
@@ -233,7 +253,7 @@ USING NAMESPACE
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
     iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
 </script>
-<script id="topSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+<script id="topSemantics" type="application/serql" class="searchState" property="iridl:hasNoSerqlQuery">
 CONSTRUCT {semantic} rdf:type {term:TopSemantic}
 FROM 
 {semantic} rdfs:label {slabel},
@@ -241,10 +261,41 @@ FROM
 WHERE sparent=NULL AND semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
+USING NAMESPACE ; rdf:type,sclass,clabel
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+</script>
+<script id="choiceSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT DISTINCT  {facet} rdf:type {term:Facet} ; term:hasChoice {semantic} rdfs:label {slabel}
+    FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
+{dataset} term:isDescribedBy {semantic};  rdf:type {itemClass},
+[ {semantic} rdfs:label {slabel} ],
+[ {facet} rdfs:label {clabel} ]
+    WHERE NOT EXISTS ( (SELECT pterm FROM {semantic} term:implies {pterm} rdf:type {facet}
+WHERE pterm != semantic
+MINUS ( SELECT aterm FROM {semantic} term:implies {aterm} term:implies {semantic} ))
+)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
     iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:Facet",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"rdfs:label": { "@language": "en" }
+}
+}
 </script>
 <div class="controlBar">
            <fieldset class="navitem">
