@@ -286,6 +286,31 @@ WHERE NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {pterm} ;
 term:isDescribedBy {asem})
 ))
 MINUS ( SELECT aterm FROM {semantic} term:implies {aterm} term:implies {semantic} )
+) AND EXISTS (
+SELECT adataset FROM {adataset} term:isDescribedBy {sem} rdf:type {taxa},
+{adataset} rdf:type{itemClass},{semantic} rdf:type {taxa}
+WHERE NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {semantic} ;
+term:isDescribedBy {asem})
+)
+UNION
+CONSTRUCT {facet} rdf:type {term:Facet} ; rdfs:label {flabel} ; term:hasANonChoice {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"}
+FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
+{semantic} rdfs:label {slabel},
+[{facet} rdfs:label {flabel}],
+[{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}]
+WHERE semantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+)
+AND  NOT EXISTS (
+SELECT adataset FROM  
+{adataset} term:isDescribedBy {sem} rdf:type{taxa},
+{adataset} rdf:type {itemClass},
+[{adataset} iridc:hasPart{sdataset}]
+WHERE sdataset=NULL
+MINUS
+SELECT adataset FROM
+{adataset} term:isDescribedBy {semantic} ; rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
@@ -303,7 +328,34 @@ USING NAMESPACE
 "graph": "@graph",
 "value": "@value",
 "language": "@language",
-"rdfs:label": { "@language": "en" }
+"rdfs:label": { "@language": "en" },
+"term:hasANonChoice": {"@container": "@set"},
+"term:hasChoice": {"@container": "@set"},
+"term:isImpliedBy": {"@container": "@set"}
+}
+}
+</script>
+<script class="facetTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"div.facet": {
+"facet &lt;- choiceSemantics.graph": {
+".facetlbl": "facet.id",
+".nonChoice": {
+"nonchoice &lt;- facet.term:hasANonChoice": {
+".nonChoicelbl": "nonchoice.rdfs:label",
+".implies": {
+"implies &lt;- nonchoice.term:isImpliedBy": {
+".": "implies.rdfs:label"
+}
+}
+}
+},
+".Choice": {
+"choice &lt;- facet.term:hasChoice": {
+".": "choice.rdfs:label"
+}
+}
+}
 }
 }
 </script>
@@ -345,7 +397,21 @@ USING NAMESPACE
 <div id="menu" class="ui-tabs-panel">
 <h2 property="term:title">Faceted Browser</h2>
 <p property="term:description">uses isDescribedBy relationships to create a faceted browse</p>
-<p>This menu
+<p>
+<div class="facetTemplate">
+<div class="facet">
+<div class="facetlbl"></div>
+<div class="nonChoice">
+<div class="nonChoicelbl"></div>
+<ul>
+<li class="implies"></li>
+</ul>
+</div>
+<ul>
+<li class="Choice"></li>
+</ul>
+</div></div>
+
 </p></div>
 <div id="query" class="ui-tabs-panel">
 submits this Serql query and bbox binding
