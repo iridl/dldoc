@@ -25,20 +25,23 @@
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <style>
 body[loading]::after {
-content: "Loading " attr(loading);
+content: attr(loading);
 display: block;
 border: 4pt;
 border-style: outset;
 border-color; DarkGrey;
 text-align: center;
-color: red;
 padding: 20pt;
 position: fixed;
-top: 15%;
-left: 35%;
-right: 35%;
+opacity: 0.6;
+font-size: 20pt;
+top: 35%;
+left: 40%;
+right: 40%;
 z-index: 100;
 background-color: WhiteSmoke;
+background: url('/uicore/icons/wait30.gif') center no-repeat transparent;
+background-size: 80px;
 border-radius: 10px;
 }
 </style>
@@ -137,10 +140,11 @@ USING NAMESPACE
 }
 </script>
 <script id="spanningSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT {facet} rdf:type {term:Facet} ; term:hasNonChoice {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"}
+CONSTRUCT {facet} rdf:type {term:Facet} ; rdfs:label {flabel} ; term:hasNonChoice {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"}
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
+[{facet} rdfs:label {flabel}],
 [{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}]
 WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
@@ -267,15 +271,21 @@ USING NAMESPACE ; rdf:type,sclass,clabel
     iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
 </script>
 <script id="choiceSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT DISTINCT  {facet} rdf:type {term:Facet} ; term:hasChoice {semantic} rdfs:label {slabel}
+CONSTRUCT DISTINCT  {facet} rdf:type {term:Facet} ; term:hasChoice {semantic} rdfs:label {slabel}, {pterm} term:isImpliedBy {semantic}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
-{dataset} term:isDescribedBy {semantic};  rdf:type {itemClass},
+{dataset} term:isDescribedBy {sem,semantic}; rdf:type {itemClass},
 [ {semantic} rdfs:label {slabel} ],
-[ {facet} rdfs:label {clabel} ]
-    WHERE NOT EXISTS ( (SELECT pterm FROM {semantic} term:implies {pterm} rdf:type {facet}
-WHERE pterm != semantic
-MINUS ( SELECT aterm FROM {semantic} term:implies {aterm} term:implies {semantic} ))
+[ {facet} rdfs:label {clabel} ],
+[ {semantic} term:implies {pterm} rdf:type {facet}]
+    WHERE NOT EXISTS ((SELECT pterm FROM {semantic} term:implies {pterm} rdf:type {facet}
+WHERE pterm != semantic AND EXISTS (
+SELECT adataset FROM {adataset} term:isDescribedBy {sem} rdf:type {taxa},
+{adataset} rdf:type{itemClass},{pterm} rdf:type {taxa}
+WHERE NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {pterm} ;
+term:isDescribedBy {asem})
+))
+MINUS ( SELECT aterm FROM {semantic} term:implies {aterm} term:implies {semantic} )
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
