@@ -281,12 +281,7 @@ CONSTRUCT DISTINCT  {facet} rdf:type {term:Facet} ; term:hasChoice {semantic} rd
 [ {facet} rdfs:label {clabel} ],
 [ {semantic} term:implies {pterm} rdf:type {facet}]
     WHERE NOT EXISTS ((SELECT pterm FROM {semantic} term:implies {pterm} rdf:type {facet}
-WHERE pterm != semantic AND EXISTS (
-SELECT adataset FROM {adataset} term:isDescribedBy {sem} rdf:type {taxa},
-{adataset} rdf:type{itemClass},{pterm} rdf:type {taxa}
-WHERE NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {pterm} ;
-term:isDescribedBy {asem})
-))
+WHERE pterm != semantic)
 MINUS ( SELECT aterm FROM {semantic} term:implies {aterm} term:implies {semantic} )
 ) AND EXISTS (
 SELECT adataset FROM {adataset} term:isDescribedBy {sem} rdf:type {taxa},
@@ -295,13 +290,16 @@ WHERE NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {semantic} ;
 term:isDescribedBy {asem})
 )
 UNION
-CONSTRUCT {facet} rdf:type {term:Facet} ; rdfs:label {flabel} ; term:hasANonChoice {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"},{semantic} term:isImpliedBy {subsemantic}
+CONSTRUCT 
+{facet} rdf:type {term:Facet} ; rdfs:label {flabel} ; term:hasNonChoice 
+{semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent},{semantic} term:isImpliedBy {subsemantic}
+rdfs:label {sblabel} 
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
 [{facet} rdfs:label {flabel}],
 [{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}],
-[{subsemantic} term:implies {semantic} ; rdf:type {facet} WHERE NOT EXISTS 
+[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE NOT EXISTS 
 (select better FROM {subsemantic} term:implies {better} term:implies {semantic})]
 WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
@@ -332,7 +330,7 @@ USING NAMESPACE
 "value": "@value",
 "language": "@language",
 "rdfs:label": { "@language": "en" },
-"term:hasANonChoice": {"@container": "@set"},
+"term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"}
 }
@@ -344,7 +342,7 @@ USING NAMESPACE
 "facet &lt;- choiceSemantics.graph": {
 ".facetlbl": "facet.id",
 ".nonChoice": {
-"nonchoice &lt;- facet.term:hasANonChoice": {
+"nonchoice &lt;- facet.term:hasNonChoice": {
 ".nonChoicelbl": "nonchoice.rdfs:label",
 ".implies": {
 "implies &lt;- nonchoice.term:isImpliedBy": {
