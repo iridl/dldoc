@@ -47,11 +47,15 @@ border-radius: 10px;
 .nonChoice,.Choice,.implies {
 margin-left: 15pt;
 }
-.nonChoice .lbl, .facet .lbl {
+input[rdftype="term:spanningSemantic"] + .lbl {
 font-weight: bold
 }
-.Choice .lbl, .implies .lbl {
-font-weight: normal
+input[rdftype="term:spanningSemantic"] {
+opacity: 0.3;
+}
+[rdftype="term:Facet"] {
+font-weight: bold;
+font-size: 120%;
 }
 </style>
 </head>
@@ -177,7 +181,11 @@ FROM
 [{facet} rdfs:label {flabel}],
 [{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}],
 [{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE NOT EXISTS 
-(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another}))]
+(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another})) AND
+subsemantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+)
+]
 WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
@@ -206,6 +214,7 @@ USING NAMESPACE
 "graph": "@graph",
 "value": "@value",
 "language": "@language",
+"type": "@type",
 "rdfs:label": { "@language": "en" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
@@ -218,13 +227,16 @@ USING NAMESPACE
 "div.facet": {
 "facet &lt;- choiceSemantics.graph": {
 ".lbl": "facet.rdfs:label",
+".lbl@rdftype": "facet.type",
 ".nonChoice": {
 "nonchoice &lt;- facet.term:hasNonChoice": {
 ".lbl": "nonchoice.rdfs:label",
+"input@rdftype": "nonchoice.type",
 "input@value": "nonchoice.id",
 ".implies": {
 "implies &lt;- nonchoice.term:isImpliedBy": {
 ".lbl": "implies.rdfs:label",
+"input@rdftype": "implies.type",
 "input@value":"implies.id"
 }
 }
@@ -273,7 +285,6 @@ USING NAMESPACE
 <li> <a HREF="#formcontext">Form Context</a></li>
 <li> <a HREF="#frame">Frame</a></li>
 <li> <a HREF="#jsonldtext">JSON-LD</a></li>
-<li> <a HREF="#directive">Directive</a></li>
 </ul>
 <div id="menu" class="ui-tabs-panel">
 <h2 property="term:title">Faceted Browser</h2>
@@ -281,10 +292,10 @@ USING NAMESPACE
 <p>
   <div class="facetTemplate">
     <div class="facet">
-      <span class="lbl"></span>
+      <span class="lbl "></span>
       <div class="nonChoice">
-	<input class="pageformcopy searchState" disabled="true" name="sem" type="checkbox"/><span class="lbl"></span>
-	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl"></span></div>
+	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
+	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
       </div>
       <div class="Choice">
       <input class="pageformcopy searchState" name="sem" type="checkbox" /><span class="lbl" ></span>
