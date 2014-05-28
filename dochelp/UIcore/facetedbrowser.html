@@ -44,6 +44,15 @@ background: url('/uicore/icons/wait30.gif') center no-repeat transparent;
 background-size: 80px;
 border-radius: 10px;
 }
+.nonChoice,.Choice,.implies {
+margin-left: 15pt;
+}
+.nonChoice .lbl, .facet .lbl {
+font-weight: bold
+}
+.Choice .lbl, .implies .lbl {
+font-weight: normal
+}
 </style>
 </head>
 <body>
@@ -142,17 +151,16 @@ USING NAMESPACE
 }
 </script>
 <script id="choiceSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT DISTINCT  {facet} rdf:type {term:Facet} ; term:hasChoice {semantic} rdfs:label {slabel}, {pterm} term:isImpliedBy {semantic}
+CONSTRUCT DISTINCT  {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
 {dataset} term:isDescribedBy {sem,semantic}; rdf:type {itemClass},
 [ {semantic} rdfs:label {slabel} ],
-[ {facet} rdfs:label {clabel} ],
-[ {semantic} term:implies {pterm} rdf:type {facet}]
-    WHERE NOT EXISTS ((SELECT pterm FROM {semantic} term:implies {pterm} rdf:type {facet}
-WHERE pterm != semantic)
-MINUS ( SELECT aterm FROM {semantic} term:implies {aterm} term:implies {semantic} )
-) AND EXISTS (
+[ {facet} rdfs:label {flabel} ],
+[{semantic} term:implies {better} rdf:type {facet}]
+WHERE NOT EXISTS 
+(select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT another FROM {better} term:implies {semantic} ; term:implies {another}))
+AND EXISTS (
 SELECT adataset FROM {adataset} term:isDescribedBy {sem} rdf:type {taxa},
 {adataset} rdf:type{itemClass},{semantic} rdf:type {taxa}
 WHERE NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {semantic} ;
@@ -169,7 +177,7 @@ FROM
 [{facet} rdfs:label {flabel}],
 [{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}],
 [{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE NOT EXISTS 
-(select better FROM {subsemantic} term:implies {better} term:implies {semantic})]
+(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another}))]
 WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
@@ -209,13 +217,14 @@ USING NAMESPACE
 {
 "div.facet": {
 "facet &lt;- choiceSemantics.graph": {
-".facetlbl": "facet.id",
+".lbl": "facet.rdfs:label",
 ".nonChoice": {
 "nonchoice &lt;- facet.term:hasNonChoice": {
-".nonChoicelbl": "nonchoice.rdfs:label",
+".lbl": "nonchoice.rdfs:label",
+"input@value": "nonchoice.id",
 ".implies": {
 "implies &lt;- nonchoice.term:isImpliedBy": {
-".implieslbl": "implies.rdfs:label",
+".lbl": "implies.rdfs:label",
 "input@value":"implies.id"
 }
 }
@@ -223,12 +232,8 @@ USING NAMESPACE
 },
 ".Choice": {
 "choice &lt;- facet.term:hasChoice": {
-".choicelbl": "choice.rdfs:label",
-"input@value":"choice.id",
-".implies": {
-"implies &lt;- choice.term:isImpliedBy": {
-}
-}
+".lbl": "choice.rdfs:label",
+"input@value":"choice.id"
 }
 }
 }
@@ -274,20 +279,18 @@ USING NAMESPACE
 <h2 property="term:title">Faceted Browser</h2>
 <p property="term:description">uses isDescribedBy relationships to create a faceted browse</p>
 <p>
-<div class="facetTemplate">
-<div class="facet">
-<div class="facetlbl"></div>
-<div class="nonChoice">
-<div class="nonChoicelbl"></div>
-<ul>
-<li class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox" /><span class="implieslbl"></span></li>
-</ul>
+  <div class="facetTemplate">
+    <div class="facet">
+      <span class="lbl"></span>
+      <div class="nonChoice">
+	<input class="pageformcopy searchState" disabled="true" name="sem" type="checkbox"/><span class="lbl"></span>
+	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl"></span></div>
+      </div>
+      <div class="Choice">
+      <input class="pageformcopy searchState" name="sem" type="checkbox" /><span class="lbl" ></span>
+      </div>
 </div>
-<ul>
-<li class="Choice"><input class="pageformcopy searchState" name="sem" type="checkbox" /><span class="choicelbl"></span><span class="implies"></span></li>
-</ul>
-</div></div>
-
+</div>
 </p></div>
 <div id="query" class="ui-tabs-panel">
 submits this Serql query and bbox binding
