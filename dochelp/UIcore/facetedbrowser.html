@@ -52,6 +52,8 @@ border-radius: 10px;
 <input class="searchState titleLink share" name="taxa" type="hidden" value=""/>
 <input class="searchState titleLink share" name="itemClass" type="hidden" value=""/>
 <input class="searchState titleLink share" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
 </form>
 <script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
 {
@@ -293,12 +295,14 @@ WHERE NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {semantic} ;
 term:isDescribedBy {asem})
 )
 UNION
-CONSTRUCT {facet} rdf:type {term:Facet} ; rdfs:label {flabel} ; term:hasANonChoice {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"}
+CONSTRUCT {facet} rdf:type {term:Facet} ; rdfs:label {flabel} ; term:hasANonChoice {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent} term:isImplied {"true"},{semantic} term:isImpliedBy {subsemantic}
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
 [{facet} rdfs:label {flabel}],
-[{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}]
+[{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}],
+[{subsemantic} term:implies {semantic} ; rdf:type {facet} WHERE NOT EXISTS 
+(select better FROM {subsemantic} term:implies {better} term:implies {semantic})]
 WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
@@ -308,9 +312,8 @@ SELECT adataset FROM
 {adataset} rdf:type {itemClass},
 [{adataset} iridc:hasPart{sdataset}]
 WHERE sdataset=NULL
-MINUS
-SELECT adataset FROM
-{adataset} term:isDescribedBy {semantic} ; rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}
+AND NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {semantic} ;
+term:isDescribedBy {asem})
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
@@ -345,14 +348,20 @@ USING NAMESPACE
 ".nonChoicelbl": "nonchoice.rdfs:label",
 ".implies": {
 "implies &lt;- nonchoice.term:isImpliedBy": {
-".": "implies.rdfs:label"
+".implieslbl": "implies.rdfs:label",
+"input@value":"implies.id"
 }
 }
 }
 },
 ".Choice": {
 "choice &lt;- facet.term:hasChoice": {
-".": "choice.rdfs:label"
+".choicelbl": "choice.rdfs:label",
+"input@value":"choice.id",
+".implies": {
+"implies &lt;- choice.term:isImpliedBy": {
+}
+}
 }
 }
 }
@@ -404,11 +413,11 @@ USING NAMESPACE
 <div class="nonChoice">
 <div class="nonChoicelbl"></div>
 <ul>
-<li class="implies"></li>
+<li class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox" /><span class="implieslbl"></span></li>
 </ul>
 </div>
 <ul>
-<li class="Choice"></li>
+<li class="Choice"><input class="pageformcopy searchState" name="sem" type="checkbox" /><span class="choicelbl"></span><span class="implies"></span></li>
 </ul>
 </div></div>
 
