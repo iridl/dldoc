@@ -276,7 +276,7 @@ USING NAMESPACE
 <script id="Items" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
     FROM 
-{itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic},
+{itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic} rdf:type {taxa},
 [{item} term:title {title}],
 [{item} term:description {description}],
 [{item} term:icon {icon}]
