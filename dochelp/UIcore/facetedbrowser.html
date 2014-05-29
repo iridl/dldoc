@@ -60,7 +60,7 @@ font-size: 120%;
 .facetTemplate {
 border: 1pt;
 border-style: outset;
-width: 25%;
+width: 95%;
 padding: 5pt;
 border-radius: 15px;
 }
@@ -273,6 +273,57 @@ USING NAMESPACE
 }
 }
 </script>
+<script id="Items" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
+    FROM 
+{itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic},
+[{item} term:title {title}],
+[{item} term:description {description}],
+[{item} term:icon {icon}]
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
+    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"term:isDescribedBy": {},
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"xhtml": "http://www.w3.org/1999/xhtml/vocab#",
+"maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
+"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"type": "@type",
+"rdfs:label": { "@language": "en" },
+"term:title": { "@language": "en" },
+"term:description": { "@language": "en" },
+"term:icon": { "@type": "@id" },
+"term:hasNonChoice": {"@container": "@set"},
+"term:hasChoice": {"@container": "@set"},
+"term:isImpliedBy": {"@container": "@set"},
+"term:isDescribedBy": {"container": "@set","@type": "@id"}
+}
+}
+</script>
+<script class="itemTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"div.item": {
+"itm &lt;- Items.graph": {
+".itemTitle": "itm.term:title",
+".itemDescription": "itm.term:description",
+".titleLink@href": "itm.id",
+".itemImage@src": "itm.term:icon"
+}
+}
+}
+</script>
 <div class="controlBar">
            <fieldset class="navitem">
                 <legend>Help</legend> 
@@ -299,15 +350,7 @@ USING NAMESPACE
 </span>
             </fieldset> 
  </div>
-<div class="ui-tabs">
-<ul class="ui-tabs-nav">
-<li> <a HREF="#menu">Menu</a></li>
-<li> <a HREF="#query">Query</a></li>
-<li> <a HREF="#formcontext">Form Context</a></li>
-<li> <a HREF="#frame">Frame</a></li>
-<li> <a HREF="#jsonldtext">JSON-LD</a></li>
-</ul>
-<div id="menu" class="ui-tabs-panel">
+<div class="searchDescription">
 <h2 property="term:title">Faceted Browser</h2>
 <p property="term:description">uses isDescribedBy relationships to create a faceted browse</p>
 <p>
@@ -323,7 +366,27 @@ USING NAMESPACE
       </div>
 </div>
 </div>
-</p></div>
+</p>
+</div>
+<div class="rightcol">
+<div class="ui-tabs">
+<ul class="ui-tabs-nav">
+<li> <a HREF="#menu">Maproom Pages</a></li>
+<li> <a HREF="#query">Query</a></li>
+<li> <a HREF="#formcontext">Form Context</a></li>
+<li> <a HREF="#frame">Frame</a></li>
+<li> <a HREF="#jsonldtext">JSON-LD</a></li>
+</ul>
+<div id="menu" class="ui-tabs-panel">
+<div class="itemTemplate">
+                  <div class="item">
+                     <div class="itemTitle"><a class="carryLanguage carry titleLink"></a></div>
+                     <div class="itemIcon"><a class="carryLanguage carry titleLink"><img class="itemImage" /></a></div>
+                     <div class="itemDescription"></div>
+                     <div class="itemFooter"></div>
+                  </div>
+</div>
+</div>
 <div id="query" class="ui-tabs-panel">
 submits this Serql query and bbox binding
 <div property="iridl:QueryAsText">This gets replaced</div>
@@ -346,9 +409,6 @@ the id for the serql query, so that multiple queries can contribute to
 a collection of JSON.
 </p>
 </div>
-<div id="directive" class="ui-tabs-panel">
-<p>
-That JSON is then parsed with a PURE directive and template to generate the menu.</p>
 </div>
 </div>
 <div class="optionsBar">
