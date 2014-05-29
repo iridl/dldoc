@@ -57,6 +57,23 @@ opacity: 0.3;
 font-weight: bold;
 font-size: 120%;
 }
+.facetTemplate {
+border: 1pt;
+border-style: outset;
+width: 25%;
+padding: 5pt;
+border-radius: 15px;
+}
+.facet {
+border: 1pt;
+border-style: inset;
+border-radius: 10px;
+padding: 5pt;
+background-color: WhiteSmoke;
+}
+.facet + .facet {
+margin-top: 4pt;
+}
 </style>
 </head>
 <body>
@@ -64,6 +81,8 @@ font-size: 120%;
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="searchState titleLink share" name="taxa" type="hidden" value=""/>
 <input class="searchState titleLink share" name="itemClass" type="hidden" value=""/>
+<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share" name="sem" type="hidden" value=""/>
@@ -173,13 +192,15 @@ term:isDescribedBy {asem})
 UNION
 CONSTRUCT 
 {facet} rdf:type {term:Facet} ; rdfs:label {flabel} ; term:hasNonChoice 
-{semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic} ; term:implies {sparent},{semantic} term:isImpliedBy {subsemantic}
+{semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic},
+{semantic} term:implies {sparent},
+{semantic} term:isImpliedBy {subsemantic}
 rdfs:label {sblabel} 
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
 [{facet} rdfs:label {flabel}],
-[{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {taxa}],
+[{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {facet}],
 [{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE NOT EXISTS 
 (select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another})) AND
 subsemantic IN (SELECT semanti FROM
