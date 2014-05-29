@@ -177,21 +177,14 @@ USING NAMESPACE
 CONSTRUCT DISTINCT  {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
-{dataset} term:isDescribedBy {sem,semantic}; rdf:type {itemClass},
+{dataset} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
 [ {semantic} rdfs:label {slabel} ],
 [ {facet} rdfs:label {flabel} ],
 [{semantic} term:implies {better} rdf:type {facet}]
 WHERE NOT EXISTS 
 (select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT another FROM {better} term:implies {semantic} ; term:implies {another}))
-AND EXISTS (
-SELECT adataset FROM {adataset} term:isDescribedBy {sem} rdf:type {taxa},
-{adataset} rdf:type{itemClass},{semantic} rdf:type {taxa}
-WHERE NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {semantic} ;
-term:isDescribedBy {asem})
-)
 UNION
 CONSTRUCT 
-{facet} rdf:type {term:Facet} ; rdfs:label {flabel} ; term:hasNonChoice 
 {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic},
 {semantic} term:implies {sparent},
 {semantic} term:isImpliedBy {subsemantic}
@@ -249,24 +242,18 @@ USING NAMESPACE
 "facet &lt;- choiceSemantics.graph": {
 ".lbl": "facet.rdfs:label",
 ".lbl@rdftype": "facet.type",
-".nonChoice": {
-"nonchoice &lt;- facet.term:hasNonChoice": {
-".lbl": "nonchoice.rdfs:label",
-"input@rdftype": "nonchoice.type",
-"input@value": "nonchoice.id",
+".Choice": {
+"choice &lt;- facet.term:hasChoice": {
+".lbl": "choice.rdfs:label",
+"input@rdftype": "choice.type",
+"input@value": "choice.id",
 ".implies": {
-"implies &lt;- nonchoice.term:isImpliedBy": {
+"implies &lt;- choice.term:isImpliedBy": {
 ".lbl": "implies.rdfs:label",
 "input@rdftype": "implies.type",
 "input@value":"implies.id"
 }
 }
-}
-},
-".Choice": {
-"choice &lt;- facet.term:hasChoice": {
-".lbl": "choice.rdfs:label",
-"input@value":"choice.id"
 }
 }
 }
@@ -357,12 +344,9 @@ USING NAMESPACE
   <div class="facetTemplate">
     <div class="facet">
       <span class="lbl "></span>
-      <div class="nonChoice">
+      <div class="Choice">
 	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
 	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
-      </div>
-      <div class="Choice">
-      <input class="pageformcopy searchState" name="sem" type="checkbox" /><span class="lbl" ></span>
       </div>
 </div>
 </div>
