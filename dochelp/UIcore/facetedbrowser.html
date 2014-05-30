@@ -186,14 +186,12 @@ WHERE NOT EXISTS
 UNION
 CONSTRUCT 
 {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic},
-{semantic} term:implies {sparent},
 {semantic} term:isImpliedBy {subsemantic}
 rdfs:label {sblabel} 
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
 [{facet} rdfs:label {flabel}],
-[{semantic} term:implies {sparent}, {semantic,sparent} rdf:type {facet}],
 [{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE NOT EXISTS 
 (select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another})) AND
 subsemantic IN (SELECT semanti FROM
