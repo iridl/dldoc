@@ -174,7 +174,7 @@ USING NAMESPACE
 }
 </script>
 <script id="choiceSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT DISTINCT  {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
+CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
 {dataset} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
@@ -192,23 +192,22 @@ FROM
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
 [{facet} rdfs:label {flabel}],
-[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE NOT EXISTS 
-(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another})) AND
+[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE 
 subsemantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
-)
+) AND
+NOT EXISTS 
+(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another}))
 ]
 WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
 AND  NOT EXISTS (
 SELECT adataset FROM  
-{adataset} term:isDescribedBy {sem} rdf:type{taxa},
-{adataset} rdf:type {itemClass},
+{adataset} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type{taxa},
 [{adataset} iridc:hasPart{sdataset}]
 WHERE sdataset=NULL
-AND NOT EXISTS (SELECT asem FROM {adataset} term:isDescribedBy {semantic} ;
-term:isDescribedBy {asem})
+AND NOT EXISTS (SELECT * FROM {adataset} term:isDescribedBy {semantic})
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
@@ -338,7 +337,7 @@ USING NAMESPACE
 <div class="searchDescription">
 <h2 property="term:title">Faceted Browser</h2>
 <p property="term:description">uses isDescribedBy relationships to create a faceted browse</p>
-<p>
+<div class="valid">
   <div class="facetTemplate">
     <div class="facet">
       <span class="lbl "></span>
@@ -348,7 +347,7 @@ USING NAMESPACE
       </div>
 </div>
 </div>
-</p>
+</div>
 </div>
 <div class="rightcol">
 <div class="ui-tabs">
@@ -359,7 +358,7 @@ USING NAMESPACE
 <li> <a HREF="#frame">Frame</a></li>
 <li> <a HREF="#jsonldtext">JSON-LD</a></li>
 </ul>
-<div id="menu" class="ui-tabs-panel">
+<div id="menu" class="ui-tabs-panel valid">
 <div class="itemTemplate">
                   <div class="item">
                      <div class="itemTitle"><a class="carryLanguage carry titleLink"></a></div>
