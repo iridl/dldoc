@@ -130,8 +130,8 @@ USING NAMESPACE
 <script data-id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {objectClass} rdfs:label {clabel} ; rdf:type {term:ItemClass}
 FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
-{object} rdf:type {objectClass,term:SearchItem} rdfs:subClassOf {term:SearchItem},
-[ {objectClass} iridl:member_label {clabel} ],
+{object} rdf:type {objectClass} rdfs:subClassOf {term:SearchItem},
+[ {objectClass} rdfs:label {clabel} ],
 [ {taxa} rdfs:label {tlabel} ]
 WHERE isuri(objectClass)
 USING NAMESPACE
