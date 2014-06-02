@@ -319,12 +319,16 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
 {itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic} rdf:type {taxa},
 [{item} term:title {title}],
 [{item} term:description {description}],
-[{item} term:icon {icon}]
+[{item} term:icon {icon}],
+[{item} iridc:hasPart {part }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
+[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
+WHERE part=NULL and newitem=NULL
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
     iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
-    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>
+    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>,
+    dcterm = &lt;http://purl.org/dc/terms/>
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
