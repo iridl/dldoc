@@ -79,13 +79,13 @@ margin-top: 4pt;
 <body>
 <form name="pageform" id="pageform">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
-<input class="searchState titleLink share" name="taxa" type="hidden" value=""/>
-<input class="searchState titleLink share" name="itemClass" type="hidden" value=""/>
-<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
-<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
-<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
-<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
-<input class="searchState titleLink share" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
 </form>
 <script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
 {
@@ -101,7 +101,7 @@ margin-top: 4pt;
 }
 </script>
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
-<script id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
+<script data-id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {taxa} rdfs:label {tlabel} ;rdf:type {term:Taxa}
 FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
 {object} rdf:type {objectClass},
@@ -127,7 +127,7 @@ USING NAMESPACE
 }
 }
 </script>
-<script id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
+<script data-id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {objectClass} rdfs:label {clabel} ; rdf:type {term:ItemClass}
 FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
 {object} rdf:type {objectClass,term:SearchItem} rdfs:subClassOf {term:SearchItem},
@@ -173,7 +173,7 @@ USING NAMESPACE
 }
 }
 </script>
-<script id="choiceSemantics" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+<script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
@@ -191,7 +191,6 @@ rdfs:label {sblabel}
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
-[{facet} rdfs:label {flabel}],
 [{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE 
 subsemantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
@@ -204,7 +203,7 @@ WHERE semantic IN (SELECT semanti FROM
 )
 AND  NOT EXISTS (
 SELECT adataset FROM  
-{adataset} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type{taxa},
+{adataset} rdf:type {itemClass} ; term:isDescribedBy {sem},
 [{adataset} iridc:hasPart{sdataset}]
 WHERE sdataset=NULL
 AND NOT EXISTS (SELECT * FROM {adataset} term:isDescribedBy {semantic})
@@ -257,7 +256,64 @@ USING NAMESPACE
 }
 }
 </script>
-<script id="Items" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+<script data-id="choiceSemantics" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
+    FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
+{dataset} term:isDescribedBy {semantic}; rdf:type {itemClass},
+[ {semantic} rdfs:label {slabel} ],
+[ {facet} rdfs:label {flabel} ],
+[{semantic} term:implies {better} rdf:type {facet}]
+WHERE NOT EXISTS 
+(select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT better FROM {better} term:implies {semantic}))
+UNION
+CONSTRUCT 
+{semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic},
+{semantic} term:isImpliedBy {subsemantic}
+rdfs:label {sblabel} 
+FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
+{semantic} rdfs:label {slabel},
+[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE 
+subsemantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass}; term:isDescribedBy {semanti} rdf:type {taxa})
+AND NOT EXISTS 
+(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT better FROM {better} term:implies {subsemantic}))
+]
+WHERE semantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {semanti} rdf:type {taxa})
+AND  NOT EXISTS (
+SELECT adataset FROM  
+{adataset} rdf:type {itemClass},
+[{adataset} iridc:hasPart{sdataset}]
+WHERE sdataset=NULL
+AND NOT EXISTS (SELECT adataset FROM {adataset} term:isDescribedBy {semantic})
+)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:Facet",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"type": "@type",
+"rdfs:label": { "@language": "en" },
+"term:hasNonChoice": {"@container": "@set"},
+"term:hasChoice": {"@container": "@set"},
+"term:isImpliedBy": {"@container": "@set"}
+}
+}
+</script>
+<script data-id="Items" data-if="body[itemClass][taxa]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
     FROM 
 {itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic} rdf:type {taxa},
