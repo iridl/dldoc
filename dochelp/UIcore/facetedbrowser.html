@@ -177,7 +177,7 @@ USING NAMESPACE
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
-{dataset} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
+{item} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
 [ {semantic} rdfs:label {slabel} ],
 [ {facet} rdfs:label {flabel} ],
 [{semantic} term:implies {better} rdf:type {facet}]
@@ -202,11 +202,11 @@ WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
 AND  NOT EXISTS (
-SELECT adataset FROM  
-{adataset} rdf:type {itemClass} ; term:isDescribedBy {sem},
-[{adataset} iridc:hasPart{sdataset}]
-WHERE sdataset=NULL
-AND NOT EXISTS (SELECT * FROM {adataset} term:isDescribedBy {semantic})
+SELECT anitem FROM  
+{anitem} rdf:type {itemClass} ; term:isDescribedBy {sem},
+[{anitem} iridc:hasPart{subitem}]
+WHERE subitem=NULL
+AND NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
@@ -260,7 +260,7 @@ USING NAMESPACE
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
-{dataset} term:isDescribedBy {semantic}; rdf:type {itemClass},
+{item} term:isDescribedBy {semantic}; rdf:type {itemClass},
 [ {semantic} rdfs:label {slabel} ],
 [ {facet} rdfs:label {flabel} ],
 [{semantic} term:implies {better} rdf:type {facet}]
@@ -269,8 +269,7 @@ WHERE NOT EXISTS
 UNION
 CONSTRUCT 
 {semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic},
-{semantic} term:isImpliedBy {subsemantic}
-rdfs:label {sblabel} 
+{semantic} term:isImpliedBy {subsemantic} rdfs:label {sblabel} 
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} rdfs:label {slabel},
@@ -283,11 +282,11 @@ AND NOT EXISTS
 WHERE semantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {semanti} rdf:type {taxa})
 AND  NOT EXISTS (
-SELECT adataset FROM  
-{adataset} rdf:type {itemClass},
-[{adataset} iridc:hasPart{sdataset}]
-WHERE sdataset=NULL
-AND NOT EXISTS (SELECT adataset FROM {adataset} term:isDescribedBy {semantic})
+SELECT anitem FROM  
+{anitem} rdf:type {itemClass},
+[{anitem} iridc:hasPart{subitem}]
+WHERE subitem=NULL
+AND NOT EXISTS (SELECT anitem FROM {anitem} term:isDescribedBy {semantic})
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
