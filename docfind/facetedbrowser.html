@@ -65,6 +65,8 @@ padding: 5pt;
 border-radius: 15px;
 }
 .facet {
+-webkit-column-break-inside: avoid;
+break-inside: avoid;
 border: 1pt;
 border-style: inset;
 border-radius: 10px;
@@ -73,6 +75,13 @@ background-color: WhiteSmoke;
 }
 .facet + .facet {
 margin-top: 4pt;
+}
+@media only all and (min-width: 1250px) {
+.searchFacets {
+-webkit-column-count: 2;
+column-count: 2;
+-moz-column-count: 2;
+}
 }
 </style>
 </head>
@@ -367,8 +376,7 @@ USING NAMESPACE
 }
 }
 </script>
-<p property="term:description"></p>
-<div class="valid">
+<div class="searchFacets valid">
   <div class="facetTemplate">
     <div class="facet">
       <span class="lbl "></span>
@@ -379,6 +387,7 @@ USING NAMESPACE
 </div>
 </div>
 </div>
+<p property="term:description"></p>
 </div>
 <div class="rightcol">
 <div class="ui-tabs">
