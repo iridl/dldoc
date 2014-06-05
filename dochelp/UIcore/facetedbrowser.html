@@ -173,6 +173,24 @@ USING NAMESPACE
 }
 }
 </script>
+<script data-id="lang" type="application/serql" property="iridl:hasSerqlQuery">
+SELECT DISTINCT lang(title)
+FROM {object} term:title {title} 
+WHERE NOT lang(title)=""
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+</script>
+<script class="langTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"option.opt": {
+"thelang &lt;- lang.results.bindings": {
+".": "thelang._1.value",
+"@value": "thelang._1.value"
+}
+}
+}
+</script>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
@@ -389,6 +407,15 @@ USING NAMESPACE
 <span class="itemClassTemplate">
 <select name="itemClass" class="pageformcopy containsAllValids">
   <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Lang</legend> 
+<span class="langTemplate">
+<select name="Set-Language" class="pageformcopy containsAllValids">
+  <option></option>
+  <option class="opt"></option>
 </select>
 </span>
             </fieldset> 
