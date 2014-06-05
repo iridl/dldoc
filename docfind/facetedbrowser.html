@@ -100,6 +100,7 @@ margin-top: 4pt;
 }
 }
 </script>
+<div class="controlBar">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {taxa} rdfs:label {tlabel} ;rdf:type {term:Taxa}
@@ -191,6 +192,42 @@ USING NAMESPACE
 }
 }
 </script>
+           <fieldset class="navitem">
+                <legend>IRI/LDEO</legend> 
+                      <a rev="section" class="navlink carryup" href="/">Climate Data Library</a>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Data Library</legend> 
+                     <span class="navtext">Faceted Browser</span>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Taxa</legend> 
+<span class="taxaTemplate">
+<select name="taxa" class="pageformcopy containsAllValids">
+  <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Items</legend> 
+<span class="itemClassTemplate">
+<select name="itemClass" class="pageformcopy containsAllValids">
+  <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Lang</legend> 
+<span class="langTemplate">
+<select name="Set-Language" class="pageformcopy containsAllValids">
+  <option></option>
+  <option class="opt"></option>
+</select>
+</span>
+            </fieldset> 
+ </div>
+<div class="searchDescription">
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
@@ -330,6 +367,25 @@ USING NAMESPACE
 }
 }
 </script>
+<p property="term:description"></p>
+<div class="valid">
+  <div class="facetTemplate">
+    <div class="facet">
+      <span class="lbl "></span>
+      <div class="Choice">
+	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
+	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
+      </div>
+</div>
+</div>
+</div>
+</div>
+<div class="rightcol">
+<div class="ui-tabs">
+<ul class="ui-tabs-nav">
+</ul>
+<div id="menu" class="ui-tabs-panel valid">
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="Items" data-if="body[itemClass][taxa]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
     FROM 
@@ -385,60 +441,6 @@ USING NAMESPACE
 }
 }
 </script>
-<div class="controlBar">
-           <fieldset class="navitem">
-                <legend>IRI/LDEO</legend> 
-                      <a rev="section" class="navlink carryup" href="/">Climate Data Library</a>
-            </fieldset> 
-           <fieldset class="navitem"> 
-                <legend>Data Library</legend> 
-                     <span class="navtext">Faceted Browser</span>
-            </fieldset> 
-           <fieldset class="navitem"> 
-                <legend>Taxa</legend> 
-<span class="taxaTemplate">
-<select name="taxa" class="pageformcopy containsAllValids">
-  <option class="current"></option>
-</select>
-</span>
-            </fieldset> 
-           <fieldset class="navitem"> 
-                <legend>Items</legend> 
-<span class="itemClassTemplate">
-<select name="itemClass" class="pageformcopy containsAllValids">
-  <option class="current"></option>
-</select>
-</span>
-            </fieldset> 
-           <fieldset class="navitem"> 
-                <legend>Lang</legend> 
-<span class="langTemplate">
-<select name="Set-Language" class="pageformcopy containsAllValids">
-  <option></option>
-  <option class="opt"></option>
-</select>
-</span>
-            </fieldset> 
- </div>
-<div class="searchDescription">
-<p property="term:description"></p>
-<div class="valid">
-  <div class="facetTemplate">
-    <div class="facet">
-      <span class="lbl "></span>
-      <div class="Choice">
-	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
-	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
-      </div>
-</div>
-</div>
-</div>
-</div>
-<div class="rightcol">
-<div class="ui-tabs">
-<ul class="ui-tabs-nav">
-</ul>
-<div id="menu" class="ui-tabs-panel valid">
 <div class="itemTemplate">
                   <div class="item">
                      <div class="itemTitle"><a class="carryLanguage carry titleLink"></a></div>
