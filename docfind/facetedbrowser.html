@@ -76,7 +76,7 @@ background-color: WhiteSmoke;
 .facet + .facet {
 margin-top: 4pt;
 }
-@media only all and (min-width: 1250px) {
+@media only all and (min-width: 800px) {
 .facetTemplate {
 -webkit-column-count: 2;
 column-count: 2;
@@ -95,6 +95,7 @@ column-count: 2;
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="notfacet" type="hidden" value=""/>
 </form>
 <script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
 {
@@ -139,10 +140,9 @@ USING NAMESPACE
 </script>
 <script data-id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {objectClass} rdfs:label {clabel} ; rdf:type {term:ItemClass}
-FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
+FROM 
 {object} rdf:type {objectClass} rdfs:subClassOf {term:SearchItem},
-[ {objectClass} rdfs:label {clabel} ],
-[ {taxa} rdfs:label {tlabel} ]
+[ {objectClass} rdfs:label {clabel} ]
 WHERE isuri(objectClass)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
@@ -292,7 +292,8 @@ USING NAMESPACE
 "rdfs:label": { "@language": "en" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
-"term:isImpliedBy": {"@container": "@set"}
+"term:isImpliedBy": {"@container": "@set"},
+"term:hasNone": {"@container": "@set"}
 }
 }
 </script>
@@ -302,6 +303,11 @@ USING NAMESPACE
 "facet &lt;- choiceSemantics.graph": {
 ".lbl": "facet.rdfs:label",
 ".lbl@rdftype": "facet.type",
+".none":{
+"anone &lt;- facet.term:hasNone": {
+".lbl": "."
+}
+},
 ".Choice": {
 "choice &lt;- facet.term:hasChoice": {
 ".lbl": "choice.rdfs:label",
@@ -372,7 +378,8 @@ USING NAMESPACE
 "rdfs:label": { "@language": "en" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
-"term:isImpliedBy": {"@container": "@set"}
+"term:isImpliedBy": {"@container": "@set"},
+"term:hasNone": {"@container": "@set"}
 }
 }
 </script>
@@ -380,6 +387,9 @@ USING NAMESPACE
   <div class="facetTemplate">
     <div class="facet">
       <span class="lbl "></span>
+      <div class="none">
+	<input class="pageformcopy searchState" name="notfacet" type="checkbox"/><span class="lbl ">none</span>
+	</div>
       <div class="Choice">
 	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
 	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
