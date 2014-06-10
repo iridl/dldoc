@@ -65,6 +65,8 @@ padding: 5pt;
 border-radius: 15px;
 }
 .facet {
+-webkit-column-break-inside: avoid;
+break-inside: avoid;
 border: 1pt;
 border-style: inset;
 border-radius: 10px;
@@ -74,9 +76,16 @@ background-color: WhiteSmoke;
 .facet + .facet {
 margin-top: 4pt;
 }
+@media only all and (min-width: 800px) {
+.facetTemplate {
+-webkit-column-count: 2;
+column-count: 2;
+-moz-column-count: 2;
+}
+}
 </style>
 </head>
-<body>
+<body  xml:lang="en">
 <form name="pageform" id="pageform">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" value=""/>
@@ -246,7 +255,8 @@ USING NAMESPACE
 "rdfs:label": { "@language": "en" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
-"term:isImpliedBy": {"@container": "@set"}
+"term:isImpliedBy": {"@container": "@set"},
+"term:hasNone": {"@container": "@set"}
 }
 }
 </script>
@@ -326,7 +336,8 @@ USING NAMESPACE
 "rdfs:label": { "@language": "en" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
-"term:isImpliedBy": {"@container": "@set"}
+"term:isImpliedBy": {"@container": "@set"},
+"term:hasNone": {"@container": "@set"}
 }
 }
 </script>
@@ -453,28 +464,6 @@ USING NAMESPACE
                      <div class="itemFooter"></div>
                   </div>
 </div>
-</div>
-<div id="query" class="ui-tabs-panel">
-submits this Serql query and bbox binding
-<div property="iridl:QueryAsText">This gets replaced</div>
-</div>
-<div id="formcontext" class="ui-tabs-panel">
-This Context is used to convert variable values from their abbreviated form to their fully expanded form.  In this case, it is used for Sesame, who wants its variable binding values in ntriples format which is fully expanded.
-</div>
-<div id="frame" class="ui-tabs-panel">
-It then applies this JSON-LD frame to format the response
-</div>
-<div id="jsonldtext" class="ui-tabs-panel">
-to get the following framed JSON-LD
-<pre>
-<div property="iridl:JsonAsText">This gets replaced</div>
-</pre>
-<p>    Note that the frame changed the JSON-LD properties @id and @graph
-to id and graph respectively so that we could process them with PURE,
-which treats @ specially.  The outermost label 'regions' comes from
-the id for the serql query, so that multiple queries can contribute to
-a collection of JSON.
-</p>
 </div>
 </div>
 </div>
