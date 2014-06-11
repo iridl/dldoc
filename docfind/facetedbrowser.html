@@ -330,7 +330,7 @@ USING NAMESPACE
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
-{item} term:isDescribedBy {semantic}; rdf:type {itemClass},
+{} xhtml:canonical {item} term:isDescribedBy {semantic}; rdf:type {itemClass},
 [ {semantic} rdfs:label {slabel} ],
 [ {facet} rdfs:label {flabel} ],
 [{semantic} term:implies {better} rdf:type {facet}]
@@ -345,15 +345,15 @@ FROM
 {semantic} rdfs:label {slabel},
 [{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE 
 subsemantic IN (SELECT semanti FROM
-{object} rdf:type {itemClass}; term:isDescribedBy {semanti} rdf:type {taxa})
-AND NOT EXISTS 
+{} xhtml:canonical {object} rdf:type {itemClass}; term:isDescribedBy {semanti} rdf:type {taxa})
+AND NOT EXISTS  
 (select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT better FROM {better} term:implies {subsemantic}))
 ]
 WHERE semantic IN (SELECT semanti FROM
-{object} rdf:type {itemClass} ; term:isDescribedBy {semanti} rdf:type {taxa})
+{} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {semanti} rdf:type {taxa})
 AND  NOT EXISTS (
 SELECT anitem FROM  
-{anitem} rdf:type {itemClass},
+{} xhtml:canonical {anitem} rdf:type {itemClass},
 [{anitem} iridc:hasPart{subitem}]
 WHERE subitem=NULL
 AND NOT EXISTS (SELECT anitem FROM {anitem} term:isDescribedBy {semantic})
@@ -361,7 +361,8 @@ AND NOT EXISTS (SELECT anitem FROM {anitem} term:isDescribedBy {semantic})
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
-    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
+    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
@@ -409,12 +410,12 @@ USING NAMESPACE
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
     FROM 
 {itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic} rdf:type {taxa},
-[{item} term:title {title}],
-[{item} term:description {description}],
+[{item} term:isDescribedBy {semantic} rdf:type {taxa}],
+[{itemml} term:title {title}],
+[{itemml} term:description {description}],
 [{item} term:icon {icon}],
-[{item} iridc:hasPart {part }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
-WHERE part=NULL and newitem=NULL
+WHERE newitem=NULL
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
@@ -424,7 +425,7 @@ USING NAMESPACE
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"term:isDescribedBy": {},
+"term:title": {},
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
