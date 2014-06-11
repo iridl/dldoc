@@ -344,9 +344,9 @@ USING NAMESPACE
 <script data-id="Items" data-if="body[itemClass][taxa]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
     FROM 
-{itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic} rdf:type {taxa},
-[{item} term:title {title}],
-[{item} term:description {description}],
+{itemml} xhtml:canonical {item} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic} rdf:type {taxa},
+[{itemml} term:title {title}],
+[{itemml} term:description {description}],
 [{item} term:icon {icon}],
 [{item} iridc:hasPart {part }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
@@ -464,6 +464,28 @@ USING NAMESPACE
                      <div class="itemFooter"></div>
                   </div>
 </div>
+</div>
+<div id="query" class="ui-tabs-panel">
+submits this Serql query and bbox binding
+<div property="iridl:QueryAsText">This gets replaced</div>
+</div>
+<div id="formcontext" class="ui-tabs-panel">
+This Context is used to convert variable values from their abbreviated form to their fully expanded form.  In this case, it is used for Sesame, who wants its variable binding values in ntriples format which is fully expanded.
+</div>
+<div id="frame" class="ui-tabs-panel">
+It then applies this JSON-LD frame to format the response
+</div>
+<div id="jsonldtext" class="ui-tabs-panel">
+to get the following framed JSON-LD
+<pre>
+<div property="iridl:JsonAsText">This gets replaced</div>
+</pre>
+<p>    Note that the frame changed the JSON-LD properties @id and @graph
+to id and graph respectively so that we could process them with PURE,
+which treats @ specially.  The outermost label 'regions' comes from
+the id for the serql query, so that multiple queries can contribute to
+a collection of JSON.
+</p>
 </div>
 </div>
 </div>
