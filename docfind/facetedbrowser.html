@@ -406,16 +406,63 @@ USING NAMESPACE
 </ul>
 <div id="menu" class="ui-tabs-panel valid">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
-<script data-id="Items" data-if="body[itemClass][taxa]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+<script data-id="Items" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
     FROM 
-{itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},{itemml} term:isDescribedBy {semantic} rdf:type {taxa},
+{itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
 [{item} term:isDescribedBy {semantic} rdf:type {taxa}],
+[{item,pitem} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
+{pitem} iridc:hasPart {item}],
 [{itemml} term:title {title}],
 [{itemml} term:description {description}],
 [{item} term:icon {icon}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
-WHERE newitem=NULL
+WHERE newitem=NULL AND pitem=NULL
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
+    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>,
+    dcterm = &lt;http://purl.org/dc/terms/>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"term:title": {},
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"xhtml": "http://www.w3.org/1999/xhtml/vocab#",
+"maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
+"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"type": "@type",
+"rdfs:label": { "@language": "en" },
+"term:title": { "@language": "en" },
+"term:description": { "@language": "en" },
+"term:icon": { "@type": "@id" },
+"term:hasNonChoice": {"@container": "@set"},
+"term:hasChoice": {"@container": "@set"},
+"term:isImpliedBy": {"@container": "@set"},
+"term:isDescribedBy": {"container": "@set","@type": "@id"}
+}
+}
+</script>
+<script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
+    FROM 
+{itemml} xhtml:canonical {item} ;  rdf:type {itemClass},
+[{item} term:isDescribedBy {semantic} rdf:type {taxa}],
+[{item,pitem} rdf:type {itemClass},
+{pitem} iridc:hasPart {item}],
+[{itemml} term:title {title}],
+[{itemml} term:description {description}],
+[{item} term:icon {icon}],
+[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
+WHERE newitem=NULL AND pitem=NULL
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
