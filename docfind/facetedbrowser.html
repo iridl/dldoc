@@ -89,7 +89,7 @@ column-count: 2;
 <form name="pageform" id="pageform">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" value=""/>
-<input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" value="iridl:map_room"/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
@@ -212,7 +212,7 @@ USING NAMESPACE
            <fieldset class="navitem"> 
                 <legend>Taxa</legend> 
 <span class="taxaTemplate">
-<select name="taxa" class="pageformcopy containsAllValids">
+<select name="taxa" class="pageformcopy containsAllValids invalid">
   <option class="current"></option>
 </select>
 </span>
@@ -220,7 +220,7 @@ USING NAMESPACE
            <fieldset class="navitem"> 
                 <legend>Items</legend> 
 <span class="itemClassTemplate">
-<select name="itemClass" class="pageformcopy containsAllValids">
+<select name="itemClass" class="pageformcopy containsAllValids invalid">
   <option class="current"></option>
 </select>
 </span>
@@ -228,7 +228,7 @@ USING NAMESPACE
            <fieldset class="navitem"> 
                 <legend>Lang</legend> 
 <span class="langTemplate">
-<select name="Set-Language" class="pageformcopy containsAllValids">
+<select name="Set-Language" class="pageformcopy containsAllValids invalid">
   <option></option>
   <option class="opt"></option>
 </select>
