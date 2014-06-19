@@ -85,9 +85,9 @@ column-count: 2;
 }
 </style>
 </head>
-<body  xml:lang="en">
+<body  lang="en">
 <form name="pageform" id="pageform">
-<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="searchState carryLanguage bodyAttribute" name="uselang" type="hidden" />
 <input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" value="iridl:map_room"/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
@@ -184,19 +184,22 @@ USING NAMESPACE
 }
 </script>
 <script data-id="lang" type="application/serql" property="iridl:hasSerqlQuery">
-SELECT DISTINCT lang(title)
-FROM {object} term:title {title} 
-WHERE NOT lang(title)=""
+SELECT DISTINCT thelang,thelabel
+FROM {object} term:title {title},
+{} rdf:type {iridl:Language} ; iridl:hasId {thelang} ; rdfs:label{thelabel} 
+WHERE thelang=lang(title)
+ORDER BY thelabel
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+     rdfs = &lt;http://www.w3.org/2000/01/rdf-schema#>,
+     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
 </script>
 <script class="langTemplate" type="application/json" property="iridl:hasPUREdirective">
 {
 "option.opt": {
-"thelang &lt;- lang.results.bindings": {
-".": "thelang._1.value",
-"@value": "thelang._1.value"
+"alang &lt;- lang.results.bindings": {
+".": "alang.thelabel.value",
+"@value": "alang.thelang.value"
 }
 }
 }
@@ -212,7 +215,7 @@ USING NAMESPACE
            <fieldset class="navitem"> 
                 <legend>Taxa</legend> 
 <span class="taxaTemplate">
-<select name="taxa" class="pageformcopy containsAllValids invalid">
+<select name="taxa" class="pageformcopy containsAllValids">
   <option class="current"></option>
 </select>
 </span>
@@ -225,11 +228,10 @@ USING NAMESPACE
 </select>
 </span>
             </fieldset> 
-           <fieldset class="navitem"> 
+           <fieldset class="navitem lang"> 
                 <legend>Lang</legend> 
 <span class="langTemplate">
-<select name="Set-Language" class="pageformcopy containsAllValids invalid">
-  <option></option>
+<select name="uselang" class="pageformcopy containsAllValids">
   <option class="opt"></option>
 </select>
 </span>
@@ -407,18 +409,24 @@ USING NAMESPACE
 <div id="menu" class="ui-tabs-panel valid">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="Items" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
+CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
     FROM 
 {itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
 [{item} term:isDescribedBy {semantic} rdf:type {taxa}],
 [{item,pitem} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
 {pitem} iridc:hasPart {item}],
+[{item} rdf:type {sclass} rdf:type {term:ItemClass} WHERE NOT EXISTS
+(SELECT ssclass FROM {ssclass,sclass} rdf:type {term:ItemClass},
+{ssclass} rdfs:subClassOf {sclass})],
 [{itemml} term:title {title}],
 [{itemml} term:description {description}],
 [{item} term:icon {icon}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
-WHERE newitem=NULL AND pitem=NULL
-USING NAMESPACE
+WHERE newitem=NULL AND pitem=NULL AND title IN (
+SELECT atitle FROM {itemml} term:title {atitle},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang} ; iridl:weight {wght}
+WHERE sslang=lang(atitle) LIMIT 1
+)USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
     iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
@@ -439,28 +447,37 @@ USING NAMESPACE
 "graph": "@graph",
 "type": "@type",
 "rdfs:label": { "@language": "en" },
-"term:title": {"@container": "@language" },
-"term:description": { "@container": "@language" },
+"term:title": { "@id": "term:title","@container": "@set" },
+"term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
-"term:isDescribedBy": {"container": "@set","@type": "@id"}
+"term:isDescribedBy": {"container": "@set","@type": "@id"},
+"value": "@value",
+"language": "@language"
 }
 }
 </script>
 <script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic}
+CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
     FROM 
 {itemml} xhtml:canonical {item} ;  rdf:type {itemClass},
 [{item} term:isDescribedBy {semantic} rdf:type {taxa}],
 [{item,pitem} rdf:type {itemClass},
 {pitem} iridc:hasPart {item}],
+[{item} rdf:type {sclass} rdf:type {term:ItemClass} WHERE NOT EXISTS
+(SELECT ssclass FROM {ssclass,sclass} rdf:type {term:ItemClass},
+{ssclass} rdfs:subClassOf {sclass})],
 [{itemml} term:title {title}],
 [{itemml} term:description {description}],
 [{item} term:icon {icon}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
-WHERE newitem=NULL AND pitem=NULL
+WHERE newitem=NULL AND pitem=NULL AND title IN (
+SELECT atitle FROM {itemml} term:title {atitle},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang} ; iridl:weight {wght}
+WHERE sslang=lang(atitle) LIMIT 1
+)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
@@ -479,8 +496,8 @@ USING NAMESPACE
 "maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "rdfs:label": { "@language": "en" },
-"term:title": { "@container": "@language" },
-"term:description": { "@container": "@language" },
+"term:title": { "@id": "term:title","@container": "@set" },
+"term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
@@ -488,7 +505,9 @@ USING NAMESPACE
 "term:isDescribedBy": {"container": "@set","@type": "@id"},
 "id": "@id",
 "graph": "@graph",
-"type": "@type"
+"type": "@type",
+"value": "@value",
+"language": "@language"
 }
 }
 </script>
@@ -496,8 +515,9 @@ USING NAMESPACE
 {
 "div.item": {
 "itm &lt;- Items.graph": {
-".itemTitle a": "itm.term:title.en",
-".itemDescription": "itm.term:description.en",
+"@rdftype": "itm.type",
+".itemTitle a span[lang]": {"title &lt;- itm.term:title": {".": "title.value", "@lang": "title.language"}},
+".itemDescription span[lang]": {"description &lt;- itm.term:description": {".": "description.value", "@lang": "description.language"}},
 ".titleLink@href": "itm.id",
 ".itemImage@src": "itm.term:icon"
 }
@@ -505,10 +525,10 @@ USING NAMESPACE
 }
 </script>
 <div class="itemTemplate">
-                  <div class="item">
-                     <div class="itemTitle"><a class="carryLanguage carry titleLink"></a></div>
+                  <div class="item" rdftype="">
+                     <div class="itemTitle"><a class="carryLanguage carry titleLink"><span lang=""></span><span class="default"></span></a></div>
                      <div class="itemIcon"><a class="carryLanguage carry titleLink"><img class="itemImage" /></a></div>
-                     <div class="itemDescription"></div>
+                     <div class="itemDescription"><span lang=""></span><span class="default"></span></div>
                      <div class="itemFooter"></div>
                   </div>
 </div>
