@@ -83,6 +83,16 @@ column-count: 2;
 -moz-column-count: 2;
 }
 }
+/* displays first lang in langgroup by default, suppresses rest */
+.langgroup [lang] {display:inline}
+.langgroup [lang] + [lang] {display:none}
+/* on language match, uses matching language */
+body[uselang="en"] .langgroup[langgroup~="en"] [lang] {display: none}
+body[uselang="en"] .langgroup[langgroup~="en"] [lang="en"] {display: inline}
+body[uselang="es"] .langgroup[langgroup~="es"] [lang] {display: none}
+body[uselang="es"] .langgroup[langgroup~="es"] [lang="es"] {display: inline}
+body[uselang="fr"] .langgroup[langgroup~="fr"] [lang] {display: none}
+body[uselang="fr"] .langgroup[langgroup~="fr"] [lang="fr"] {display: inline}
 </style>
 </head>
 <body  lang="en">
@@ -418,15 +428,13 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
 [{item} rdf:type {sclass} rdf:type {term:ItemClass} WHERE NOT EXISTS
 (SELECT ssclass FROM {ssclass,sclass} rdf:type {term:ItemClass},
 {ssclass} rdfs:subClassOf {sclass})],
-[{itemml} term:title {title}],
+{itemml} term:title {title},
 [{itemml} term:description {description}],
 [{item} term:icon {icon}],
-[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
-WHERE newitem=NULL AND pitem=NULL AND title IN (
-SELECT atitle FROM {itemml} term:title {atitle},
-{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang} ; iridl:weight {wght}
-WHERE sslang=lang(atitle) LIMIT 1
-)USING NAMESPACE
+[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
+{} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
+WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
+ USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
     iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
@@ -469,15 +477,12 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
 [{item} rdf:type {sclass} rdf:type {term:ItemClass} WHERE NOT EXISTS
 (SELECT ssclass FROM {ssclass,sclass} rdf:type {term:ItemClass},
 {ssclass} rdfs:subClassOf {sclass})],
-[{itemml} term:title {title}],
+{itemml} term:title {title},
 [{itemml} term:description {description}],
 [{item} term:icon {icon}],
-[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}]
-WHERE newitem=NULL AND pitem=NULL AND title IN (
-SELECT atitle FROM {itemml} term:title {atitle},
-{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang} ; iridl:weight {wght}
-WHERE sslang=lang(atitle) LIMIT 1
-)
+[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
+{} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
+WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
@@ -526,9 +531,9 @@ USING NAMESPACE
 </script>
 <div class="itemTemplate">
                   <div class="item" rdftype="">
-                     <div class="itemTitle"><a class="carryLanguage carry titleLink"><span lang=""></span><span class="default"></span></a></div>
+                     <div class="itemTitle"><a class="carryLanguage carry titleLink langgroup"><span lang=""></span><span class="default"></span></a></div>
                      <div class="itemIcon"><a class="carryLanguage carry titleLink"><img class="itemImage" /></a></div>
-                     <div class="itemDescription"><span lang=""></span><span class="default"></span></div>
+                     <div class="itemDescription langgroup"><span lang=""></span><span class="default"></span></div>
                      <div class="itemFooter"></div>
                   </div>
 </div>
