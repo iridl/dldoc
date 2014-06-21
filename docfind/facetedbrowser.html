@@ -14,6 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta property="maproom:Sort_Id" content="a03c" />
 <title property="term:title">Dataset and Map Room Browser</title>
+<title property="term:description">Find datasets and maps organized by many characteristics and keywords</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="canonical" href="facetedbrowser.html" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
@@ -83,6 +84,27 @@ column-count: 2;
 -moz-column-count: 2;
 }
 }
+.item[rdftype] .itemTitle:before{
+width: 16pt;
+height: 16pt;
+font-size: 14pt;
+display: inline-block;
+content: "C";
+background-color: white;
+color: DarkGrey;
+text-align: center;
+border-radius: 7pt;
+margin-left: 5pt;
+margin-top: 1pt;
+float: right;
+padding: 0pt;
+}
+.item[rdftype*="iridl:map_room"] .itemTitle:before{
+content: "C";
+}
+.item[rdftype*="iridl:map_page"] .itemTitle:before{
+content: "M";
+}
 /* displays first lang in langgroup by default, suppresses rest */
 .langgroup [lang] {display:inline}
 .langgroup [lang] + [lang] {display:none}
@@ -93,6 +115,12 @@ body[uselang="es"] .langgroup[langgroup~="es"] [lang] {display: none}
 body[uselang="es"] .langgroup[langgroup~="es"] [lang="es"] {display: inline}
 body[uselang="fr"] .langgroup[langgroup~="fr"] [lang] {display: none}
 body[uselang="fr"] .langgroup[langgroup~="fr"] [lang="fr"] {display: inline}
+body[uselang="id"] .langgroup[langgroup~="id"] [lang] {display: none}
+body[uselang="id"] .langgroup[langgroup~="id"] [lang="id"] {display: inline}
+body[uselang="in"] .langgroup[langgroup~="in"] [lang] {display: none}
+body[uselang="in"] .langgroup[langgroup~="in"] [lang="in"] {display: inline}
+body[uselang="ru"] .langgroup[langgroup~="ru"] [lang] {display: none}
+body[uselang="ru"] .langgroup[langgroup~="ru"] [lang="ru"] {display: inline}
 </style>
 </head>
 <body  lang="en">
