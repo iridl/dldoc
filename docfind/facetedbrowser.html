@@ -84,12 +84,11 @@ column-count: 2;
 -moz-column-count: 2;
 }
 }
-.item[rdftype] .itemTitle:before{
+.item[rdftype] .itemTitle::before{
 width: 16pt;
 height: 16pt;
 font-size: 14pt;
 display: inline-block;
-content: "C";
 background-color: white;
 color: DarkGrey;
 text-align: center;
@@ -99,28 +98,12 @@ margin-top: 1pt;
 float: right;
 padding: 0pt;
 }
-.item[rdftype*="iridl:map_room"] .itemTitle:before{
+.item[rdftype*="iridl:map_room"] .itemTitle::before{
 content: "C";
 }
-.item[rdftype*="iridl:map_page"] .itemTitle:before{
+.item[rdftype*="iridl:map_page"] .itemTitle::before{
 content: "M";
 }
-/* displays first lang in langgroup by default, suppresses rest */
-.langgroup [lang] {display:inline}
-.langgroup [lang] + [lang] {display:none}
-/* on language match, uses matching language */
-body[uselang="en"] .langgroup[langgroup~="en"] [lang] {display: none}
-body[uselang="en"] .langgroup[langgroup~="en"] [lang="en"] {display: inline}
-body[uselang="es"] .langgroup[langgroup~="es"] [lang] {display: none}
-body[uselang="es"] .langgroup[langgroup~="es"] [lang="es"] {display: inline}
-body[uselang="fr"] .langgroup[langgroup~="fr"] [lang] {display: none}
-body[uselang="fr"] .langgroup[langgroup~="fr"] [lang="fr"] {display: inline}
-body[uselang="id"] .langgroup[langgroup~="id"] [lang] {display: none}
-body[uselang="id"] .langgroup[langgroup~="id"] [lang="id"] {display: inline}
-body[uselang="in"] .langgroup[langgroup~="in"] [lang] {display: none}
-body[uselang="in"] .langgroup[langgroup~="in"] [lang="in"] {display: inline}
-body[uselang="ru"] .langgroup[langgroup~="ru"] [lang] {display: none}
-body[uselang="ru"] .langgroup[langgroup~="ru"] [lang="ru"] {display: inline}
 </style>
 </head>
 <body  lang="en">
