@@ -104,11 +104,17 @@ content: "C";
 .item[rdftype*="iridl:map_page"] .itemTitle::before{
 content: "M";
 }
+.item[rdftype*="iridl:dataset"] .itemTitle::before{
+content: "D";
+}
+.item[rdftype*="iridl:variable"] .itemTitle::before{
+content: "V";
+}
 </style>
 </head>
 <body  lang="en">
 <form name="pageform" id="pageform">
-<input class="searchState carryLanguage bodyAttribute" name="uselang" type="hidden" />
+<input class="searchState carryLanguage bodyAttribute" name="lang" type="hidden" />
 <input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" value="iridl:map_room"/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
@@ -252,7 +258,7 @@ USING NAMESPACE
            <fieldset class="navitem lang"> 
                 <legend>Lang</legend> 
 <span class="langTemplate">
-<select name="uselang" class="pageformcopy containsAllValids">
+<select name="lang" class="pageformcopy containsAllValids">
   <option class="opt"></option>
 </select>
 </span>
@@ -428,7 +434,7 @@ USING NAMESPACE
 </ul>
 <div id="menu" class="ui-tabs-panel valid">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
-<script data-id="Items" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+<script data-id="Items" data-if="body[itemClass][taxa][sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
     FROM 
 {itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
@@ -477,7 +483,7 @@ WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
 }
 }
 </script>
-<script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+<script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
     FROM 
 {itemml} xhtml:canonical {item} ;  rdf:type {itemClass},
