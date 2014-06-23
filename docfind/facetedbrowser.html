@@ -271,8 +271,12 @@ CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasC
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
 {item} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
-[ {semantic} rdfs:label {slabel} ],
-[ {facet} rdfs:label {flabel} ],
+[ {semantic} rdfs:label {slabel},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(slabel)],
+[ {facet} rdfs:label {flabel},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(flabel) ],
 [{semantic} term:implies {better} rdf:type {facet}]
 WHERE NOT EXISTS 
 (select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT another FROM {better} term:implies {semantic} ; term:implies {another}))
@@ -360,8 +364,12 @@ CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasC
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
 {} xhtml:canonical {item} term:isDescribedBy {semantic}; rdf:type {itemClass},
-[ {semantic} rdfs:label {slabel} ],
-[ {facet} rdfs:label {flabel} ],
+[ {semantic} rdfs:label {slabel},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(slabel)],
+[ {facet} rdfs:label {flabel},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(flabel) ],
 [{semantic} term:implies {better} rdf:type {facet}]
 WHERE NOT EXISTS 
 (select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT better FROM {better} term:implies {semantic}))
@@ -445,7 +453,9 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
 (SELECT ssclass FROM {item} rdf:type {ssclass,sclass} rdfs:subClassOf {term:SearchItem},
 {ssclass} rdfs:subClassOf {sclass})],
 {itemml} term:title {title},
-[{itemml} term:description {description}],
+[{itemml} term:description {description},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(description)],
 [{item} term:icon {icon}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
 {} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
