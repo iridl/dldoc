@@ -15,6 +15,11 @@
 <meta property="maproom:Sort_Id" content="a03c" />
 <title property="term:title">Dataset and Map Room Browser</title>
 <title property="term:description">Find datasets and maps organized by many characteristics and keywords</title>
+<link class="altLanguage" rel="alternate" hreflang="en" href="facetedbrowser.html?Set-Language=en" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="facetedbrowser.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="facetedbrowser.html?Set-Language=fr" />
+<link class="altLanguage" rel="alternate" hreflang="id" href="facetedbrowser.html?Set-Language=id" />
+<link class="altLanguage" rel="alternate" hreflang="ru" href="facetedbrowser.html?Set-Language=ru" />
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="canonical" href="facetedbrowser.html" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
@@ -112,9 +117,10 @@ content: "V";
 }
 </style>
 </head>
-<body  lang="en">
+<body>
 <form name="pageform" id="pageform">
-<input class="searchState carryLanguage bodyAttribute" name="lang" type="hidden" />
+<input class="searchState bodyAttribute" name="lang" type="hidden" />
+<input class="searchState carryLanguage titleLink" name="Set-Language" type="hidden" />
 <input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" value="iridl:map_room"/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
@@ -210,30 +216,9 @@ USING NAMESPACE
 }
 }
 </script>
-<script data-id="lang" type="application/serql" property="iridl:hasSerqlQuery">
-SELECT DISTINCT thelang,thelabel
-FROM {object} term:title {title},
-{} rdf:type {iridl:Language} ; iridl:hasId {thelang} ; rdfs:label{thelabel} 
-WHERE thelang=lang(title)
-ORDER BY thelabel
-USING NAMESPACE
-     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-     rdfs = &lt;http://www.w3.org/2000/01/rdf-schema#>,
-     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
-</script>
-<script class="langTemplate" type="application/json" property="iridl:hasPUREdirective">
-{
-"option.opt": {
-"alang &lt;- lang.results.bindings": {
-".": "alang.thelabel.value",
-"@value": "alang.thelang.value"
-}
-}
-}
-</script>
            <fieldset class="navitem">
                 <legend>IRI/LDEO</legend> 
-                      <a rev="section" class="navlink carryup" href="/">Climate Data Library</a>
+                      <a rev="section" class="navlink carryup" href="/"><span class="langgroup"><span lang="en">Climate Data Library</span><span lang="ru">Библиотека Климатических Данных</span></span></a>
             </fieldset> 
            <fieldset class="navitem"> 
                 <legend>Data Library</legend> 
@@ -252,14 +237,6 @@ USING NAMESPACE
 <span class="itemClassTemplate">
 <select name="itemClass" class="pageformcopy containsAllValids invalid">
   <option class="current"></option>
-</select>
-</span>
-            </fieldset> 
-           <fieldset class="navitem lang"> 
-                <legend>Lang</legend> 
-<span class="langTemplate">
-<select name="lang" class="pageformcopy containsAllValids">
-  <option class="opt"></option>
 </select>
 </span>
             </fieldset> 
