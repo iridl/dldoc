@@ -165,9 +165,7 @@ USING NAMESPACE
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
-"value": "@value",
-"language": "@language",
-"rdfs:label": { "@language": "en" }
+"rdfs:label": { "@container": "@set" }
 }
 }
 </script>
@@ -190,9 +188,7 @@ USING NAMESPACE
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
-"value": "@value",
-"language": "@language",
-"rdfs:label": { "@language": "en" }
+"rdfs:label": { "@container": "@set" }
 }
 }
 </script>
@@ -200,7 +196,7 @@ USING NAMESPACE
 {
 "option": {
 "tax &lt;- taxa.graph": {
-".": "tax.rdfs:label",
+".": "tax.rdfs:label.iridl:asLangGroup",
 "@value": "tax.id"
 }
 }
@@ -210,7 +206,7 @@ USING NAMESPACE
 {
 "option.current": {
 "theitem &lt;- itemClasses.graph": {
-".": "theitem.rdfs:label",
+".": "theitem.rdfs:label.iridl:asLangGroup",
 "@value": "theitem.id"
 }
 }
@@ -302,10 +298,8 @@ USING NAMESPACE
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
-"value": "@value",
-"language": "@language",
 "type": "@type",
-"rdfs:label": { "@language": "en" },
+"rdfs:label": { "@container": "@set" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
@@ -317,7 +311,7 @@ USING NAMESPACE
 {
 "div.facet": {
 "facet &lt;- choiceSemantics.graph": {
-".lbl": "facet.rdfs:label",
+".lbl": "facet.rdfs:label.iridl:asLangGroup",
 ".lbl@rdftype": "facet.type",
 ".none":{
 "anone &lt;- facet.term:hasNone": {
@@ -326,12 +320,12 @@ USING NAMESPACE
 },
 ".Choice": {
 "choice &lt;- facet.term:hasChoice": {
-".lbl": "choice.rdfs:label",
+".lbl": "choice.rdfs:label.iridl:asLangGroup",
 "input@rdftype": "choice.type",
 "input@value": "choice.id",
 ".implies": {
 "implies &lt;- choice.term:isImpliedBy": {
-".lbl": "implies.rdfs:label",
+".lbl": "implies.rdfs:label.iridl:asLangGroup",
 "input@rdftype": "implies.type",
 "input@value":"implies.id"
 }
@@ -393,10 +387,8 @@ USING NAMESPACE
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
-"value": "@value",
-"language": "@language",
 "type": "@type",
-"rdfs:label": { "@language": "en" },
+"rdfs:label": {"@container": "@set"},
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
@@ -463,16 +455,14 @@ WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
 "id": "@id",
 "graph": "@graph",
 "type": "@type",
-"rdfs:label": { "@language": "en" },
+"rdfs:label": { "@container": "@set"},
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
-"term:isDescribedBy": {"container": "@set","@type": "@id"},
-"value": "@value",
-"language": "@language"
+"term:isDescribedBy": {"container": "@set","@type": "@id"}
 }
 }
 </script>
@@ -509,7 +499,7 @@ USING NAMESPACE
 "xhtml": "http://www.w3.org/1999/xhtml/vocab#",
 "maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
-"rdfs:label": { "@language": "en" },
+"rdfs:label": { "@container": "@set" },
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
@@ -519,9 +509,7 @@ USING NAMESPACE
 "term:isDescribedBy": {"container": "@set","@type": "@id"},
 "id": "@id",
 "graph": "@graph",
-"type": "@type",
-"value": "@value",
-"language": "@language"
+"type": "@type"
 }
 }
 </script>
@@ -530,8 +518,8 @@ USING NAMESPACE
 "div.item": {
 "itm &lt;- Items.graph": {
 "@rdftype": "itm.type",
-".itemTitle a span[lang]": {"title &lt;- itm.term:title": {".": "title.value", "@lang": "title.language"}},
-".itemDescription span[lang]": {"description &lt;- itm.term:description": {".": "description.value", "@lang": "description.language"}},
+".itemDescription": "itm.term:description.iridl:asLangGroup",
+".itemTitle .titleLink": "itm.term:title.iridl:asLangGroup",
 ".titleLink@href": "itm.id",
 ".itemImage@src": "itm.term:icon"
 }
