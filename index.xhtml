@@ -7,7 +7,6 @@
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       xmlns:gcse="http://google.com/search#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,6 +14,11 @@
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="canonical" href="index.html" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="index.html?Set-Language=en" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="index.html?Set-Language=fr" />
+<link class="altLanguage" rel="alternate" hreflang="id" href="index.html?Set-Language=id" />
+<link class="altLanguage" rel="alternate" hreflang="ru" href="index.html?Set-Language=ru" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
@@ -27,20 +31,31 @@
 <body>
 
 <form name="pageform" id="pageform" action="">
-<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="bodyAttribute" name="lang" type="hidden" />
+<input class="carryLanguage titleLink" name="Set-Language" type="hidden" />
 <input class="titleLink itemImage" name="bbox" type="hidden" />
 </form>
 <div class="controlBar">
            <fieldset class="navitem">
                 <legend>IRI/LDEO</legend> 
-                     <span class="navtext">Climate Data Library</span>
+	    <span class="navtext langgroup">
+	      <span lang="en">Climate Data Library</span>
+	      <span lang="es">Biblioteca de Datos Climáticos</span>
+	      <span lang="fr">Datathèque du Climat</span>
+	      <span lang="ru">Библиотека Климатических Данных</span>
+	    </span>
             </fieldset> 
 	   <fieldset class="navitem" id="GoogleSearch">
 	     </fieldset>
  </div>
  <div id="content" class="searchDescription">
-<h2 property="term:title">IRI/LDEO Climate Data Library</h2>
-<p align="left" property="term:description">
+   <h2 class="langgroup">
+     <span property="term:title" xml:lang="en">IRI/LDEO Climate Data Library</span>
+     <span property="term:title" xml:lang="es">IRI/LDEO Biblioteca de Datos Climáticos</span>
+     <span property="term:title" xml:lang="fr">IRI/LDEO Datathèque du Climat</span>
+     <span property="term:title" xml:lang="ru">IRI/LDEO Библиотека Климатических Данных</span>
+   </h2>
+<p align="left" property="term:description" xml:lang="en">
 The IRI Data Library is a powerful and freely accessible online data repository and analysis tool that allows a user to view, analyze, and download hundreds of terabytes of climate-related data through a standard web browser.</p>
 <p> It is a powerful tool that 
 offers the following capabilities at no cost to the user:
