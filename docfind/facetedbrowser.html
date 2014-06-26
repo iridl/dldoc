@@ -146,11 +146,11 @@ content: "V";
 <div class="controlBar">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
-CONSTRUCT {taxa} rdfs:label {tlabel} ;rdf:type {term:Taxa}
+CONSTRUCT {taxa} term:label {tlabel} ;rdf:type {term:Taxa}
 FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
 {object} rdf:type {objectClass},
-[ {objectClass} rdfs:label {clabel} ],
-[ {taxa} rdfs:label {tlabel} ]
+[ {objectClass} term:label {clabel} ],
+[ {taxa} term:label {tlabel} ]
 WHERE isuri(objectClass)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
@@ -165,15 +165,15 @@ USING NAMESPACE
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
-"rdfs:label": { "@container": "@set" }
+"term:label": { "@container": "@set" }
 }
 }
 </script>
 <script data-id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
-CONSTRUCT {objectClass} rdfs:label {clabel} ; rdf:type {term:ItemClass}
+CONSTRUCT {objectClass} term:label {clabel} ; rdf:type {term:ItemClass}
 FROM 
 {object} rdf:type {objectClass} rdfs:subClassOf {term:SearchItem},
-[ {objectClass} rdfs:label {clabel} ]
+[ {objectClass} term:label {clabel} ]
 WHERE isuri(objectClass)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
@@ -188,7 +188,7 @@ USING NAMESPACE
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
-"rdfs:label": { "@container": "@set" }
+"term:label": { "@container": "@set" }
 }
 }
 </script>
@@ -196,7 +196,7 @@ USING NAMESPACE
 {
 "option": {
 "tax &lt;- taxa.graph": {
-".": "tax.rdfs:label.iridl:asLangGroup",
+".": "tax.term:label.iridl:asLangGroup",
 "@value": "tax.id"
 }
 }
@@ -206,7 +206,7 @@ USING NAMESPACE
 {
 "option.current": {
 "theitem &lt;- itemClasses.graph": {
-".": "theitem.rdfs:label.iridl:asLangGroup",
+".": "theitem.term:label.iridl:asLangGroup",
 "@value": "theitem.id"
 }
 }
@@ -246,14 +246,14 @@ USING NAMESPACE
 <div class="searchDescription">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
+CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:hasChoice {semantic} term:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
 {item} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
-[ {semantic} rdfs:label {slabel},
+[ {semantic} term:label {slabel},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
 WHERE sslang=lang(slabel)],
-[ {facet} rdfs:label {flabel},
+[ {facet} term:label {flabel},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
 WHERE sslang=lang(flabel) ],
 [{semantic} term:implies {better} rdf:type {facet}]
@@ -261,13 +261,13 @@ WHERE NOT EXISTS
 (select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT another FROM {better} term:implies {semantic} ; term:implies {another}))
 UNION
 CONSTRUCT 
-{semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic},
+{semantic} term:label {slabel} ; rdf:type {term:spanningSemantic},
 {semantic} term:isImpliedBy {subsemantic}
-rdfs:label {sblabel} 
+term:label {sblabel} 
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
-{semantic} rdfs:label {slabel},
-[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE 
+{semantic} term:label {slabel},
+[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
 subsemantic IN (SELECT semanti FROM
 {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 ) AND
@@ -299,7 +299,7 @@ USING NAMESPACE
 "id": "@id",
 "graph": "@graph",
 "type": "@type",
-"rdfs:label": { "@container": "@set" },
+"term:label": { "@container": "@set" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
@@ -311,7 +311,7 @@ USING NAMESPACE
 {
 "div.facet": {
 "facet &lt;- choiceSemantics.graph": {
-".lbl": "facet.rdfs:label.iridl:asLangGroup",
+".lbl": "facet.term:label.iridl:asLangGroup",
 ".lbl@rdftype": "facet.type",
 ".none":{
 "anone &lt;- facet.term:hasNone": {
@@ -320,12 +320,12 @@ USING NAMESPACE
 },
 ".Choice": {
 "choice &lt;- facet.term:hasChoice": {
-".lbl": "choice.rdfs:label.iridl:asLangGroup",
+".lbl": "choice.term:label.iridl:asLangGroup",
 "input@rdftype": "choice.type",
 "input@value": "choice.id",
 ".implies": {
 "implies &lt;- choice.term:isImpliedBy": {
-".lbl": "implies.rdfs:label.iridl:asLangGroup",
+".lbl": "implies.term:label.iridl:asLangGroup",
 "input@rdftype": "implies.type",
 "input@value":"implies.id"
 }
@@ -337,14 +337,14 @@ USING NAMESPACE
 }
 </script>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; rdfs:label {flabel}; term:hasChoice {semantic} rdfs:label {slabel}
+CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:hasChoice {semantic} term:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
 {} xhtml:canonical {item} term:isDescribedBy {semantic}; rdf:type {itemClass},
-[ {semantic} rdfs:label {slabel},
+[ {semantic} term:label {slabel},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
 WHERE sslang=lang(slabel)],
-[ {facet} rdfs:label {flabel},
+[ {facet} term:label {flabel},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
 WHERE sslang=lang(flabel) ],
 [{semantic} term:implies {better} rdf:type {facet}]
@@ -352,12 +352,12 @@ WHERE NOT EXISTS
 (select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT better FROM {better} term:implies {semantic}))
 UNION
 CONSTRUCT 
-{semantic} rdfs:label {slabel} ; rdf:type {term:spanningSemantic},
-{semantic} term:isImpliedBy {subsemantic} rdfs:label {sblabel} 
+{semantic} term:label {slabel} ; rdf:type {term:spanningSemantic},
+{semantic} term:isImpliedBy {subsemantic} term:label {sblabel} 
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
-{semantic} rdfs:label {slabel},
-[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; rdfs:label {sblabel} WHERE 
+{semantic} term:label {slabel},
+[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
 subsemantic IN (SELECT semanti FROM
 {} xhtml:canonical {object} rdf:type {itemClass}; term:isDescribedBy {semanti} rdf:type {taxa})
 AND NOT EXISTS  
@@ -388,7 +388,7 @@ USING NAMESPACE
 "id": "@id",
 "graph": "@graph",
 "type": "@type",
-"rdfs:label": {"@container": "@set"},
+"term:label": {"@container": "@set"},
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
@@ -455,7 +455,7 @@ WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
 "id": "@id",
 "graph": "@graph",
 "type": "@type",
-"rdfs:label": { "@container": "@set"},
+"term:label": { "@container": "@set"},
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
@@ -499,7 +499,7 @@ USING NAMESPACE
 "xhtml": "http://www.w3.org/1999/xhtml/vocab#",
 "maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
-"rdfs:label": { "@container": "@set" },
+"term:label": { "@container": "@set" },
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
