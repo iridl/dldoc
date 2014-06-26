@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:gaz="http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+      >
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="maproom:Sort_Id" content="a03c" />
+<title property="term:title">Data by Category</title>
+<title property="term:description">Selected Datasets for particular topics</title>
+<link class="altLanguage" rel="alternate" hreflang="en" href="databrief.html?Set-Language=en" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="databrief.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="databrief.html?Set-Language=fr" />
+<link class="altLanguage" rel="alternate" hreflang="id" href="databrief.html?Set-Language=id" />
+<link class="altLanguage" rel="alternate" hreflang="ru" href="databrief.html?Set-Language=ru" />
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a03b" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<style>
+body[loading]::after {
+content: attr(loading);
+display: block;
+border: 4pt;
+border-style: outset;
+border-color; DarkGrey;
+text-align: center;
+padding: 20pt;
+position: fixed;
+opacity: 0.6;
+font-size: 20pt;
+top: 35%;
+left: 40%;
+right: 40%;
+z-index: 100;
+background-color: WhiteSmoke;
+background: url('/uicore/icons/wait30.gif') center no-repeat transparent;
+background-size: 80px;
+border-radius: 10px;
+}
+.nonChoice,.Choice,.implies {
+margin-left: 15pt;
+}
+input[rdftype="term:spanningSemantic"] + .lbl {
+font-weight: bold
+}
+input[rdftype="term:spanningSemantic"] {
+opacity: 0.3;
+}
+[rdftype="term:Facet"] {
+font-weight: bold;
+font-size: 120%;
+}
+.facetTemplate {
+border: 1pt;
+border-style: outset;
+width: 95%;
+padding: 5pt;
+border-radius: 15px;
+}
+.facet {
+-webkit-column-break-inside: avoid;
+break-inside: avoid;
+border: 1pt;
+border-style: inset;
+border-radius: 10px;
+padding: 5pt;
+background-color: WhiteSmoke;
+}
+.facet + .facet {
+margin-top: 4pt;
+}
+@media only all and (min-width: 800px) {
+.facetTemplate {
+-webkit-column-count: 2;
+column-count: 2;
+-moz-column-count: 2;
+}
+}
+.item[rdftype] .itemTitle::before{
+width: 16pt;
+height: 16pt;
+font-size: 14pt;
+display: inline-block;
+background-color: white;
+color: DarkGrey;
+text-align: center;
+border-radius: 7pt;
+margin-left: 5pt;
+margin-top: 1pt;
+float: right;
+padding: 0pt;
+}
+.item[rdftype*="iridl:map_room"] .itemTitle::before{
+content: "C";
+}
+.item[rdftype*="iridl:map_page"] .itemTitle::before{
+content: "M";
+}
+.item[rdftype*="iridl:dataset"] .itemTitle::before{
+content: "D";
+}
+.item[rdftype*="iridl:variable"] .itemTitle::before{
+content: "V";
+}
+</style>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="searchState bodyAttribute" name="lang" type="hidden" />
+<input class="searchState carryLanguage titleLink" name="Set-Language" type="hidden" />
+<input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" value="iridl:map_room"/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
+<input class="searchState titleLink share bodyAttribute" name="notfacet" type="hidden" value=""/>
+</form>
+<script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
+{
+"@context": {
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"Set-Language": {"@id": "iridl:Set-Language"},
+"taxa": {"@id": "term:Taxa", "@type": "@id"},
+"itemClass": {"@id": "term:itemClass", "@type": "@id"},
+"sem": {"@id": "term:Semantic", "@type": "@id"}
+}
+}
+</script>
+<div class="controlBar">
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
+<script data-id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
+CONSTRUCT {taxa} term:label {tlabel} ;rdf:type {term:Taxa}
+FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
+{object} rdf:type {objectClass},
+ {taxa} term:label {tlabel} 
+WHERE isuri(objectClass)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:Taxa",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"term:label": {"@container": "@set" }
+}
+}
+</script>
+<script data-id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
+CONSTRUCT {objectClass} term:label {clabel} ; rdf:type {term:ItemClass}
+FROM 
+{object} rdf:type {objectClass} rdfs:subClassOf {term:SearchItem},
+[ {objectClass} term:label {clabel} ]
+WHERE isuri(objectClass)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:ItemClass",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"term:label": { "@container": "@set" }
+}
+}
+</script>
+<script class="taxaTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"option": {
+"tax &lt;- taxa.graph": {
+".": "tax.term:label.iridl:asLangGroup",
+"@value": "tax.id"
+}
+}
+}
+</script>
+<script class="itemClassTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"option.current": {
+"theitem &lt;- itemClasses.graph": {
+".": "theitem.term:label.iridl:asLangGroup",
+"@value": "theitem.id"
+}
+}
+}
+</script>
+           <fieldset class="navitem">
+                <legend>IRI/LDEO</legend> 
+                      <a rev="section" class="navlink carryup carryLanguage" href="/">
+		      <span class="langgroup">
+		      <span lang="en">Climate Data Library</span>
+                      <span lang="es">Biblioteca de Datos Climáticos</span>
+                      <span lang="fr">Datathèque du Climat</span>
+		      <span lang="ru">Библиотека Климатических Данных</span>
+		      </span></a>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Data Library</legend> 
+                     <span class="navtext">Dataset By Category</span>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Taxa</legend> 
+<span class="taxaTemplate">
+<select name="taxa" class="pageformcopy containsAllValids">
+  <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Items</legend> 
+<span class="itemClassTemplate">
+<select name="itemClass" class="pageformcopy containsAllValids invalid">
+  <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+ </div>
+<div class="searchDescription">
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
+<script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:hasChoice {semantic} term:label {slabel}
+    FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
+{item} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
+[ {semantic} term:label {slabel},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(slabel)],
+[ {facet} term:label {flabel},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(flabel) ],
+[{semantic} term:implies {better} rdf:type {facet}]
+WHERE NOT EXISTS 
+(select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT another FROM {better} term:implies {semantic} ; term:implies {another}))
+UNION
+CONSTRUCT 
+{semantic} term:label {slabel} ; rdf:type {term:spanningSemantic},
+{semantic} term:isImpliedBy {subsemantic}
+term:label {sblabel} 
+FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
+{semantic} term:label {slabel},
+[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
+subsemantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+) AND
+NOT EXISTS 
+(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another}))
+]
+WHERE semantic IN (SELECT semanti FROM
+{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+)
+AND  NOT EXISTS (
+SELECT anitem FROM  
+{anitem} rdf:type {itemClass} ; term:isDescribedBy {sem},
+[{anitem} iridc:hasPart{subitem}]
+WHERE subitem=NULL
+AND NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
+)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:Facet",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"type": "@type",
+"term:label": { "@container": "@set" },
+"term:hasNonChoice": {"@container": "@set"},
+"term:hasChoice": {"@container": "@set"},
+"term:isImpliedBy": {"@container": "@set"},
+"term:hasNone": {"@container": "@set"}
+}
+}
+</script>
+<script class="facetTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"div.facet": {
+"facet &lt;- choiceSemantics.graph": {
+".lbl": "facet.term:label.iridl:asLangGroup",
+".lbl@rdftype": "facet.type",
+".none":{
+"anone &lt;- facet.term:hasNone": {
+".lbl": "."
+}
+},
+".Choice": {
+"choice &lt;- facet.term:hasChoice": {
+".lbl": "choice.term:label.iridl:asLangGroup",
+"input@rdftype": "choice.type",
+"input@value": "choice.id",
+".implies": {
+"implies &lt;- choice.term:isImpliedBy": {
+".lbl": "implies.term:label.iridl:asLangGroup",
+"input@rdftype": "implies.type",
+"input@value":"implies.id"
+}
+}
+}
+}
+}
+}
+}
+</script>
+<script data-id="choiceSemantics" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:hasChoice {semantic} term:label {slabel}
+    FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
+{} xhtml:canonical {item} term:isDescribedBy {semantic}; rdf:type {itemClass},
+[ {semantic} term:label {slabel},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(slabel)],
+[ {facet} term:label {flabel},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(flabel) ],
+[{semantic} term:implies {better} rdf:type {facet}]
+WHERE NOT EXISTS 
+(select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT better FROM {better} term:implies {semantic}))
+UNION
+CONSTRUCT 
+{semantic} term:label {slabel} ; rdf:type {term:spanningSemantic},
+{semantic} term:isImpliedBy {subsemantic} term:label {sblabel} 
+FROM 
+{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
+{semantic} term:label {slabel},
+[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
+subsemantic IN (SELECT semanti FROM
+{} xhtml:canonical {object} rdf:type {itemClass}; term:isDescribedBy {semanti} rdf:type {taxa})
+AND NOT EXISTS  
+(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT better FROM {better} term:implies {subsemantic}))
+]
+WHERE semantic IN (SELECT semanti FROM
+{} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {semanti} rdf:type {taxa})
+AND  NOT EXISTS (
+SELECT anitem FROM  
+{} xhtml:canonical {anitem} rdf:type {itemClass},
+[{anitem} iridc:hasPart{subitem}]
+WHERE subitem=NULL
+AND NOT EXISTS (SELECT anitem FROM {anitem} term:isDescribedBy {semantic})
+)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
+    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "term:Facet",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"value": "@value",
+"language": "@language",
+"type": "@type",
+"term:label": { "@language": "en" },
+"term:hasNonChoice": {"@container": "@set"},
+"term:hasChoice": {"@container": "@set"},
+"term:isImpliedBy": {"@container": "@set"},
+"term:hasNone": {"@container": "@set"}
+}
+}
+</script>
+<div class="valid">
+  <div class="facetTemplate">
+    <div class="facet">
+      <span class="lbl "></span>
+      <div class="none">
+	<input class="pageformcopy searchState" name="notfacet" type="checkbox"/><span class="lbl ">none</span>
+	</div>
+      <div class="Choice">
+	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
+	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
+      </div>
+</div>
+</div>
+</div>
+</div>
+<div class="rightcol">
+<div class="ui-tabs">
+<ul class="ui-tabs-nav">
+</ul>
+<div id="menu" class="ui-tabs-panel valid">
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
+<script data-id="Items" data-if="body[itemClass][taxa][sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
+    FROM 
+{itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
+[{item} term:isDescribedBy {semantic} rdf:type {taxa}],
+[{item,pitem} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
+{pitem} iridc:hasPart {item}],
+[{item} rdf:type {sclass} rdfs:subClassOf {term:SearchItem} WHERE isuri(sclass) AND NOT EXISTS
+(SELECT ssclass FROM {item} rdf:type {ssclass,sclass} rdfs:subClassOf {term:SearchItem},
+{ssclass} rdfs:subClassOf {sclass})],
+{itemml} term:title {title},
+[{itemml} term:description {description},
+{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
+WHERE sslang=lang(description)],
+[{item} term:icon {icon}],
+[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
+{} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
+WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
+ USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
+    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>,
+    dcterm = &lt;http://purl.org/dc/terms/>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"term:icon": {},
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"xhtml": "http://www.w3.org/1999/xhtml/vocab#",
+"maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
+"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"id": "@id",
+"graph": "@graph",
+"type": "@type",
+"term:label": { "@language": "en" },
+"term:title": { "@id": "term:title","@container": "@set" },
+"term:description": { "@id": "term:description","@container": "@set" },
+"term:icon": { "@type": "@id" },
+"term:hasNonChoice": {"@container": "@set"},
+"term:hasChoice": {"@container": "@set"},
+"term:isImpliedBy": {"@container": "@set"},
+"term:isDescribedBy": {"container": "@set","@type": "@id"},
+"value": "@value",
+"language": "@language"
+}
+}
+</script>
+<script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
+CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
+    FROM 
+{itemml} xhtml:canonical {item} ;  rdf:type {itemClass},
+[{item} term:isDescribedBy {semantic} rdf:type {taxa}],
+[{item,pitem} rdf:type {itemClass},
+{pitem} iridc:hasPart {item}],
+[{item} rdf:type {sclass} rdfs:subClassOf {term:SearchItem} WHERE isuri(sclass) AND NOT EXISTS
+(SELECT ssclass FROM {item} rdf:type {ssclass,sclass} rdfs:subClassOf {term:SearchItem},
+{ssclass} rdfs:subClassOf {sclass})],
+{itemml} term:title {title},
+[{itemml} term:description {description}],
+[{item} term:icon {icon}],
+[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
+{} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
+WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
+USING NAMESPACE
+     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
+    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>,
+    dcterm = &lt;http://purl.org/dc/terms/>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"term:icon": {},
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"xhtml": "http://www.w3.org/1999/xhtml/vocab#",
+"maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
+"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"term:label": { "@language": "en" },
+"term:title": { "@id": "term:title","@container": "@set" },
+"term:description": { "@id": "term:description","@container": "@set" },
+"term:icon": { "@type": "@id" },
+"term:hasNonChoice": {"@container": "@set"},
+"term:hasChoice": {"@container": "@set"},
+"term:isImpliedBy": {"@container": "@set"},
+"term:isDescribedBy": {"container": "@set","@type": "@id"},
+"id": "@id",
+"graph": "@graph",
+"type": "@type",
+"value": "@value",
+"language": "@language"
+}
+}
+</script>
+<script class="itemTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"div.item": {
+"itm &lt;- Items.graph": {
+"@rdftype": "itm.type",
+".itemTitle a span[lang]": {"title &lt;- itm.term:title": {".": "title.value", "@lang": "title.language"}},
+".itemDescription span[lang]": {"description &lt;- itm.term:description": {".": "description.value", "@lang": "description.language"}},
+".titleLink@href": "itm.id",
+".itemImage@src": "itm.term:icon"
+}
+}
+}
+</script>
+<div class="itemTemplate">
+                  <div class="item" rdftype="">
+                     <div class="itemTitle"><a class="carryLanguage carry titleLink langgroup"><span lang=""></span><span class="default"></span></a></div>
+                     <div class="itemIcon"><a class="carryLanguage carry titleLink"><img class="itemImage" /></a></div>
+                     <div class="itemDescription langgroup"><span lang=""></span><span class="default"></span></div>
+                     <div class="itemFooter"></div>
+                  </div>
+</div>
+</div>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
+
+
+
