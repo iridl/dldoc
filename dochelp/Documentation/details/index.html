@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Function Documentation</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="z01" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<script type="text/javascript" src="/localconfig/ui.js"></script>
+<style>
+.fdesc span {
+color: green
+}
+.funcname {
+font-weight: bold
+}
+.in {
+margin-right: 10pt;
+}
+[opt="true"]{
+color: #B0B0B0
+}
+tr[opt="true"]{
+background-color: #F0F0F0;
+color: black
+}
+tr[opt="true"] td.desc span::after {
+color: #B0B0B0;
+content: " (optional)"
+}
+[atype="fn:name"]::before{content: "/"}
+[atype="fn:grid_set"]::before{content: "[ "}
+[atype="fn:grid_set"]::after{content: " ... ] "}
+[inout="fn:in"] [inout="fn:out"] {display: none}
+.center { width: 100%; text-align: center}
+table { margin-top: 10pt; max-width: 520px}
+</style>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="share onefunction bodyAttribute" name="func" type="hidden" />
+</form>
+<div class="controlBar">
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/functions"></a>
+<script data-id="fns" type="application/serql" property="iridl:hasSerqlQuery">
+CONSTRUCT *
+FROM {afn} rdf:type {fn:Function}; rdfs:label {flabel} ; fn:func_name {func}
+USING NAMESPACE
+     fn = &lt;http://iridl.ldeo.columbia.edu/ontologies/functions.owl#>,
+     rdfs = &lt;http://www.w3.org/2000/01/rdf-schema#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "fn:Function",
+"@context": {
+"fn": "http://iridl.ldeo.columbia.edu/ontologies/functions.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"rdfs:label": { "@container": "@set" }
+}
+}
+</script>
+<script class="fnTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"option": {
+"afn &lt;- fns.graph": {
+".": "afn.rdfs:label.iridl:asLangGroup",
+"@value": "afn.fn:func_name"
+}, "sort": "fn:func_name"
+}
+}
+</script>
+           <fieldset class="navitem"  id="toSectionList">
+                <legend>Data Library</legend>
+                      <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend about="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial"><span property="term:label">Documentation</span></legend> 
+		Function Documentation
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Function</legend> 
+<span class="fnTemplate">
+<select name="func" class="pageformcopy containsAllValids">
+  <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+ </div>
+<div id="Fdoc" class="ui-tabs-panel">
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/functions"></a>
+<script data-id="afn" class="onefunction" data-if="body[func]" type="application/serql" property="iridl:hasSerqlQuery">
+CONSTRUCT *
+FROM {afn} rdf:type {fn:Function}; fn:func_name {afunc} ; aprop {};
+fn:hasArgument {} bprop {}
+WHERE label(afunc)=func
+USING NAMESPACE
+     fn = &lt;http://iridl.ldeo.columbia.edu/ontologies/functions.owl#>,
+     rdfs = &lt;http://www.w3.org/2000/01/rdf-schema#>,
+    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "fn:Function",
+"@context": {
+"fn": "http://iridl.ldeo.columbia.edu/ontologies/functions.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"rdfs:label": { "@container": "@set" },
+"fn:func_desc": { "@container": "@set" },
+"fn:arg_desc": { "@container": "@set" },
+"fn:syntax_ex": { "@container": "@set" },
+"fn:arg_name": { "@container": "@set" },
+"fn:optional": { "@type": "http://www.w3.org/2001/XMLSchema#boolean"},
+"fn:arg_order": {"@type": "http://www.w3.org/2001/XMLSchema#int"},
+"fn:argument_type": {"@type": "@id"},
+"fn:in_out": {"@type": "@id"}
+}
+}
+</script>
+<script class="afnTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+".afunction": {
+"aafn &lt;- afn.graph": {
+"h2": "aafn.rdfs:label.iridl:asLangGroup",
+"p.fdesc": "aafn.fn:func_desc.iridl:asLangGroup",
+"div.examp": "aafn.fn:syntax_ex.iridl:asLangGroup",
+"@func": "aafn.fn:func_name",
+".funcname": "aafn.fn:func_name",
+"span.in": { "argu &lt;- aafn.fn:hasArgument": {".": "argu.fn:arg_name.iridl:asLangGroup","@atype": "argu.fn:argument_type","@opt": "argu.fn:optional","@inout": "argu.fn:in_out"}, "sort": "fn:arg_order"
+},
+"tr.targ": { 
+"argu &lt;- aafn.fn:hasArgument": {
+"th.label": "argu.fn:arg_name.iridl:asLangGroup",
+"td.type": "argu.fn:argument_type",
+"td.inout": "argu.fn:in_out",
+"td.desc": "argu.fn:arg_desc.iridl:asLangGroup",
+"@opt": "argu.fn:optional",
+"@inout": "argu.fn:in_out"
+}, "sort": "fn:arg_order"
+}
+}
+}
+}
+</script>
+<div class="afnTemplate">
+<div class="afunction">
+<h2></h2>
+<p class="fdesc"></p>
+<div class="center" inout="fn:in"><span class="in"></span><span class="funcname"></span></div>
+<table border="2"><tbody><tr><th colspan="4">Arguments</th></tr>
+<tr><th>label</th><th colspan="2">type</th><th>Description</th></tr>
+<tr class="targ"><th class="label"></th><td class="type"></td><td class="inout"></td><td class="desc"></td></tr>
+</tbody></table>
+<div class="examp"></div>
+</div>
+</div>
+<pre><div property="iridl:JsonAsText"></div></pre>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
+
+
+
