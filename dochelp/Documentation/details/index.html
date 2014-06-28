@@ -28,6 +28,12 @@
 .fdesc span {
 color: green
 }
+.term span {
+color: green
+}
+.term span::after {
+content: ":  "
+}
 .funcname {
 font-weight: bold
 }
@@ -62,6 +68,7 @@ tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color
 [inout="fn:in"] [inout="fn:out"] {display: none}
 .center { width: 100%; text-align: center}
 table { margin-top: 10pt; max-width: 520px; float: right}
+.afunc {margin-right: 5pt}
 </style>
 </head>
 <body>
@@ -128,6 +135,14 @@ CONSTRUCT *
 FROM {afn} rdf:type {fn:Function}; fn:func_name {afunc} ; aprop {};
 fn:hasArgument {} bprop {}
 WHERE label(afunc)=func
+UNION
+CONSTRUCT {afn} fn:isDescribedBy {term} rdfs:label {tlabel} ;
+fn:describes_func_name {oname}
+FROM
+{afn} rdf:type {fn:Function}; fn:func_name {afunc},
+{afn} fn:isDescribedBy {term} rdfs:label {tlabel} ;
+fn:describes {others} fn:func_name {oname}
+WHERE label(afunc)=func AND label(oname) != func 
 USING NAMESPACE
      fn = &lt;http://iridl.ldeo.columbia.edu/ontologies/functions.owl#>,
      rdfs = &lt;http://www.w3.org/2000/01/rdf-schema#>,
@@ -148,6 +163,8 @@ USING NAMESPACE
 "fn:arg_desc": { "@container": "@set" },
 "fn:syntax_ex": { "@container": "@set" },
 "fn:arg_name": { "@container": "@set" },
+"fn:isDescribedBy": { "@container": "@set" },
+"fn:describes_func_name": { "@container": "@set" },
 "fn:optional": { "@type": "http://www.w3.org/2001/XMLSchema#boolean"},
 "fn:arg_order": {"@type": "http://www.w3.org/2001/XMLSchema#int"},
 "fn:argument_type": {"@type": "@id"},
@@ -175,6 +192,12 @@ USING NAMESPACE
 "@opt": "argu.fn:optional",
 "@inout": "argu.fn:in_out"
 }, "sort": "fn:arg_order"
+},
+".seeAlso": {
+"also &lt;- aafn.fn:isDescribedBy": {
+".term": "also.rdfs:label.iridl:asLangGroup",
+".afunc": { "alt &lt;- also.fn:describes_func_name": {".": " #{alt}","@href": "index.html?func=#{alt}"}}
+}
 }
 }
 }
@@ -190,6 +213,10 @@ USING NAMESPACE
 <tr class="targ"><th class="label"></th><td class="type"></td><td class="inout"></td><td class="desc"></td></tr>
 </tbody></table>
 <div class="examp"></div>
+<h3>See Also</h3>
+<div class="seeAlso">
+<span class="term"></span><a class="afunc" href=""></a>
+</div>
 </div>
 </div>
 <pre><div property="iridl:JsonAsText"></div></pre>
