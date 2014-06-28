@@ -48,6 +48,13 @@ content: " (optional)"
 [atype="fn:name"]::before{content: "/"}
 [atype="fn:grid_set"]::before{content: "[ "}
 [atype="fn:grid_set"]::after{content: " ... ] "}
+[atype="fn:proc"]::before{content: "{ "}
+[atype="fn:proc"]::after{content: " } "}
+[atype="fn:string"]::before{content: "("}
+[atype="fn:string"]::after{content: ") "}
+[atype="irifn:string"]::before{content: "("}
+[atype="irifn:string"]::after{content: ") "}
+[atype="fn:name_and_number_set"]::after{content: " 1 ... 2n+1 "; font-size: 80% ; vertical-align: sub}
 [inout="fn:in"] [inout="fn:out"] {display: none}
 .center { width: 100%; text-align: center}
 table { margin-top: 10pt; max-width: 520px}
@@ -62,7 +69,8 @@ table { margin-top: 10pt; max-width: 520px}
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/functions"></a>
 <script data-id="fns" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT *
-FROM {afn} rdf:type {fn:Function}; rdfs:label {flabel} ; fn:func_name {func}
+FROM {afn} rdf:type {fn:Function} ; fn:func_name {func},
+[{afn} rdfs:label {flabel}]
 USING NAMESPACE
      fn = &lt;http://iridl.ldeo.columbia.edu/ontologies/functions.owl#>,
      rdfs = &lt;http://www.w3.org/2000/01/rdf-schema#>,
@@ -73,6 +81,7 @@ USING NAMESPACE
 "@type": "fn:Function",
 "@context": {
 "fn": "http://iridl.ldeo.columbia.edu/ontologies/functions.owl#",
+"irifn": "http://iridl.ldeo.columbia.edu/ontologies/functions_ingrid.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
@@ -85,7 +94,7 @@ USING NAMESPACE
 {
 "option": {
 "afn &lt;- fns.graph": {
-".": "afn.rdfs:label.iridl:asLangGroup",
+".": "afn.fn:func_name",
 "@value": "afn.fn:func_name"
 }, "sort": "fn:func_name"
 }
@@ -125,6 +134,7 @@ USING NAMESPACE
 "@type": "fn:Function",
 "@context": {
 "fn": "http://iridl.ldeo.columbia.edu/ontologies/functions.owl#",
+"irifn": "http://iridl.ldeo.columbia.edu/ontologies/functions_ingrid.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
