@@ -45,13 +45,17 @@ tr[opt="true"] td.desc span::after {
 color: #B0B0B0;
 content: " (optional)"
 }
+tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color: LightGrey; border-top: double}
 [atype="fn:name"]::before{content: "/"}
+[atype="fn:delimiter"]{font-weight: bold}
 [atype="fn:grid_set"]::before{content: "[ "}
 [atype="fn:grid_set"]::after{content: " ... ] "}
 [atype="fn:proc"]::before{content: "{ "}
 [atype="fn:proc"]::after{content: " } "}
 [atype="fn:string"]::before{content: "("}
 [atype="fn:string"]::after{content: ") "}
+[atype="fn:numberstring"]::before{color: #B0B0B0; content: "("}
+[atype="fn:numberstring"]::after{color: #B0B0B0; content: ") "}
 [atype="irifn:string"]::before{content: "("}
 [atype="irifn:string"]::after{content: ") "}
 [atype="fn:name_and_number_set"]::after{content: " 1 ... 2n+1 "; font-size: 80% ; vertical-align: sub}
