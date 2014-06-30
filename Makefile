@@ -22,6 +22,15 @@ install-apache:	all $(imgs) $(css)
 %.html.en:	%.xhtml.en tabs.xml tab.xslt
 	saxon_transform $< tab.xslt topdir="`pwd`" | sed -e '1 N;s/[\n]* *SYSTEM[^>]*//' - > $@
 
+%.html.es:	%.xhtml.es tabs.xml tab.xslt
+	saxon_transform $< tab.xslt topdir="`pwd`" | sed -e '1 N;s/[\n]* *SYSTEM[^>]*//' - > $@
+
+%.html.fr:	%.xhtml.fr tabs.xml tab.xslt
+	saxon_transform $< tab.xslt topdir="`pwd`" | sed -e '1 N;s/[\n]* *SYSTEM[^>]*//' - > $@
+
+%.html.ru:	%.xhtml.ru tabs.xml tab.xslt
+	saxon_transform $< tab.xslt topdir="`pwd`" | sed -e '1 N;s/[\n]* *SYSTEM[^>]*//' - > $@
+
 %.html:	%.xhtml tabs.xml tab.xslt
 	saxon_transform $< tab.xslt topdir="`pwd`" | sed -e '1 N;s/[\n]* *SYSTEM[^>]*//' - > $@
 
