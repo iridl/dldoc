@@ -1,5 +1,6 @@
 <xsl:stylesheet version="2.0"
             xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:html="http://www.w3.org/1999/xhtml"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
             xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	    xmlns:maproomregistry="http://iridl.ldeo.columbia.edu/maproom/maproomregistry.owl#"
@@ -10,7 +11,7 @@
 	    xmlns:iriterms="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#">
 <xsl:output method="xhtml" indent="yes" encoding="utf-8" doctype-system="about:legacy-compat" />
 <xsl:param name="topdir" />
-<xsl:variable name="language" select="/*/*/@xml:lang | /*/@xml:lang"/> <!-- LANG OF PAGE WE ARE ON -->
+<xsl:variable name="language" select="/html:html/html:body/@xml:lang | /html:html/@xml:lang"/> <!-- LANG OF PAGE WE ARE ON -->
 <xsl:variable name="defaultlanguage" select="'en'"/> <!-- DEFAULT LANG FOR SECTIONS -->
 <xsl:variable name="tabs" select="document('tabs.xml')"/> <!-- WHERE ALL THE RDF IS STORED -->
 
