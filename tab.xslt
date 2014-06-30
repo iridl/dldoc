@@ -9,7 +9,7 @@
 	    xmlns:iriterms="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#">
 <xsl:output method="xhtml" indent="yes" encoding="utf-8" doctype-system="about:legacy-compat" />
 <xsl:param name="topdir" />
-<xsl:variable name="language" select="//@xml:lang"/> <!-- LANG OF PAGE WE ARE ON -->
+<xsl:variable name="language" select="body/@xml:lang | html/@xml:lang"/> <!-- LANG OF PAGE WE ARE ON -->
 <xsl:variable name="defaultlanguage" select="'en'"/> <!-- DEFAULT LANG FOR SECTIONS -->
 <xsl:variable name="tabs" select="document('tabs.xml')"/> <!-- WHERE ALL THE RDF IS STORED -->
 
