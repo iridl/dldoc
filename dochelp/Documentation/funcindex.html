@@ -10,17 +10,18 @@
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title xml:lang="en"  property="term:title">Function Documentation</title>
+<title xml:lang="en"  property="term:title">Function Index</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
-<link rel="canonical" href="index.html" />
-      <meta property="maproom:Sort_Id" content="b01" />
-      <meta property="term:description" xml:lang="en"  content="Detailed documentation for functions that can be used to analyze data within the Data Library." />
+<link rel="canonical" href="funcindex.html" />
+      <meta property="maproom:Sort_Id" content="a01" />
+      <meta property="term:description" xml:lang="en"  content="Index for functions that can be used to analyze data within the Data Library." />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
 <link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
 <link rel="icon" href="/uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:icon" href="Flaticon_43378-64.png" />
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <script type="text/javascript" src="/localconfig/ui.js"></script>
@@ -28,12 +29,99 @@
 .fdesc span {
 color: green
 }
-.term span {
+.term[rdftype="fn:termConcept"] span {
 color: green
 }
-.term span::after {
+.term[rdftype="fn:termConcept"] span::after {
 content: ":  "
 }
+.afnTemplate {
+}
+.iterm {
+padding-left: 10pt;
+text-indent: -20pt;
+margin-left: 40pt;
+-webkit-column-break-inside: avoid;
+column-break-inside: avoid;
+-moz-column-break-inside: avoid;
+}
+.iterm[firstLetter]{
+margin-top: 15pt
+}
+.iterm[firstLetter]::before {
+content: attr(firstLetter);
+display: block;
+font-weight: bold;
+font-size: 16pt;
+text-transform: uppercase;
+text-indent: -40pt;
+float: left;
+}
+
+.iterm[firstLetter="a"] + .iterm[firstLetter="a"],
+.iterm[firstLetter="b"] + .iterm[firstLetter="b"],
+.iterm[firstLetter="c"] + .iterm[firstLetter="c"],
+.iterm[firstLetter="d"] + .iterm[firstLetter="d"],
+.iterm[firstLetter="e"] + .iterm[firstLetter="e"],
+.iterm[firstLetter="f"] + .iterm[firstLetter="f"],
+.iterm[firstLetter="g"] + .iterm[firstLetter="g"],
+.iterm[firstLetter="h"] + .iterm[firstLetter="h"],
+.iterm[firstLetter="i"] + .iterm[firstLetter="i"],
+.iterm[firstLetter="j"] + .iterm[firstLetter="j"],
+.iterm[firstLetter="k"] + .iterm[firstLetter="k"],
+.iterm[firstLetter="l"] + .iterm[firstLetter="l"],
+.iterm[firstLetter="m"] + .iterm[firstLetter="m"],
+.iterm[firstLetter="n"] + .iterm[firstLetter="n"],
+.iterm[firstLetter="o"] + .iterm[firstLetter="o"],
+.iterm[firstLetter="p"] + .iterm[firstLetter="p"],
+.iterm[firstLetter="q"] + .iterm[firstLetter="q"],
+.iterm[firstLetter="r"] + .iterm[firstLetter="r"],
+.iterm[firstLetter="s"] + .iterm[firstLetter="s"],
+.iterm[firstLetter="t"] + .iterm[firstLetter="t"],
+.iterm[firstLetter="u"] + .iterm[firstLetter="u"],
+.iterm[firstLetter="v"] + .iterm[firstLetter="v"],
+.iterm[firstLetter="w"] + .iterm[firstLetter="w"],
+.iterm[firstLetter="x"] + .iterm[firstLetter="x"],
+.iterm[firstLetter="y"] + .iterm[firstLetter="y"],
+.iterm[firstLetter="z"] + .iterm[firstLetter="z"],
+.iterm[firstLetter="2"] + .iterm[firstLetter="2"],
+.iterm[firstLetter=":"] + .iterm[firstLetter=":"]
+ {
+margin-top: 1pt
+}
+.iterm[firstLetter="a"] + .iterm[firstLetter="a"]::before,
+.iterm[firstLetter="b"] + .iterm[firstLetter="b"]::before,
+.iterm[firstLetter="c"] + .iterm[firstLetter="c"]::before,
+.iterm[firstLetter="d"] + .iterm[firstLetter="d"]::before,
+.iterm[firstLetter="e"] + .iterm[firstLetter="e"]::before,
+.iterm[firstLetter="f"] + .iterm[firstLetter="f"]::before,
+.iterm[firstLetter="g"] + .iterm[firstLetter="g"]::before,
+.iterm[firstLetter="h"] + .iterm[firstLetter="h"]::before,
+.iterm[firstLetter="i"] + .iterm[firstLetter="i"]::before,
+.iterm[firstLetter="j"] + .iterm[firstLetter="j"]::before,
+.iterm[firstLetter="k"] + .iterm[firstLetter="k"]::before,
+.iterm[firstLetter="l"] + .iterm[firstLetter="l"]::before,
+.iterm[firstLetter="m"] + .iterm[firstLetter="m"]::before,
+.iterm[firstLetter="n"] + .iterm[firstLetter="n"]::before,
+.iterm[firstLetter="o"] + .iterm[firstLetter="o"]::before,
+.iterm[firstLetter="p"] + .iterm[firstLetter="p"]::before,
+.iterm[firstLetter="q"] + .iterm[firstLetter="q"]::before,
+.iterm[firstLetter="r"] + .iterm[firstLetter="r"]::before,
+.iterm[firstLetter="s"] + .iterm[firstLetter="s"]::before,
+.iterm[firstLetter="t"] + .iterm[firstLetter="t"]::before,
+.iterm[firstLetter="u"] + .iterm[firstLetter="u"]::before,
+.iterm[firstLetter="v"] + .iterm[firstLetter="v"]::before,
+.iterm[firstLetter="w"] + .iterm[firstLetter="w"]::before,
+.iterm[firstLetter="x"] + .iterm[firstLetter="x"]::before,
+.iterm[firstLetter="y"] + .iterm[firstLetter="y"]::before,
+.iterm[firstLetter="z"] + .iterm[firstLetter="z"]::before,
+.iterm[firstLetter="2"] + .iterm[firstLetter="2"]::before,
+.iterm[firstLetter=":"] + .iterm[firstLetter=":"]::before
+ {
+display: none;
+}
+
+
 .funcname {
 font-weight: bold
 }
@@ -70,51 +158,29 @@ tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color
 .center { width: 100%; text-align: center}
 table { margin-top: 10pt}
 .afunc {margin-right: 5pt}
+@media only all and (min-width: 500px) {
+.ui-tabs-panel .afnTemplate {
+-webkit-column-count: 2;
+column-count: 2;
+-moz-column-count: 2;
+}
+}
 @media only all and (min-width: 800px) {
 table {; max-width: 520px; float: right}
+
+.ui-tabs-panel .afnTemplate {
+-webkit-column-count: 3;
+column-count: 3;
+-moz-column-count: 3;
+}
 }
 </style>
 </head>
 <body>
 <form name="pageform" id="pageform">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
-<input class="share onefunction bodyAttribute" name="func" type="hidden" />
 </form>
 <div class="controlBar">
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/functions"></a>
-<script data-id="fns" type="application/serql" property="iridl:hasSerqlQuery">
-CONSTRUCT *
-FROM {afn} rdf:type {fn:Function} ; fn:func_name {func},
-[{afn} rdfs:label {flabel}]
-USING NAMESPACE
-     fn = &lt;http://iridl.ldeo.columbia.edu/ontologies/functions.owl#>,
-     rdfs = &lt;http://www.w3.org/2000/01/rdf-schema#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
-</script>
-<script type="application/ld-json" property="iridl:hasJsonldFrame">
-{
-"@type": "fn:Function",
-"@context": {
-"fn": "http://iridl.ldeo.columbia.edu/ontologies/functions.owl#",
-"irifn": "http://iridl.ldeo.columbia.edu/ontologies/functions_ingrid.owl#",
-"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
-"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-"id": "@id",
-"graph": "@graph",
-"rdfs:label": { "@container": "@set" }
-}
-}
-</script>
-<script class="fnTemplate" type="application/json" property="iridl:hasPUREdirective">
-{
-"option": {
-"afn &lt;- fns.graph": {
-".": "afn.fn:func_name",
-"@value": "afn.fn:func_name"
-}, "sort": "fn:func_name"
-}
-}
-</script>
            <fieldset class="navitem"  id="toSectionList">
                 <legend>Help Resources</legend>
                       <a rev="section" class="navlink carryup" href="/dochelp/Documentation/">Function Documentation</a>
@@ -123,29 +189,20 @@ USING NAMESPACE
                 <legend><span>Documentation</span></legend> 
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Function</legend> 
-<span class="fnTemplate">
-<select name="func" class="pageformcopy containsAllValids">
-  <option class="current"></option>
-</select>
-</span>
-            </fieldset> 
- </div>
+                <legend>Function</legend> Index
+ </fieldset></div>
 <div id="Fdoc" class="ui-tabs-panel">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/functions"></a>
-<script data-id="afn" class="onefunction" data-if="body[func]" type="application/serql" property="iridl:hasSerqlQuery">
-CONSTRUCT *
-FROM {afn} rdf:type {fn:Function}; fn:func_name {afunc} ; aprop {};
-fn:hasArgument {} bprop {}
-WHERE label(afunc)=func
+<script data-id="afn" type="application/serql" property="iridl:hasSerqlQuery">
+CONSTRUCT {afn} rdf:type {fn:termFunction} ; rdfs:label {afunc} ; fn:func_name {afunc}
+FROM {afn} rdf:type {fn:Function}; fn:func_name {afunc}
 UNION
-CONSTRUCT {afn} fn:isDescribedBy {term} rdfs:label {tlabel} ;
+CONSTRUCT {term} rdf:type {fn:termConcept} ; rdfs:label {tlabel} ;
 fn:describes_func_name {oname}
 FROM
 {afn} rdf:type {fn:Function}; fn:func_name {afunc},
 {afn} fn:isDescribedBy {term} rdfs:label {tlabel} ;
 fn:describes {others} fn:func_name {oname}
-WHERE label(afunc)=func AND label(oname) != func 
 USING NAMESPACE
      fn = &lt;http://iridl.ldeo.columbia.edu/ontologies/functions.owl#>,
      rdfs = &lt;http://www.w3.org/2000/01/rdf-schema#>,
@@ -153,7 +210,7 @@ USING NAMESPACE
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"@type": "fn:Function",
+"rdfs:label": "{}",
 "@context": {
 "fn": "http://iridl.ldeo.columbia.edu/ontologies/functions.owl#",
 "irifn": "http://iridl.ldeo.columbia.edu/ontologies/functions_ingrid.owl#",
@@ -161,6 +218,7 @@ USING NAMESPACE
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
+"rdftype": "@type",
 "rdfs:label": { "@container": "@set" },
 "fn:func_desc": { "@container": "@set" },
 "fn:arg_desc": { "@container": "@set" },
@@ -177,49 +235,20 @@ USING NAMESPACE
 </script>
 <script class="afnTemplate" type="application/json" property="iridl:hasPUREdirective">
 {
-".afunction": {
-"aafn &lt;- afn.graph": {
-"h2": "aafn.fn:func_name",
-"p.fdesc": "aafn.fn:func_desc.iridl:asLangGroup",
-"div.examp": "aafn.fn:syntax_ex.iridl:asLangGroup",
-"@func": "aafn.fn:func_name",
-".funcname": "aafn.fn:func_name",
-"span.in": { "argu &lt;- aafn.fn:hasArgument": {".": "argu.fn:arg_name.iridl:asLangGroup","@atype": "argu.fn:argument_type","@opt": "argu.fn:optional","@inout": "argu.fn:in_out"}, "sort": "fn:arg_order"
-},
-"tr.targ": { 
-"argu &lt;- aafn.fn:hasArgument": {
-"th.label": "argu.fn:arg_name.iridl:asLangGroup",
-"td.type": "argu.fn:argument_type",
-"td.inout": "argu.fn:in_out",
-"td.desc": "argu.fn:arg_desc.iridl:asLangGroup",
-"@opt": "argu.fn:optional",
-"@inout": "argu.fn:in_out"
-}, "sort": "fn:arg_order"
-},
-".seeAlso": {
-"also &lt;- aafn.fn:isDescribedBy": {
+".iterm": {
+"also &lt;- afn.graph": {
 ".term": "also.rdfs:label.iridl:asLangGroup",
-".afunc": { "alt &lt;- also.fn:describes_func_name": {".": " #{alt}","@href": "index.html?func=#{alt}","@onClick": "setPageFormVariable('func','#{alt}'); return false"},"sort":"."}
-}
-}
-}
+"@firstLetter": "also.rdfs:label.iridl:firstLetter",
+".term@rdftype": "also.rdftype",
+".term@href": "details/index.html?func=#{also.fn:func_name}",
+".afunc": { "alt &lt;- also.fn:describes_func_name": {".": " #{alt}","@href": "details/index.html?func=#{alt}"},"sort":"."}
+},"sort": "rdfs:label"
 }
 }
 </script>
 <div class="afnTemplate">
-<div class="afunction">
-<h2></h2>
-<p class="fdesc"></p>
-<div class="center" inout="fn:in"><span class="in"></span><span class="funcname"></span></div>
-<table border="2"><tbody><tr><th colspan="4">Arguments</th></tr>
-<tr><th>label</th><th colspan="2">type</th><th>Description</th></tr>
-<tr class="targ"><th class="label"></th><td class="type"></td><td class="inout"></td><td class="desc"></td></tr>
-</tbody></table>
-<div class="examp"></div>
-<h3>See Also</h3>
-<div class="seeAlso">
-<span class="term"></span><a class="afunc" href=""></a>
-</div>
+<div class="iterm">
+<a href="" class="term"></a><a class="afunc" href=""></a>
 </div>
 </div>
 </div>
