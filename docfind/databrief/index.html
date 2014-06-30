@@ -121,8 +121,8 @@ content: "V";
 <form name="pageform" id="pageform">
 <input class="searchState bodyAttribute" name="lang" type="hidden" />
 <input class="searchState carryLanguage titleLink" name="Set-Language" type="hidden" />
-<input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" value=""/>
-<input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" value="iridl:map_room"/>
+<input class="searchState titleLink share bodyAttribute" name="taxa" type="hidden" data-default="iridl:DatasetsByCategory"/>
+<input class="searchState titleLink share bodyAttribute" name="itemClass" type="hidden" data-default="iridl:dataset"/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
 <input class="searchState titleLink share bodyAttribute" name="sem" type="hidden" value=""/>
@@ -144,73 +144,6 @@ content: "V";
 }
 </script>
 <div class="controlBar">
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
-<script data-id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
-CONSTRUCT {taxa} term:label {tlabel} ;rdf:type {term:Taxa}
-FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
-{object} rdf:type {objectClass},
- {taxa} term:label {tlabel} 
-WHERE isuri(objectClass)
-USING NAMESPACE
-     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
-</script>
-<script type="application/ld-json" property="iridl:hasJsonldFrame">
-{
-"@type": "term:Taxa",
-"@context": {
-"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
-"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
-"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-"id": "@id",
-"graph": "@graph",
-"term:label": {"@container": "@set" }
-}
-}
-</script>
-<script data-id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
-CONSTRUCT {objectClass} term:label {clabel} ; rdf:type {term:ItemClass}
-FROM 
-{object} rdf:type {objectClass} rdfs:subClassOf {term:SearchItem},
-[ {objectClass} term:label {clabel} ]
-WHERE isuri(objectClass)
-USING NAMESPACE
-     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
-</script>
-<script type="application/ld-json" property="iridl:hasJsonldFrame">
-{
-"@type": "term:ItemClass",
-"@context": {
-"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
-"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
-"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-"id": "@id",
-"graph": "@graph",
-"term:label": { "@container": "@set" }
-}
-}
-</script>
-<script class="taxaTemplate" type="application/json" property="iridl:hasPUREdirective">
-{
-"option": {
-"tax &lt;- taxa.graph": {
-".": "tax.term:label.iridl:asLangGroup",
-"@value": "tax.id"
-}
-}
-}
-</script>
-<script class="itemClassTemplate" type="application/json" property="iridl:hasPUREdirective">
-{
-"option.current": {
-"theitem &lt;- itemClasses.graph": {
-".": "theitem.term:label.iridl:asLangGroup",
-"@value": "theitem.id"
-}
-}
-}
-</script>
            <fieldset class="navitem">
                 <legend>IRI/LDEO</legend> 
                       <a rev="section" class="navlink carryup carryLanguage" href="/">
@@ -224,22 +157,6 @@ USING NAMESPACE
            <fieldset class="navitem"> 
                 <legend>Data Library</legend> 
                      <span class="navtext">Dataset By Category</span>
-            </fieldset> 
-           <fieldset class="navitem"> 
-                <legend>Taxa</legend> 
-<span class="taxaTemplate">
-<select name="taxa" class="pageformcopy containsAllValids">
-  <option class="current"></option>
-</select>
-</span>
-            </fieldset> 
-           <fieldset class="navitem"> 
-                <legend>Items</legend> 
-<span class="itemClassTemplate">
-<select name="itemClass" class="pageformcopy containsAllValids invalid">
-  <option class="current"></option>
-</select>
-</span>
             </fieldset> 
  </div>
 <div class="searchDescription">
