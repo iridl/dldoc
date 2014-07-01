@@ -78,7 +78,7 @@ elsif($ARGV[0] eq 'bldlangindex') {
 		    }
 		}
 	    }
-	    print ":PickLanguage }def\n";
+	    print ":PickLanguage stop}def\n";
 	    
 	}
 	print '\end{ingrid}',"\n";
