@@ -38,7 +38,9 @@
 		 </xsl:attribute>
 		 </xsl:if>
 		 <a href="#tabs-{position()}">
-		 <xsl:apply-templates select="$tabs//rdf:RDF/rdf:Description[@rdf:about=$hr]/rdfs:label" />
+		 <xsl:call-template name="asLangGroup">
+			<xsl:with-param name="grp" select="$tabs//rdf:RDF/rdf:Description[@rdf:about=$hr]/rdfs:label" />
+			</xsl:call-template>
                  </a>
 		 </xsl:element>
             </xsl:for-each>
@@ -63,7 +65,9 @@
             <div id="tabs-{position()}" class="ui-tabs-panel">
             <!-- THE LABEL OF EACH TABTERM GROUP -->
             <xsl:variable name="group">
-		 <xsl:apply-templates select="$tabs//rdf:RDF/rdf:Description[@rdf:about=$hr]/rdfs:label" />
+		 <xsl:call-template name="asLangGroup">
+			<xsl:with-param name="grp" select="$tabs//rdf:RDF/rdf:Description[@rdf:about=$hr]/rdfs:label" />
+			</xsl:call-template>
             </xsl:variable> 
             <div class="itemGroup"><xsl:value-of select="$group" disable-output-escaping="no" /></div>
                     <xsl:for-each select="$tabs/rdf:RDF/rdf:Description[index-of($subsectionurls,@rdf:about) > 0]">
@@ -112,7 +116,9 @@
 		     </xsl:variable>
                       <xsl:if test="$fileelement/maproomregistry:tabterm/@rdf:resource = $hr"> <!-- MAKE SURE THE MAPPAGE IS IN THE CURRENT TABTERM GROUP (THIS IS EFFECTIVELY THE INNER LOOP FOR A GROUP)-->
                             <div class="item"><div class="itemTitle"><a class="{$titleclass}" href="{$canonicalurl}">
-			    <xsl:apply-templates select="$fileelement/iriterms:title" />
+			    <xsl:call-template name="asLangGroup">
+			<xsl:with-param name="grp" select="$fileelement/iriterms:title" />
+			</xsl:call-template>
                             </a></div>
                             <xsl:choose><!-- CHECK ICON; IF local, USE LOCAL PATH, if otherwise file:///, start with / , otherwise full url -->
                               <xsl:when test="contains($fileelement/iriterms:icon/@rdf:resource,$pagedir)">
@@ -126,7 +132,9 @@
                               </xsl:when>
                             </xsl:choose>                            
                             <div class="itemDescription">
-			    <xsl:apply-templates select="$fileelement/iriterms:description" />
+			    <xsl:call-template name="asLangGroup">
+			<xsl:with-param name="grp" select="$fileelement/iriterms:description" />
+			</xsl:call-template>
 </div>
                             <div class="itemFooter"></div>
                             </div>
@@ -170,7 +178,7 @@
 			  </xsl:otherwise>
                        </xsl:choose>
 		     </xsl:variable>
-                     <xsl:variable name="fileelement" select="$tabs//rdf:RDF/rdf:Description[@rdf:about=$fileurl]" />
+                     <xsl:variable name="fileelement" select="$tabs//rdf:RDF/rdf:Description[@rdf:about=current()/maproomregistry:hasFile/@rdf:resource]" />
 		     <xsl:variable name="titleclass" >
 			  <xsl:choose>
                           <xsl:when test="$fileelement/iriterms:title[@xml:lang=$language]">
@@ -182,7 +190,9 @@
 			      </xsl:choose>
 		     </xsl:variable>
                             <div class="item"><div class="itemTitle"><a class="{$titleclass}" href="{$canonicalurl}">
-			    <xsl:apply-templates select="$fileelement/iriterms:title" />
+			    <xsl:call-template name="asLangGroup">
+			<xsl:with-param name="grp" select="$fileelement/iriterms:title" />
+			</xsl:call-template>
                             </a></div>
                             <xsl:choose><!-- CHECK ICON; IF local, USE LOCAL PATH, if otherwise file:///, start with / , otherwise full url -->
                               <xsl:when test="contains($fileelement/iriterms:icon/@rdf:resource,$pagedir)">
@@ -196,7 +206,9 @@
 				</xsl:when>
                             </xsl:choose>                            
                             <div class="itemDescription">
-			    <xsl:apply-templates select="$fileelement/iriterms:description" />
+			    <xsl:call-template name="asLangGroup">
+			<xsl:with-param name="grp" select="$fileelement/iriterms:description" />
+			</xsl:call-template>
 </div>
                             <div class="itemFooter"></div>
                             </div>
@@ -207,14 +219,15 @@
     </div>
     </div>
     </xsl:template>
-    <xsl:template match="iriterms:description|iriterms:title|rdfs:label">
+    <xsl:template name="asLangGroup" match="iriterms:description|iriterms:title|rdfs:label">
+<xsl:param name="grp" />
     		  <xsl:choose>
 	  <xsl:when test="$language">
-                            <xsl:value-of select="(.[@xml:lang=$language],.[@xml:lang=$defaultlanguage],.[1])[1]" disable-output-escaping="no"/>		  </xsl:when>
+                            <xsl:value-of select="($grp[@xml:lang=$language],$grp[@xml:lang=$defaultlanguage],$grp[1])[1]" disable-output-escaping="no"/>		  </xsl:when>
 		  <xsl:otherwise>
 		     <xsl:element name="span">
 		     <xsl:attribute name="class">langgroup</xsl:attribute>
-		     <xsl:for-each select=".">
+		     <xsl:for-each select="$grp">
 		     <xsl:element name="span">
 		     <xsl:if test="./@xml:lang">
 		     <xsl:attribute name="lang"><xsl:value-of select="./@xml:lang" /></xsl:attribute>
