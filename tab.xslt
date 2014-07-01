@@ -228,6 +228,7 @@
 		     <xsl:element name="span">
 		     <xsl:attribute name="class">langgroup</xsl:attribute>
 		     <xsl:for-each select="$grp">
+		     <xsl:sort select="./@xml:lang" />
 		     <xsl:element name="span">
 		     <xsl:if test="./@xml:lang">
 		     <xsl:attribute name="lang"><xsl:value-of select="./@xml:lang" /></xsl:attribute>
