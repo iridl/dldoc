@@ -4,9 +4,10 @@ texbld  = $(shell perl ./findsrc.pl bldlang)
 src = $(shell perl ./findsrc.pl src)
 out = $(shell perl ./findsrc.pl out)
 png = $(shell find . -name '*png')
+jpg = $(shell find . -name '*jpg')
 gif = $(shell find . -name '*gif')
 css = $(shell find . -name '*css')
-imgs = $(png) $(gif)
+imgs = $(png) $(gif) $(jpg)
 maproom = http://iridl.ldeo.columbia.edu/maproom/ 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=es' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=fr' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=id' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=ru' 
 all:	$(htmlbld) topindex.owl
 
