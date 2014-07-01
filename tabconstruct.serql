@@ -5,7 +5,7 @@ iriterms:title {title},
 [{mappage} iriterms:icon {icon}],
 [{mappage} maproomregistry:tablabel {lbl};
 maproomregistry:tabterm {tabterm},
-{tabterm} rdf:label {lbl}]
+{tabterm} rdfs:label {lbl}]
  from
 {indexpage} vocab:section {mappage},
 {mappage} iriterms:description {description};
@@ -18,5 +18,6 @@ WHERE lang(title)=lang(lbl) ]
 USING NAMESPACE
 maproomregistry = <http://iridl.ldeo.columbia.edu/maproom/maproomregistry.owl#>,
 vocab = <http://www.w3.org/1999/xhtml/vocab#>,
+rdfs = <http://www.w3.org/2000/01/rdf-schema#>,
 iriterms = <http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
 maproom = <http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#>
