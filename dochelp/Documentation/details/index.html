@@ -54,11 +54,11 @@ content: " (optional)"
 tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color: LightGrey; border-top: double; border-top-width: 3pt}
 [atype="fn:name"]::before{content: "/"}
 [atype="fn:named_real"]::before{content: "nn.nn "}
-[atype="fn:named_real"]{font-weight: bold}
+[atype="fn:named_real"]{font-weight: bold; display: inline-block}
 [atype="fn:named_integer"]::before{content: "nn "}
-[atype="fn:named_integer"]{font-weight: bold}
+[atype="fn:named_integer"]{font-weight: bold; display: inline-block}
 [atype="fn:named_string"]::before{content: "(abc) "}
-[atype="fn:named_string"]{font-weight: bold}
+[atype="fn:named_string"]{font-weight: bold; display: inline-block}
 [atype="fn:delimiter"]{font-weight: bold}
 [atype="fn:grid_set"]::before{content: "[ "}
 [atype="fn:grid_set"]::after{content: " ... ] "}
