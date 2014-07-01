@@ -7,7 +7,7 @@ png = $(shell find . -name '*png')
 gif = $(shell find . -name '*gif')
 css = $(shell find . -name '*css')
 imgs = $(png) $(gif)
-
+maproom = http://iridl.ldeo.columbia.edu/maproom/ 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=es' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=fr' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=id' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=ru' 
 all:	$(htmlbld) topindex.owl
 
 install-ingrid:	all $(texbld) $(imgs) $(css)
@@ -49,8 +49,8 @@ tabs.nt:	doccache/owlimMaxRepository.nt
 doccache/owlimMaxRepository.nt:	ingridregistry.owl filelist.owl
 		rm -r doccache; rdfcache -cache=doccache file:///`pwd`/ingridregistry.owl file:///`pwd`/filelist.owl
 
-filelist.owl:	$(src) sperl.pl
-	perl sperl.pl $(src) > $@
+filelist.owl:	$(src) sperl.pl Makefile
+	perl sperl.pl $(src) $(maproom) > $@
 
 topindex.owl:	$(out) sperl.pl
 	perl sperl.pl $(out) > $@
