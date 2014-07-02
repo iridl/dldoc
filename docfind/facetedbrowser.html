@@ -441,11 +441,11 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
 {itemml} term:title {title},
 [{itemml} term:description {description},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
-WHERE sslang=lang(description)],
+WHERE sslang=lang(description) OR lang(description)=""],
 [{item} term:icon {icon}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
 {} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
-WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
+WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(title)="")
  USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
@@ -455,7 +455,7 @@ WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"term:icon": {},
+"term:title": {},
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
@@ -492,8 +492,7 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
 [{item} term:icon {icon}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
 {} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
-WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
-USING NAMESPACE
+WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(titUSING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
     iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
@@ -502,7 +501,7 @@ USING NAMESPACE
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"term:icon": {},
+"term:title": {},
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
