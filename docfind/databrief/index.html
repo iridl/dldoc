@@ -30,26 +30,8 @@
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <style>
-body[loading]::after {
-content: attr(loading);
-display: block;
-border: 4pt;
-border-style: outset;
-border-color; DarkGrey;
-text-align: center;
-padding: 20pt;
-position: fixed;
-opacity: 0.6;
-font-size: 20pt;
-top: 35%;
-left: 40%;
-right: 40%;
-z-index: 100;
-background-color: WhiteSmoke;
-background: url('/uicore/icons/wait30.gif') center no-repeat transparent;
-background-size: 80px;
-border-radius: 10px;
-}
+.rightcol {display: none}
+body[sem] .rightcol {display: inline-block}
 .nonChoice,.Choice,.implies {
 margin-left: 15pt;
 }
@@ -112,7 +94,7 @@ content: "M";
 .item[rdftype*="iridl:dataset"] .itemTitle::before{
 content: "D";
 }
-.item[rdftype*="iridl:variable"] .itemTitle::before{
+.item[rdftype*="iridl:dependent_variable"] .itemTitle::before{
 content: "V";
 }
 </style>
@@ -303,10 +285,8 @@ USING NAMESPACE
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
-"value": "@value",
-"language": "@language",
 "type": "@type",
-"term:label": { "@language": "en" },
+"term:label": {"@container": "@set"},
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
@@ -348,11 +328,11 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
 {itemml} term:title {title},
 [{itemml} term:description {description},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
-WHERE sslang=lang(description)],
+WHERE sslang=lang(description) OR lang(description)=""],
 [{item} term:icon {icon}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
 {} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
-WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
+WHERE NOT bound(newitem) AND NOT bound(pitem) AND slang=lang(title) OR lang(title)=""
  USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
@@ -362,7 +342,7 @@ WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"term:icon": {},
+"term:title": {},
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
@@ -373,65 +353,14 @@ WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
 "id": "@id",
 "graph": "@graph",
 "type": "@type",
-"term:label": { "@language": "en" },
+"term:label": { "@container": "@set"},
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
 "term:hasNonChoice": {"@container": "@set"},
 "term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
-"term:isDescribedBy": {"container": "@set","@type": "@id"},
-"value": "@value",
-"language": "@language"
-}
-}
-</script>
-<script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
-    FROM 
-{itemml} xhtml:canonical {item} ;  rdf:type {itemClass},
-[{item} term:isDescribedBy {semantic} rdf:type {taxa}],
-[{item,pitem} rdf:type {itemClass},
-{pitem} iridc:hasPart {item}],
-[{item} rdf:type {sclass} rdfs:subClassOf {term:SearchItem} WHERE isuri(sclass) AND NOT EXISTS
-(SELECT ssclass FROM {item} rdf:type {ssclass,sclass} rdfs:subClassOf {term:SearchItem},
-{ssclass} rdfs:subClassOf {sclass})],
-{itemml} term:title {title},
-[{itemml} term:description {description}],
-[{item} term:icon {icon}],
-[{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
-{} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
-WHERE newitem=NULL AND pitem=NULL AND slang=lang(title)
-USING NAMESPACE
-     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
-    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
-    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>,
-    dcterm = &lt;http://purl.org/dc/terms/>
-</script>
-<script type="application/ld-json" property="iridl:hasJsonldFrame">
-{
-"term:icon": {},
-"@context": {
-"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
-"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
-"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-"xhtml": "http://www.w3.org/1999/xhtml/vocab#",
-"maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
-"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
-"term:label": { "@language": "en" },
-"term:title": { "@id": "term:title","@container": "@set" },
-"term:description": { "@id": "term:description","@container": "@set" },
-"term:icon": { "@type": "@id" },
-"term:hasNonChoice": {"@container": "@set"},
-"term:hasChoice": {"@container": "@set"},
-"term:isImpliedBy": {"@container": "@set"},
-"term:isDescribedBy": {"container": "@set","@type": "@id"},
-"id": "@id",
-"graph": "@graph",
-"type": "@type",
-"value": "@value",
-"language": "@language"
+"term:isDescribedBy": {"container": "@set","@type": "@id"}
 }
 }
 </script>
@@ -440,8 +369,8 @@ USING NAMESPACE
 "div.item": {
 "itm &lt;- Items.graph": {
 "@rdftype": "itm.type",
-".itemTitle a span[lang]": {"title &lt;- itm.term:title": {".": "title.value", "@lang": "title.language"}},
-".itemDescription span[lang]": {"description &lt;- itm.term:description": {".": "description.value", "@lang": "description.language"}},
+".itemDescription": "itm.term:description.iridl:asLangGroup",
+".itemTitle .titleLink": "itm.term:title.iridl:asLangGroup",
 ".titleLink@href": "itm.id",
 ".itemImage@src": "itm.term:icon"
 }
