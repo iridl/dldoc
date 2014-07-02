@@ -492,7 +492,7 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
 [{item} term:icon {icon}],
 [{item} dcterm:isReplacedBy {newitem }rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa}],
 {} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
-WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(titUSING NAMESPACE
+WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(title)="")USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
     iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
