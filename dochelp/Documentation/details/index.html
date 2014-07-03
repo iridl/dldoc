@@ -74,10 +74,10 @@ tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color
 {content: "\ann "; font-weight: normal ; font-style: italic; white-space: pre}
 [atype="fn:subdelimiter"] + [atype="fn:named_real"]::before,
 [atype="fn:delimiter"] + [atype="fn:named_real"]::before
-{content: "\ann "; font-weight: normal ; font-style: italic; white-space: pre}
+{content: "\ann.nn\00a0"; font-weight: normal ; font-style: italic; white-space: pre}
 [atype="fn:subdelimiter"] + [atype="fn:named_string"]::before,
 [atype="fn:delimiter"] + [atype="fn:named_string"]::before
-{content: "\ann "; font-weight: normal ; font-style: italic; white-space: pre}
+{content: "\(abc)\00a0"; font-weight: normal ; font-style: italic; white-space: pre}
 [atype="fn:grid_set"]::before{content: "[ "}
 [atype="fn:grid_set"]::after{content: " ... ] "}
 [atype="fn:proc"]::before{content: "{ "}
