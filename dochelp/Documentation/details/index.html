@@ -79,17 +79,17 @@ tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color
 .syntax [atype="fn:subdelimiter"] + [atype="fn:named_string"]::before,
 .syntax [atype="fn:delimiter"] + [atype="fn:named_string"]::before
 {content: "\(abc)\00a0"; font-weight: normal ; font-style: italic; white-space: pre}
-.syntax [atype="fn:grid_set"]::before{content: "[ "}
-.syntax [atype="fn:grid_set"]::after{content: " ... ] "}
-.syntax [atype="fn:proc"]::before{content: "{ "}
-.syntax [atype="fn:proc"]::after{content: " } "}
-.syntax [atype="fn:string"]::before{content: "("}
-.syntax [atype="fn:string"]::after{content: ") "}
+.syntax [atype="fn:grid_set"]::before{content: " [\00a0"}
+.syntax [atype="fn:grid_set"]::after{content: "\00a0...\00a0]"}
+.syntax [atype="fn:proc"]::before{content: " {"}
+.syntax [atype="fn:proc"]::after{content: "} "}
+.syntax [atype="fn:string"]::before{content: " ("}
+.syntax [atype="fn:string"]::after{content: ")"}
 .syntax [atype="fn:numberstring"]::before{color: #B0B0B0; content: "("}
 .syntax [atype="fn:numberstring"]::after{color: #B0B0B0; content: ") "}
-.syntax [atype="irifn:string"]::before{content: "("}
-.syntax [atype="irifn:string"]::after{content: ") "}
-.syntax [atype="fn:name_and_number_set"]::before{content: "{";}
+.syntax [atype="irifn:string"]::before{content: " ("}
+.syntax [atype="irifn:string"]::after{content: ")"}
+.syntax [atype="fn:name_and_number_set"]::before{content: " {";}
 .syntax [atype="fn:name_and_number_set"]::after{content: " 1 ... 2n+1 }"; font-size: 80% ; vertical-align: sub}
 [inout="fn:in"] [inout="fn:out"] {display: none}
 .syntax { margin-left: auto; margin-right: auto; width: 100%; text-align: center; max-width: 800px;}
