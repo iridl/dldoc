@@ -41,7 +41,7 @@ font-weight: bold
 margin-right: 10pt;
 }
 [opt="true"]{
-color: #B0B0B0
+color: #808080
 }
 tr[opt="true"]{
 background-color: #F0F0F0;
@@ -53,13 +53,22 @@ content: " (optional)"
 }
 tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color: LightGrey; border-top: double; border-top-width: 3pt}
 [atype="fn:name"]::before{content: "/"}
-[atype="fn:named_real"]::before{content: "nn.nn "}
-[atype="fn:named_real"]{font-weight: bold; display: inline-block}
-[atype="fn:named_integer"]::before{content: "nn "}
-[atype="fn:named_integer"]{font-weight: bold; display: inline-block}
-[atype="fn:named_string"]::before{content: "(abc) "}
-[atype="fn:named_string"]{font-weight: bold; display: inline-block}
+[atype="fn:named_real"]::before{content: " nn.nn\00a0"; font-weight: normal ; font-style: italic}
+[atype="fn:named_real"]{font-weight: bold;}
+[atype="fn:named_integer"]::before{content: " nn\00a0"; font-weight: normal ; font-style: italic}
+[atype="fn:named_integer"]{font-weight: bold;}
+[atype="fn:named_string"]::before{content: " (abc)\00a0"; font-weight: normal ; font-style: italic}
+[atype="fn:named_string"]{font-weight: bold;}
 [atype="fn:delimiter"]{font-weight: bold}
+[atype="fn:subdelimiter"]{font-weight: bold}
+[atype="fn:delimiter"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+[atype="fn:named_integer"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+[atype="fn:named_real"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+[atype="fn:named_string"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+[atype="fn:subdelimiter"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+[atype="fn:subdelimiter"] + [atype="fn:named_integer"]::before{content: "\ann "; font-weight: normal ; font-style: italic; white-space: pre}
+[atype="fn:subdelimiter"] + [atype="fn:named_real"]::before{content: "\ann "; font-weight: normal ; font-style: italic; white-space: pre}
+[atype="fn:subdelimiter"] + [atype="fn:named_string"]::before{content: "\ann "; font-weight: normal ; font-style: italic; white-space: pre}
 [atype="fn:grid_set"]::before{content: "[ "}
 [atype="fn:grid_set"]::after{content: " ... ] "}
 [atype="fn:proc"]::before{content: "{ "}
