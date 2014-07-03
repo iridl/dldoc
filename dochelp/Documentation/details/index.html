@@ -51,6 +51,9 @@ tr[opt="true"] td.desc span::after {
 color: #B0B0B0;
 content: " (optional)"
 }
+tr[inout="fn:out"] td.type span::before {
+content: "output "
+}
 tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color: LightGrey; border-top: double; border-top-width: 3pt}
 [atype="fn:name"]::before{content: "/"}
 [atype="fn:named_real"]::before{content: " nn.nn\00a0"; font-weight: normal ; font-style: italic}
@@ -83,7 +86,7 @@ tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color
 [atype="fn:name_and_number_set"]::after{content: " 1 ... 2n+1 }"; font-size: 80% ; vertical-align: sub}
 [inout="fn:in"] [inout="fn:out"] {display: none}
 .center { width: 100%; text-align: center}
-td.inout {text-align: center}
+td.type {text-align: center}
 table { margin-top: 10pt}
 .afunc {margin-right: 5pt}
 @media only all and (min-width: 800px) {
@@ -155,11 +158,10 @@ USING NAMESPACE
 <script data-id="afn" class="onefunction" data-if="body[func]" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {afn} rdf:type {fn:Function}; fn:func_name {afunc} ; aprop {aobj};
 fn:hasArgument {arg} fn:arg_name {aname} ; fn:in_out {ainout} ; fn:arg_desc {adesc} ; fn:optional {aopt} ; fn:arg_order {aord},
-{arg} fn:argtype_label {arglbl} ; fn:argument_type {atype},
-{arg} fn:inout_label {linout}
+{arg} fn:argtype_label {arglbl} ; fn:argument_type {atype}
 FROM {afn} rdf:type {fn:Function}; fn:func_name {afunc} ; aprop {aobj};
 fn:hasArgument {arg} fn:arg_name {aname} ; fn:arg_order {aord} ; fn:argument_type {atype},
-[{arg} fn:in_out {ainout} rdfs:label {linout}],
+[{arg} fn:in_out {ainout}],
 [{arg} fn:arg_desc {adesc}],
 [{arg} fn:optional {aopt}],
 [{atype} rdfs:label {arglbl}]
@@ -216,7 +218,6 @@ USING NAMESPACE
 "argu &lt;- aafn.fn:hasArgument": {
 "th.label": "argu.fn:arg_name.iridl:asLangGroup",
 "td.type": "argu.fn:argtype_label.iridl:asLangGroup",
-"td.inout": "argu.fn:inout_label.iridl:asLangGroup",
 "td.desc": "argu.fn:arg_desc.iridl:asLangGroup",
 "@opt": "argu.fn:optional",
 "@inout": "argu.fn:in_out"
@@ -239,8 +240,8 @@ USING NAMESPACE
 <p class="fdesc"></p>
 <div class="center" inout="fn:in"><span class="in"></span><span class="funcname"></span></div>
 <table border="2"><tbody><tr><th colspan="4">Arguments</th></tr>
-<tr><th>label</th><th colspan="2">type</th><th>Description</th></tr>
-<tr class="targ"><th class="label"></th><td class="type"></td><td class="inout"></td><td class="desc"></td></tr>
+<tr><th>label</th><th>type</th><th>Description</th></tr>
+<tr class="targ"><th class="label"></th><td class="type"></td><td class="desc"></td></tr>
 </tbody></table>
 <div class="examp"></div>
 <h3>See Also</h3>
