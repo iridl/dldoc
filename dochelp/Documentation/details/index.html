@@ -55,41 +55,42 @@ tr[inout="fn:out"] td.type span::before {
 content: "output "
 }
 tr[inout="fn:out"] td,tr[inout="fn:out"] th {border: inset 2pt; background-color: LightGrey; border-top: double; border-top-width: 3pt}
-[atype="fn:name"]::before{content: "/"}
-[atype="fn:named_real"]::before{content: " nn.nn\00a0"; font-weight: normal ; font-style: italic}
-[atype="fn:named_real"]{font-weight: bold;}
-[atype="fn:named_integer"]::before{content: " nn\00a0"; font-weight: normal ; font-style: italic}
-[atype="fn:named_integer"]{font-weight: bold;}
-[atype="fn:named_string"]::before{content: " (abc)\00a0"; font-weight: normal ; font-style: italic}
-[atype="fn:named_string"]{font-weight: bold;}
-[atype="fn:delimiter"]{font-weight: bold}
-[atype="fn:subdelimiter"]{font-weight: bold}
-[atype="fn:delimiter"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
-[atype="fn:named_integer"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
-[atype="fn:named_real"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
-[atype="fn:named_string"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
-[atype="fn:subdelimiter"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
-[atype="fn:subdelimiter"] + [atype="fn:named_integer"]::before,
-[atype="fn:delimiter"] + [atype="fn:named_integer"]::before
+.syntax [atype]::before{content: " "}
+.syntax [atype="fn:name"]::before{content: "/"}
+.syntax [atype="fn:named_real"]::before{content: " nn.nn\00a0"; font-weight: normal ; font-style: italic}
+.syntax [atype="fn:named_real"]{font-weight: bold;}
+.syntax [atype="fn:named_integer"]::before{content: " nn\00a0"; font-weight: normal ; font-style: italic}
+.syntax [atype="fn:named_integer"]{font-weight: bold;}
+.syntax [atype="fn:named_string"]::before{content: " (abc)\00a0"; font-weight: normal ; font-style: italic}
+.syntax [atype="fn:named_string"]{font-weight: bold;}
+.syntax [atype="fn:delimiter"]{font-weight: bold}
+.syntax [atype="fn:subdelimiter"]{font-weight: bold}
+.syntax [atype="fn:delimiter"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+.syntax [atype="fn:named_integer"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+.syntax [atype="fn:named_real"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+.syntax [atype="fn:named_string"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+.syntax [atype="fn:subdelimiter"]+ [atype="fn:subdelimiter"]::before { content: '\a'; white-space: pre}
+.syntax [atype="fn:subdelimiter"] + [atype="fn:named_integer"]::before,
+.syntax [atype="fn:delimiter"] + [atype="fn:named_integer"]::before
 {content: "\ann "; font-weight: normal ; font-style: italic; white-space: pre}
-[atype="fn:subdelimiter"] + [atype="fn:named_real"]::before,
-[atype="fn:delimiter"] + [atype="fn:named_real"]::before
+.syntax [atype="fn:subdelimiter"] + [atype="fn:named_real"]::before,
+.syntax [atype="fn:delimiter"] + [atype="fn:named_real"]::before
 {content: "\ann.nn\00a0"; font-weight: normal ; font-style: italic; white-space: pre}
-[atype="fn:subdelimiter"] + [atype="fn:named_string"]::before,
-[atype="fn:delimiter"] + [atype="fn:named_string"]::before
+.syntax [atype="fn:subdelimiter"] + [atype="fn:named_string"]::before,
+.syntax [atype="fn:delimiter"] + [atype="fn:named_string"]::before
 {content: "\(abc)\00a0"; font-weight: normal ; font-style: italic; white-space: pre}
-[atype="fn:grid_set"]::before{content: "[ "}
-[atype="fn:grid_set"]::after{content: " ... ] "}
-[atype="fn:proc"]::before{content: "{ "}
-[atype="fn:proc"]::after{content: " } "}
-[atype="fn:string"]::before{content: "("}
-[atype="fn:string"]::after{content: ") "}
-[atype="fn:numberstring"]::before{color: #B0B0B0; content: "("}
-[atype="fn:numberstring"]::after{color: #B0B0B0; content: ") "}
-[atype="irifn:string"]::before{content: "("}
-[atype="irifn:string"]::after{content: ") "}
-[atype="fn:name_and_number_set"]::before{content: "{";}
-[atype="fn:name_and_number_set"]::after{content: " 1 ... 2n+1 }"; font-size: 80% ; vertical-align: sub}
+.syntax [atype="fn:grid_set"]::before{content: "[ "}
+.syntax [atype="fn:grid_set"]::after{content: " ... ] "}
+.syntax [atype="fn:proc"]::before{content: "{ "}
+.syntax [atype="fn:proc"]::after{content: " } "}
+.syntax [atype="fn:string"]::before{content: "("}
+.syntax [atype="fn:string"]::after{content: ") "}
+.syntax [atype="fn:numberstring"]::before{color: #B0B0B0; content: "("}
+.syntax [atype="fn:numberstring"]::after{color: #B0B0B0; content: ") "}
+.syntax [atype="irifn:string"]::before{content: "("}
+.syntax [atype="irifn:string"]::after{content: ") "}
+.syntax [atype="fn:name_and_number_set"]::before{content: "{";}
+.syntax [atype="fn:name_and_number_set"]::after{content: " 1 ... 2n+1 }"; font-size: 80% ; vertical-align: sub}
 [inout="fn:in"] [inout="fn:out"] {display: none}
 .syntax { margin-left: auto; margin-right: auto; width: 100%; text-align: center; max-width: 800px;}
 td.type {text-align: center}
