@@ -44,7 +44,7 @@
 <div class="rightcol tabbedentries" about="/docfind/">
   <a rel="section" href="http://iridl.ldeo.columbia.edu/maproom/"></a>
   <a rel="section" href="facetedbrowser.html"></a>
-  <a rel="section" href="databrief/"></a>
+  <a rel="section" href="databrief/index.html"></a>
 </div>
 <div class="optionsBar">
 <fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
