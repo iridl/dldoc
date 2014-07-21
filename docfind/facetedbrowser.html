@@ -30,7 +30,7 @@
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <style>
-body[loading]::after {
+notbody[loading]::after {
 content: attr(loading);
 display: block;
 border: 4pt;
@@ -260,7 +260,7 @@ USING NAMESPACE
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:hasChoice {semantic} term:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
-{item} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
+{} xhtml:canonical {item} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
 [ {semantic} term:label {slabel},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
 WHERE sslang=lang(slabel)],
@@ -280,17 +280,17 @@ FROM
 {semantic} term:label {slabel},
 [{subsemantic} term:implies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
 subsemantic IN (SELECT semanti FROM
-{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+{} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 ) AND
 NOT EXISTS 
 (select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another}))
 ]
 WHERE semantic IN (SELECT semanti FROM
-{object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
+{} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
 AND  NOT EXISTS (
 SELECT anitem FROM  
-{anitem} rdf:type {itemClass} ; term:isDescribedBy {sem},
+{} xhtml:canonical {anitem} rdf:type {itemClass} ; term:isDescribedBy {sem},
 [{anitem} iridc:hasPart{subitem}]
 WHERE subitem=NULL
 AND NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
@@ -298,7 +298,8 @@ AND NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
-    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
+    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
@@ -431,7 +432,7 @@ USING NAMESPACE
 <script data-id="Items" data-if="body[itemClass][taxa][sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
     FROM 
-{itemml} xhtml:canonical {item} ;  rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
+{itemml} xhtml:canonical {item} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
 [{item} term:isDescribedBy {semantic} rdf:type {taxa}],
 [{item,pitem} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
 {pitem} iridc:hasPart {item}],
@@ -480,7 +481,7 @@ WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(tit
 <script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
     FROM 
-{itemml} xhtml:canonical {item} ;  rdf:type {itemClass},
+{itemml} xhtml:canonical {item} rdf:type {itemClass},
 [{item} term:isDescribedBy {semantic} rdf:type {taxa}],
 [{item,pitem} rdf:type {itemClass},
 {pitem} iridc:hasPart {item}],
