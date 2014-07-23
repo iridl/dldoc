@@ -107,21 +107,28 @@ margin-top: 4pt;
  </div>
 <div class="ui-tabs-panel valid">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
-<script data-id="Datasets" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT *
-    FROM {dataset} rdf:type {iridl:dataset_SearchItem},
-{dataset}                  iridl:expires {expires};
-                   iridl:last_modified {lastmod},
-[ {dataset} term:label {dlabel} ],
-[ {pdataset} iridc:hasPart {dataset}; rdf:type {iridl:dataset_SearchItem}; iridl:expires {expires}]
-WHERE pdataset=NULL
-ORDER BY expires
- USING NAMESPACE
-     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
-    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
-    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>,
-    dcterm = &lt;http://purl.org/dc/terms/>
+<script data-id="Datasets" type="application/serql" class="searchState" property="iridl:hasSparqlQuery">
+PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
+PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+PREFIX xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
+PREFIX dcterm: &lt;http://purl.org/dc/terms/>
+
+CONSTRUCT {?dataset a iridl:dataset_SearchItem;
+iridl:expires ?expires;
+iridl:last_modified ?lastmod.
+?dataset term:label ?dlabel.
+}
+WHERE {
+?dataset a iridl:dataset_SearchItem;
+iridl:expires ?expires;
+iridl:last_modified ?lastmod.
+OPTIONAL { ?dataset term:label ?dlabel }.
+OPTIONAL {?pdataset iridc:hasPart ?dataset ; a iridl:dataset_SearchItem;
+iridl:expires ?expires} .
+FILTER (!BOUND(?pdataset))
+}
+ORDER BY ASC(?expires)
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
