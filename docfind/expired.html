@@ -29,6 +29,8 @@
 .itemExpires {float: right; margin-left: 10pt}
 .itemLastMod {float:right; margin-left: 10pt}
 .itemExpires::before {content:"expires "}
+.item[ifexpired="true"] .itemExpires::before {content:"expired "}
+.item[ifexpired="true"] {background-color: lightgrey}
 .itemLastMod::before {content:"modified "}
 .rightcol {display: none}
 body[sem] .rightcol {display: inline-block}
@@ -118,6 +120,7 @@ CONSTRUCT {?dataset a iridl:dataset_SearchItem;
 iridl:expires ?expires;
 iridl:last_modified ?lastmod.
 ?dataset term:label ?dlabel.
+?dataset iridl:ifexpired ?ifexpired.
 }
 WHERE {
 ?dataset a iridl:dataset_SearchItem;
@@ -126,6 +129,7 @@ iridl:last_modified ?lastmod.
 OPTIONAL { ?dataset term:label ?dlabel }.
 OPTIONAL {?pdataset iridc:hasPart ?dataset ; a iridl:dataset_SearchItem;
 iridl:expires ?expires} .
+BIND (?expires &lt; now() AS ?ifexpired)
 FILTER (!BOUND(?pdataset))
 }
 ORDER BY ASC(?expires)
@@ -145,6 +149,7 @@ ORDER BY ASC(?expires)
 "graph": "@graph",
 "iridl:expires": { "@type": "xsd:dateTime" },
 "iridl:last_modified": { "@type": "xsd:dateTime" },
+"iridl:ifexpired": { "@type": "xsd:boolean" },
 "term:label": { "@container": "@set"},
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
@@ -160,6 +165,7 @@ ORDER BY ASC(?expires)
 {
 "div.item": {
 "itm &lt;- Datasets.graph": {
+"@ifexpired": "itm.iridl:ifexpired",
 ".itemExpires": "itm.iridl:expires",
 ".itemLastMod": "itm.iridl:last_modified",
 ".itemLabel .titleLink": "itm.term:label.iridl:asLangGroup",
