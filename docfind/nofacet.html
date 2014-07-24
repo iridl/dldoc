@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:gaz="http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+      >
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="maproom:Sort_Id" content="a03c" />
+<title property="term:title">Dataset with missing facets</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="canonical" href="nofacet.html" />
+      <meta property="maproom:Sort_Id" content="a03e" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<style>
+.itemLabel {}
+.itemExpires {float: right; margin-left: 10pt}
+.itemLastMod {float:right; margin-left: 10pt}
+.itemExpires::before {content:"expires "}
+.item[ifexpired="true"] .itemExpires::before {content:"expired "}
+.item[ifexpired="true"] {background-color: lightgrey}
+.itemLastMod::before {content:"modified "}
+.rightcol {display: none}
+body[sem] .rightcol {display: inline-block}
+.nonChoice,.Choice,.implies {
+margin-left: 15pt;
+}
+input[rdftype="term:spanningSemantic"] + .lbl {
+font-weight: bold
+}
+input[rdftype="term:spanningSemantic"] {
+opacity: 0.3;
+}
+[rdftype="term:Facet"] {
+font-weight: bold;
+font-size: 120%;
+}
+.facetTemplate {
+border: 1pt;
+border-style: outset;
+width: 95%;
+padding: 5pt;
+border-radius: 15px;
+}
+.facet {
+-webkit-column-break-inside: avoid;
+break-inside: avoid;
+border: 1pt;
+border-style: inset;
+border-radius: 10px;
+padding: 5pt;
+background-color: WhiteSmoke;
+}
+.facet + .facet {
+margin-top: 4pt;
+}
+#@media only all and (min-width: 800px) {
+#.facetTemplate {
+#-webkit-column-count: 2;
+#column-count: 2;
+#-moz-column-count: 2;
+#}
+#}
+</style>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="searchState bodyAttribute" name="lang" type="hidden" />
+<input class="searchState carryLanguage titleLink" name="Set-Language" type="hidden" />
+<input class="searchState titleLink share bodyAttribute" name="mfacet" type="hidden" value="iridl:Institution"/>
+</form>
+<script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
+{
+"@context": {
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"Set-Language": {"@id": "iridl:Set-Language"},
+"taxa": {"@id": "term:Taxa", "@type": "@id"},
+"itemClass": {"@id": "term:itemClass", "@type": "@id"},
+"sem": {"@id": "term:Semantic", "@type": "@id"},
+"mfacet": {"@type": "@id"}
+}
+}
+</script>
+<div class="controlBar">
+           <fieldset class="navitem">
+                <legend>IRI/LDEO</legend> 
+                      <a rev="section" class="navlink carryup carryLanguage" href="/docfind/">
+		      <span class="langgroup">
+		      <span lang="en">Finding Data</span>
+		      </span></a>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Data Library</legend> 
+                     <span class="navtext">Datasets missing facets</span>
+            </fieldset> 
+	    <fieldset class="navitem">
+	      <legend>Missing Facet</legend>
+	      <select class="pageformcopy" name="mfacet">
+		<option>iridl:Institution</option>
+		<option>iridl:Person</option>
+		</select>
+		</fieldset>
+ </div>
+<div class="ui-tabs-panel valid">
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
+<script data-id="Datasets" type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
+PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
+PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+PREFIX xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
+PREFIX dcterm: &lt;http://purl.org/dc/terms/>
+
+CONSTRUCT {?dataset a iridl:dataset_SearchItem.
+?dataset term:label ?dlabel.
+}
+WHERE {
+?dataset a iridl:dataset_SearchItem;
+OPTIONAL { ?dataset term:label ?dlabel }.
+OPTIONAL { ?dataset term:isDescribedBy ?term. ?term rdf:type ?mfacet. ?mfacet rdf:type term:Facet}.
+OPTIONAL {?pdataset iridc:hasPart ?dataset ; a iridl:dataset_SearchItem} .
+FILTER (!BOUND(?pdataset) &amp;&amp; !BOUND(?term) )
+}
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "iridl:dataset_SearchItem",
+"@context": {
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"xhtml": "http://www.w3.org/1999/xhtml/vocab#",
+"xsd": "http://www.w3.org/2001/XMLSchema#",
+"maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
+"gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"id": "@id",
+"graph": "@graph",
+"term:label": { "@container": "@set"}
+}
+}
+</script>
+<script class="itemTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+"div.item": {
+"itm &lt;- Datasets.graph": {
+".itemLabel .titleLink": "itm.term:label.iridl:asLangGroup",
+".titleLink@href": "itm.id"
+}
+}
+}
+</script>
+<p><span  property="term:description">Checks datasets for missing facets</span></p>
+<div class="itemTemplate">
+<div class="items">
+                  <div class="item">
+                     <span class="itemLabel"><a class="carryLanguage carry titleLink langgroup"><span lang=""></span><span class="default"></span></a></span>
+                  </div>
+</div>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+</div>
+</body>
+</html>
+
+
+
