@@ -129,9 +129,9 @@ CONSTRUCT {?dataset a iridl:dataset_SearchItem.
 WHERE {
 ?dataset a iridl:dataset_SearchItem;
 OPTIONAL { ?dataset term:label ?dlabel }.
-OPTIONAL { ?dataset term:isDescribedBy ?term. ?term rdf:type ?mfacet. ?mfacet rdf:type term:Facet}.
 OPTIONAL {?pdataset iridc:hasPart ?dataset ; a iridl:dataset_SearchItem} .
-FILTER (!BOUND(?pdataset) &amp;&amp; !BOUND(?term) )
+BIND (iridl:Institution AS ?mfacet)
+FILTER ((!BOUND(?pdataset)) &amp;&amp; NOT EXISTS {?dataset term:isDescribedBy ?term. ?term rdf:type ?mfacet.} )
 }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
