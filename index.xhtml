@@ -29,6 +29,57 @@
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <script type="text/javascript" src="/localconfig/ui.js"></script>
+<style>
+#rssfeed img { width: 95%}
+#rssholder {
+border: 1pt;
+border-style: solid;
+border-radius: 10px;
+border-color: darkgrey;
+margin-bottom: 5pt;
+}
+.rssheader {
+text-align:center;
+background-color: LightGrey;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+.rsstitle {
+font-weight: bold;
+text-align: center;
+margin-top: 5pt;
+}
+.rsstag {
+display: inline-block;
+font-size: 80%;
+font-style: italic;
+background-color: LightGrey;
+border-radius: 5pt;
+padding-left: 2pt;
+padding-right: 2pt;
+}
+.date {
+font-size: 80%;
+font-style: italic;
+padding-left: 4pt;
+}
+</style>
+<script type="text/javascript">
+function processPosts(postasjson){
+var myout = document.getElementById('rssfeed');
+if(myout){
+var mypost=postasjson['posts'][0];
+if(mypost['type'] == 'regular'){
+myout.innerHTML='<div class="rsstitle">' + mypost['regular-title'] + '</div><div class="rssbody">' + mypost['regular-body']+'</div>';
+}
+if(mypost['type'] == 'link'){
+myout.innerHTML='<div class="rsstitle"><a href="' + mypost['link-url'] + '">' + mypost['link-text'] +'</a></div>';
+}
+myout.innerHTML=myout.innerHTML + '<div class="rsstag">' +  mypost['tags'].join('</div> <div class="rsstag">') + '</div> ';
+myout.innerHTML += '<div class="date">' + mypost['date-gmt']+ '</div>';
+}
+}
+</script>
 </head>
 <body>
 
@@ -103,6 +154,13 @@ Es una herramienta poderosa que permite lo siguiente libre de costos :
 </ul>
 </span>
 </span>
+<div>
+</div>
+<div id="rssholder">
+<div class="rssheader">Latest from <a href="http://iridl.tumblr.com">What's New</a></div>
+<div id="rssfeed"></div>
+</div>
+<script type="text/javascript" src="http://iridl.tumblr.com/api/read/json?num=1&amp;callback=processPosts" async="async"></script>
 </div>
 <div class="rightcol tabbedentries" about="/" >
   <a rel="section" href="http://iridl.ldeo.columbia.edu/maproom/"></a>
