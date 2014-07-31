@@ -164,7 +164,7 @@ FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa}
 {object} rdf:type {objectClass},
 [ {objectClass} term:label {clabel} ],
 [ {taxa} term:label {tlabel} ]
-WHERE isuri(objectClass)
+WHERE taxa IN (iridl:Maproom_Search,iridl:Dataset_Search,iridl:Distinguishing_Characteristics)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
@@ -185,9 +185,9 @@ USING NAMESPACE
 <script data-id="itemClasses" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {objectClass} term:label {clabel} ; rdf:type {term:ItemClass}
 FROM 
-{object} rdf:type {objectClass} rdfs:subClassOf {term:SearchItem},
-[ {objectClass} term:label {clabel} ]
-WHERE isuri(objectClass)
+{object} rdf:type {objectClass},
+ {objectClass} term:label {clabel} 
+WHERE objectClass IN (iridl:map_page, iridl:map_room, term:SearchItem)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
