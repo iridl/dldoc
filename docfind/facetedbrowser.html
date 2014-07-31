@@ -269,9 +269,9 @@ WHERE sslang=lang(slabel)],
 [ {facet} term:label {flabel},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
 WHERE sslang=lang(flabel) ],
-[{semantic} term:implies {better} rdf:type {facet}]
+[{semantic} term:directlyImplies {better} rdf:type {facet}]
 WHERE NOT EXISTS 
-(select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT another FROM {better} term:implies {semantic} ; term:implies {another}))
+(select better FROM {semantic} term:directlyImplies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT another FROM {better} term:directlyImplies {semantic} ; term:directlyImplies {another}))
 UNION
 CONSTRUCT 
 {semantic} term:label {slabel} ; rdf:type {term:spanningSemantic},
@@ -280,22 +280,20 @@ term:label {sblabel}
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} term:label {slabel},
-[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
+[{subsemantic} term:directlyImplies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
 subsemantic IN (SELECT semanti FROM
 {} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 ) AND
 NOT EXISTS 
-(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:implies {subsemantic} ; term:implies {another}))
+(select better FROM {subsemantic} term:directlyImplies {better} term:directlyImplies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:directlyImplies {subsemantic} ; term:directlyImplies {another}))
 ]
 WHERE semantic IN (SELECT semanti FROM
 {} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
 )
 AND  NOT EXISTS (
 SELECT anitem FROM  
-{} xhtml:canonical {anitem} rdf:type {itemClass} ; term:isDescribedBy {sem},
-[{anitem} iridc:hasPart{subitem}]
-WHERE subitem=NULL
-AND NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
+{} xhtml:canonical {anitem} rdf:type {itemClass} ; term:isDescribedBy {sem}
+WHERE NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
@@ -361,9 +359,9 @@ WHERE sslang=lang(slabel)],
 [ {facet} term:label {flabel},
 {} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
 WHERE sslang=lang(flabel) ],
-[{semantic} term:implies {better} rdf:type {facet}]
+[{semantic} term:directlyImplies {better} rdf:type {facet}]
 WHERE NOT EXISTS 
-(select better FROM {semantic} term:implies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT better FROM {better} term:implies {semantic}))
+(select better FROM {semantic} term:directlyImplies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT better FROM {better} term:directlyImplies {semantic}))
 UNION
 CONSTRUCT 
 {semantic} term:label {slabel} ; rdf:type {term:spanningSemantic},
@@ -371,20 +369,18 @@ CONSTRUCT
 FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
 {semantic} term:label {slabel},
-[{subsemantic} term:implies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
+[{subsemantic} term:directlyImplies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
 subsemantic IN (SELECT semanti FROM
 {} xhtml:canonical {object} rdf:type {itemClass}; term:isDescribedBy {semanti} rdf:type {taxa})
 AND NOT EXISTS  
-(select better FROM {subsemantic} term:implies {better} term:implies {semantic}WHERE NOT EXISTS (SELECT better FROM {better} term:implies {subsemantic}))
+(select better FROM {subsemantic} term:directlyImplies {better} term:directlyImplies {semantic}WHERE NOT EXISTS (SELECT better FROM {better} term:directlyImplies {subsemantic}))
 ]
 WHERE semantic IN (SELECT semanti FROM
 {} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {semanti} rdf:type {taxa})
 AND  NOT EXISTS (
 SELECT anitem FROM  
-{} xhtml:canonical {anitem} rdf:type {itemClass},
-[{anitem} iridc:hasPart{subitem}]
-WHERE subitem=NULL
-AND NOT EXISTS (SELECT anitem FROM {anitem} term:isDescribedBy {semantic})
+{} xhtml:canonical {anitem} rdf:type {itemClass}
+WHERE NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
 )
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
