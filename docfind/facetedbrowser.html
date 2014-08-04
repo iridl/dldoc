@@ -159,7 +159,7 @@ content: "V";
 }
 </script>
 <div class="controlBar">
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {taxa} term:label {tlabel} ;rdf:type {term:Taxa}
 FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
@@ -259,7 +259,7 @@ USING NAMESPACE
             </fieldset> 
  </div>
 <div class="searchDescription">
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:isImpliedBy {semantic} term:label {slabel}
     FROM 
@@ -434,7 +434,7 @@ USING NAMESPACE
 <ul class="ui-tabs-nav">
 </ul>
 <div id="menu" class="ui-tabs-panel valid">
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
 <script data-id="Items" data-if="body[itemClass][taxa][sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
     FROM 
