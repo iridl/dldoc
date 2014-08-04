@@ -52,8 +52,9 @@ background: url('/uicore/icons/wait30.gif') center no-repeat transparent;
 background-size: 80px;
 border-radius: 10px;
 }
-.nonChoice,.Choice,.implies {
+.nonChoice,.Choice {
 margin-left: 15pt;
+text-indent: -12pt;
 }
 input[rdftype="term:spanningSemantic"] + .lbl {
 font-weight: bold
@@ -65,11 +66,11 @@ opacity: 0.3;
 font-weight: bold;
 font-size: 120%;
 }
-.facetTemplate {
+.facetHolder {
 border: 1pt;
 border-style: outset;
 width: 95%;
-padding: 5pt;
+padding: 3pt;
 border-radius: 15px;
 }
 .facet {
@@ -85,14 +86,14 @@ background-color: WhiteSmoke;
 margin-top: 4pt;
 }
 @media only all and (min-width: 800px) {
-.facetTemplate {
+.facetHolder {
 -webkit-column-count: 2;
 column-count: 2;
 -moz-column-count: 2;
 }
 }
 @media only all and (min-width: 350px) and (max-width: 500px) {
-.facetTemplate {
+.facetHolder {
 -webkit-column-count: 2;
 column-count: 2;
 -moz-column-count: 2;
@@ -260,7 +261,7 @@ USING NAMESPACE
 <div class="searchDescription">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:hasChoice {semantic} term:label {slabel}
+CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:isImpliedBy {semantic} term:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
 {} xhtml:canonical {item} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
@@ -315,8 +316,6 @@ USING NAMESPACE
 "graph": "@graph",
 "type": "@type",
 "term:label": { "@container": "@set" },
-"term:hasNonChoice": {"@container": "@set"},
-"term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
 "term:hasNone": {"@container": "@set"}
 }
@@ -334,25 +333,27 @@ USING NAMESPACE
 }
 },
 ".Choice": {
-"choice &lt;- facet.term:hasChoice": {
+"choice &lt;- facet.term:isImpliedBy": {
 ".lbl": "choice.term:label.iridl:asLangGroup",
 "input@rdftype": "choice.type",
 "input@value": "choice.id",
-".implies": {
-"implies &lt;- choice.term:isImpliedBy": {
-".lbl": "implies.term:label.iridl:asLangGroup",
-"input@rdftype": "implies.type",
-"input@value":"implies.id"
-},"sort": "id"
-}
+".implies": "choice.term:isImpliedBy.iridl:recurse"
 },"sort": "id"
 }
 }
+},
+".Choice": {
+"choice &lt;- term:isImpliedBy": {
+".lbl": "choice.term:label.iridl:asLangGroup",
+"input@rdftype": "choice.type",
+"input@value": "choice.id",
+".implies": "choice.term:isImpliedBy.iridl:recurse"
+},"sort": "id"
 }
 }
 </script>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:hasChoice {semantic} term:label {slabel}
+CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:isImpliedBy {semantic} term:label {slabel}
     FROM 
 {semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
 {} xhtml:canonical {item} term:isDescribedBy {semantic}; rdf:type {itemClass},
@@ -404,14 +405,12 @@ USING NAMESPACE
 "graph": "@graph",
 "type": "@type",
 "term:label": {"@container": "@set"},
-"term:hasNonChoice": {"@container": "@set"},
-"term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
 "term:hasNone": {"@container": "@set"}
 }
 }
 </script>
-<div class="valid">
+<div class="facetHolder valid">
   <div class="facetTemplate">
     <div class="facet">
       <span class="lbl "></span>
@@ -423,6 +422,10 @@ USING NAMESPACE
 	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
       </div>
 </div>
+      <div class="Choice">
+	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
+	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
+      </div>
 </div>
 </div>
 </div>
@@ -476,8 +479,6 @@ WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(tit
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
-"term:hasNonChoice": {"@container": "@set"},
-"term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
 "term:isDescribedBy": {"container": "@set","@type": "@id"}
 }
@@ -520,8 +521,6 @@ WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(tit
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
-"term:hasNonChoice": {"@container": "@set"},
-"term:hasChoice": {"@container": "@set"},
 "term:isImpliedBy": {"@container": "@set"},
 "term:isDescribedBy": {"container": "@set","@type": "@id"},
 "id": "@id",
