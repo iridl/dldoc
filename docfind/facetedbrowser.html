@@ -159,7 +159,7 @@ content: "V";
 }
 </script>
 <div class="controlBar">
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
 <script data-id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {taxa} term:label {tlabel} ;rdf:type {term:Taxa}
 FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
@@ -259,7 +259,7 @@ USING NAMESPACE
             </fieldset> 
  </div>
 <div class="searchDescription">
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:isImpliedBy {semantic} term:label {slabel}
     FROM 
@@ -352,46 +352,28 @@ USING NAMESPACE
 }
 }
 </script>
-<script data-id="choiceSemantics" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:isImpliedBy {semantic} term:label {slabel}
-    FROM 
-{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
-{} xhtml:canonical {item} term:isDescribedBy {semantic}; rdf:type {itemClass},
-[ {semantic} term:label {slabel},
-{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
-WHERE sslang=lang(slabel)],
-[ {facet} term:label {flabel},
-{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
-WHERE sslang=lang(flabel) ],
-[{semantic} term:directlyImplies {better} rdf:type {facet}]
-WHERE NOT EXISTS 
-(select better FROM {semantic} term:directlyImplies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT better FROM {better} term:directlyImplies {semantic}))
-UNION
-CONSTRUCT 
-{semantic} term:label {slabel} ; rdf:type {term:spanningSemantic},
-{semantic} term:isImpliedBy {subsemantic} term:label {sblabel} 
-FROM 
-{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
-{semantic} term:label {slabel},
-[{subsemantic} term:directlyImplies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
-subsemantic IN (SELECT semanti FROM
-{} xhtml:canonical {object} rdf:type {itemClass}; term:isDescribedBy {semanti} rdf:type {taxa})
-AND NOT EXISTS  
-(select better FROM {subsemantic} term:directlyImplies {better} term:directlyImplies {semantic}WHERE NOT EXISTS (SELECT better FROM {better} term:directlyImplies {subsemantic}))
-]
-WHERE semantic IN (SELECT semanti FROM
-{} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {semanti} rdf:type {taxa})
-AND  NOT EXISTS (
-SELECT anitem FROM  
-{} xhtml:canonical {anitem} rdf:type {itemClass}
-WHERE NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
-)
-USING NAMESPACE
-     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
-    gaz =  &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>,
-    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
-    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>
+<script data-id="choiceSemantics" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
+PREFIX     term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
+PREFIX    iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX    gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
+PREFIX    iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+PREFIX    xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
+
+CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic . ?semantic term:label ?slabel
+. ?psemantic term:isImpliedBy ?semantic} 
+    WHERE {
+BIND (term:SearchItem AS ?itemClass)
+BIND (term:MaproomSearch AS ?taxa)
+?semantic a ?facet . ?facet a term:Facet; rdfs:subClassOf ?taxa.
+{?anitem xhtml:canonical ?item . ?item term:isDescribedBy ?semantic; a ?itemClass} .
+OPTIONAL {?semantic term:label ?slabel}.
+?facet term:label ?flabel.
+OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
+OPTIONAL { BIND(!BOUND(?psemantic) AS ?iftop)
+BIND(IF(?iftop,?semantic,?iftop) AS ?tsemantic)
+FILTER(?iftop)
+}
+}
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
@@ -401,6 +383,7 @@ USING NAMESPACE
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"xsd": "http://www.w3.org/2001/XMLSchema#",
 "id": "@id",
 "graph": "@graph",
 "type": "@type",
@@ -427,6 +410,8 @@ USING NAMESPACE
 	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
       </div>
 </div>
+<pre><div property="iridl:QueryAsText"></div></pre>
+<pre><div property="iridl:JsonAsText"></div></pre>
 </div>
 </div>
 <div class="rightcol">
@@ -434,7 +419,7 @@ USING NAMESPACE
 <ul class="ui-tabs-nav">
 </ul>
 <div id="menu" class="ui-tabs-panel valid">
-<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/owlim-lite-maproom-pie"></a>
+<a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
 <script data-id="Items" data-if="body[itemClass][taxa][sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
 CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
     FROM 
