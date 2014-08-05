@@ -260,49 +260,29 @@ USING NAMESPACE
  </div>
 <div class="searchDescription">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
-<script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT REDUCED {facet} rdf:type {term:Facet} ; term:label {flabel}; term:isImpliedBy {semantic} term:label {slabel}
-    FROM 
-{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf {taxa},
-{} xhtml:canonical {item} term:isDescribedBy {sem}; term:isDescribedBy {semantic}; rdf:type {itemClass},
-[ {semantic} term:label {slabel},
-{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
-WHERE sslang=lang(slabel)],
-[ {facet} term:label {flabel},
-{} iridl:targetLang {uselang} ; iridl:sourceLang{sslang}
-WHERE sslang=lang(flabel) ],
-[{semantic} term:directlyImplies {better} rdf:type {facet}]
-WHERE NOT EXISTS 
-(select better FROM {semantic} term:directlyImplies {better} rdf:type {facet} WHERE NOT EXISTS (SELECT another FROM {better} term:directlyImplies {semantic} ; term:directlyImplies {another}))
-UNION
-CONSTRUCT 
-{semantic} term:label {slabel} ; rdf:type {term:spanningSemantic},
-{semantic} term:isImpliedBy {subsemantic}
-term:label {sblabel} 
-FROM 
-{semantic} rdf:type {facet} rdf:type {term:Facet}; rdfs:subClassOf{taxa},
-{semantic} term:label {slabel},
-[{subsemantic} term:directlyImplies {semantic} ; rdf:type {facet} ; term:label {sblabel} WHERE 
-subsemantic IN (SELECT semanti FROM
-{} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
-) AND
-NOT EXISTS 
-(select better FROM {subsemantic} term:directlyImplies {better} term:directlyImplies {semantic}WHERE NOT EXISTS (SELECT another FROM {better} term:directlyImplies {subsemantic} ; term:directlyImplies {another}))
-]
-WHERE semantic IN (SELECT semanti FROM
-{} xhtml:canonical {object} rdf:type {itemClass} ; term:isDescribedBy {sem}; term:isDescribedBy {semanti} rdf:type {taxa}
-)
-AND  NOT EXISTS (
-SELECT anitem FROM  
-{} xhtml:canonical {anitem} rdf:type {itemClass} ; term:isDescribedBy {sem}
-WHERE NOT EXISTS (SELECT * FROM {anitem} term:isDescribedBy {semantic})
-)
-USING NAMESPACE
-     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
-    gaz =  &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>,
-    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
-    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>
+<script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
+PREFIX     term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
+PREFIX    iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX    gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
+PREFIX    iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+PREFIX    xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
+
+CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic . ?semantic term:label ?slabel
+. ?psemantic term:isImpliedBy ?semantic
+. ?spanningsemantic a term:spanningSemantic} 
+    WHERE {
+BIND (term:SearchItem AS ?itemClass)
+BIND (term:MaproomSearch AS ?taxa)
+?semantic a ?facet . ?facet a term:Facet; rdfs:subClassOf ?taxa.
+{?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?sem. ?item term:isDescribedBy ?semantic; a ?itemClass} .
+OPTIONAL {?semantic term:label ?slabel}.
+?facet term:label ?flabel.
+OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
+ BIND(!BOUND(?psemantic) AS ?iftop)
+OPTIONAL {BIND(?semantic AS ?tsemantic)FILTER(?iftop)}
+BIND (NOT EXISTS {?anitem term:isDescribedBy ?sem . MINUS {?anitem term:isDescribedBy ?sem,?semantic}} AS ?ifspanning)
+OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
+}
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
