@@ -370,7 +370,7 @@ OPTIONAL {?semantic term:label ?slabel}.
 ?facet term:label ?flabel.
 OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
 OPTIONAL { BIND(!BOUND(?psemantic) AS ?iftop)
-BIND(IF(?iftop,?semantic,?iftop) AS ?tsemantic)
+BIND(?semantic AS ?tsemantic)
 FILTER(?iftop)
 }
 }
