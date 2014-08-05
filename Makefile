@@ -48,7 +48,7 @@ tabs.nt:	doccache/owlimMaxRepository.nt
 		rdfcache -cache=doccache -construct=tabconstruct.serql -constructoutput=./tabs.nt file:///`pwd`/ingridregistry.owl
 
 doccache/owlimMaxRepository.nt:	ingridregistry.owl filelist.owl
-		rm -r doccache; rdfcache -cache=doccache file:///`pwd`/ingridregistry.owl file:///`pwd`/filelist.owl
+		rm -rf doccache; rdfcache -cache=doccache file:///`pwd`/ingridregistry.owl file:///`pwd`/filelist.owl
 
 filelist.owl:	$(src) sperl.pl Makefile
 	perl sperl.pl $(src) $(maproom) > $@
