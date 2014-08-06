@@ -63,6 +63,12 @@ text-indent: -10pt;
 .implies {
 display: none
 }
+input.onlyrdftype {
+display: none
+}
+input.onlyrdftype[rdftype]{
+display:inline
+}
 input[rdftype="term:spanningSemantic"] + .lbl + .implies {display: block}
 input[rdftype="term:spanningSemantic"] + .lbl {
 font-weight: bold
@@ -286,7 +292,9 @@ PREFIX    xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
 CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic . ?semantic term:label ?slabel
 . ?semantic term:hasCount ?icount
 . ?psemantic term:isImpliedBy ?semantic
-. ?spanningsemantic a term:spanningSemantic} 
+. ?spanningsemantic a term:spanningSemantic
+. ?choicesemantic a term:choiceSemantic
+} 
     WHERE {
 BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
@@ -302,6 +310,7 @@ OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
 OPTIONAL {BIND(?semantic AS ?tsemantic)FILTER(?iftop)}
 BIND (?icount = ?mcount AS ?ifspanning)
 OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
+OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
@@ -367,7 +376,9 @@ PREFIX    xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
 
 CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic . ?semantic term:label ?slabel
 . ?semantic term:hasCount ?icount
-. ?psemantic term:isImpliedBy ?semantic} 
+. ?psemantic term:isImpliedBy ?semantic
+. ?semantic a term:choiceSemantic
+}
     WHERE {
 BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
@@ -410,12 +421,12 @@ FILTER(?iftop)
 	<input class="pageformcopy searchState" name="notfacet" type="checkbox"/><span class="lbl ">none</span>
 	</div>
       <div class="Choice">
-	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
+	<input class="pageformcopy searchState onlyrdftype" name="sem" type="checkbox"/><span class="lbl "></span>
 	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
       </div>
 </div>
       <div class="Choice">
-	<input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span>
+	<input class="pageformcopy searchState onlyrdftype" name="sem" type="checkbox"/><span class="lbl "></span>
 	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
       </div>
 </div>
