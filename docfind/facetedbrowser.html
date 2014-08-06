@@ -56,11 +56,20 @@ border-radius: 10px;
 margin-left: 15pt;
 text-indent: -12pt;
 }
+.implies {
+display: none
+}
+input[rdftype="term:spanningSemantic"] + .lbl + .implies {display: block}
 input[rdftype="term:spanningSemantic"] + .lbl {
 font-weight: bold
 }
 input[rdftype="term:spanningSemantic"] {
 opacity: 0.3;
+}
+.lbl[count]::after {
+margin-left: 2pt;
+font-size: 60%;
+content: "(" attr(count) ")";
 }
 [rdftype="term:Facet"] {
 font-weight: bold;
@@ -268,19 +277,23 @@ PREFIX    iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
 PREFIX    xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
 
 CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic . ?semantic term:label ?slabel
+. ?semantic term:hasCount ?icount
 . ?psemantic term:isImpliedBy ?semantic
 . ?spanningsemantic a term:spanningSemantic} 
     WHERE {
 BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 ?semantic a ?facet . ?facet a term:Facet; rdfs:subClassOf ?taxa.
-{?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?sem. ?item term:isDescribedBy ?semantic; a ?itemClass} .
+{SELECT ?semantic (COUNT(?item) AS ?icount) WHERE {?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?sem. ?item term:isDescribedBy ?semantic; a ?itemClass
+} GROUP BY ?semantic } .
+{SELECT (COUNT(?item) AS ?mcount) WHERE {
+?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?sem. ?item a ?itemClass}} .
 OPTIONAL {?semantic term:label ?slabel}.
 ?facet term:label ?flabel.
 OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
  BIND(!BOUND(?psemantic) AS ?iftop)
 OPTIONAL {BIND(?semantic AS ?tsemantic)FILTER(?iftop)}
-BIND (NOT EXISTS {?anitem term:isDescribedBy ?sem . MINUS {?anitem term:isDescribedBy ?sem,?semantic}} AS ?ifspanning)
+BIND (?icount = ?mcount AS ?ifspanning)
 OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
 }
 </script>
@@ -291,11 +304,13 @@ OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
+"xsd": "http://www.w3.org/2001/XMLSchema#",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 "id": "@id",
 "graph": "@graph",
 "type": "@type",
 "term:label": { "@container": "@set" },
+"term:hasCount": { "@type": "xsd:integer" },
 "term:isImpliedBy": {"@container": "@set"},
 "term:hasNone": {"@container": "@set"}
 }
@@ -317,6 +332,7 @@ OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
 ".lbl": "choice.term:label.iridl:asLangGroup",
 "input@rdftype": "choice.type",
 "input@value": "choice.id",
+".lbl@count": "choice.term:hasCount",
 ".implies": "choice.term:isImpliedBy.iridl:recurse"
 },"sort": "id"
 }
@@ -327,6 +343,7 @@ OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
 ".lbl": "choice.term:label.iridl:asLangGroup",
 "input@rdftype": "choice.type",
 "input@value": "choice.id",
+".lbl@count": "choice.term:hasCount",
 ".implies": "choice.term:isImpliedBy.iridl:recurse"
 },"sort": "id"
 }
@@ -340,12 +357,15 @@ PREFIX    iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
 PREFIX    xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
 
 CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic . ?semantic term:label ?slabel
+. ?semantic term:hasCount ?icount
 . ?psemantic term:isImpliedBy ?semantic} 
     WHERE {
 BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 ?semantic a ?facet . ?facet a term:Facet; rdfs:subClassOf ?taxa.
-{?anitem xhtml:canonical ?item . ?item term:isDescribedBy ?semantic; a ?itemClass} .
+{SELECT ?semantic (COUNT(?item) AS ?icount) WHERE {
+?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?semantic; a ?itemClass
+} GROUP BY ?semantic } .
 OPTIONAL {?semantic term:label ?slabel}.
 ?facet term:label ?flabel.
 OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
@@ -367,6 +387,7 @@ FILTER(?iftop)
 "graph": "@graph",
 "type": "@type",
 "term:label": {"@container": "@set"},
+"term:hasCount": { "@type": "xsd:integer" },
 "term:isImpliedBy": {"@container": "@set"},
 "term:hasNone": {"@container": "@set"}
 }
@@ -389,8 +410,6 @@ FILTER(?iftop)
 	<div class="implies"><input class="pageformcopy searchState" name="sem" type="checkbox"/><span class="lbl "></span></div>
       </div>
 </div>
-<pre><div property="iridl:QueryAsText"></div></pre>
-<pre><div property="iridl:JsonAsText"></div></pre>
 </div>
 </div>
 <div class="rightcol">
