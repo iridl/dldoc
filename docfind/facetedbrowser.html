@@ -53,8 +53,8 @@ background-size: 80px;
 border-radius: 10px;
 }
 .nonChoice,.Choice {
-margin-left: 15pt;
-text-indent: -12pt;
+margin-left: 16pt;
+text-indent: -17pt;
 }
 .implies {
 display: none
@@ -135,7 +135,10 @@ content: "M";
 .item[rdftype*="iridl:dataset"] .itemTitle::before{
 content: "D";
 }
-.item[rdftype*="iridl:variable"] .itemTitle::before{
+.item[rdftype*="iridl:dataset_SearchItem"] .itemTitle::before{
+content: "D";
+}
+.item[rdftype*="iridl:dependent_variable"] .itemTitle::before{
 content: "V";
 }
 </style>
@@ -198,7 +201,7 @@ CONSTRUCT {objectClass} term:label {clabel} ; rdf:type {term:ItemClass}
 FROM 
 {object} rdf:type {objectClass},
  {objectClass} term:label {clabel} 
-WHERE objectClass IN (iridl:map_page, iridl:map_room, term:SearchItem)
+WHERE objectClass IN (iridl:map_page, iridl:map_room, term:SearchItem, iridl:dataset_SearchItem)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
