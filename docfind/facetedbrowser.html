@@ -53,8 +53,12 @@ background-size: 80px;
 border-radius: 10px;
 }
 .nonChoice,.Choice {
-margin-left: 16pt;
-text-indent: -17pt;
+margin-left: 12pt;
+text-indent: -12pt;
+}
+.Choice .Choice[rdftype="term:spanningSemantic"] {
+margin-left: 5pt;
+text-indent: -10pt;
 }
 .implies {
 display: none
@@ -334,6 +338,7 @@ OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
 "choice &lt;- facet.term:isImpliedBy": {
 ".lbl": "choice.term:label.iridl:asLangGroup",
 "input@rdftype": "choice.type",
+".@rdftype": "choice.type",
 "input@value": "choice.id",
 ".lbl@count": "choice.term:hasCount",
 ".implies": "choice.term:isImpliedBy.iridl:recurse"
@@ -345,6 +350,7 @@ OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
 "choice &lt;- term:isImpliedBy": {
 ".lbl": "choice.term:label.iridl:asLangGroup",
 "input@rdftype": "choice.type",
+".@rdftype": "choice.type",
 "input@value": "choice.id",
 ".lbl@count": "choice.term:hasCount",
 ".implies": "choice.term:isImpliedBy.iridl:recurse"
@@ -426,7 +432,7 @@ CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; 
     FROM 
 {itemml} xhtml:canonical {item} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
 [{item} term:isDescribedBy {semantic} rdf:type {taxa}],
-[{item,pitem} rdf:type {itemClass} ; term:isDescribedBy {sem} rdf:type {taxa},
+[{item,pitem} rdf:type {itemClass}, {pitem} term:isDescribedBy {sem} rdf:type {taxa},
 {pitem} iridc:hasPart {item}],
 [{item} rdf:type {sclass} rdfs:subClassOf {term:SearchItem} WHERE isuri(sclass) AND NOT EXISTS
 (SELECT ssclass FROM {item} rdf:type {ssclass,sclass} rdfs:subClassOf {term:SearchItem},
