@@ -487,27 +487,36 @@ WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(tit
 }
 }
 </script>
-<script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" data-varmap='{"lang": "uselang"}' type="application/serql" class="searchState" property="iridl:hasSerqlQuery">
-CONSTRUCT DISTINCT  {item} term:title {title} ; term:description {description}; term:icon {icon}, {item} term:isDescribedBy {semantic},{item} rdf:type {sclass}
-    FROM 
-{itemml} xhtml:canonical {item} rdf:type {itemClass},
-[{item} term:isDescribedBy {semantic} rdf:type {taxa}],
-[{item,pitem} rdf:type {itemClass},{pitem} iridc:hasPart {item}],
-[{item} dcterm:isReplacedBy {newitem} rdf:type {itemClass}],
-[{item} rdf:type {sclass} rdfs:subClassOf {term:SearchItem} WHERE isuri(sclass) AND NOT EXISTS
-(SELECT ssclass FROM {item} rdf:type {ssclass,sclass} rdfs:subClassOf {term:SearchItem},
-{ssclass} rdfs:subClassOf {sclass})],
-{itemml} term:title {title},
-[{itemml} term:description {description}],
-[{item} term:icon {icon}],
-{} iridl:targetLang {uselang} ; iridl:sourceLang{slang} ; iridl:weight {wght}
-WHERE NOT bound(newitem) AND NOT bound(pitem) AND (slang=lang(title) OR lang(title)="")USING NAMESPACE
-     term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
-    iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>,
-    gaz =  &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>,
-    iridc = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>,
-    xhtml = &lt;http://www.w3.org/1999/xhtml/vocab#>,
-    dcterm = &lt;http://purl.org/dc/terms/>
+<script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" data-varmap='{"lang": "uselang"}' type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
+PREFIX     term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
+PREFIX    iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX    gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
+PREFIX    iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
+PREFIX    xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
+PREFIX    dcterm:&lt;http://purl.org/dc/terms/>
+
+CONSTRUCT {?item term:title ?title ; term:description ?description; term:icon ?icon.
+?item term:isDescribedBy ?semantic.
+?item rdf:type ?sclass}
+    WHERE {
+BIND (term:SearchItem AS ?itemClass)
+BIND (term:MaproomSearch AS ?taxa)
+BIND ("en" AS ?uselang)
+?itemml xhtml:canonical ?item . ?item a ?itemClass
+. {SELECT ?item WHERE {?mlitem xhtml:canonical ?item . ?item  a ?itemClass} }
+. OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
+. OPTIONAL { {?pitem iridc:hasPart ?item } union { ?item dcterm:isReplacedBy ?pitem}
+. ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass
+ }
+. OPTIONAL {?item a ?sclass . ?sclass rdfs:subClassOf term:SearchItem 
+            . OPTIONAL { ?iterm a ?ssclass . ?ssclass rdfs:subClassOf ?sclass,term:SearchItem}
+            FILTER (isuri(?sclass) &amp;&amp; !BOUND (?ssclass))}
+. ?itemml term:title ?title
+. OPTIONAL{?itemml term:description ?description}
+. OPTIONAL{?item term:icon ?icon}
+. ?noth iridl:targetLang ?uselang ; iridl:sourceLang ?slang ; iridl:weight ?wght
+FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
+}
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
