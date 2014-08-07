@@ -453,9 +453,8 @@ CONSTRUCT {?item term:title ?title ; term:description ?description; term:icon ?i
 BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 BIND ("en" AS ?uselang)
-?itemml xhtml:canonical ?item . ?item a ?itemClass
-. {SELECT ?item WHERE {?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?sem . ?item  a ?itemClass} }
-. OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
+?itemml xhtml:canonical ?item . ?item a ?itemClass . ?item term:isDescribedBy ?sem .
+OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
 . OPTIONAL { {?pitem iridc:hasPart ?item } union { ?item dcterm:isReplacedBy ?pitem}
 . ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass . ?pitem term:isDescribedBy ?sem }
 . OPTIONAL {?item a ?sclass . ?sclass rdfs:subClassOf term:SearchItem 
@@ -507,7 +506,6 @@ BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 BIND ("en" AS ?uselang)
 ?itemml xhtml:canonical ?item . ?item a ?itemClass
-. {SELECT ?item WHERE {?mlitem xhtml:canonical ?item . ?item  a ?itemClass} }
 . OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
 . OPTIONAL { {?pitem iridc:hasPart ?item } union { ?item dcterm:isReplacedBy ?pitem}
 . ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass
