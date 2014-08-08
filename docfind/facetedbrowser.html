@@ -299,10 +299,12 @@ CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic
 BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 ?semantic a ?facet . ?facet a term:Facet; rdfs:subClassOf ?taxa.
-{SELECT ?semantic (COUNT(?item) AS ?icount) WHERE {?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?sem. ?item term:isDescribedBy ?semantic; a ?itemClass
+{SELECT ?semantic (COUNT(?item) AS ?icount) WHERE {
+{SELECT DISTINCT ?item WHERE {?mlitem xhtml:canonical ?item }} . ?item term:isDescribedBy ?sem. ?item term:isDescribedBy ?semantic; a ?itemClass
 } GROUP BY ?semantic } .
 {SELECT (COUNT(?item) AS ?mcount) WHERE {
-?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?sem. ?item a ?itemClass}} .
+{SELECT DISTINCT ?item WHERE {?mlitem xhtml:canonical ?item }}
+. ?item term:isDescribedBy ?sem. ?item a ?itemClass}} .
 OPTIONAL {?semantic term:label ?slabel}.
 ?facet term:label ?flabel.
 OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
@@ -384,7 +386,8 @@ BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 ?semantic a ?facet . ?facet a term:Facet; rdfs:subClassOf ?taxa.
 {SELECT ?semantic (COUNT(?item) AS ?icount) WHERE {
-?mlitem xhtml:canonical ?item . ?item term:isDescribedBy ?semantic; a ?itemClass
+{SELECT DISTINCT ?item WHERE {?mlitem xhtml:canonical ?item }}
+. ?item term:isDescribedBy ?semantic; a ?itemClass
 } GROUP BY ?semantic } .
 OPTIONAL {?semantic term:label ?slabel}.
 ?facet term:label ?flabel.
