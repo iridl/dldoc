@@ -185,9 +185,7 @@ content: "V";
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
 <script data-id="taxa" type="application/serql" property="iridl:hasSerqlQuery">
 CONSTRUCT {taxa} term:label {tlabel} ;rdf:type {term:Taxa}
-FROM {object} term:isDescribedBy {semantic} rdf:type {taxa} rdf:type {term:Taxa},
-{object} rdf:type {objectClass},
-[ {objectClass} term:label {clabel} ],
+FROM {taxa} rdf:type {term:Taxa},
 [ {taxa} term:label {tlabel} ]
 WHERE taxa IN (iridl:Maproom_Search,iridl:Dataset_Search,iridl:Distinguishing_Characteristics)
 USING NAMESPACE
