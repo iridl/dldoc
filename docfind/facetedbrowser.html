@@ -170,6 +170,7 @@ content: "V";
 {
 "@context": {
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "iriref": "http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#",
@@ -284,6 +285,7 @@ USING NAMESPACE
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX iridlsem: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#>
 PREFIX gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
 PREFIX iriref: &lt;http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#>
 PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
@@ -321,6 +323,7 @@ OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "iriref": "http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#",
 "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -373,6 +376,7 @@ OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX iridlsem: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#>
 PREFIX gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
 PREFIX iriref: &lt;http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#>
 PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
@@ -405,6 +409,7 @@ FILTER(?iftop)
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "iriref": "http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -447,6 +452,7 @@ FILTER(?iftop)
 <script data-id="Items" data-if="body[itemClass][taxa][sem]" data-varmap='{"lang": "uselang"}' type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX iridlsem: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#>
 PREFIX gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
 PREFIX iriref: &lt;http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#>
 PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
@@ -480,6 +486,7 @@ FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "iriref": "http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -501,6 +508,7 @@ FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
 <script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" data-varmap='{"lang": "uselang"}' type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX iridlsem: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#>
 PREFIX gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
 PREFIX iriref: &lt;http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#>
 PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
@@ -535,6 +543,7 @@ FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "iriref": "http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
