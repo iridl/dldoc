@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:ct="http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title xml:lang="en"  property="ct:title">Comprehendible Term Definition</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="b01" />
+      <meta property="term:description" xml:lang="en"  content="Detailed definition for climate-related terms that are used within the Data Library." />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="/uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<script type="text/javascript" src="/localconfig/ui.js"></script>
+<style>
+.ctdef span {
+color: green
+}
+.ctlabel {
+font-weight: bold
+}
+.act {margin-right: 5pt}
+@media only all and (min-width: 800px) {
+table {width: 65%; float: right; margin-left: 10px}
+}
+@media only all and (min-width: 1200px) {
+table {width: 750px; float: right}
+}
+</style>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="share oneword bodyAttribute" name="word" type="hidden" />
+</form>
+<script id="stateContext" type="application/ld-json" property="iridl:hasJsonldContext">
+{
+"@context": {
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"ct": "http://iridl.ldeo.columbia.edu/ontologies/compterms.owl#",
+"wn20schema": "http://www.w3.org/2006/03/wn/wn20/schema/",
+"wn30": "http://purl.org/vocabularies/princeton/wn30/",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"Set-Language": {"@id": "iridl:Set-Language"},
+"word": {"@id": "ct:word", "@type": "@id"}
+}
+}
+</script>
+<div class="controlBar">
+<a rel="iridl:hasSparqlEndpoint" href="http://gfs2mon1.ldeo.columbia.edu:8081/openrdf-sesame/repositories/owlim-lite-comp-terms"></a>
+<script data-id="cts" type="application/sparql" property="iridl:hasSparqlQuery">
+PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wn20schema:&lt;http://www.w3.org/2006/03/wn/wn20/schema/>
+PREFIX wn30:&lt;http://purl.org/vocabularies/princeton/wn30/>
+PREFIX ct:&lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
+CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; rdfs:label ?lb}
+WHERE       { ?acompterm rdf:type rdfs:Resource; wn20schema:gloss ?df; rdfs:label ?lb}
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"rdfs:label": "{}",
+"@context": {
+"ct": "http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/",
+"wn30": "http://purl.org/vocabularies/princeton/wn30/",
+"wn20schema": "http://www.w3.org/2006/03/wn/wn20/schema/",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"rdftype": "@type",
+"rdfs:label": { "@language": "en-us" },
+"ct:climword": { "@container": "@set" },
+"ct:definition": { "@container": "@set" }
+}
+}
+</script>
+<script class="ctTemplate" type="application/json" property="iridl:hasPUREdirective">
+{"option": {
+"aword &lt;- cts.graph": {
+".": "aword.rdfs:label",
+"@value": "aword.id"
+}, "sort": "id"
+}
+}
+</script>
+           <fieldset class="navitem"  id="toSectionList">
+                <legend>Help Resources</legend>
+                      <a rev="section" class="navlink carryup" href="/dochelp/Documentation/">Function Documentation</a>
+            </fieldset> 
+           <fieldset class="navitem" id="chooseSection"> 
+                <legend><span>Documentation</span></legend> 
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Function</legend> 
+<span class="ctTemplate">
+<select name="word" class="pageformcopy">
+  <option class="current"></option>
+</select>
+</span>
+            </fieldset> 
+ </div>
+<pre property="iridl:JsonAsText"></pre>
+<div id="CTdoc" class="ui-tabs-panel">
+<a rel="iridl:hasSparqlEndpoint" href="http://gfs2mon1.ldeo.columbia.edu:8081/openrdf-sesame/repositories/owlim-lite-comp-terms"></a>
+<!-- <script data-id="act" class="oneword" data-if="body[word]" type="application/sparql" property="iridl:hasSparqlQuery"> -->
+<script data-id="act" class="oneword" type="application/sparql" property="iridl:hasSparqlQuery">
+PREFIX dc:<http://purl.org/dc/terms/>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX onto:<http://www.ontotext.com/>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+PREFIX xsd:<http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wn20schema:<http://www.w3.org/2006/03/wn/wn20/schema/>
+PREFIX wn30:<http://purl.org/vocabularies/princeton/wn30/>
+PREFIX ct:<http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
+CONSTRUCT   { ?wrd rdf:type ct:word; ct:def ?df; rdfs:label ?lb }
+WHERE       {  
+BIND ( wn30:synset-endemicity-noun-1 AS ?word )
+?wrd wn20schema:gloss ?df; rdfs:label ?lb
+FILTER(?wrd=?word)
+}
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"@type": "ct:word",
+"@context": {
+"ct": "http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"wn30": "http://purl.org/vocabularies/princeton/wn30/",
+"wn20schema": "http://www.w3.org/2006/03/wn/wn20/schema/",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"rdfs:label": { "@container": "@set" },
+"ct:def": { "@container": "@set" }
+}
+}
+</script>
+<script class="actTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+".act": {
+"aact &lt;- act.graph": {
+"h4": "aact.rdfs:label.iridl:asLangGroup",
+"p.ctdef": "aact.ct:def.iridl:asLangGroup"
+}
+}
+}
+</script>
+<div class="invalid">
+<div class="actTemplate">
+<div class="act">
+<h4></h4>
+<p class="ctdef"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="contactus"></fieldset>
+</div>
+</body>
+</html>
+

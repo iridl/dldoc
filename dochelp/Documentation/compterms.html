@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:ct="http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title xml:lang="en"  property="ct:title">Comprehendible Terms Index</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
+<link rel="canonical" href="compterms.html" />
+      <meta property="maproom:Sort_Id" content="a06" />
+      <meta property="ct:description" xml:lang="en"  content="Index for comprehendible climate-related terms that are used within the Data Library Maprooms." />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="/uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="ct:icon" href="Flaticon_43378-64.png" />
+<link rel="ct:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<script type="text/javascript" src="/localconfig/ui.js"></script>
+<style>
+.fdesc span {
+color: green
+}
+.ct[rdftype="ct:wordConcept"] span {
+color: green
+}
+.ct[rdftype="ct:wordConcept"] span::after {
+content: ":  "
+}
+.acomptermTemplate {
+}
+.ict {
+padding-left: 10pt;
+text-indent: -20pt;
+margin-left: 40pt;
+-webkit-column-break-inside: avoid;
+column-break-inside: avoid;
+-moz-column-break-inside: avoid;
+}
+.ict[firstLetter]{
+margin-top: 15pt
+}
+.ict[firstLetter]::before {
+content: attr(firstLetter);
+display: block;
+font-weight: bold;
+font-size: 16pt;
+text-transform: uppercase;
+text-indent: -40pt;
+float: left;
+}
+
+.ict[firstLetter="a"] + .ict[firstLetter="a"],
+.ict[firstLetter="b"] + .ict[firstLetter="b"],
+.ict[firstLetter="c"] + .ict[firstLetter="c"],
+.ict[firstLetter="d"] + .ict[firstLetter="d"],
+.ict[firstLetter="e"] + .ict[firstLetter="e"],
+.ict[firstLetter="f"] + .ict[firstLetter="f"],
+.ict[firstLetter="g"] + .ict[firstLetter="g"],
+.ict[firstLetter="h"] + .ict[firstLetter="h"],
+.ict[firstLetter="i"] + .ict[firstLetter="i"],
+.ict[firstLetter="j"] + .ict[firstLetter="j"],
+.ict[firstLetter="k"] + .ict[firstLetter="k"],
+.ict[firstLetter="l"] + .ict[firstLetter="l"],
+.ict[firstLetter="m"] + .ict[firstLetter="m"],
+.ict[firstLetter="n"] + .ict[firstLetter="n"],
+.ict[firstLetter="o"] + .ict[firstLetter="o"],
+.ict[firstLetter="p"] + .ict[firstLetter="p"],
+.ict[firstLetter="q"] + .ict[firstLetter="q"],
+.ict[firstLetter="r"] + .ict[firstLetter="r"],
+.ict[firstLetter="s"] + .ict[firstLetter="s"],
+.ict[firstLetter="t"] + .ict[firstLetter="t"],
+.ict[firstLetter="u"] + .ict[firstLetter="u"],
+.ict[firstLetter="v"] + .ict[firstLetter="v"],
+.ict[firstLetter="w"] + .ict[firstLetter="w"],
+.ict[firstLetter="x"] + .ict[firstLetter="x"],
+.ict[firstLetter="y"] + .ict[firstLetter="y"],
+.ict[firstLetter="z"] + .ict[firstLetter="z"],
+.ict[firstLetter="2"] + .ict[firstLetter="2"],
+.ict[firstLetter=":"] + .ict[firstLetter=":"]
+ {
+margin-top: 1pt
+}
+.ict[firstLetter="a"] + .ict[firstLetter="a"]::before,
+.ict[firstLetter="b"] + .ict[firstLetter="b"]::before,
+.ict[firstLetter="c"] + .ict[firstLetter="c"]::before,
+.ict[firstLetter="d"] + .ict[firstLetter="d"]::before,
+.ict[firstLetter="e"] + .ict[firstLetter="e"]::before,
+.ict[firstLetter="f"] + .ict[firstLetter="f"]::before,
+.ict[firstLetter="g"] + .ict[firstLetter="g"]::before,
+.ict[firstLetter="h"] + .ict[firstLetter="h"]::before,
+.ict[firstLetter="i"] + .ict[firstLetter="i"]::before,
+.ict[firstLetter="j"] + .ict[firstLetter="j"]::before,
+.ict[firstLetter="k"] + .ict[firstLetter="k"]::before,
+.ict[firstLetter="l"] + .ict[firstLetter="l"]::before,
+.ict[firstLetter="m"] + .ict[firstLetter="m"]::before,
+.ict[firstLetter="n"] + .ict[firstLetter="n"]::before,
+.ict[firstLetter="o"] + .ict[firstLetter="o"]::before,
+.ict[firstLetter="p"] + .ict[firstLetter="p"]::before,
+.ict[firstLetter="q"] + .ict[firstLetter="q"]::before,
+.ict[firstLetter="r"] + .ict[firstLetter="r"]::before,
+.ict[firstLetter="s"] + .ict[firstLetter="s"]::before,
+.ict[firstLetter="t"] + .ict[firstLetter="t"]::before,
+.ict[firstLetter="u"] + .ict[firstLetter="u"]::before,
+.ict[firstLetter="v"] + .ict[firstLetter="v"]::before,
+.ict[firstLetter="w"] + .ict[firstLetter="w"]::before,
+.ict[firstLetter="x"] + .ict[firstLetter="x"]::before,
+.ict[firstLetter="y"] + .ict[firstLetter="y"]::before,
+.ict[firstLetter="z"] + .ict[firstLetter="z"]::before,
+.ict[firstLetter="2"] + .ict[firstLetter="2"]::before,
+.ict[firstLetter=":"] + .ict[firstLetter=":"]::before
+ {
+display: none;
+}
+
+
+.funcname {
+font-weight: bold
+}
+.in {
+margin-right: 10pt;
+}
+[opt="true"]{
+color: #B0B0B0
+}
+tr[opt="true"]{
+background-color: #F0F0F0;
+color: black
+}
+tr[opt="true"] td.desc span::after {
+color: #B0B0B0;
+content: " (optional)"
+}
+tr[inout="ct:out"] td,tr[inout="ct:out"] th {border: inset 2pt; background-color: LightGrey; border-top: double; border-top-width: 3pt}
+[atype="ct:name"]::before{content: "/"}
+[atype="ct:delimiter"]{font-weight: bold}
+[atype="ct:grid_set"]::before{content: "[ "}
+[atype="ct:grid_set"]::after{content: " ... ] "}
+[atype="ct:proc"]::before{content: "{ "}
+[atype="ct:proc"]::after{content: " } "}
+[atype="ct:string"]::before{content: "("}
+[atype="ct:string"]::after{content: ") "}
+[atype="ct:numberstring"]::before{color: #B0B0B0; content: "("}
+[atype="ct:numberstring"]::after{color: #B0B0B0; content: ") "}
+[atype="irict:string"]::before{content: "("}
+[atype="irict:string"]::after{content: ") "}
+[atype="ct:name_and_number_set"]::before{content: "{";}
+[atype="ct:name_and_number_set"]::after{content: " 1 ... 2n+1 }"; font-size: 80% ; vertical-align: sub}
+[inout="ct:in"] [inout="ct:out"] {display: none}
+.center { width: 100%; text-align: center}
+table { margin-top: 10pt}
+.act {margin-right: 5pt}
+@media only all and (min-width: 500px) {
+.ui-tabs-panel .acomptermTemplate {
+-webkit-column-count: 2;
+column-count: 2;
+-moz-column-count: 2;
+}
+}
+@media only all and (min-width: 800px) {
+table {; max-width: 520px; float: right}
+
+.ui-tabs-panel .acomptermTemplate {
+-webkit-column-count: 3;
+column-count: 3;
+-moz-column-count: 3;
+}
+}
+</style>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem"  id="toSectionList">
+                <legend>Help Resources</legend>
+                      <a rev="section" class="navlink carryup" href="/dochelp/Documentation/">Function Documentation</a>
+            </fieldset> 
+           <fieldset class="navitem" id="chooseSection"> 
+                <legend><span>Documentation</span></legend> 
+            </fieldset> 
+</div>
+<div id="CTdoc" class="ui-tabs-panel">
+<a rel="iridl:hasSparqlEndpoint" href="http://gfs2mon1.ldeo.columbia.edu:8081/openrdf-sesame/repositories/owlim-lite-comp-terms"></a>
+<script data-id="acompterm" type="application/sparql" property="iridl:hasSparqlQuery">
+PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wn20schema:&lt;http://www.w3.org/2006/03/wn/wn20/schema/>
+PREFIX wn30:&lt;http://purl.org/vocabularies/princeton/wn30/>
+PREFIX ct:&lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
+CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; rdfs:label ?lb}
+WHERE       { ?acompterm rdf:type rdfs:Resource; wn20schema:gloss ?df; rdfs:label ?lb}
+</script>
+<script type="application/ld-json" property="iridl:hasJsonldFrame">
+{
+"rdfs:label": "{}",
+"@context": {
+"ct": "http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/",
+"wn30": "http://purl.org/vocabularies/princeton/wn30/",
+"wn20schema": "http://www.w3.org/2006/03/wn/wn20/schema/",
+"iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"id": "@id",
+"graph": "@graph",
+"rdftype": "@type",
+"rdfs:label": { "@container": "@set" },
+"ct:climword": { "@container": "@set" },
+"ct:definition": { "@container": "@set" }
+}
+}
+</script>
+<script class="acomptermTemplate" type="application/json" property="iridl:hasPUREdirective">
+{
+".ict": {
+"also &lt;- acompterm.graph": {
+".ct": "also.rdfs:label.iridl:asLangGroup",
+"@firstLetter": "also.rdfs:label.iridl:firstLetter",
+".ct@rdftype": "also.rdftype",
+".ct@href": "definitions/index.html?word=#{also.id}"
+},"sort": "rdfs:label"
+}
+}
+</script>
+<div class="acomptermTemplate">
+<div class="ict">
+<a href="" class="ct"></a><a class="act" href=""></a>
+</div>
+</div>
+<pre property="iridl:JsonAsText"></pre>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="contactus"></fieldset>
+</div>
+</body>
+</html>
+
+
+
