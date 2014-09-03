@@ -3,6 +3,7 @@
       xmlns:wms="http://www.opengis.net/wms#"
       xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
       xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:ct="http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
@@ -10,7 +11,7 @@
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title xml:lang="en"  property="ct:title">Comprehendible Term Definition</title>
+<title xml:lang="en"  property="term:title">Comprehendible Term Definition</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
       <meta property="maproom:Sort_Id" content="b01" />
@@ -97,13 +98,10 @@ WHERE       { ?acompterm rdf:type rdfs:Resource; wn20schema:gloss ?df; rdfs:labe
 </script>
            <fieldset class="navitem"  id="toSectionList">
                 <legend>Help Resources</legend>
-                      <a rev="section" class="navlink carryup" href="/dochelp/Documentation/">Function Documentation</a>
-            </fieldset> 
-           <fieldset class="navitem" id="chooseSection"> 
-                <legend><span>Documentation</span></legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/compterms.html">Comprehendible Terms Index</a>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Function</legend> 
+                <legend>Comprehendible Term</legend> 
 <span class="ctTemplate">
 <select name="word" class="pageformcopy">
   <option class="current"></option>
