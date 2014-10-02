@@ -9,7 +9,7 @@ gif = $(shell find . -name '*gif')
 css = $(shell find . -name '*css')
 imgs = $(png) $(gif) $(jpg)
 maproom = http://iridl.ldeo.columbia.edu/maproom/ 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=es' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=fr' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=id' 'http://iridl.ldeo.columbia.edu/maproom/index.html?Set-Language=ru' 
-all:	$(htmlbld) topindex.owl
+all:	$(htmlbld) topindex.owl .gitignore
 
 install-ingrid:	all $(texbld) $(imgs) $(css)
 	echo installing ingrid-style to $(BUILD_DIR)
@@ -55,3 +55,12 @@ filelist.owl:	$(src) sperl.pl Makefile
 
 topindex.owl:	$(out) sperl.pl
 	perl sperl.pl $(out) > $@
+
+.gitignore: topindex.owl findsrc.pl
+	perl ./findsrc.pl bld | sed 's/^.\///' > $@
+	echo 'doccache/' >> $@
+	echo 'filelist.owl' >> $@
+	echo 'tabs.nt' >> $@
+	echo 'tabs.xml' >> $@
+	echo 'topindex.owl' >> $@
+	echo '.gitignore' >> $@
