@@ -63,13 +63,16 @@ text-indent: -10pt;
 .implies {
 display: none
 }
+.gloss {
+display: none
+}
 input.onlyrdftype {
 display: none
 }
 input.onlyrdftype[rdftype]{
 display:inline
 }
-input[rdftype="term:spanningSemantic"] + .lbl + .implies {display: block}
+input[rdftype="term:spanningSemantic"] + .lbl + .gloss + .implies {display: block}
 input[rdftype="term:spanningSemantic"] + .lbl {
 font-weight: bold
 }
@@ -294,6 +297,7 @@ PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
 PREFIX xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
 
 CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic . ?semantic term:label ?slabel
+. ?semantic term:gloss ?sgloss
 . ?semantic term:hasCount ?icount
 . ?psemantic term:isImpliedBy ?semantic
 . ?spanningsemantic a term:spanningSemantic
@@ -310,6 +314,7 @@ BIND (term:MaproomSearch AS ?taxa)
 {SELECT DISTINCT ?item WHERE {?mlitem xhtml:canonical ?item }}
 . ?item term:isDescribedBy ?sem. ?item a ?itemClass}} .
 OPTIONAL {?semantic term:label ?slabel}.
+OPTIONAL {?semantic term:gloss ?sgloss}.
 ?facet term:label ?flabel.
 OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
  BIND(!BOUND(?psemantic) AS ?iftop)
@@ -335,6 +340,7 @@ OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 "graph": "@graph",
 "type": "@type",
 "term:label": { "@container": "@set" },
+"term:gloss": { "@container": "@set" },
 "term:hasCount": { "@type": "xsd:integer" },
 "term:isImpliedBy": {"@container": "@set"},
 "term:hasNone": {"@container": "@set"}
@@ -346,6 +352,7 @@ OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 "div.facet": {
 "facet &lt;- choiceSemantics.graph": {
 ".lbl": "facet.term:label.iridl:asLangGroup",
+".gloss": "facet.term:gloss.iridl:asLangGroup",
 ".lbl@rdftype": "facet.type",
 ".none":{
 "anone &lt;- facet.term:hasNone": {
@@ -355,6 +362,7 @@ OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 ".Choice": {
 "choice &lt;- facet.term:isImpliedBy": {
 ".lbl": "choice.term:label.iridl:asLangGroup",
+".gloss": "choice.term:gloss.iridl:asLangGroup",
 "input@rdftype": "choice.type",
 ".@rdftype": "choice.type",
 "input@value": "choice.id",
@@ -367,6 +375,7 @@ OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 ".Choice": {
 "choice &lt;- term:isImpliedBy": {
 ".lbl": "choice.term:label.iridl:asLangGroup",
+".gloss": "choice.term:gloss.iridl:asLangGroup",
 "input@rdftype": "choice.type",
 ".@rdftype": "choice.type",
 "input@value": "choice.id",
@@ -387,6 +396,7 @@ PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
 PREFIX xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
 
 CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic . ?semantic term:label ?slabel
+. ?semantic term:gloss ?sgloss
 . ?semantic term:hasCount ?icount
 . ?psemantic term:isImpliedBy ?semantic
 . ?semantic a term:choiceSemantic
@@ -400,6 +410,7 @@ BIND (term:MaproomSearch AS ?taxa)
 . ?item term:isDescribedBy ?semantic; a ?itemClass
 } GROUP BY ?semantic } .
 OPTIONAL {?semantic term:label ?slabel}.
+OPTIONAL {?semantic term:gloss ?sgloss}.
 ?facet term:label ?flabel.
 OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
  BIND(!BOUND(?psemantic) AS ?iftop)
@@ -423,6 +434,7 @@ FILTER(?iftop)
 "graph": "@graph",
 "type": "@type",
 "term:label": {"@container": "@set"},
+"term:gloss": {"@container": "@set"},
 "term:hasCount": { "@type": "xsd:integer" },
 "term:isImpliedBy": {"@container": "@set"},
 "term:hasNone": {"@container": "@set"}
@@ -433,16 +445,19 @@ FILTER(?iftop)
   <div class="facetTemplate">
     <div class="facet" data-morecount="10">
       <span class="lbl "></span>
+      <span class="gloss "></span>
       <div class="none">
 	<input class="pageformcopy searchState" name="notfacet" type="checkbox"/><span class="lbl ">none</span>
 	</div>
       <div class="Choice moreitem">
-	<input class="pageformcopy searchState onlyrdftype scrollToTop" name="sem" type="checkbox"/><span class="lbl "></span>
+	<input class="pageformcopy searchState onlyrdftype scrollToTop" name="sem" type="checkbox"/><span class="lbl "></span><span class="gloss "></span>
+
 	<div class="implies"></div>
       </div>
 </div>
       <div class="Choice moreitem">
-	<input class="pageformcopy searchState onlyrdftype scrollToTop" name="sem" type="checkbox"/><span class="lbl "></span>
+	<input class="pageformcopy searchState onlyrdftype scrollToTop" name="sem" type="checkbox"/><span class="lbl "></span><span class="gloss "></span>
+
 	<div class="implies"></div>
       </div>
 </div>
@@ -504,6 +519,7 @@ FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
 "graph": "@graph",
 "type": "@type",
 "term:label": { "@container": "@set"},
+"term:gloss": { "@container": "@set" },
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
@@ -560,6 +576,7 @@ FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
 "maproom": "http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
 "term:label": { "@container": "@set" },
+"term:gloss": { "@container": "@set" },
 "term:title": { "@id": "term:title","@container": "@set" },
 "term:description": { "@id": "term:description","@container": "@set" },
 "term:icon": { "@type": "@id" },
