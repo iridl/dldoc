@@ -67,8 +67,9 @@ display: none
 display: none
 }
 .lbl:hover + .gloss:not(:empty) {
-display: inline;
+display: block;
 position: absolute;
+z-index: 30;
 color: #111;
 border: 1px solid #DCA;
 background: #FFFAF0;
@@ -76,7 +77,9 @@ text-indent: 0pt;
 margin-left: 5pt;
 padding-left: 2pt;
 padding-right: 2pt;
-max-width: 200pt;
+min-width: 100pt;
+max-width: 300pt;
+overflow: visible;
 }
 .lbl:hover {
 cursor: help;
