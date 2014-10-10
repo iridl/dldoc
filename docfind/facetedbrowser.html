@@ -122,27 +122,52 @@ border-style: inset;
 border-radius: 10px;
 padding: 5pt;
 background-color: WhiteSmoke;
+width: 98%;
 }
 .facet + .facet {
 margin-top: 4pt;
 }
-@media only all and (min-width: 800px) {
-.facetHolder {
--webkit-column-count: 2;
-column-count: 2;
--moz-column-count: 2;
+.itemTemplate {
+}
+.item {
+width: 98%;
+}
+.multicolumn {
+width: 100%;
+}
+@media only all and (min-width: 500px){
+.multicolumn.Facets + .multicolumn.Items { margin-left: 5pt }
+.multicolumn.Facets {
+vertical-align: top;
+display: inline-block;
+width: 55%;
+-webkit-column-width: 200px;
+column-width: 200px;
+-moz-column-width: 200px;
+-moz-column-gap: 10px;
+}
+.multicolumn.Items {
+vertical-align: top;
+display: inline-block;
+width: 42%;
+-webkit-column-width: 300px;
+column-width: 300px;
+-moz-column-width: 300px;
+-moz-column-gap: 10px;
 }
 }
-@media only all and (min-width: 350px) and (max-width: 500px) {
-.facetHolder {
--webkit-column-count: 2;
-column-count: 2;
--moz-column-count: 2;
-}
-}
-@media only all and (min-width: 500px) and (max-width: 800px) {
+
+@media only all and (min-width: 500px) and (max-width: 700px) {
 .rightcol { width: 60%;}
 .searchDescription {width: 35%;}
+.multicolumn.Items {
+-moz-column-count: 1;
+-moz-column-width: auto;
+}
+.multicolumn.Facets {
+-moz-column-count: 1;
+-moz-column-width: auto;
+}
 }
 .item[rdftype] .itemTitle::before{
 width: 16pt;
@@ -303,7 +328,8 @@ USING NAMESPACE
 </span>
             </fieldset> 
  </div>
-<div class="searchDescription">
+<div class="ui-tabs-panel">
+<div class="valid  multicolumn Facets">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
@@ -460,8 +486,8 @@ FILTER(?iftop)
 }
 }
 </script>
-<div class="facetHolder valid">
-  <div class="facetTemplate">
+<span class="valid">
+  <span class="facetTemplate">
     <div class="facet" data-morecount="10">
       <span class="lbl "></span>
       <span class="gloss "></span>
@@ -479,14 +505,10 @@ FILTER(?iftop)
 
 	<div class="implies"></div>
       </div>
+</span>
+</span>
 </div>
-</div>
-</div>
-<div class="rightcol">
-<div class="ui-tabs">
-<ul class="ui-tabs-nav">
-</ul>
-<div id="menu" class="ui-tabs-panel valid">
+<div class="valid multicolumn Items">
 <a rel="iridl:hasSparqlEndpoint" href="/openrdf-sesame/repositories/dl-search"></a>
 <script data-id="Items" data-if="body[itemClass][taxa][sem]" data-varmap='{"lang": "uselang"}' type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
@@ -620,15 +642,14 @@ FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
 }
 }
 </script>
-<div class="itemTemplate" data-morecount="30">
+<span class="itemTemplate" data-morecount="30">
                   <div class="item moreitem" rdftype="">
                      <div class="itemTitle"><a class="carryLanguage carry titleLink langgroup"><span lang=""></span><span class="default"></span></a></div>
                      <div class="itemIcon"><a class="carryLanguage carry titleLink"><img class="itemImage" /></a></div>
                      <div class="itemDescription langgroup"><span lang=""></span><span class="default"></span></div>
                      <div class="itemFooter"></div>
                   </div>
-</div>
-</div>
+</span>
 </div>
 </div>
 <div class="optionsBar">
