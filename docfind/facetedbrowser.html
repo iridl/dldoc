@@ -77,6 +77,7 @@ text-indent: 0pt;
 margin-left: 5pt;
 padding-left: 2pt;
 padding-right: 2pt;
+left: 2pt;
 min-width: 100pt;
 max-width: 300pt;
 overflow: visible;
@@ -110,11 +111,11 @@ font-size: 120%;
 .facetHolder {
 border: 1pt;
 border-style: outset;
-width: 95%;
 padding: 3pt;
 border-radius: 15px;
 }
 .facet {
+position: relative;
 -webkit-column-break-inside: avoid;
 break-inside: avoid;
 border: 1pt;
@@ -145,6 +146,9 @@ width: 55%;
 column-width: 200px;
 -moz-column-width: 200px;
 -moz-column-gap: 10px;
+}
+.facet {
+width: 195px
 }
 .multicolumn.Items {
 vertical-align: top;
