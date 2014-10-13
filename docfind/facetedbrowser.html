@@ -63,28 +63,6 @@ text-indent: -10pt;
 .implies {
 display: none
 }
-.gloss {
-display: none
-}
-.lbl:hover + .gloss:not(:empty) {
-display: block;
-position: absolute;
-z-index: 30;
-color: #111;
-border: 1px solid #DCA;
-background: #FFFAF0;
-text-indent: 0pt;
-margin-left: 5pt;
-padding-left: 2pt;
-padding-right: 2pt;
-left: 2pt;
-min-width: 100pt;
-max-width: 300pt;
-overflow: visible;
-}
-.lbl:hover {
-cursor: help;
-}
 
 input.onlyrdftype {
 display: none
@@ -115,7 +93,6 @@ padding: 3pt;
 border-radius: 15px;
 }
 .facet {
-position: relative;
 -webkit-column-break-inside: avoid;
 break-inside: avoid;
 border: 1pt;
@@ -123,7 +100,8 @@ border-style: inset;
 border-radius: 10px;
 padding: 5pt;
 background-color: WhiteSmoke;
-width: 98%;
+width: 94%;
+max-width: 275px;
 }
 .facet + .facet {
 margin-top: 4pt;
@@ -144,8 +122,8 @@ display: inline-block;
 width: 55%;
 -webkit-column-width: 200px;
 column-width: 200px;
--moz-column-width: 200px;
--moz-column-gap: 10px;
+-moz-column-width: 260px;
+padding-bottom: 10pt;
 }
 .multicolumn.Items {
 vertical-align: top;
@@ -154,24 +132,6 @@ width: 42%;
 -webkit-column-width: 300px;
 column-width: 300px;
 -moz-column-width: 300px;
--moz-column-gap: 10px;
-}
-}
-@media only all and (min-width: 800px) {
-.facet {
-width: 195px
-}
-
-@media only all and (min-width: 500px) and (max-width: 700px) {
-.rightcol { width: 60%;}
-.searchDescription {width: 35%;}
-.multicolumn.Items {
--moz-column-count: 1;
--moz-column-width: auto;
-}
-.multicolumn.Facets {
--moz-column-count: 1;
--moz-column-width: auto;
 }
 }
 .item[rdftype] .itemTitle::before{
