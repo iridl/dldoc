@@ -497,10 +497,11 @@ CONSTRUCT {?item term:title ?title ; term:description ?description; term:icon ?i
 BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 BIND ("en" AS ?uselang)
-?itemml xhtml:canonical ?item . ?item a ?itemClass . ?item term:isDescribedBy ?sem .
+?itemml xhtml:canonical ?item .
+{SELECT ?item WHERE { ?item a ?itemClass . ?item term:isDescribedBy ?sem .
+FILTER ((NOT EXISTS{?pitem iridc:hasPart ?item . ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass . ?pitem term:isDescribedBy ?sem })
+&amp;&amp; (NOT EXISTS { ?item dcterm:isReplacedBy ?pitem. ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass. ?pitem term:isDescribedBy ?sem }))}}
 OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
-. OPTIONAL { {?pitem iridc:hasPart ?item } union { ?item dcterm:isReplacedBy ?pitem}
-. ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass . ?pitem term:isDescribedBy ?sem }
 . OPTIONAL {?item a ?sclass . ?sclass rdfs:subClassOf term:SearchItem 
             . OPTIONAL { ?iterm a ?ssclass . ?ssclass rdfs:subClassOf ?sclass,term:SearchItem}
             FILTER (isuri(?sclass) &amp;&amp; !BOUND (?ssclass))}
@@ -508,7 +509,7 @@ OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
 . OPTIONAL{?itemml term:description ?description}
 . OPTIONAL{?item term:icon ?icon}
 . ?noth iridl:targetLang ?uselang ; iridl:sourceLang ?slang ; iridl:weight ?wght
-FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
+FILTER(?slang=lang(?title) || lang(?title)="")
 }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
@@ -556,11 +557,11 @@ CONSTRUCT {?item term:title ?title ; term:description ?description; term:icon ?i
 BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 BIND ("en" AS ?uselang)
-?itemml xhtml:canonical ?item . ?item a ?itemClass
+?itemml xhtml:canonical ?item .
+{SELECT ?item WHERE { ?item a ?itemClass
+FILTER ((NOT EXISTS{?pitem iridc:hasPart ?item . ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass })
+&amp;&amp; (NOT EXISTS { ?item dcterm:isReplacedBy ?pitem. ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass}))}}
 . OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
-. OPTIONAL { {?pitem iridc:hasPart ?item } union { ?item dcterm:isReplacedBy ?pitem}
-. ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass
- }
 . OPTIONAL {?item a ?sclass . ?sclass rdfs:subClassOf term:SearchItem 
             . OPTIONAL { ?iterm a ?ssclass . ?ssclass rdfs:subClassOf ?sclass,term:SearchItem}
             FILTER (isuri(?sclass) &amp;&amp; !BOUND (?ssclass))}
@@ -568,7 +569,7 @@ BIND ("en" AS ?uselang)
 . OPTIONAL{?itemml term:description ?description}
 . OPTIONAL{?item term:icon ?icon}
 . ?noth iridl:targetLang ?uselang ; iridl:sourceLang ?slang ; iridl:weight ?wght
-FILTER(!bound(?pitem) &amp;&amp; (?slang=lang(?title) || lang(?title)=""))
+FILTER(?slang=lang(?title) || lang(?title)="")
 }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
