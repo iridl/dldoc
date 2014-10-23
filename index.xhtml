@@ -76,7 +76,7 @@ if(mypost['type'] == 'regular'){
 myout.innerHTML='<div class="rsstitle">' + mypost['regular-title'] + '</div><div class="rssbody">' + mypost['regular-body']+'</div>';
 }
 if(mypost['type'] == 'link'){
-myout.innerHTML='<div class="rsstitle"><a href="' + mypost['link-url'] + '">' + mypost['link-text'] +'</a></div>';
+myout.innerHTML='<div class="rsstitle"><a href="' + mypost['link-url'] + '">' + mypost['link-text'] +'</a>' + mypost['link-description'] +  '</div>';
 }
 if(mypost['type'] == 'photo'){
 myout.innerHTML='<div class="rssbody">' + '<img src="' + mypost['photo-url-400'] + '"/>' + mypost['photo-caption'] + '<div><a href="' + mypost['photo-link-url'] + '">visit page</a></div>' +'</div>';
