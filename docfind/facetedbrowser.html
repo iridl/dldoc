@@ -231,7 +231,7 @@ CONSTRUCT {objectClass} term:label {clabel} ; rdf:type {term:ItemClass}
 FROM 
 {object} rdf:type {objectClass},
  {objectClass} term:label {clabel} 
-WHERE objectClass IN (iridl:map_page, iridl:map_room, term:SearchItem, iridl:dataset_SearchItem)
+WHERE objectClass IN (iridl:map_page, iridl:map_room, term:SearchItem, iridl:dataset)
 USING NAMESPACE
      term = &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>,
     iridl = &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
@@ -501,7 +501,7 @@ BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 BIND ("en" AS ?uselang)
 ?itemml xhtml:canonical ?item .
-{SELECT ?item WHERE { ?item a ?itemClass . ?item term:isDescribedBy ?sem .
+{SELECT ?item WHERE { ?item a ?itemClass . ?item a term:SearchItem . ?item term:isDescribedBy ?sem .
 FILTER ((NOT EXISTS{?pitem iridc:hasPart ?item . ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass . ?pitem term:isDescribedBy ?sem })
 &amp;&amp; (NOT EXISTS { ?item dcterm:isReplacedBy ?pitem. ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass. ?pitem term:isDescribedBy ?sem }))}}
 OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
@@ -561,7 +561,7 @@ BIND (term:SearchItem AS ?itemClass)
 BIND (term:MaproomSearch AS ?taxa)
 BIND ("en" AS ?uselang)
 ?itemml xhtml:canonical ?item .
-{SELECT ?item WHERE { ?item a ?itemClass
+{SELECT ?item WHERE { ?item a ?itemClass . ?item a term:SearchItem
 FILTER ((NOT EXISTS{?pitem iridc:hasPart ?item . ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass })
 &amp;&amp; (NOT EXISTS { ?item dcterm:isReplacedBy ?pitem. ?mlitem xhtml:canonical ?pitem . ?pitem  a ?itemClass}))}}
 . OPTIONAL {?item term:isDescribedBy ?semantic . ?semantic rdf:type ?taxa}
