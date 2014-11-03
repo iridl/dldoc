@@ -189,6 +189,7 @@ content: "V";
 {
 "@context": {
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"cfsn": "http://marinemetadata.org/cf#",
 "climdex": "http://www.climdex.org/indices.html#",
 "iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
@@ -306,6 +307,7 @@ USING NAMESPACE
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa][sem]" type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX cfsn: &lt;http://marinemetadata.org/cf#>
 PREFIX climdex: &lt;http://www.climdex.org/indices.html#>
 PREFIX iridlsem: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#>
 PREFIX gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
@@ -347,6 +349,7 @@ OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"cfsn": "http://marinemetadata.org/cf#",
 "climdex": "http://www.climdex.org/indices.html#",
 "iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
@@ -405,6 +408,7 @@ OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
 <script data-id="choiceSemantics" data-if="body[itemClass][taxa]" data-notif="body[sem]" type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX cfsn: &lt;http://marinemetadata.org/cf#>
 PREFIX climdex: &lt;http://www.climdex.org/indices.html#>
 PREFIX iridlsem: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#>
 PREFIX gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
@@ -441,6 +445,7 @@ FILTER(?iftop)
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"cf": "http://marinemetadata.org/cf#",
 "climdex": "http://www.climdex.org/indices.html#",
 "iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
@@ -485,6 +490,7 @@ FILTER(?iftop)
 <script data-id="Items" data-if="body[itemClass][taxa][sem]" data-varmap='{"lang": "uselang"}' type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX cfsn: &lt;http://marinemetadata.org/cf#>
 PREFIX climdex: &lt;http://www.climdex.org/indices.html#>
 PREFIX iridlsem: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#>
 PREFIX gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
@@ -521,6 +527,7 @@ FILTER(?slang=lang(?title) || lang(?title)="")
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"cf": "http://marinemetadata.org/cf#",
 "climdex": "http://www.climdex.org/indices.html#",
 "iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "iriref": "http://iridl.ldeo.columbia.edu/ontologies/ReferenceList.owl#",
@@ -545,6 +552,7 @@ FILTER(?slang=lang(?title) || lang(?title)="")
 <script data-id="Items" data-if="body[itemClass][taxa]" data-notif="body[sem]" data-varmap='{"lang": "uselang"}' type="application/sparql" class="searchState" property="iridl:hasSparqlQuery">
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX cfsn: &lt;http://marinemetadata.org/cf#>
 PREFIX climdex: &lt;http://www.climdex.org/indices.html#>
 PREFIX iridlsem: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#>
 PREFIX gaz: &lt;http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#>
@@ -581,6 +589,7 @@ FILTER(?slang=lang(?title) || lang(?title)="")
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
+"cf": "http://marinemetadata.org/cf#",
 "climdex": "http://www.climdex.org/indices.html#",
 "iridlsem": "http://iridl.ldeo.columbia.edu/ontologies/iridlsemantics.owl#",
 "gaz": "http://iridl.ldeo.columbia.edu/ontologies/irigaz.owl#",
