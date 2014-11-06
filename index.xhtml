@@ -81,6 +81,9 @@ myout.innerHTML='<div class="rsstitle"><a href="' + mypost['link-url'] + '">' + 
 if(mypost['type'] == 'photo'){
 myout.innerHTML='<div class="rssbody">' + '<img src="' + mypost['photo-url-400'] + '"/>' + mypost['photo-caption'] + '<div><a href="' + mypost['photo-link-url'] + '">visit page</a></div>' +'</div>';
 }
+if(mypost['type'] == 'video'){
+myout.innerHTML='<div class="rssbody">' + mypost['video-source'] + mypost['video-caption'] +'</div>';
+}
 myout.innerHTML=myout.innerHTML + '<div class="rsstag">' +  mypost['tags'].join('</div> <div class="rsstag">') + '</div> ';
 myout.innerHTML += '<div class="date">' + mypost['date-gmt']+ '</div>';
 }
