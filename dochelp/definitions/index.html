@@ -59,7 +59,7 @@ table {width: 750px; float: right}
 }
 </script>
 <div class="controlBar">
-<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/owlim-lite-comp-terms"></a>
+<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/comp-terms"></a>
 <script data-id="cts" type="application/sparql" property="iridl:hasSparqlQuery">
 PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -67,7 +67,7 @@ PREFIX wn20schema:&lt;http://www.w3.org/2006/03/wn/wn20/schema/>
 PREFIX wn30:&lt;http://purl.org/vocabularies/princeton/wn30/>
 PREFIX ct:&lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
 CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; rdfs:label ?lb}
-WHERE       { ?acompterm rdf:type rdfs:Resource; wn20schema:gloss ?df; rdfs:label ?lb}
+WHERE       { ?acompterm wn20schema:containsWordSense ?sense; wn20schema:gloss ?df; rdfs:label ?lb}
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
@@ -111,23 +111,22 @@ WHERE       { ?acompterm rdf:type rdfs:Resource; wn20schema:gloss ?df; rdfs:labe
  </div>
 <pre property="iridl:JsonAsText"></pre>
 <div id="CTdoc" class="ui-tabs-panel">
-<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/owlim-lite-comp-terms"></a>
+<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/comp-terms"></a>
 <!-- <script data-id="act" class="oneword" data-if="body[word]" type="application/sparql" property="iridl:hasSparqlQuery"> -->
 <script data-id="act" class="oneword" type="application/sparql" property="iridl:hasSparqlQuery">
-PREFIX dc:<http://purl.org/dc/terms/>
 PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
-PREFIX onto:<http://www.ontotext.com/>
-PREFIX owl:<http://www.w3.org/2002/07/owl#>
-PREFIX xsd:<http://www.w3.org/2001/XMLSchema#>
 PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX wn20schema:<http://www.w3.org/2006/03/wn/wn20/schema/>
 PREFIX wn30:<http://purl.org/vocabularies/princeton/wn30/>
 PREFIX ct:<http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
-CONSTRUCT   { ?wrd rdf:type ct:word; ct:def ?df; rdfs:label ?lb }
+CONSTRUCT   { ?wrd rdf:type ct:word; ct:def ?df; rdfs:label ?lb; ct:mappage ?uri }
 WHERE       {  
-BIND ( wn30:synset-endemicity-noun-1 AS ?word )
+BIND ( wn30:synset-lasso_regression-noun-1 AS ?word )
 ?wrd wn20schema:gloss ?df; rdfs:label ?lb
-FILTER(?wrd=?word)
+FILTER(?wrd=?word) .
+OPTIONAL { ?uri wn20schema:containsWordSense ?sense .
+?wrd wn20schema:containsWordSense ?sense .
+?uri rdf:type <http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#map_page> . }
 }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
@@ -142,25 +141,29 @@ FILTER(?wrd=?word)
 "id": "@id",
 "graph": "@graph",
 "rdfs:label": { "@container": "@set" },
-"ct:def": { "@container": "@set" }
+"ct:def": { "@container": "@set" },
+"ct:mappage": { "@id": "ct:mappage" }
 }
 }
 </script>
 <script class="actTemplate" type="application/json" property="iridl:hasPUREdirective">
 {
-".act": {
-"aact &lt;- act.graph": {
-"h4": "aact.rdfs:label.iridl:asLangGroup",
-"p.ctdef": "aact.ct:def.iridl:asLangGroup"
+".ict": {
+"also &lt;- act.graph": {
+"h4": "also.rdfs:label.iridl:asLangGroup",
+"p.ctdef": "also.ct:def.iridl:asLangGroup",
+"a@href": "also.ct:mappage.id",
+"a.href": "also.ct:mappage.id"
 }
 }
 }
 </script>
 <div class="invalid">
 <div class="actTemplate">
-<div class="act">
+<div class="ict">
 <h4></h4>
-<p class="ctdef"></p>
+<p class="ctdef" > </p>
+<a href="" class="href" >  </a>
 </div>
 </div>
 </div>
