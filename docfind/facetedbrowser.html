@@ -56,7 +56,7 @@ border-radius: 10px;
 margin-left: 12pt;
 text-indent: -12pt;
 }
-.Choice .Choice[rdftype="term:spanningSemantic"] {
+.Choice .Choice[rdftype*="term:spanningSemantic"] {
 margin-left: 5pt;
 text-indent: -10pt;
 }
@@ -70,11 +70,12 @@ display: none
 input.onlyrdftype[rdftype]{
 display:inline
 }
-input[rdftype="term:spanningSemantic"] + .lbl + .gloss + .implies {display: block}
-input[rdftype="term:spanningSemantic"] + .lbl {
+input[rdftype*="term:spanningSemantic"] + .lbl + .gloss + .implies {display: block}
+input[rdftype*="term:oneChoiceSemantic"] + .lbl + .gloss + .implies {display: block}
+input[rdftype*="term:spanningSemantic"] + .lbl {
 font-weight: bold
 }
-input[rdftype="term:spanningSemantic"] {
+input[rdftype*="term:spanningSemantic"] {
 opacity: 0.3;
 }
 .lbl[count]::after {
@@ -321,6 +322,7 @@ CONSTRUCT {?facet a term:Facet ; term:label ?flabel; term:isImpliedBy ?tsemantic
 . ?psemantic term:isImpliedBy ?semantic
 . ?spanningsemantic a term:spanningSemantic
 . ?choicesemantic a term:choiceSemantic
+. ?onechoicesemantic a term:oneChoiceSemantic
 } 
     WHERE {
 BIND (term:SearchItem AS ?itemClass)
@@ -340,7 +342,9 @@ OPTIONAL { ?semantic term:directlyImplies ?psemantic . ?psemantic a ?facet}
 OPTIONAL {BIND(?semantic AS ?tsemantic)FILTER(?iftop)}
 BIND (?icount = ?mcount AS ?ifspanning)
 OPTIONAL {BIND(?semantic AS ?spanningsemantic)FILTER(?ifspanning)}
+BIND (NOT EXISTS {?titem term:isDescribedBy ?sem. ?titem term:isDescribedBy ?psemantic; a ?itemClass FILTER (NOT EXISTS{?titem term:isDescribedBy ?semantic}) } AS ?ifonlychoice)
 OPTIONAL {BIND(?semantic AS ?choicesemantic)FILTER(!?ifspanning)}
+OPTIONAL {BIND(?psemantic AS ?onechoicesemantic)FILTER(?ifonlychoice)}
 }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
