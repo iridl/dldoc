@@ -109,24 +109,25 @@ WHERE       { ?acompterm wn20schema:containsWordSense ?sense; wn20schema:gloss ?
 </span>
             </fieldset> 
  </div>
-<pre property="iridl:JsonAsText"></pre>
 <div id="CTdoc" class="ui-tabs-panel">
 <a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/comp-terms"></a>
 <!-- <script data-id="act" class="oneword" data-if="body[word]" type="application/sparql" property="iridl:hasSparqlQuery"> -->
 <script data-id="act" class="oneword" type="application/sparql" property="iridl:hasSparqlQuery">
-PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
-PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX wn20schema:<http://www.w3.org/2006/03/wn/wn20/schema/>
-PREFIX wn30:<http://purl.org/vocabularies/princeton/wn30/>
-PREFIX ct:<http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
-CONSTRUCT   { ?wrd rdf:type ct:word; ct:def ?df; rdfs:label ?lb; ct:mappage ?uri }
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wn20schema: &lt;http://www.w3.org/2006/03/wn/wn20/schema/>
+PREFIX wn30: &lt;http://purl.org/vocabularies/princeton/wn30/>
+PREFIX ct: &lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
+PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
+CONSTRUCT   { ?wrd rdf:type ct:word; ct:def ?df; rdfs:label ?lb; ct:mappage ?uri . ?uri term:title ?ptitle ; term:description ?pdesc }
 WHERE       {  
 BIND ( wn30:synset-lasso_regression-noun-1 AS ?word )
 ?wrd wn20schema:gloss ?df; rdfs:label ?lb
 FILTER(?wrd=?word) .
 OPTIONAL { ?uri wn20schema:containsWordSense ?sense .
 ?wrd wn20schema:containsWordSense ?sense .
-?uri rdf:type <http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#map_page> . }
+?uri rdf:type &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#map_page> .
+OPTIONAL {?uri term:title ?ptitle . ?uri term:description ?pdesc} }
 }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
@@ -138,6 +139,7 @@ OPTIONAL { ?uri wn20schema:containsWordSense ?sense .
 "wn30": "http://purl.org/vocabularies/princeton/wn30/",
 "wn20schema": "http://www.w3.org/2006/03/wn/wn20/schema/",
 "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+"term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "id": "@id",
 "graph": "@graph",
 "rdfs:label": { "@container": "@set" },
@@ -152,8 +154,8 @@ OPTIONAL { ?uri wn20schema:containsWordSense ?sense .
 "also &lt;- act.graph": {
 "h4": "also.rdfs:label.iridl:asLangGroup",
 "p.ctdef": "also.ct:def.iridl:asLangGroup",
-"a@href": "also.ct:mappage.id",
-"a.href": "also.ct:mappage.id"
+"a.mpage@href": "also.ct:mappage.id",
+"a.mpage": "also.ct:mappage.term:title.iridl:asLangGroup"
 }
 }
 }
@@ -163,7 +165,7 @@ OPTIONAL { ?uri wn20schema:containsWordSense ?sense .
 <div class="ict">
 <h4></h4>
 <p class="ctdef" > </p>
-<a href="" class="href" >  </a>
+<a href="" class="mpage" >  </a>
 </div>
 </div>
 </div>
