@@ -58,7 +58,7 @@ topindex.owl:	$(out) sperl.pl
 
 .gitignore: topindex.owl findsrc.pl
 	perl ./findsrc.pl bld | sed 's/^.\///' > $@
-	perl ./findsrc.pl bldlang | sed 's/^.\///' > $@
+	perl ./findsrc.pl bldlang | sed 's/^.\///' >> $@
 	echo 'doccache/' >> $@
 	echo 'filelist.owl' >> $@
 	echo 'tabs.nt' >> $@
