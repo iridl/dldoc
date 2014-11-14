@@ -66,12 +66,12 @@ PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX wn20schema:&lt;http://www.w3.org/2006/03/wn/wn20/schema/>
 PREFIX wn30:&lt;http://purl.org/vocabularies/princeton/wn30/>
 PREFIX ct:&lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
-CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; rdfs:label ?lb}
-WHERE       { ?acompterm wn20schema:containsWordSense ?sense; wn20schema:gloss ?df; rdfs:label ?lb}
+CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; wn20schema:lexicalForm ?lb}
+WHERE       { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss ?df . ?acompterm wn20schema:word ?aword . ?aword wn20schema:lexicalForm ?lb}
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"rdfs:label": "{}",
+"wn20schema:lexicalForm": "{}",
 "@context": {
 "ct": "http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/",
 "wn30": "http://purl.org/vocabularies/princeton/wn30/",
@@ -81,7 +81,7 @@ WHERE       { ?acompterm wn20schema:containsWordSense ?sense; wn20schema:gloss ?
 "id": "@id",
 "graph": "@graph",
 "rdftype": "@type",
-"rdfs:label": { "@language": "en-us" },
+"wn20schema:lexicalForm": { "@language": "en-us" },
 "ct:climword": { "@container": "@set" },
 "ct:definition": { "@container": "@set" }
 }
@@ -90,7 +90,7 @@ WHERE       { ?acompterm wn20schema:containsWordSense ?sense; wn20schema:gloss ?
 <script class="ctTemplate" type="application/json" property="iridl:hasPUREdirective">
 {"option": {
 "aword &lt;- cts.graph": {
-".": "aword.rdfs:label",
+".": "aword.wn20schema:lexicalForm",
 "@value": "aword.id"
 }, "sort": "id"
 }
@@ -119,17 +119,15 @@ PREFIX wn20schema: &lt;http://www.w3.org/2006/03/wn/wn20/schema/>
 PREFIX wn30: &lt;http://purl.org/vocabularies/princeton/wn30/>
 PREFIX ct: &lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
-CONSTRUCT   { ?wrd rdf:type ct:word; ct:def ?df; rdfs:label ?lb; ct:mappage ?uri . ?uri term:title ?ptitle ; term:description ?pdesc }
-WHERE       {  
-BIND ( wn30:synset-lasso_regression-noun-1 AS ?word )
-?wrd wn20schema:gloss ?df; rdfs:label ?lb
-FILTER(?wrd=?word) .
-OPTIONAL { ?uri wn20schema:containsWordSense ?sense .
-?wrd wn20schema:containsWordSense ?sense .
-?uri rdf:type &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#map_page> .
-OPTIONAL {?uri term:title ?ptitle . ?uri term:description ?pdesc} }
-}
-</script>
+PREFIX iridl: <http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+CONSTRUCT   { ?sense rdf:type ct:word; ct:def ?df; rdfs:label ?lb ; ct:mappage ?uri . ?uri term:title ?ptitle ; term:description ?pdesc }
+WHERE { BIND ( wn30:wordsense-lasso_regression-noun-1 AS ?word )
+?asynset wn20schema:containsWordSense ?sense; wn20schema:gloss ?df . 
+?sense wn20schema:word ?aword . ?aword wn20schema:lexicalForm ?lb
+FILTER(?sense=?word) . 
+OPTIONAL { ?sampleanchor wn20schema:containsWordSense ?sense  .
+?uri iridl:containsWordSample ?sampleanchor ; term:title ?ptitle ;  term:description ?pdesc}
+}</script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
 "@type": "ct:word",
