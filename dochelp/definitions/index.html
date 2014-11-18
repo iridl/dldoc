@@ -25,11 +25,34 @@
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <script type="text/javascript" src="/localconfig/ui.js"></script>
 <style>
+.context {
+margin-bottom: 10pt;
+}
 .ctdef span {
 color: green
 }
 .ctlabel {
 font-weight: bold
+}
+.page:before {
+display: block;
+content: "Used In ";
+font-style: italic;
+margin-bottom: 5pt;
+margin-left: -10pt;
+}
+.page + .page:before {
+display:none
+}
+.page {
+counter-reset: sample;
+margin-left: 10pt;
+}
+.sample {
+counter-increment: sample;
+}
+.asample:after {
+content: "[" counter(sample) "]";
 }
 .act {margin-right: 5pt}
 @media only all and (min-width: 800px) {
@@ -120,7 +143,8 @@ PREFIX wn30: &lt;http://purl.org/vocabularies/princeton/wn30/>
 PREFIX ct: &lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: <http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
-CONSTRUCT   { ?sense rdf:type ct:word; ct:def ?df; rdfs:label ?lb ; ct:mappage ?uri . ?uri term:title ?ptitle ; term:description ?pdesc }
+CONSTRUCT   { ?sense rdf:type ct:word; ct:def ?df; rdfs:label ?lb ; iridl:isReferencedIn ?uri . 
+?uri term:title ?ptitle ; term:description ?pdesc ; iridl:containsSample ?sampleanchor }
 WHERE { BIND ( wn30:wordsense-lasso_regression-noun-1 AS ?word )
 ?asynset wn20schema:containsWordSense ?sense; wn20schema:gloss ?df . 
 ?sense wn20schema:word ?aword . ?aword wn20schema:lexicalForm ?lb
@@ -142,7 +166,8 @@ OPTIONAL { ?sampleanchor wn20schema:containsWordSense ?sense  .
 "graph": "@graph",
 "rdfs:label": { "@container": "@set" },
 "ct:def": { "@container": "@set" },
-"ct:mappage": { "@id": "ct:mappage" }
+"iridl:isReferencedIn": { "@container": "@set" },
+"iridl:containsSample": { "@container": "@set" }
 }
 }
 </script>
@@ -152,18 +177,26 @@ OPTIONAL { ?sampleanchor wn20schema:containsWordSense ?sense  .
 "also &lt;- act.graph": {
 "h4": "also.rdfs:label.iridl:asLangGroup",
 "p.ctdef": "also.ct:def.iridl:asLangGroup",
-"a.mpage@href": "also.ct:mappage.id",
-"a.mpage": "also.ct:mappage.term:title.iridl:asLangGroup"
-}
+".page": {
+"page &lt;- also.iridl:isReferencedIn": {
+       ".pageTitle": "page.term:title.iridl:asLangGroup",
+       ".sample": {
+       "sample &lt;- page.iridl:containsSample": {
+            ".asample@href": "sample.id"
+             }
+         }
+         }
+     }
+     }
 }
 }
 </script>
-<div class="invalid">
+<div class="context invalid">
 <div class="actTemplate">
 <div class="ict">
 <h4></h4>
 <p class="ctdef" > </p>
-<a href="" class="mpage" >  </a>
+<div class="page"> <span class="pageTitle"></span><span class="sample"> <a class="asample" href=""></a></span> </div>
 </div>
 </div>
 </div>
