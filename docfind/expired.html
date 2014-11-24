@@ -117,18 +117,18 @@ PREFIX iridc: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridc.owl#>
 PREFIX xhtml: &lt;http://www.w3.org/1999/xhtml/vocab#>
 PREFIX dcterm: &lt;http://purl.org/dc/terms/>
 
-CONSTRUCT {?dataset a iridl:dataset_SearchItem;
+CONSTRUCT {?dataset a iridl:dataset;
 iridl:expires ?expires;
 iridl:last_modified ?lastmod.
 ?dataset term:label ?dlabel.
 ?dataset iridl:ifexpired ?ifexpired.
 }
 WHERE {
-?dataset a iridl:dataset_SearchItem;
+?dataset a iridl:dataset;
 iridl:expires ?expires;
 iridl:last_modified ?lastmod.
 OPTIONAL { ?dataset term:label ?dlabel }.
-OPTIONAL {?pdataset iridc:hasPart ?dataset ; a iridl:dataset_SearchItem;
+OPTIONAL {?pdataset iridc:hasPart ?dataset ; a iridl:dataset;
 iridl:expires ?expires} .
 BIND (?expires &lt; now() AS ?ifexpired)
 FILTER (!BOUND(?pdataset))
@@ -137,7 +137,7 @@ ORDER BY ASC(?expires)
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"@type": "iridl:dataset_SearchItem",
+"@type": "iridl:dataset",
 "@context": {
 "term": "http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#",
 "iridl": "http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#",
