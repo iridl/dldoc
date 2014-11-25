@@ -192,19 +192,20 @@ column-count: 3;
             </fieldset> 
 </div>
 <div id="CTdoc" class="ui-tabs-panel">
-<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/owlim-lite-comp-terms"></a>
+<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/comp-terms-wn30"></a>
 <script data-id="acompterm" type="application/sparql" property="iridl:hasSparqlQuery">
 PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX wn20schema:&lt;http://www.w3.org/2006/03/wn/wn20/schema/>
 PREFIX wn30:&lt;http://purl.org/vocabularies/princeton/wn30/>
 PREFIX ct:&lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
-CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; wn20schema:lexicalForm ?lb}
-WHERE       { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss ?df . ?acompterm wn20schema:word ?aword . ?aword wn20schema:lexicalForm ?lb}
+CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; rdfs:label ?lb}
+WHERE      { { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss ?df . ?acompterm wn20schema:word ?aword . ?aword wn20schema:lexicalForm ?lb} 
+UNION {?asynset wn30:hasSense ?acompterm; wn30:hasGloss ?df . ?acompterm wn30:hasWord ?aword . ?aword wn30:lexicalForm ?lb} }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"wn20schema:lexicalForm": "{}",
+"rdfs:label": "{}",
 "@context": {
 "ct": "http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/",
 "wn30": "http://purl.org/vocabularies/princeton/wn30/",
@@ -214,7 +215,7 @@ WHERE       { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss
 "id": "@id",
 "graph": "@graph",
 "rdftype": "@type",
-"wn20schema:lexicalForm": { "@container": "@set" },
+"rdfs:label": { "@container": "@set" },
 "ct:climword": { "@container": "@set" },
 "ct:definition": { "@container": "@set" }
 }
@@ -224,12 +225,12 @@ WHERE       { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss
 {
 ".ict": {
 "also &lt;- acompterm.graph": {
-".ct": "also.wn20schema:lexicalForm.iridl:asLangGroup",
+".ct": "also.rdfs:label.iridl:asLangGroup",
 ".def": "also.ct:def.iridl:asLangGroup",
-"@firstLetter": "also.wn20schema:lexicalForm.iridl:firstLetter",
+"@firstLetter": "also.rdfs:label.iridl:firstLetter",
 ".ct@rdftype": "also.rdftype",
 ".ct@href": "definitions/index.html?word=#{also.id}"
-},"sort": "wn20schema:lexicalForm"
+},"sort": "rdfs:label"
 }
 }
 </script>

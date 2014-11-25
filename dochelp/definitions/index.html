@@ -82,19 +82,20 @@ table {width: 750px; float: right}
 }
 </script>
 <div class="controlBar">
-<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/comp-terms"></a>
+<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/comp-terms-wn30"></a>
 <script data-id="cts" type="application/sparql" property="iridl:hasSparqlQuery">
 PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf:&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX wn20schema:&lt;http://www.w3.org/2006/03/wn/wn20/schema/>
 PREFIX wn30:&lt;http://purl.org/vocabularies/princeton/wn30/>
 PREFIX ct:&lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
-CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; wn20schema:lexicalForm ?lb}
-WHERE       { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss ?df . ?acompterm wn20schema:word ?aword . ?aword wn20schema:lexicalForm ?lb}
+CONSTRUCT   { ?acompterm rdf:type ct:word; ct:def ?df; rdfs:label ?lb}
+WHERE      { { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss ?df . ?acompterm wn20schema:word ?aword . ?aword wn20schema:lexicalForm ?lb} 
+UNION {?asynset wn30:hasSense ?acompterm; wn30:hasGloss ?df . ?acompterm wn30:hasWord ?aword . ?aword wn30:lexicalForm ?lb} }
 </script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
-"wn20schema:lexicalForm": "{}",
+"rdfs:label": "{}",
 "@context": {
 "ct": "http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/",
 "wn30": "http://purl.org/vocabularies/princeton/wn30/",
@@ -104,7 +105,7 @@ WHERE       { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss
 "id": "@id",
 "graph": "@graph",
 "rdftype": "@type",
-"wn20schema:lexicalForm": { "@language": "en-us" },
+"rdfs:label": { "@language": "en-us" },
 "ct:climword": { "@container": "@set" },
 "ct:definition": { "@container": "@set" }
 }
@@ -113,7 +114,7 @@ WHERE       { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss
 <script class="ctTemplate" type="application/json" property="iridl:hasPUREdirective">
 {"option": {
 "aword &lt;- cts.graph": {
-".": "aword.wn20schema:lexicalForm",
+".": "aword.rdfs:label",
 "@value": "aword.id"
 }, "sort": "id"
 }
@@ -133,7 +134,7 @@ WHERE       { ?asynset wn20schema:containsWordSense ?acompterm; wn20schema:gloss
             </fieldset> 
  </div>
 <div id="CTdoc" class="ui-tabs-panel">
-<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/comp-terms"></a>
+<a rel="iridl:hasSparqlEndpoint" href="http://iridl.ldeo.columbia.edu/openrdf-sesame/repositories/comp-terms-wn30"></a>
 <!-- <script data-id="act" class="oneword" data-if="body[word]" type="application/sparql" property="iridl:hasSparqlQuery"> -->
 <script data-id="act" class="oneword" type="application/sparql" property="iridl:hasSparqlQuery">
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#>
@@ -145,13 +146,22 @@ PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
 PREFIX iridl: <http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
 CONSTRUCT   { ?sense rdf:type ct:word; ct:def ?df; rdfs:label ?lb ; iridl:isReferencedIn ?uri . 
 ?uri term:title ?ptitle ; term:description ?pdesc ; iridl:containsSample ?sampleanchor }
-WHERE { BIND ( wn30:wordsense-lasso_regression-noun-1 AS ?word )
+WHERE { { BIND ( wn30:wordsense-lasso_regression-noun-1 AS ?word )
 ?asynset wn20schema:containsWordSense ?sense; wn20schema:gloss ?df . 
 ?sense wn20schema:word ?aword . ?aword wn20schema:lexicalForm ?lb
 FILTER(?sense=?word) . 
 OPTIONAL { ?sampleanchor wn20schema:containsWordSense ?sense  .
 ?uri iridl:containsWordSample ?sampleanchor ; term:title ?ptitle ;  term:description ?pdesc}
-}</script>
+} UNION { BIND ( wn30:wordsense-lasso_regression-noun-1 AS ?word )
+?asynset wn30:hasSense ?sense; wn30:hasGloss ?df . 
+?sense wn30:hasWord ?aword . ?aword wn30:lexicalForm ?lb
+FILTER(?sense=?word) . 
+OPTIONAL  { { ?sampleanchor wn30:hasSense ?sense  .
+?uri iridl:containsWordSample ?sampleanchor ; term:title ?ptitle ;  term:description ?pdesc}
+UNION { ?sampleanchor wn20schema:containsWordSense ?sense  .
+?uri iridl:containsWordSample ?sampleanchor ; term:title ?ptitle ;  term:description ?pdesc} }
+} }
+</script>
 <script type="application/ld-json" property="iridl:hasJsonldFrame">
 {
 "@type": "ct:word",
