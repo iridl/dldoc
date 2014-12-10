@@ -55,10 +55,15 @@ border-radius: 10px;
 .nonChoice,.Choice {
 margin-left: 12pt;
 text-indent: -12pt;
+white-space: nowrap;
 }
 .Choice .Choice[rdftype*="term:spanningSemantic"] {
 margin-left: 5pt;
 text-indent: -10pt;
+}
+.lbl span {
+white-space: normal;
+word-wrap: break-word;
 }
 .implies {
 display: none
@@ -73,7 +78,7 @@ display:inline
 input[rdftype*="term:spanningSemantic"] + .lbl + .gloss + .implies {display: block}
 input[rdftype*="term:oneChoiceSemantic"] + .lbl + .gloss + .implies {display: block}
 input[rdftype*="term:spanningSemantic"] + .lbl {
-font-weight: bold
+font-weight: bold;
 }
 input[rdftype*="term:spanningSemantic"] {
 opacity: 0.3;
