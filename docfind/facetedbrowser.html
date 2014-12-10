@@ -77,6 +77,7 @@ display:inline
 }
 input[rdftype*="term:spanningSemantic"] + .lbl + .gloss + .implies {display: block}
 input[rdftype*="term:oneChoiceSemantic"] + .lbl + .gloss + .implies {display: block}
+input[rdftype] + .lbl + .gloss + .implies {display: block}
 input[rdftype*="term:spanningSemantic"] + .lbl {
 font-weight: bold;
 }
@@ -505,10 +506,12 @@ FILTER(?iftop)
 	<div class="implies"></div>
       </div>
 </div>
+      <div class="implications" data-morecount="3">
       <div class="Choice moreitem">
 	<input class="pageformcopy searchState onlyrdftype scrollToTop" name="sem" type="checkbox"/><span class="lbl "></span><span class="gloss "></span>
 
 	<div class="implies"></div>
+      </div>
       </div>
 </span>
 </span>
