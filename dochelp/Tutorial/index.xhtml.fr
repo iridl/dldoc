@@ -6,18 +6,18 @@
       xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
+ xml:lang="fr"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tutorial</title>
+<title>Tutoriel</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
 <link rel="canonical" href="index.html" />
       <meta property="maproom:Sort_Id" content="a04" />
 <link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
-<link class="altLanguage" rel="alternate" hreflang="fr" href="index.html?Set-Language=fr" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="index.html?Set-Language=en" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
@@ -37,21 +37,21 @@
 </form>
 <div class="controlBar">
            <fieldset class="navitem" id="toSectionList">
-                <legend>Help Resources</legend> 
-                      <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
+                <legend>Aide et Ressources</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/">Aide et Ressources</a>
             </fieldset> 
             <fieldset class="navitem" id="chooseSection"> 
-                <legend>Help Resources</legend> 
+                <legend>Aide et Ressources</legend> 
             </fieldset> 
  </div>
 <div class="searchDescription">
-<h2 property="term:title">Navigating Through the IRI Data Library: A Tutorial</h2>
+<h2 property="term:title">
+Naviguer la Datathèque de l'IRI: Un Tutoriel</h2>
 <p>
-The Data Library is an extremely powerful tool 
-that allows you to access, manipulate, and view a wide array of earth science data in a variety of 
-formats (e.g., data files, tables), visual plots (e.g., contour, color, vector), and plot formats 
-(e.g., PostScript, GIF). <span property="term:description">The goal of this tutorial is to 
-introduce you to the structure of the Data Library and the many ways to navigate through it.</span>
+La Datathèque est un outil extrêmement puissant qui permet d'accéder, manipuler, et visualiser une grande variété de données des sciences de la terre en tout type de format (par exemple, fichiers de données, tables), de tracé visuel (par exemple, contour, couleurs, vecteurs), et de format graphique (par exemple, PostScript, GIF).
+<span property="term:description">
+Ce tutoriel est une introduction à la structure de la Datathèque et aux nombreuses différentes manières d'y naviguer.
+</span>
 </p>
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/Tutorial/">
@@ -60,7 +60,7 @@ introduce you to the structure of the Data Library and the many ways to navigate
 <a rel="maproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialMVD" ></a>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend>Partager</legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

@@ -6,16 +6,16 @@
       xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
+ xml:lang="es"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Statistics Tutorial</title>
+<title>Tutorial Estadístico</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="canonical" href="index.html" />
       <meta property="maproom:Sort_Id" content="a05" />
-<link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="index.html?Set-Language=en" />
 <link class="altLanguage" rel="alternate" hreflang="fr" href="index.html?Set-Language=fr" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
@@ -35,38 +35,30 @@
 </form>
 <div class="controlBar">
            <fieldset class="navitem"  id="toSectionList">
-                <legend>Data Library</legend>
-                      <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
+                <legend>Biblioteca de Datos</legend>
+                      <a rev="section" class="navlink carryup" href="/dochelp/">Ayuda y Recursos</a>
             </fieldset> 
            <fieldset class="navitem" id="chooseSection"> 
-                <legend about="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial"><span property="term:label">Tutorials</span></legend> 
+                <legend about="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial"><span property="term:label">Tutoriales</span></legend> 
             </fieldset> 
  </div>
 <div class="searchDescription">
-<h2 property="term:title">Statistical Techniques in the Data Library: A Tutorial</h2>
+<h2 property="term:title">
+Técnicas Estadísticas en la Biblioteca de Datos: Un Tutorial</h2>
 <p property="term:description">
-Statistical techniques are essential tools for analyzing large datasets; this statistics tutorial thus covers essential skills for many data library users.</p>
+Las técnicas estadísticas son herramientas esenciales para analizar largas bases de datos; así este tutorial estadístico cubre las competencias esenciales para la mayoridad de los usuarios de la biblioteca de datos.</p>
 <p>
-The Data Library is an online tool that provides access to an abundance of climate-related data via 
-one easy-to-use interface.  Ingrid, the programming language on which the Data Library is built, contains a variety of functions that can be used to manipulate data.
-These Ingrid functions are simple to perform because they are executed directly within the Data Library interface.
-The wide variety of available functions makes the Data Library beneficial to the novice and advanced user.
+La Biblioteca de Datos es una herramienta en línea que provee acceso a una abundancia de datos relativos al clima gracia a su interfaz fácil que utilizar. Ingrid, el lenguage de programación con el cual la Biblitoca de Datos se constuió, tiene una variedad de funciones que se pueden utilizar para manipular datos. Estas funciones Ingrid se aplican simplemente porque están ejecutadas directamente por el interfaz de la Biblioteca de Datos. La larga variedad de funciones disponibles facilita al usuario novato tal como al avanzado.
 </p><p>
-While the first Data Library tutorial, <a href="../Tutorial/">Navigating Through the Data Library</a>, is 
-primarily focused on introducing the Data Library to new users, this statistics-based tutorial
-facilitates the use of statistical functions within the Data Library, 
-and even though it concentrates on some advanced techniques, the sections still cover many basic skills.
+Mientras que el primero tutorial de la Biblioteca de Datos, <a href="../Tutorial/">Navegación por la Biblioteca de Datos</a>, sea principalmente concentrado sobre la introducción de la Biblioteca de Datos a nuevos usuarios, este tutorial de estadísticas facilita el uso de funciones estadísticas de la Biblioteca de Datos, y aunque se interesa a algunas técnicas avanzadas, las secciones cubren también muchas competencias básicas. 
 </p><p>
-The following topics are included in the tutorial: measures of central tendency, measures of dispersion, 
-climatologies, standardized anomalies, correlations, climate indices, frequency distributions,
-singular value decompositions, interpolations, and more.  An introduction and detailed real-world 
-example are provided for each statistical function.
+Los temas siguientes están incluidos en el tutorial : medidas de tendencia central, medidas de dispersión, climatologías, anomalías estandarizadas, correlaciones, indices climáticos, distribuciones, decomposición en valores singulares, interpolaciones. Una introducción y un ejemplo práctico componen cada tutorial de cada función estadística.
 </p>
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/StatTutorial/">
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend>Compartir</legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

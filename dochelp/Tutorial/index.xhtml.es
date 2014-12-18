@@ -6,7 +6,7 @@
       xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
+ xml:lang="es"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
 <link rel="canonical" href="index.html" />
       <meta property="maproom:Sort_Id" content="a04" />
-<link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="index.html?Set-Language=en" />
 <link class="altLanguage" rel="alternate" hreflang="fr" href="index.html?Set-Language=fr" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
@@ -37,21 +37,21 @@
 </form>
 <div class="controlBar">
            <fieldset class="navitem" id="toSectionList">
-                <legend>Help Resources</legend> 
-                      <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
+                <legend>Ayuda y Recursos</legend> 
+                      <a rev="section" class="navlink carryup" href="/dochelp/">Ayuda y Recursos</a>
             </fieldset> 
             <fieldset class="navitem" id="chooseSection"> 
-                <legend>Help Resources</legend> 
+                <legend>Ayuda y Recursos</legend> 
             </fieldset> 
  </div>
 <div class="searchDescription">
-<h2 property="term:title">Navigating Through the IRI Data Library: A Tutorial</h2>
+<h2 property="term:title">
+Navegación por la Biblioteca de Datos del IRI: Un Tutorial</h2>
 <p>
-The Data Library is an extremely powerful tool 
-that allows you to access, manipulate, and view a wide array of earth science data in a variety of 
-formats (e.g., data files, tables), visual plots (e.g., contour, color, vector), and plot formats 
-(e.g., PostScript, GIF). <span property="term:description">The goal of this tutorial is to 
-introduce you to the structure of the Data Library and the many ways to navigate through it.</span>
+La Biblioteca de Datos es una herramienta extremedamente poderosa que permite acceder, manipular, y visualizar una grande variedad de datos de las ciencias de la tierra por todo tipo de formato (por ejemplo, archivos de datos, tablas), de representación gráfica (por ejemplo, contornos, colores, vectores), y de formato gráfico (por ejemplo, PostScript, GIF).
+<span property="term:description">
+Este tutorial es una introducción a la estructura de la Biblioteca de Datos y a las diferentes manejas de navégarla.
+</span> 
 </p>
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/Tutorial/">
@@ -60,7 +60,7 @@ introduce you to the structure of the Data Library and the many ways to navigate
 <a rel="maproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorialMVD" ></a>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend>Compartir</legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

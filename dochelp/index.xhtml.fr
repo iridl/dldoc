@@ -9,13 +9,13 @@
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Help</title>
+<title>Aide</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="canonical" href="index.html" />
       <meta property="maproom:Sort_Id" content="z01" />
 <link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
-<link class="altLanguage" rel="alternate" hreflang="fr" href="index.html?Set-Language=fr" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="index.html?Set-Language=en" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
@@ -25,7 +25,7 @@
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <script type="text/javascript" src="/localconfig/ui.js"></script>
 </head>
-<body xml:lang="en">
+<body xml:lang="fr">
 <form name="pageform" id="pageform">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="titleLink itemImage" name="bbox" type="hidden" />
@@ -33,31 +33,23 @@
 <div class="controlBar">
            <fieldset class="navitem">
                 <legend>IRI/LDEO</legend> 
-                      <a rev="section" class="navlink carryup" href="/">Climate Data Library</a>
+                      <a rev="section" class="navlink carryup" href="/">Datathèque du Climat</a>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Data Library</legend> 
-                     <span class="navtext">Help Resources</span>
+                <legend>Datathèque</legend> 
+                     <span class="navtext">Aide et Ressources</span>
             </fieldset> 
  </div>
 <div class="searchDescription">
-<h2 property="term:title">Help Resources</h2>
-<p property="term:description">The Help Resources include basic and statistics tutorials, function documentation, and other resources to help you get the maximum utility out of the Data Library</p>.
-<p>The <a href="http://ingrid.ldeo.columbia.edu/">
-Data Library </a> is both a catalog and a library of datasets, i.e. it
-    both helps you figure out which data you want, and helps you 
-    work with the data. The interface allows
-you to make plots, tables, and files from any dataset, its subsets, or
-    processed versions thereof.</p>
-    <p> This data server is designed to make data accessible to
-people using WWW clients (viewers) and to serve as a data resource for WWW
-documents.  Since most documents cannot use raw data, the server is
-able to deliver the data in a variety of ways: as data files, as tables, and in a variety of plots (line, contour,
-color, vector) and plot formats (PostScript and gif).  Processing of
-the data, particularly averaging and sampling, can be requested as well.</p>
+<h2 property="term:title">Aide et Ressources</h2>
+<p property="term:description">
+La section Aide et Ressources inclue des tutoriels de base et statistique, la documentation des fonctions, et d'autres ressources pour vous aider à tirer le meilleur profit de la Datathèque.</p>
 <p>
-The ultimate vision is to automatically create a web of hypertext that
-connects final results to analyses to the original data.</p>
+La <a href="http://ingrid.ldeo.columbia.edu/">Datathèque</a> est à la fois un catalogue et une bibliothèque de bases de données, i.e. elle permet de trouver les données souhaitées et aussi de travailler dessus. L'interface permet de produire des graphiques, des tables, et des fichiers à partir de n'importe quelle base de données, d'une partie, ou de versions transformées.</p>
+    <p>
+Ce serveur de données est conçu pour rendre accessible des données à quiconque utilise un client WWW et pour servir de ressource de données pour tous documents WWW. Comme le plupart des documents ne peuvent pas utiliser de données brutes, le serveur peut fournir les données de différentes façons : comme fichiers de données, tables, et une variété de graphiques (courbe, contour, couleur, vecteur) et de formats graphiques (PostScript and gif). Le traitement des données, en particulier pour moyenner et échantilloner, peut aussi être demandé.</p>
+<p>
+La vision finale est de créer automatiquement une toile d'hypertextes qui connectent les résultats finaux aux analyses appliquées aux données originales. </p> 
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/">
 <a rel="notmaproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" ></a>
@@ -66,12 +58,13 @@ connects final results to analyses to the original data.</p>
   <a rel="canonical" href="http://vimeo.com/album/2118349"></a>
       <meta property="maproom:Sort_Id" content="a07" />
 <link rel="term:icon" href="tv64.png" />
-<h2 property="term:title">Video Tutorials</h2>
-<p property="term:description">Step by step video demonstrations of Data Library functionality.</p>
+<h2 property="term:title">Tutoriels Vidéo</h2>
+<p property="term:description">
+Démonstrations pas à pas des fonctionalités de la Datathèque. </p>
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend>Partage</legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

@@ -14,7 +14,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta property="maproom:Sort_Id" content="a03c" />
 <title property="term:title" xml:lang="en">Dataset and Map Room Browser</title>
+<title property="term:title" xml:lang="es">Navegación por Facetas de las Bases de Datos y Maprooms</title>
+<title property="term:title" xml:lang="fr">Navigation à Facettes des Bases de Données et Maprooms </title>
 <title property="term:description" xml:lang="en">Find datasets and maps organized by many characteristics and keywords</title>
+<title property="term:description" xml:lang="es">Encontrar bases de datos y mapas organizados en cuanto a muchos características y palabras claves</title>
+<title property="term:description" xml:lang="fr">Filtrer des bases de données et des cartes organisées selon de multiples critères et mots-clés</title>
 <link class="altLanguage" rel="alternate" hreflang="en" href="facetedbrowser.html?Set-Language=en" />
 <link class="altLanguage" rel="alternate" hreflang="es" href="facetedbrowser.html?Set-Language=es" />
 <link class="altLanguage" rel="alternate" hreflang="fr" href="facetedbrowser.html?Set-Language=fr" />
@@ -291,11 +295,28 @@ USING NAMESPACE
 		      </span></a>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Data Library</legend> 
-                     <span class="navtext">Faceted Browser</span>
+                <legend>
+                  <span class="langgroup">
+                      <span lang="en">Data Library</span>
+                      <span lang="es">Biblioteca de Datos</span>
+                      <span lang="fr">Datathèque</span>
+                  </span>
+                </legend>
+                     <span class="navtext">
+                     <span class="langgroup">
+                      <span lang="en">Faceted Browser</span>
+                      <span lang="es">Navegación por Facetas</span>
+                      <span lang="fr">Navigation à Facettes</span>
+                     </span>
+                     </span>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Taxa</legend> 
+                <legend><span class="langgroup">
+                      <span lang="en">Taxa</span>
+                      <span lang="es">Taxones</span>
+                      <span lang="fr">Taxa</span>
+                     </span>
+                </legend>
 <span class="taxaTemplate">
 <select name="taxa" class="pageformcopy containsAllValids">
   <option class="current"></option>
@@ -303,7 +324,12 @@ USING NAMESPACE
 </span>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Items</legend> 
+                <legend><span class="langgroup">
+                      <span lang="en">Items</span>
+                      <span lang="es">Campos</span>
+                      <span lang="fr">Objets</span>
+                     </span>
+                </legend> 
 <span class="itemClassTemplate">
 <select name="itemClass" class="pageformcopy containsAllValids invalid">
   <option class="current"></option>
@@ -678,7 +704,11 @@ FILTER(?slang=lang(?title) || lang(?title)="")
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend><span class="langgroup">
+                      <span lang="en">Share</span>
+                      <span lang="es">Compartir</span>
+                      <span lang="fr">Partager</span>
+                     </span></legend></fieldset>
 <fieldset class="navitem langgroup" id="contactus"></fieldset>
 </div>
 </body>

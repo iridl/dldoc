@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="canonical" href="index.html" />
       <meta property="maproom:Sort_Id" content="z01" />
-<link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="index.html?Set-Language=en" />
 <link class="altLanguage" rel="alternate" hreflang="fr" href="index.html?Set-Language=fr" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
@@ -25,7 +25,7 @@
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <script type="text/javascript" src="/localconfig/ui.js"></script>
 </head>
-<body xml:lang="en">
+<body xml:lang="es">
 <form name="pageform" id="pageform">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="titleLink itemImage" name="bbox" type="hidden" />
@@ -33,31 +33,23 @@
 <div class="controlBar">
            <fieldset class="navitem">
                 <legend>IRI/LDEO</legend> 
-                      <a rev="section" class="navlink carryup" href="/">Climate Data Library</a>
+                      <a rev="section" class="navlink carryup" href="/">Biblioteca de Datos Climáticos</a>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Data Library</legend> 
-                     <span class="navtext">Help Resources</span>
+                <legend>Biblioteca de Datos</legend> 
+                     <span class="navtext">Ayuda y Recursos</span>
             </fieldset> 
  </div>
 <div class="searchDescription">
-<h2 property="term:title">Help Resources</h2>
-<p property="term:description">The Help Resources include basic and statistics tutorials, function documentation, and other resources to help you get the maximum utility out of the Data Library</p>.
-<p>The <a href="http://ingrid.ldeo.columbia.edu/">
-Data Library </a> is both a catalog and a library of datasets, i.e. it
-    both helps you figure out which data you want, and helps you 
-    work with the data. The interface allows
-you to make plots, tables, and files from any dataset, its subsets, or
-    processed versions thereof.</p>
-    <p> This data server is designed to make data accessible to
-people using WWW clients (viewers) and to serve as a data resource for WWW
-documents.  Since most documents cannot use raw data, the server is
-able to deliver the data in a variety of ways: as data files, as tables, and in a variety of plots (line, contour,
-color, vector) and plot formats (PostScript and gif).  Processing of
-the data, particularly averaging and sampling, can be requested as well.</p>
+<h2 property="term:title">Ayuda y Recursos</h2>
+<p property="term:description">
+La sección Ayuda y Recursos incluye tutoriales básicos y estadísticos, la documentación de las funciones, y otros recursos que permiten explotar la Biblioteca de Datos.</p>
 <p>
-The ultimate vision is to automatically create a web of hypertext that
-connects final results to analyses to the original data.</p>
+La <a href="http://ingrid.ldeo.columbia.edu/">Biblioteca de Datos</a> es ambos un catálogo y una biblioteca de bases de datos, i.e. permite encontrar los datos deseados tal como trabajarlos. La interfaz permite producir gráficos, tablas, y archivos desde culaquiera base de datos, su parte, o versiones tratadas.</p>
+    <p>
+Este servidor de datos está diseñado para que datos sean accesibles a clientes WWW y para servir como recurso de datos para documentos WWW. Como la mayoridad de los documentos no pueden utilisar datos brutos, el servidor puede distribuir datos de muchas maneras diferentes : como archivos de datos, tablas, y en una variedad de gráficos (línea, contornos, colores, vectores) y de formatos gráficos (PostScript y gif). Tratamiento de los datos, en particular promedio y muestreo, se puede solicitar también.</p>
+<p>
+La visión final es de crear automáticamente una red de hipertextos que conecta resultados finales a la aplicación de analises a los datos originales.</p>
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/">
 <a rel="notmaproom:tabterm" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial" ></a>
@@ -66,12 +58,13 @@ connects final results to analyses to the original data.</p>
   <a rel="canonical" href="http://vimeo.com/album/2118349"></a>
       <meta property="maproom:Sort_Id" content="a07" />
 <link rel="term:icon" href="tv64.png" />
-<h2 property="term:title">Video Tutorials</h2>
-<p property="term:description">Step by step video demonstrations of Data Library functionality.</p>
+<h2 property="term:title">Tutoriales Vídeo</h2>
+<p property="term:description">
+Demostraciones vídeo paso a paso de las funcionalidades de la Biblioteca de Datos.</p>
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend>Compartir</legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>
