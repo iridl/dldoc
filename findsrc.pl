@@ -1,6 +1,7 @@
 #!
 # suppresses output files (html from xhtml)
-open filelist,"find . -regex '.*\\.x?html[^~]*\$' |";
+open filelist,"find . -regex '.*\\.x*html[^~]*\$' |";
+#open filelist,"find . -name '.*\\.x?html[^~]*\$' |";
 while(<filelist>){
     chop;
     if(/^(.+).xhtml(\..+)?$/){
