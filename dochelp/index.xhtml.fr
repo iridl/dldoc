@@ -33,7 +33,7 @@
 <div class="controlBar">
            <fieldset class="navitem">
                 <legend>IRI/LDEO</legend> 
-                      <a rev="section" class="navlink carryup" href="/">Datathèque du Climat</a>
+                      <a rev="section" class="navlink carryup carryLanguage" href="/">Datathèque du Climat</a>
             </fieldset> 
            <fieldset class="navitem"> 
                 <legend>Datathèque</legend> 

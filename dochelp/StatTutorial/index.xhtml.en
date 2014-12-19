@@ -36,7 +36,7 @@
 <div class="controlBar">
            <fieldset class="navitem"  id="toSectionList">
                 <legend>Data Library</legend>
-                      <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/">Help Resources</a>
             </fieldset> 
            <fieldset class="navitem" id="chooseSection"> 
                 <legend about="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#tutorial"><span property="term:label">Tutorials</span></legend> 
