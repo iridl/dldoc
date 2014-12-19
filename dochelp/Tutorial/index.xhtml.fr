@@ -46,11 +46,11 @@
  </div>
 <div class="searchDescription">
 <h2 property="term:title">
-Naviguer la Datathèque de l'IRI: Un Tutoriel</h2>
+Naviguer la Datathèque de l'IRI : Un Tutoriel</h2>
 <p>
 La Datathèque est un outil extrêmement puissant qui permet d'accéder, manipuler, et visualiser une grande variété de données des sciences de la terre en tout type de format (par exemple, fichiers de données, tables), de tracé visuel (par exemple, contour, couleurs, vecteurs), et de format graphique (par exemple, PostScript, GIF).
 <span property="term:description">
-Ce tutoriel est une introduction à la structure de la Datathèque et aux nombreuses différentes manières d'y naviguer.
+Ce tutoriel est une introduction à la structure de la Datathèque et aux différentes manières d'y naviguer.
 </span>
 </p>
 </div>

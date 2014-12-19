@@ -46,7 +46,7 @@
 <h2 property="term:title">
 Techniques Statistiques dans la Datathèque : Un Tutoriel</h2>
 <p property="term:description">
-Les techniques statistiques sont des outils essentiels pour analyser de larges bases de données; ce tutoriel statistique couvre ainsi les thèmes essentiels pour la plupart des utilisateurs de la datathèque.</p>
+Les techniques statistiques sont des outils essentiels pour analyser de larges bases de données ; ce tutoriel statistique couvre ainsi les thèmes essentiels pour la plupart des utilisateurs de la datathèque.</p>
 <p>
 La Datathèque est un outil en ligne qui fournit l'accès à une abondance de données relatives au climat par l'intermédiaire d'une interface facile d'accès. Ingrid, le langage de programmation à partir duquel la Datathèque s'est construite, propose une variété de fonctions qui permettent de manipuler les données. Ces fonctions Ingrid sont simples à mettre en œuvre parce qu'elles sont éxécutées directement via l'interface de la Datathèque. La grande variété de fonctions disponibles facilite aussi bien l'utilisateur novice qu'expérimenté de la Datathèque.
 </p><p>
