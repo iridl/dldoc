@@ -64,7 +64,7 @@ Démonstrations pas à pas des fonctionalités de la Datathèque. </p>
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Partage</legend></fieldset>
+<fieldset class="navitem" id="share"><legend>Partager</legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>
