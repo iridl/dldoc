@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+ xml:lang="en"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Encontrar Datos en la Biblioteca de Datos</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="a05" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="index.html?Set-Language=fr" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="index.html?Set-Language=en" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/maproom/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+</head>
+<body>
+<form name="pageform" id="pageform">
+<input class="carryLanguage" name="Set-Language" type="hidden" />
+<input class="titleLink itemImage" name="bbox" type="hidden" />
+</form>
+<div class="controlBar">
+           <fieldset class="navitem">
+                <legend>IRI/LDEO</legend> 
+                      <a rev="notasection" class="navlink carryup" href="/">Biblioteca de Datos Climáticos</a>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Biblioteca de Datos</legend> 
+                     <span class="navtext">Encontrar Datos</span>
+            </fieldset> 
+ </div>
+<div class="searchDescription">
+<h2 property="term:title">Encontrar Datos en la Biblioteca de Datos</h2>
+<p property="term:description">
+Diferentes recursos para encontrar datos en la Biblioteca de Datos.</p>
+</div>
+<div class="rightcol tabbedentries" about="/docfind/">
+  <a rel="section" href="http://iridl.ldeo.columbia.edu/maproom/"></a>
+  <a rel="section" href="facetedbrowser.html"></a>
+  <a rel="section" href="databrief/index.html"></a>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Compartir</legend></fieldset>
+<fieldset class="navitem" id="contactus"></fieldset>
+</div>
+</body>
+</html>
+
+
+
