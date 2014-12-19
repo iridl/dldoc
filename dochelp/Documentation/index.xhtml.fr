@@ -36,7 +36,7 @@
 <div class="controlBar">
            <fieldset class="navitem"  id="toSectionList">
                 <legend>Datathèque</legend>
-                      <a rev="section" class="navlink carryup" href="/dochelp/">Aide et Ressources</a>
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/">Aide et Ressources</a>
             </fieldset> 
            <fieldset class="navitem"> 
                 <legend><span>Documentation</span></legend> Documentation des Fonctions            </fieldset> 
