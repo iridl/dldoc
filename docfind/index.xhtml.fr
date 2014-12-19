@@ -43,7 +43,6 @@
 <h2 property="term:title">Rechercher des Données dans la Datathèque</h2>
 <p property="term:description">
 Différentes ressources pour rechercher des données dans la Datathèque.</p>
-There are a number of resources to help find data in the Data Library.</p>
 </div>
 <div class="rightcol tabbedentries" about="/docfind/">
   <a rel="section" href="http://iridl.ldeo.columbia.edu/maproom/"></a>
