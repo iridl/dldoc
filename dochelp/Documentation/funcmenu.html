@@ -6,16 +6,22 @@
       xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title xml:lang="en"  property="term:title">Function Menu</title>
+<title xml:lang="es"  property="term:title">Menú de las Funciones</title>
+<title xml:lang="fr"  property="term:title">Menu des Fonctions/title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="canonical" href="funcmenu.html" />
       <meta property="maproom:Sort_Id" content="a07" />
       <meta property="term:description" xml:lang="en"  content="Functions that can be used to analyze data within the Data Library." />
+      <meta property="term:description" xml:lang="es"  content="Fonciones disponibles para analizar los datos de la Biblioteca de Datos." />
+      <meta property="term:description" xml:lang="fr"  content="Fonctions disponibles pour analiser les données de la Datathèque." />
+      <link class="altLanguage" rel="alternate" hreflang="en" href="funcindex.html?Set-Language=en" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="funcindex.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="funcindex.html?Set-Language=fr" />      
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
@@ -171,15 +177,28 @@ column-count: 2;
 </head>
 <body>
 <form name="pageform" id="pageform">
+<input name="lang" type="hidden" />
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 </form>
 <div class="controlBar">
            <fieldset class="navitem"  id="toSectionList">
-                <legend>Help Resources</legend>
-                      <a rev="section" class="navlink carryup" href="/dochelp/Documentation/">Function Documentation</a>
+                <legend><span class="langgroup">
+                        <span lang="en">Help Resources</span>
+                        <span lang="es">Ayuda y Recursos</span>
+                        <span lang="fr">Aide et Ressources</span>
+                        </span></legend>
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/Documentation/"><span class="langgroup">
+                        <span lang="en">Function Documentation</span>
+                        <span lang="es">Documentación de las Funciones</span>
+                        <span lang="fr">Documentation des Fonctions</span>
+                        </span></a>
             </fieldset> 
            <fieldset class="navitem" id="chooseSection"> 
-                <legend><span>Documentation</span></legend> 
+                <legend><span>span class="langgroup">
+					<span lang="en">Documentation</span>
+					<span lang="es">Documentación</span>
+					<span lang="fr">Documentation</span>
+					</span></span></legend> 
             </fieldset> 
 </div>
 <div id="Fdoc" class="ui-tabs-panel">
@@ -239,7 +258,11 @@ USING NAMESPACE
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend><span class="langgroup">
+					<span lang="en">Share</span>
+					<span lang="es">Compartir</span>
+					<span lang="fr">Partager</span>
+					</span></legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

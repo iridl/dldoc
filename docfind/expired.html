@@ -13,11 +13,16 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta property="maproom:Sort_Id" content="a03c" />
-<title property="term:title">Dataset by expected update</title>
+<title property="term:title xml:lang="en">Dataset by expected update</title>
+<title property="term:title xml:lang="es">Bases de Datos por fecha de actualización esperada</title>
+<title property="term:title xml:lang="fr">Bases de Données par date de mise à jour escomptée</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="canonical" href="expired.html" />
       <meta property="maproom:Sort_Id" content="a03d" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="facetedbrowser.html?Set-Language=en" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="facetedbrowser.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="facetedbrowser.html?Set-Language=fr" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
@@ -101,11 +106,23 @@ margin-top: 4pt;
                       <a rev="section" class="navlink carryup carryLanguage" href="/docfind/">
 		      <span class="langgroup">
 		      <span lang="en">Finding Data</span>
+   		      <span lang="es">Encontrar Datos</span>
+		      <span lang="fr">Rechercher des Données</span>
 		      </span></a>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Data Library</legend> 
-                     <span class="navtext">Datasets by expected update time</span>
+                <legend>
+            <span class="langgroup">
+		      <span lang="en">Data Library</span>
+   		      <span lang="es">Biblioteca de Datos</span>
+		      <span lang="fr">Datathèque</span>
+		      </span></legend> 
+                     <span class="navtext">
+        	<span class="langgroup">
+		      <span lang="en">Datasets by expected update time</span>
+   		      <span lang="es">Bases de Datos por fecha de actualización esperada</span>
+		      <span lang="fr">Bases de Données par date de mise à jour escomptée</span>
+		      </span>
             </fieldset> 
  </div>
 <div class="ui-tabs-panel valid">
@@ -175,7 +192,19 @@ ORDER BY ASC(?expires)
 }
 }
 </script>
-<p><span  property="term:description">Monitors datasets for scheduled updates</span>. <i>Expired</i> datasets means their update is expected soon.</p>
+<p><span  property="term:description">
+<span class="langgroup">
+		      <span lang="en">Monitors datasets for scheduled updates</span>
+		       <span lang="es">Monitoreo de las bases de datos en cuanto a su actualización programada</span>
+		       <span lang="fr">Suivi des bases de données quant à leur mise-à-jour prévue</span>
+		       </span>
+		      </span>.
+<span class="langgroup">
+		      <span lang="en"><i>Expired</i> datasets means their update is expected soon.</span>
+		      <span lang="es">Bases de datos <i>expiradas</i> quiere decir que su actualización se esperaba proximamente</span>
+		      <span lang="fr">Des bases de données <i>expirées</i> indiquent que leur mise-à-jour est attendue prochainement</span>
+		      </span>	      
+		      </p>
 <div class="itemTemplate">
 <div class="items">
                   <div class="item">
@@ -187,7 +216,11 @@ ORDER BY ASC(?expires)
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend><span class="langgroup">
+                      <span lang="en">Share</span>
+                      <span lang="es">Compartir</span>
+                      <span lang="fr">Partager</span>
+                     </span></legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

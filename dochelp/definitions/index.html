@@ -7,15 +7,21 @@
       xmlns:ct="http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title xml:lang="en"  property="term:title">Comprehendible Term Definition</title>
+<title xml:lang="es"  property="term:title">Definición de Términos Inteligibles</title>
+<title xml:lang="fr"  property="term:title">Définition de Termes Intelligibles</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
       <meta property="maproom:Sort_Id" content="b01" />
       <meta property="term:description" xml:lang="en"  content="Detailed definition for climate-related terms that are used within the Data Library." />
+      <meta property="term:description" xml:lang="es"  content="Detalladas definiciones para términos relativos al clima que se usan en la Biblioteca de Datos." />
+      <meta property="term:description" xml:lang="fr"  content="Définitions détaillées de termes relatifs au climat qui sont utilisés dans la Datathèque." />      
+      <link class="altLanguage" rel="alternate" hreflang="en" href="funcindex.html?Set-Language=en" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="funcindex.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="funcindex.html?Set-Language=fr" />      
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
@@ -65,6 +71,7 @@ table {width: 750px; float: right}
 </head>
 <body>
 <form name="pageform" id="pageform">
+<input name="lang" type="hidden" />
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="share oneword bodyAttribute" name="word" type="hidden" />
 </form>
@@ -121,11 +128,23 @@ UNION {?asynset wn30:hasSense ?acompterm; wn30:hasGloss ?df . ?acompterm wn30:ha
 }
 </script>
            <fieldset class="navitem"  id="toSectionList">
-                <legend>Help Resources</legend>
-                      <a rev="section" class="navlink carryup" href="/dochelp/compterms.html">Comprehendible Terms Index</a>
+                <legend><span class="langgroup">
+                        <span lang="en">Help Resources</span>
+                        <span lang="es">Ayuda y Recursos</span>
+                        <span lang="fr">Aide et Ressources</span>
+                        </span></legend>
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/compterms.html"><span class="langgroup">
+                        <span lang="en">Comprehendible Terms Index</span>
+                        <span lang="es">Índice de Términos Inteligibles</span>
+                        <span lang="fr">Index de Termes Intelligibles</span>
+                        </span></a>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Comprehendible Term</legend> 
+                <legend><span class="langgroup">
+                        <span lang="en">Comprehendible Term</span>
+                        <span lang="es">Término Inteligible</span>
+                        <span lang="fr">Terme Intelligible</span>
+                        </span></legend> 
 <span class="ctTemplate">
 <select name="word" class="pageformcopy">
   <option class="current"></option>
@@ -212,7 +231,11 @@ UNION { ?sampleanchor wn20schema:containsWordSense ?sense  .
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend><span class="langgroup">
+					<span lang="en">Share</span>
+					<span lang="es">Compartir</span>
+					<span lang="fr">Partager</span>
+					</span></legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

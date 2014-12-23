@@ -6,17 +6,17 @@
       xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
+ xml:lang="es"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Finding Data in the Data Library</title>
+<title>Preguntas Técnicas Sobre la Biblioteca de Datos</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="stylesheet" type="text/css" href="/dochelp/doc.css" />
 <link rel="canonical" href="index.html" />
-      <meta property="maproom:Sort_Id" content="a02" />
-<link class="altLanguage" rel="alternate" hreflang="es" href="index.html?Set-Language=es" />
+      <meta property="maproom:Sort_Id" content="a04" />
+<link class="altLanguage" rel="alternate" hreflang="en" href="index.html?Set-Language=en" />
 <link class="altLanguage" rel="alternate" hreflang="fr" href="index.html?Set-Language=fr" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
@@ -26,7 +26,7 @@
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <script type="text/javascript" src="/localconfig/ui.js"></script>
 </head>
-<body xml:lang="en">
+<body xml:lang="es">
 <form name="pageform" id="pageform">
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="titleLink itemImage" name="bbox" type="hidden" />
@@ -34,29 +34,23 @@
 </form>
 <div class="controlBar">
            <fieldset class="navitem" id="toSectionList">
-                <legend>Help Resources</legend> 
-                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/QA/">Questions and Answers</a>
+                <legend>Ayuda y Recursos</legend> 
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/QA/">Preguntas y Respuestas</a>
             </fieldset> 
             <fieldset class="navitem" id="chooseSection"> 
-                <legend>Q&amp;A</legend> 
+                <legend>P&amp;R</legend> 
             </fieldset> 
  </div>
 <div class="searchDescription">
-<h2 property="term:title">Finding Data in the Data Library</h2>
+<h2 property="term:title">Preguntas Técnicas Sobre la Biblioteca de Datos</h2>
 <p property="term:description">
-A selection of previously-asked questions about
-finding data in the Data Library.</p>
-<p>Please follow the links for more detailed answers.
-There is also section in the 
-<a href="/dochelp/Tutorial/Datasets/Location/">Data Library Tutorial</a> 
-that 
-demonstrates methods of finding data that you may find useful as well.
-</p>
+Una selección de preguntas a proposito de algunos aspetos técnicos de la Biblioteca de Datos.</p>
+<p>Por favor siga los enlaces para respuestas mas detalladas.</p>
 </div>
-<div class="rightcol tabbedentries" about="/dochelp/QA/Data/">
+<div class="rightcol tabbedentries" about="/dochelp/QA/Technical/">
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend>Compartir</legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

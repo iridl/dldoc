@@ -6,16 +6,22 @@
       xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title xml:lang="en"  property="term:title">Function Documentation</title>
+<title xml:lang="es"  property="term:title">Documentación de las Funciones</title>
+<title xml:lang="fr"  property="term:title">Documentation des Fonctions</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="canonical" href="details/index.html" />
       <meta property="maproom:Sort_Id" content="b01" />
       <meta property="term:description" xml:lang="en"  content="Detailed documentation for functions that can be used to analyze data within the Data Library." />
+      <meta property="term:description" xml:lang="es"  content="Documentación detallada de las fonciones disponibles para analizar los datos de la Biblioteca de Datos." />
+      <meta property="term:description" xml:lang="fr"  content="Documentation détaillée des fonctions disponibles pour analiser les données de la Datathèque." />      
+<link class="altLanguage" rel="alternate" hreflang="en" href="funcindex.html?Set-Language=en" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="funcindex.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="funcindex.html?Set-Language=fr" />
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
@@ -106,6 +112,7 @@ table {width: 750px; float: right}
 </head>
 <body>
 <form name="pageform" id="pageform">
+<input name="lang" type="hidden" />
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 <input class="share onefunction bodyAttribute" name="func" type="hidden" />
 </form>
@@ -145,14 +152,34 @@ USING NAMESPACE
 }
 </script>
            <fieldset class="navitem"  id="toSectionList">
-                <legend>Help Resources</legend>
-                      <a rev="section" class="navlink carryup" href="/dochelp/Documentation/">Function Documentation</a>
+                <legend>
+                <span class="langgroup">
+                        <span lang="en">Help Resources</span>
+                        <span lang="es">Ayuda y Recursos</span>
+                        <span lang="fr">Aide et Ressources</span>
+                        </span>
+                        </legend>
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/Documentation/"><span class="langgroup">
+                        <span lang="en">Function Documentation</span>
+                        <span lang="es">Documentación de las Funciones</span>
+                        <span lang="fr">Documentation des Fonctions</span>
+                        </span>
+                        </a>
             </fieldset> 
            <fieldset class="navitem" id="chooseSection"> 
-                <legend><span>Documentation</span></legend> 
+                <legend><span class="langgroup">
+                <span lang="en">Documentation</span>
+                        <span lang="es">Documentación</span>
+                        <span lang="fr">Documentation</span>
+                        </span></legend> 
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend>Function</legend> 
+                <legend><span class="langgroup">
+                <span lang="en">Function</span>
+                        <span lang="es">Función</span>
+                        <span lang="fr">Fonction</span>
+                        </span>
+                        </legend> 
 <span class="fnTemplate">
 <select name="func" class="pageformcopy">
   <option class="current"></option>
@@ -246,12 +273,33 @@ USING NAMESPACE
 <h2></h2>
 <p class="fdesc"></p>
 <div class="syntax" inout="fn:in"><span class="in"></span><span class="funcname"></span></div>
+<span class="langgroup">
+<span lang="en">
 <table border="2"><tbody><tr><th colspan="4">Arguments</th></tr>
 <tr><th>label</th><th>type</th><th>Description</th></tr>
 <tr class="targ"><th class="label"></th><td class="type"></td><td class="desc"></td></tr>
 </tbody></table>
+</span>
+<span lang="es">
+<table border="2"><tbody><tr><th colspan="4">Argumentos</th></tr>
+<tr><th>término</th><th>tipo</th><th>Descripción</th></tr>
+<tr class="targ"><th class="label"></th><td class="type"></td><td class="desc"></td></tr>
+</tbody></table>
+</span>
+<span lang="en">
+<table border="2"><tbody><tr><th colspan="4">Arguments</th></tr>
+<tr><th>label</th><th>type</th><th>Description</th></tr>
+<tr class="targ"><th class="label"></th><td class="type"></td><td class="desc"></td></tr>
+</tbody></table>
+</span>
+</span>
 <div class="examp"></div>
-<h3>See Also</h3>
+<h3>
+<span class="langgroup">
+<span lang="en">See Also</span>
+<span lang="es">Ver También</span>
+<span lang="fr">Voir Aussi</span>
+</h3>
 <div class="seeAlso">
 <span class="term"></span><a class="afunc" href=""></a>
 </div>
@@ -260,7 +308,11 @@ USING NAMESPACE
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend><span class="langgroup">
+					<span lang="en">Share</span>
+					<span lang="es">Compartir</span>
+					<span lang="fr">Partager</span>
+					</span></legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>
