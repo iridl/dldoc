@@ -7,16 +7,22 @@
       xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
       version="XHTML+RDFa 1.0"
- xml:lang="en"
       >
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title xml:lang="en" property="term:title">Comprehendible Terms Index</title>
+<title xml:lang="es" property="term:title">Índice de Términos Comprensible</title>
+<title xml:lang="fr" property="term:title">Index de Termes Compréhensibles</title>
 <link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
 <link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
 <link rel="canonical" href="compterms.html" />
 <meta property="maproom:Sort_Id" content="a06" />
 <meta property="term:description" xml:lang="en"  content="Index for comprehendible climate-related terms that are used within the Data Library Maprooms." />
+<meta property="term:description" xml:lang="es"  content="Índice de términos relativos al clima que se usan en la Biblioteca de Datos y las Marpooms." />
+<meta property="term:description" xml:lang="fr"  content="Index de termes relatifs au climat qui sont utilisés dans la Datathèque et les Maprooms" />
+     <link class="altLanguage" rel="alternate" hreflang="en" href="compterms.html?Set-Language=en" />
+<link class="altLanguage" rel="alternate" hreflang="es" href="compterms.html?Set-Language=es" />
+<link class="altLanguage" rel="alternate" hreflang="fr" href="compterms.html?Set-Language=fr" /> 
 <link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
@@ -180,15 +186,30 @@ column-count: 3;
 </head>
 <body>
 <form name="pageform" id="pageform">
+<input name="lang" type="hidden" />
 <input class="carryLanguage" name="Set-Language" type="hidden" />
 </form>
 <div class="controlBar">
            <fieldset class="navitem"  id="toSectionList">
-                <legend>Data Library</legend>
-                      <a rev="section" class="navlink carryup" href="/dochelp/">Help Resources</a>
+                <legend>
+                <span class="langgroup">
+                <span lang="en">Data Library</span>
+                <span lang="es">Biblioteca de Datos</span>
+                <span lang="fr">Datathèque</span>
+                </span>
+                </legend>
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/"><span class="langgroup">
+                        <span lang="en">Help Resources</span>
+                        <span lang="es">Ayuda y Recursos</span>
+                        <span lang="fr">Aide et Ressources</span>
+                        </span></a>
             </fieldset> 
            <fieldset class="navitem" id="chooseSection"> 
-                <legend><span>Comprehendible Terms</span></legend> 
+                <legend><span class="langgroup">
+                        <span lang="en">Comprehendible Terms</span>
+                        <span lang="es">Términos Comprensibles</span>
+                        <span lang="fr">Termes Compréhensibles</span>
+                        </span></legend> 
             </fieldset> 
 </div>
 <div id="CTdoc" class="ui-tabs-panel">
@@ -242,7 +263,11 @@ UNION {?asynset wn30:hasSense ?acompterm; wn30:hasGloss ?df . ?acompterm wn30:ha
 </div>
 </div>
 <div class="optionsBar">
-<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="share"><legend><span class="langgroup">
+					<span lang="en">Share</span>
+					<span lang="es">Compartir</span>
+					<span lang="fr">Partager</span>
+					</span></legend></fieldset>
 <fieldset class="navitem" id="contactus"></fieldset>
 </div>
 </body>

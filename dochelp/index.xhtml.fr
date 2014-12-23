@@ -47,7 +47,7 @@ La section Aide et Ressources inclue des tutoriels de base et statistique, la do
 <p>
 La <a href="http://ingrid.ldeo.columbia.edu/">Datathèque</a> est à la fois un catalogue et une bibliothèque de bases de données, i.e. elle permet de trouver les données souhaitées et aussi de travailler dessus. L'interface permet de produire des graphiques, des tables, et des fichiers à partir de n'importe quelle base de données, d'une partie, ou de versions transformées.</p>
     <p>
-Ce serveur de données est conçu pour rendre accessible des données à quiconque utilise un client WWW et pour servir de ressource de données pour tous documents WWW. Comme le plupart des documents ne peuvent pas utiliser de données brutes, le serveur peut fournir les données de différentes façons : comme fichiers de données, tables, et une variété de graphiques (courbe, contour, couleur, vecteur) et de formats graphiques (PostScript and gif). Le traitement des données, en particulier pour moyenner et échantilloner, peut aussi être demandé.</p>
+Ce serveur de données est conçu pour rendre accessible des données à quiconque utilise un client WWW et pour servir de ressource de données pour tous documents WWW. Comme le plupart des documents ne peuvent pas utiliser de données brutes, le serveur peut fournir les données de différentes façons : comme fichiers de données, tables, et une variété de graphiques (courbe, contour, couleur, vecteur) et de formats graphiques (PostScript et gif). Le traitement des données, en particulier pour moyenner et échantilloner, peut aussi être demandé.</p>
 <p>
 La vision finale est de créer automatiquement une toile d'hypertextes qui connectent les résultats finaux aux analyses appliquées aux données originales. </p> 
 </div>
