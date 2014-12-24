@@ -39,7 +39,7 @@
                       <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/">Ayuda y Recursos</a>
             </fieldset> 
            <fieldset class="navitem"> 
-                <legend><span>Documentación</span></legend> Documentación de las Funciones
+                <legend>Documentación</legend>Documentación de las Funciones
             </fieldset> 
  </div>
 <div class="searchDescription">

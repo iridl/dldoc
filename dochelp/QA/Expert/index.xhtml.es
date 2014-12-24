@@ -35,7 +35,7 @@
 <div class="controlBar">
            <fieldset class="navitem" id="toSectionList">
                 <legend>Ayuda y Recursos</legend> 
-                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/QA/">Preguntas y Respuestas/a>
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/QA/">Preguntas y Respuestas</a>
             </fieldset> 
             <fieldset class="navitem" id="chooseSection"> 
                 <legend>P&amp;R</legend> 
