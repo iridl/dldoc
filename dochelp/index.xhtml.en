@@ -43,7 +43,7 @@
 <div class="searchDescription">
 <h2 property="term:title">Help Resources</h2>
 <p property="term:description">The Help Resources include basic and statistics tutorials, function documentation, and other resources to help you get the maximum utility out of the Data Library</p>.
-<p>The <a href="http://ingrid.ldeo.columbia.edu/">
+<p>The <a class="carryLanguage" href="http://ingrid.ldeo.columbia.edu/">
 Data Library </a> is both a catalog and a library of datasets, i.e. it
     both helps you figure out which data you want, and helps you 
     work with the data. The interface allows

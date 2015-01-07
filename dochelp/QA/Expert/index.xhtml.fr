@@ -49,7 +49,7 @@ Une sélection de questions sur la manipulation de données dans la Datathèque.
 <p>Merci de suivre les liens pour des réponses détaillées.</p>
 <p>
 La plupart des exemples commencent leur explication après la sélection des données souhaitées dans la Datathèque. Si vous avez des difficultés pour trouver des données, référez-vous à la section 
-"<a href="/dochelp/Tutorial/Datasets/Location/">Localiser des Données</a>" 
+"<a class="carryLanguage" href="/dochelp/Tutorial/Datasets/Location/">Localiser des Données</a>" 
 du Tutorial de la Datathèque puis reprenez le cours de ces exemples.
 </p>
 </div>

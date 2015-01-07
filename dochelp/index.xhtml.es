@@ -45,7 +45,7 @@
 <p property="term:description">
 La sección Ayuda y Recursos incluye tutoriales básicos y estadísticos, la documentación de las funciones, y otros recursos que permiten explotar la Biblioteca de Datos.</p>
 <p>
-La <a href="http://ingrid.ldeo.columbia.edu/">Biblioteca de Datos</a> es ambos un catálogo y una biblioteca de bases de datos, i.e. permite encontrar los datos deseados tal como trabajarlos. La interfaz permite producir gráficos, tablas, y archivos desde culaquiera base de datos, su parte, o versiones tratadas.</p>
+La <a class="carryLanguage" href="http://ingrid.ldeo.columbia.edu/">Biblioteca de Datos</a> es ambos un catálogo y una biblioteca de bases de datos, i.e. permite encontrar los datos deseados tal como trabajarlos. La interfaz permite producir gráficos, tablas, y archivos desde culaquiera base de datos, su parte, o versiones tratadas.</p>
     <p>
 Este servidor de datos está diseñado para que datos sean accesibles a clientes WWW y para servir como recurso de datos para documentos WWW. Como la mayoridad de los documentos no pueden utilisar datos brutos, el servidor puede distribuir datos de muchas maneras diferentes : como archivos de datos, tablas, y en una variedad de gráficos (línea, contornos, colores, vectores) y de formatos gráficos (PostScript y gif). Tratamiento de los datos, en particular promedio y muestreo, se puede solicitar también.</p>
 <p>

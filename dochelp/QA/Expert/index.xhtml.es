@@ -48,7 +48,7 @@ Una selección de preguntas sobre la manipulación de datos en la Biblioteca de 
 <p>Por favor siga los enlaces para respuestas mas detalladas.</p>
 <p>
 La mayoridad de estos ejemplos empieza su explicación después de encontrar los datos necesarios en la Biblioteca de Datos. Si tiene dificultad para encontrar datos, consulte la sección  
-"<a href="/dochelp/Tutorial/Datasets/Location/">Colocar Datos</a>" 
+"<a class="carryLanguage" href="/dochelp/Tutorial/Datasets/Location/">Colocar Datos</a>" 
 del Tutorial de la Biblioteca de Datos y vuelva aquí para seguir con estos ejemplos.
 </p>
 </div>

@@ -47,7 +47,7 @@
 Une sélection de questions sur la recherche de données dans la Datathèque.
 </p>
 <p>Merci de suivre les liens pour des réponses détaillées.
-Il y a aussi une section du <a href="/dochelp/Tutorial/Datasets/Location/">Tutoriel de la Datathèque</a> qui propose des méthodes pour rechercher des données qui peuvent être utiles.
+Il y a aussi une section du <a class="carryLanguage" href="/dochelp/Tutorial/Datasets/Location/">Tutoriel de la Datathèque</a> qui propose des méthodes pour rechercher des données qui peuvent être utiles.
 </p>
 </div>
 <div class="rightcol tabbedentries" about="/dochelp/QA/Data/">

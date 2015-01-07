@@ -52,7 +52,7 @@ one easy-to-use interface.  Ingrid, the programming language on which the Data L
 These Ingrid functions are simple to perform because they are executed directly within the Data Library interface.
 The wide variety of available functions makes the Data Library beneficial to the novice and advanced user.
 </p><p>
-While the first Data Library tutorial, <a href="../Tutorial/">Navigating Through the Data Library</a>, is 
+While the first Data Library tutorial, <a class="carryLanguage" href="../Tutorial/">Navigating Through the Data Library</a>, is 
 primarily focused on introducing the Data Library to new users, this statistics-based tutorial
 facilitates the use of statistical functions within the Data Library, 
 and even though it concentrates on some advanced techniques, the sections still cover many basic skills.

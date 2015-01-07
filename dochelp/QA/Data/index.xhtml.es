@@ -47,7 +47,7 @@
 Una selección de preguntas sobre como encontrar datos en la Biblioteca de Datos.</p>
 <p>Por favor siga los enlaces para respuestas mas detalladas.
 Hay también una sección en el 
-<a href="/dochelp/Tutorial/Datasets/Location/">Tutorial de la Biblioteca de Datos</a> 
+<a class="carryLanguage" href="/dochelp/Tutorial/Datasets/Location/">Tutorial de la Biblioteca de Datos</a> 
 que indica métodos para encontrar datos, que puede ser útil. 
 </p>
 </div>
