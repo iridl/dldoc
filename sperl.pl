@@ -4,6 +4,11 @@ print '<rdf:RDF
   xmlns:maproomregistry ="http://iridl.ldeo.columbia.edu/maproom/maproomregistry.owl#">',"\n",
     "<owl:Ontology rdf:about=\"\">\n";
 foreach $vval (@ARGV){
+    if($vval =~ /.*\.owl$/){
+    print "<owl:imports rdf:resource=\"$vval\" />\n";
+    }
+    else {
     print "<maproomregistry:importsRdfa rdf:resource=\"$vval\" />\n";
+    }
 }
 print "</owl:Ontology></rdf:RDF>\n"
