@@ -25,8 +25,11 @@
       <!-- FIND THE PAGE WE ARE ON ( WHICH IS ALSO THE SECTION) AND SET UP NAVIGATION -->
       <xsl:variable name="pageloc" select="./@about" />
       <xsl:variable name="pageuri" select="concat('file://',./@about)" />
-      <xsl:variable name="pagedir" select="concat('file:///',$topdir,replace(./@about,'/[^/]+\.html$','/'))" />
-      <div class="rightcol">
+      <xsl:variable name="pageuri1" select="replace($pageuri,'/$','/index.html')" />
+      <xsl:variable name="pageuri2" select="replace($pageuri,'/index.html$','/')" />
+      <xsl:variable name="pageuri3" select="concat('file://',$topdir,replace($pageuri1,'file://',''))" />
+      <xsl:variable name="pagedir" select="concat('file://',$topdir,replace(./@about,'/[^/]+\.html$','/'))" />
+      <div class="rightcol">                      
       <div class="ui-tabs">
          <ul class="ui-tabs-nav">
             <xsl:for-each select="*[attribute::rel='maproom:tabterm']">
@@ -48,7 +51,7 @@
                     <!-- BUILD LIST OF SUB-SECTION URLS -->
                     <xsl:variable name="subsectionurls" as="xs:string*">
                        <xsl:sequence 
-                          select="$tabs/rdf:RDF/rdf:Description[@rdf:about=$pageuri]/vocab:section/@rdf:resource[1]"/>
+                          select="$tabs/rdf:RDF/rdf:Description[(@rdf:about=$pageuri1) or (@rdf:about=$pageuri2) or (@rdf:about=$pageuri3)]/vocab:section/@rdf:resource[1]"/>
                     </xsl:variable>
                       <!-- <div class="subsectionurls">
                       <xsl:value-of select="$subsectionurls" />
