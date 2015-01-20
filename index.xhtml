@@ -79,7 +79,7 @@ if(mypost['type'] == 'link'){
 myout.innerHTML='<div class="rsstitle"><a href="' + mypost['link-url'] + '">' + mypost['link-text'] +'</a>' + mypost['link-description'] +  '</div>';
 }
 if(mypost['type'] == 'photo'){
-myout.innerHTML='<div class="rssbody">' + '<img src="' + mypost['photo-url-400'] + '"/>' + mypost['photo-caption'] + '<div><a href="' + mypost['photo-link-url'] + '">visit page</a></div>' +'</div>';
+myout.innerHTML='<div class="rssbody">' + '<img src="' + mypost['photo-url-400'] + '"/>' + mypost['photo-caption'] + '<div><a class="carryLanguage" href="' + mypost['photo-link-url'] + '">visit page</a></div>' +'</div>';
 }
 if(mypost['type'] == 'video'){
 myout.innerHTML='<div class="rssbody">' + mypost['video-source'] + mypost['video-caption'] +'</div>';
@@ -172,7 +172,6 @@ Es una herramienta poderosa que permite lo siguiente libre de costos :
 <script type="text/javascript" src="http://iridl.tumblr.com/api/read/json?num=1&amp;callback=processPosts" async="async"></script>
 </div>
 <div class="rightcol tabbedentries" about="/" >
-  <a rel="section" href="http://iridl.ldeo.columbia.edu/maproom/"></a>
   <a rel="section" href="SOURCES/"></a>
   <a rel="section" href="docfind/databrief/"></a>
   <a rel="section" href="dochelp/Tutorial/index.xhtml.en"></a>
