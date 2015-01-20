@@ -242,6 +242,8 @@
 		     </xsl:otherwise>
 		     </xsl:choose>
 </xsl:template>
+    <xsl:template name="shutSaxonUp" match="html:Nothing">
+</xsl:template>
 </xsl:stylesheet>
 
 
