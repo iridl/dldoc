@@ -11,9 +11,10 @@
 	    xmlns:iriterms="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#">
 <xsl:output method="xhtml" indent="yes" encoding="utf-8" doctype-system="about:legacy-compat" />
 <xsl:param name="topdir" />
+<xsl:param name="metadata" />
 <xsl:variable name="language" select="/html:html/html:body/@xml:lang | /html:html/@xml:lang"/> <!-- LANG OF PAGE WE ARE ON -->
 <xsl:variable name="defaultlanguage" select="'en'"/> <!-- DEFAULT LANG FOR SECTIONS -->
-<xsl:variable name="tabs" select="document('tabs.xml')"/> <!-- WHERE ALL THE RDF IS STORED -->
+<xsl:variable name="tabs" select="document($metadata)"/> <!-- WHERE ALL THE RDF IS STORED -->
 
     <xsl:template match="@*|node()"> <!-- COPY CONTENTS OF XHTML FILE AS IS -->
       <xsl:copy>
@@ -29,7 +30,7 @@
       <xsl:variable name="pageuri2" select="replace($pageuri,'/index.html$','/')" />
       <xsl:variable name="pageuri3" select="concat('file://',$topdir,replace($pageuri1,'file://',''))" />
       <xsl:variable name="pagedir" select="concat('file://',$topdir,replace(./@about,'/[^/]+\.html$','/'))" />
-      <div class="rightcol">                      
+      <div class="rightcol">        
       <div class="ui-tabs">
          <ul class="ui-tabs-nav">
             <xsl:for-each select="*[attribute::rel='maproom:tabterm']">
