@@ -20,7 +20,7 @@
 <link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
 <link rel="shortcut icon" href="/uicore/icons/iri32.png" />
 <link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
-<link rel="icon" href="../uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="icon" href="/uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
 <link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
 <script type="text/javascript" src="/uicore/uicore.js"></script>
 <script type="text/javascript" src="/localconfig/ui.js"></script>
