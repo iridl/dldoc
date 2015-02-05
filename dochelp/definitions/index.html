@@ -162,7 +162,7 @@ PREFIX wn20schema: &lt;http://www.w3.org/2006/03/wn/wn20/schema/>
 PREFIX wn30: &lt;http://purl.org/vocabularies/princeton/wn30/>
 PREFIX ct: &lt;http://iridl.ldeo.columbia.edu/ontologies/compterms.owl/>
 PREFIX term: &lt;http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#>
-PREFIX iridl: <http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
+PREFIX iridl: &lt;http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#>
 CONSTRUCT   { ?sense rdf:type ct:word; ct:def ?df; rdfs:label ?lb ; iridl:isReferencedIn ?uri . 
 ?uri term:title ?ptitle ; term:description ?pdesc ; iridl:containsSample ?sampleanchor }
 WHERE { { BIND ( wn30:wordsense-lasso_regression-noun-1 AS ?word )
