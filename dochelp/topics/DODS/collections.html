@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dataset/Collection exchange</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
+<link rel="canonical" href="collections.html" />
+      <meta property="maproom:Sort_Id" content="d05" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="/uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<script type="text/javascript" src="/localconfig/ui.js"></script>
+</head>
+<body xml:lang="en">
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Topics</legend> 
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/topics/DODS/">Ingrid and OPeNDAP</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Ingrid and OPeNDAP</legend> 
+            </fieldset> 
+ </div>
+    <h1 property="term:title">Dataset/Collection exchange</h1>
+<p><font color="green" property="term:description">standard description of data collections</font></p><p>Collections are currently too
+large for OPeNDAP but still considered by most users as a single
+entity (a half-century 24 member ensemble of GCM runs, six-hourly,
+daily, monthly, for example).</p>
+<p>
+While Ingrid makes no structural distinction between a dataset and a
+  collection, the DODS mechanism transmits a single dds and das, and
+  Ingrid transmits a set of unique independent variables for
+  netcdf-like clients, so there is a practical limit on how
+  complicated a DODS dataset can be.
+</p><p>
+There is thus an ad-hoc definition where datasets without independent
+variables are considered to be collections, e.g. do not offer the
+option of transmitting with DODS.
+</p><p>
+example: <a href="/SOURCES/.MIT/">MIT</a>
+<br />
+example: <a href="/SOURCES/.TAMU/">TAMU</a>
+</p><p>
+Currently Ingrid uses an XML document to transmit <i>collections</i>,
+  i.e. datasets without independent variables.  The key point is that
+  the parts of the collection are transmitted by reference.
+<br clear="all" />
+For example:
+<quote>
+<b>http://isis.ldeo.columbia.edu:2345/SOURCES/.NOAA/.NODC/.WOA98/index.xml</b>
+</quote>
+returns
+<pre>
+&lt;dataset dodsref="dods"&gt;
+&lt;name&gt;WOA98&lt;/name&gt;
+&lt;fullname&gt;NOAA NODC WOA98&lt;/fullname&gt;
+&lt;references&gt;Conkright:etal1998&lt;/references&gt;
+&lt;description&gt;NOAA NODC WOA98:  World Ocean Atlas 1998, an atlas of objectively analyzed fields of major ocean parameters&lt;/description&gt;
+&lt;document href=".dataset_documentation.html"&gt;dataset documentation&lt;/document&gt;
+&lt;dataset href=".ANNUAL/index.xml" dodsref=".ANNUAL/dods"&gt;&lt;name&gt;ANNUAL&lt;/name&gt;&lt;/dataset&gt;
+&lt;dataset href=".MONTHLY/index.xml" dodsref=".MONTHLY/dods"&gt;&lt;name&gt;MONTHLY&lt;/name&gt;&lt;/dataset&gt;
+&lt;dataset href=".SEASONAL/index.xml" dodsref=".SEASONAL/dods"&gt;&lt;name&gt;SEASONAL&lt;/name&gt;&lt;/dataset&gt;
+&lt;/dataset&gt;
+</pre>
+
+or
+<quote>
+<b>http://ingrid.ldeo.columbia.edu/SOURCES/.CAC/index.xml</b>
+</quote>
+ returns
+<pre>
+&lt;dataset dodsref="dods"&gt;
+&lt;name&gt;CAC&lt;/name&gt;
+&lt;fullname&gt;CAC&lt;/fullname&gt;
+&lt;description&gt;CAC:  Climate Analysis Center&lt;/description&gt;
+&lt;history&gt;Climate Analysis Center SST&lt;/history&gt;
+&lt;document href=".dataset_documentation.html"&gt;dataset documentation&lt;/document&gt;
+&lt;dataset href=".climatology/index.xml" dodsref=".climatology/dods"&gt;&lt;name&gt;climatology&lt;/name&gt;&lt;/dataset&gt;
+&lt;dataset href=".smoothed/index.xml" dodsref=".smoothed/dods"&gt;&lt;name&gt;smoothed&lt;/name&gt;&lt;/dataset&gt;
+&lt;variable dodsref=".sst/dods"&gt;&lt;name&gt;sst&lt;/name&gt;&lt;/variable&gt;
+&lt;variable dodsref=".ssta/dods"&gt;&lt;name&gt;ssta&lt;/name&gt;&lt;/variable&gt;
+&lt;/dataset&gt;
+</pre>
+</p><p>
+Soon Ingrid will use a standard XML document to transmit collections -- <a href="http://www.unidata.ucar.edu/projects/THREDDS/tech/">THREDDS</a>, e.g. <a href="http://iridl.ldeo.columbia.edu/SOURCES/thredds.xml">SOURCES</a>
+</p>  </body>
+</html>
+

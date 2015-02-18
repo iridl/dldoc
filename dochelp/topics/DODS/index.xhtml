@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ingrid and OPeNDAP</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
+<link rel="canonical" href="index.html" />
+      <meta property="maproom:Sort_Id" content="z02" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="/uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<link rel="term:isDescribedBy" href="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#climate" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<script type="text/javascript" src="/localconfig/ui.js"></script>
+</head>
+<body xml:lang="en">
+<div class="controlBar">
+           <fieldset class="navitem">
+                <legend>Help Resources</legend> 
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/topics/">Topics</a>
+            </fieldset> 
+           <fieldset class="navitem"> 
+                <legend>Topics</legend> 
+                     <span class="navtext">Ingrid and OPeNDAP</span>
+            </fieldset> 
+ </div>
+<div class="searchDescription">
+<h1 align="center" property="term:title">Ingrid and OPeNDAP</h1>
+
+<p>Ingrid is used to implement the IRI Climate Data Library.  There are
+three major goals: helping users find suitable datasets, providing a
+useful summary of the dataset once found, and helping users make use
+of the data in that dataset.  INGRID uses an object-oriented
+approach to create a WWW-accessible environment where datasets can be
+found, accessed, viewed, and manipulated.
+</p>
+<p property="term:description">
+Ingrid uses OPeNDAP to exchange data with itsself, get data from other
+OPeNDAP servers, and send data to OPeNDAP clients.  While the implementation
+does not depend on the OPeNDAP core, there have been no intended
+extensions to the OPeNDAP protocol: all the uniquely Ingrid information
+is encoded in the filename part of the URL, which by definition is
+site dependent.
+</p>
+<p>
+The server is designed to be a WWW resource: users can write their own
+hypertext and simply link directly to data-based figures,
+calculations, even data-manipulating tools.  Alternatively, datasets
+and arbitrary subsets of datasets can be specified as urls for
+web-aware tools, or can be downloaded in a variety of formats for use
+in older tools.  While the dataset environment appears to be uniform,
+the datasets are spread over a network of data servers and local
+copies are updated automatically.  The Data Library is thus both a
+member of and a prototype for the next generation of tools that
+manipulate data and metadata directly from networks of dataset
+servers.
+</p>                                  
+<p>
+There are a number of current issues that OPeNDAP community can help address:
+<ul>
+<li>better data caching and transmission of update information needed
+for better data caching </li>
+
+<li>resolution of the conflict between clients that use name-mapping
+vs clients that use GRID structures: what is a server to do? Can we
+really set up structures to describe what is necessary to say about
+our data?</li>
+
+<li>standard description of data collections which are currently too
+large for OPeNDAP but still considered by most catalogs as a single
+entity (a half-century 24 member ensemble of GCM runs, six-hourly,
+daily, monthly, for example).</li>
+
+<li>standard description of available data manipulations</li>
+
+</ul>
+</p>
+</div>
+<div class="rightcol tabbedentries" about="/dochelp/topics/DODS/">
+<dirlist>
+<dt><a href="/dochelp/brief/">User Interface</a></dt>
+<dd>user interface</dd>
+<dt><a href="/dochelp/intro/design/">Design</a></dt>
+<dd>technical details</dd>
+</dirlist>
+</div>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="contactus"></fieldset>
+</div>
+</body>
+</html>

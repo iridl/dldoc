@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dataset Manipulations</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
+<link rel="canonical" href="manipulations.html" />
+      <meta property="maproom:Sort_Id" content="d06" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="/uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<script type="text/javascript" src="/localconfig/ui.js"></script>
+</head>
+<body xml:lang="en">
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Topics</legend> 
+                      <a rev="section" class="navlink carryup carryLanguage" href="/dochelp/topics/DODS/">Ingrid and OPeNDAP</a>
+            </fieldset> 
+            <fieldset class="navitem" id="chooseSection"> 
+                <legend>Ingrid and OPeNDAP</legend> 
+            </fieldset> 
+ </div>
+    <h3 property="term:title">Manipulations</h3>
+<font color="green" property="term:description">standard description of available data manipulations
+</font>
+<p>
+There are many manipulations available in Ingrid, some more useful
+  than others (see <a href="fnlist.html">function list</a>).  Of
+  particular interest is a function like <b>svd</b>, which does
+  singular value decomposition, i.e. returning a dataset (several
+  variables) from a variable.  The averaging function <b>average</b>
+  takes two dependent variables and a list of independent variables, regridding
+  the second to match the independent variables of the first.  In both
+  cases the metadata is an important part of the calculation.
+</p><p>
+But no number of available functions could stand in the way of a user
+  who was determined to type in his url the way the DODS-Grads server
+  had taught him.  So we installed a data server just for him.  It
+  would be nice if we could standardize.</p>
+  </body></html>

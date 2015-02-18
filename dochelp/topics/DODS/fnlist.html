@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://iridl.ldeo.columbia.edu/ontologies/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wms="http://www.opengis.net/wms#"
+      xmlns:iridl="http://iridl.ldeo.columbia.edu/ontologies/iridl.owl#"
+      xmlns:maproom="http://iridl.ldeo.columbia.edu/ontologies/maproom.owl#"
+      xmlns:term="http://iridl.ldeo.columbia.edu/ontologies/iriterms.owl#"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+      version="XHTML+RDFa 1.0"
+      >
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function List</title>
+<link rel="stylesheet" type="text/css" href="/uicore/uicore.css" />
+<link rel="stylesheet" type="text/css" href="/localconfig/ui.css" />
+<link rel="canonical" href="fnlist.html" />
+      <meta property="maproom:Sort_Id" content="d01" />
+<link class="carryLanguage" rel="home" href="http://iri.columbia.edu/" title="IRI" />
+<link class="carryLanguage" rel="home alternate" type="application/json" href="/localconfig/navmenu.json" />
+<link rel="shortcut icon" href="/uicore/icons/iri32.png" />
+<link rel="apple-touch-icon" sizes="54x54" href="/uicore/icons/iriwh.png" />
+<link rel="icon" href="/uicore/icons/iriwh.svg" sizes="any" type="image/svg+xml" />
+<script type="text/javascript" src="/uicore/uicore.js"></script>
+<script type="text/javascript" src="/localconfig/ui.js"></script>
+</head>
+<body  xml:lang="en">
+<div class="controlBar">
+           <fieldset class="navitem" id="toSectionList">
+                <legend>Topics</legend> 
+                      <a rev="notsection" class="navlink carryup carryLanguage" href="/dochelp/topics/DODS/">Ingrid and OPeNDAP</a>
+            </fieldset> 
+            <fieldset class="navitem"> 
+                <legend>Ingrid and OPeNDAP</legend>
+		Function List
+            </fieldset> 
+ </div>
+<p><b>!</b>[ingridinit]   ( any name object -- ) defines any as name in object. 
+</p><p><b>2Darea</b>[ingridinit]   ( stream -- stream' ) returns the surface area of the data. 
+</p><p><b>2Dintegral:dxdy</b>[ingridinit]   ( stream -- stream' ) returns integral over the surface without cos weighing. 
+</p><p><b>2unitcheck</b>[udunits]   ( unitname unitname -- unitname unitname unitS/name unitS/name flag ) returns false if both unitnames convert to structures, true otherwise. 
+</p><p><b>:RFREAD</b>[ingridinit]   ( stream -- stream' ) finishes off RFREAD 
+</p><p><b>:dataset</b>[newdata]   ( object object --  ) marks the end of a dataset, stores it by 
+</p><p><b>==</b>[fginterp]   ( any -- ) print FGIelement to stdout{.}  If ==alias or ==do exist within an object, they are used to print the object, i.e. == gives a relatively short representation. 
+</p><p><b>===</b>[fginterp]   ( any -- ) print FGIelement to stdout (long representation). 
+</p><p><b>BufferOrder</b>[task]   ( stream int -- stream' ) insures that the stream's buffer order is at least int. 
+</p><p><b>CommonStream</b>[stream]   ( <i>stream_1</i> \ldots <i>stream_n</i> n -- stream) Returns a stream which has only the common grids of the set. 
+</p><p><b>CommonUnits</b>[newdata]   ( -- object ) contains abbreviations for some common units.  
+</p><p><b>CompressionTypes</b>[ingridinit]   ( -- object ) holds predefined Compression types. 
+</p><p><b>DoTasks</b>[stream]   ( -- ) executes any currently scheduled tasks, sometimes useful for debugging.  </p><p><b>DebugTasks</b>[stream]   ( -- ) executes any currently scheduled tasks, tracing the task queue{.}  Sometimes useful for debugging.  \subsection{TestStream} </p><p><b>TestStream</b>[stream]   ( -- stream ) generates a test stream.  
+</p><p><b>Explicit:endLoop</b>[ingridinit]     ( dh -- h ) ends an explicit integration loop. 
+</p><p><b>FillNaN</b>[filters]   ( stream grid default -- stream' ) modifies a stream so that if it has a missing data flag the missing data is filled in. 
+</p><p><b>Fourier_transform</b>[fft]   ( stream grid sign -- stream' ) computes fouriertransform.  A word of warning:  From the continuous perspective, a periodic time series transforms to a finite set of frequencies, and likewise a finite time series transforms to a periodic set of frequencies.  The discrete fourier transform transforms from a periodic time series to a periodic frequency series.  In other words, the difference is only in the frequencies beyond the set presented.  At the moment, these routines label their output grids periodic always, but maybe someday I will figure out that I can consistently transform finite to periodic to finite and change the grid labelling accordingly. 
+</p><p><b>GRID</b>[filters]   ( stream grid low step hi -- stream' ) regrids stream to an evenly--spaced grid [ <i>low</i> to <i>high</i> by <i>step</i> ] in variable <i>grid</i>. \writedoc{\input{regrid.doc}} \section{rescale} This filter undoes any scale_factor and add_offset that might be on the current stream.  It comes in two flavors: FGIrescale, which uses InStream and takes its scale and offset from the stack, and Srescale, which uses SInStream so that it can be called within InStream-like routines, and takes its arguments from the top object on the stack. \subsection{rescale.h} \begin{includefile}[rescale.h] #include "stream.h"  
+</p><p><b>GRID</b>[ingridinit]   ( stream1 low step high -- stream' ) regrids evenly. 
+</p><p><b>GRIDParent</b>[stream]   ( -- object ) is the parent object for all the grid objects. It contains the words that can extract information \aword first ( grid -- grid firstvalue ) returns first value of a grid. \aword last ( grid -- grid lastvalue ) returns last value of a grid. \aword name ( grid -- grid name ) returns name of object. \aword units ( grid -- grid units ) returns units of object. \aword evenGRID ( grid -- grid' ) returns an equally spaced grid which spans the same range as the input grid. from grids. 
+</p><p><b>GrADSunitsdict</b>[grads]   ( -- object ) contains definitions for units, but everything comes out in GrADS format. 
+</p><p><b>IfFortranTask</b>[task]   ( taskp -- true/false ) 
+</p><p><b>InStream</b>[stream]   ( stream -- ) makes the stream the next input sequence for the task currently being defined.  This gets redefined for different stream sources, SInStream is the standard version. 
+</p><p><b>L4cycle:endLoop</b>[ingridinit]   ( dh -- h ) ends a Lorenz 4-cycle scheme integration loop. 
+</p><p><b>MATCH</b>[stream]   ( <i>stream_1</i> <i>stream_2</i> \ldots <i>stream_n</i> n <i>grid_1</i> \ldots <i>grid_m</i> m -- <i>stream_1'</i> <i>stream_2'</i> \ldots <i>stream_n'</i> ) { makes a set of <i>n</i> streams all have the same grid.  The chunksize is set to contain the <i>m</i> dimensions <i>grid_1 \ldots grid_m</i> in that order.  Alternatively, you can specify <i>null</i> for the chunk, in which case the chunk of the last stream is used.  Ranges on common grids are shrunk to match the smallest; a stream that doesn't depend on a particular grid has the same data for all values of that grid.  The matching is not complete: within the chunk data is not repeated}.  Works by creating a child object for each stream, a child which contains a modified &lt;SIRecord>.  
+</p><p><b>MATCHalong</b>[ingridinit]   ( stream1 ... streamN N grid -- stream1 ... streamN ) matches streams along the given grid without rechunking or reordering. 
+</p><p><b>NaN</b>[fginterp]   ( -- real ) real constant equal to NaN. 
+</p><p><b>NewEvenGRID</b>[grid]   ( name units type low step high -- grid ) returns a new grid.   Both name and units should be names. <i>type</i> should be either {\it ordered}, {\it periodic}, or {\it unordered}. 
+</p><p><b>NewGRID</b>[grid]   ( name units type array -- grid ) returns a new grid.   Both name and units should be names. <i>type</i> should be either {\it ordered}, {\it periodic}, or {\it unordered}.  The array can either be an array of numbers or of names; if it is names the type should be unordered.   If there is only a single element in the array, the [] can be omitted. 
+</p><p><b>NewGRIDdef</b>[grid]   ( stream name units type array -- stream ) defines a new grid within the current stream.  If the name matches one of the grids already defined, replaces it.  Otherwise, adds it as the slowest varying dimension not yet defined.   Both name and units should be names. <i>type</i> should be either {\it ordered}, {\it periodic}, or {\it unordered}.  The array can either be an array of numbers or of names; if it is names the type should be unordered. 
+</p><p><b>NewIntegerGRID</b>[ingridinit]   ( name N -- grid ) returns a grid that goes from 1 to N. 
+</p><p><b>NewSizedBuffer</b>[stream]   ( parent n wdsize  -- object ) returns an object which contains a first order buffer filled by the current task. 
+</p><p><b>NewStreamPtr</b>[stream]   ( nrdim mark grid1 \ldots gridn -- pointer ) This routine returns a new streamindex pointer given an array of independent variables and the number of dimensions in a chunk.  
+</p><p><b>NtoNaN</b>[ingridinit]   ( stream1 ... streamN N -- stream1 ... streamN ) applies toNaN to N streams. 
+</p><p><b>POPs</b>[kalman]   ( yearly -- dataset[ dpi eigenvalues eigenvectors ] ) computes Principle Oscillation Patterns. 
+</p><p><b>PrintStream</b>[stream]   ( stream -- ) prints all information for a stream, including data values. 
+</p><p><b>RANGE</b>[ingridinit]   ( low high -- ) sets range, i.e. centers of first and last color boxes. 
+</p><p><b>RANGE</b>[stream]   ( stream grid low high -- stream' ) samples stream along one coordinate.  Works by created an child object of the stream, a child which contains a modified &lt;SIRecord>. 
+</p><p><b>RANGEEDGES</b>[ingridinit]   ( low high -- ) sets range, i.e. bottom of first color box and top of last color box. 
+</p><p><b>RANGESPAN</b>[stream]   ( stream grid low high -- stream' ) samples stream along one coordinate.  Works by created an child object of the stream, a child which contains a modified &lt;SIRecord>. Differs from RANGENEAR in that the new grid spans low and high -- never rounds in even if that is closer to the limits.  Useful for setting up interpolations. 
+</p><p><b>REGRID</b>[regrid]   ( stream grid1 grid2 -- stream' ) regrids stream from grid1 to grid2. \tableofcontents \section{regrid.h} \begin{includefile}[regrid.h]       PARAMETER (NregridSize=4*7) 
+</p><p><b>REORDER</b>[stream]   ( stream grid1 \ldots gridn n -- stream' ) reorders stream so that the chunk for the stream has <i>n</i> dimensions and is ordered with the fastest varying dimension corresponding to <i>grid1</i>, the second to <i>grid2</i>, etc.  Works by created an child object of the stream, a child which contains a modified &lt;SIRecord>.  
+</p><p><b>RESCALE</b>[filters]   ( stream scale offset -- stream' ) multiplies data by a scalar and adds a scalar.   If the scale and offset match scale_factor and add_offset, modifies them in the output stream; otherwise, adds a comment to the history.  Also changes the missing_value flag to NaN.    Does nothing if scale is 1 and offset is 0. 
+</p><p><b>RFREAD:</b>[ingridinit]   ( stream -- stream iindex counts limits TIN cufS ) prepares arguments for DOcufR. Uses SIRecord, bufferSIRecord, and 
+</p><p><b>RFreadinputs</b>[cuf]   ( stream -- stream iindex counts limits cufS ) creates 
+</p><p><b>SAMPLE</b>[stream]   ( stream grid1 grid2 -- stream' ) samples stream along grid1 according to grid2. 
+</p><p><b>SCALE</b>[ingridinit]   ( stream scale_factor add_offset -- stream' ) scales stream according to scale_factor and add_offset, and the attributes are changed accordingly. 
+</p><p><b>SELECT</b>[ingridinit]   ( dataset stream -- dataset' ) selects data based on stream.  stream should have exactly one grid that has more that one point. 
+</p><p><b>SIRecord</b>[grid]   {\it or} bufferSIRecord ( grid -- grid SIRecordid ) returns SIRecord of a grid. 
+</p><p><b>SM121</b>[filters]   ( stream grid1 grid2 <i>n</i> -- stream' ) applies <i>n</i> passes  of two-dimensional 121 smoothing to a stream{.} grid1 and grid2 are the two dimensions that are smoothed over. 
+</p><p><b>STEP</b>[stream]   ( stream grid step -- stream' ) samples stream along one coordinate.  Works by created an child object of the stream, a child which contains a modified &lt;SIRecord>. 
+</p><p><b>STREAM</b>[stream]   ( -- object ) parent object for streams. 
+</p><p><b>STREAMDOC</b>[stream]   ( -- object ) documentation words for STREAMs. 
+</p><p><b>STREAMGRID</b>[ingridinit]   ( stream array -- stream grid ) creates a grid that matches a stream in name and units with a set of values `array'. 
+</p><p><b>STREAMGRID</b>[zterp]   ( stream array -- stream grid ) creates a grid that matches a stream in name and units with a set of values {\it array}.  </p><p><b>toS</b>[zterp]   ( <i>{T(X)}</i> <i>{S(X)}</i> <i>{S_0/[ s_1 \ldots s_n ]}</i> <i>X</i> -- <i>{T(S_0)}</i> ) changes a stream T(X) to a stream T(S). The four inputs are the input stream <i>T(X,\ldots)</i>, the coordinate stream <i>S(X,\ldots)</i>, the values of <i>S</i> that should be used specified as either a grid <i>S_0</i> or as simply an array of values (which toS will then convert to a grid), and <i>X</i> the grid that is being replaced by <i>S_0</i>.  The output is the new stream <i>T(S_0)</i>.  For example, to get depth of the <i>20^\circ</i> isotherm, you would say  <p align="center"> temp Z exch 20 Z toS </p> To get the depth of several isotherms, you would say <p align="center"> temp Z exch [ 20 21 22 ] Z toS </p> To get the salinity of the <i>20^\circ</i> isotherm, you would say <p align="center"> sal temp 20 Z toS </p> 
+</p><p><b>SUM</b>[sum]   ( stream grid -- stream ) sums data in {\it stream} over {\it grid}.  So let us talk about a stream <i>D(m_1, m_2, \ldots , m_n)</i> and say that the grid specified corresponds to dimension <i>g</i> (e.g. <i>m_g</i>) and the highest dimension within the chunk is <i>c</i>.  To be relatively efficient, instead of reordering the data to make it easy to write the averaging code, this averaging code deals with two possible cases: the grid to be sumd over is within a chunk, or the grid to be sumed over corresponds to many chunks.  In either case, there are three numbers: \paragraph{<i>g\le c</i>} \begin{variablelist} \v N1 n_1       number of points within the sum,                 (<i>n_1=\prod_{i=1}^{g-1} m_i</i>). \v N2 n_2       number of points in the sum (<i>n_2=m_g</i>). \v N3 n_3       number of points above the sum (<i>n_3=\prod_{i=g+1}^c m_i</i>). \end{variablelist} \paragraph{<i>g>c</i>} \begin{variablelist} \v N0 n_0       number of points in a chunk \v N1 n_1       number of chunks within the sum                 (<i>n_1=\prod_{i=c+1}^{g-1}m_i</i>) \v N2 n_2       number of chunks in the sum (<i>n_2=m_g</i>). \end{variablelist} \begin{includefile}[sum.h]       PARAMETER (NsumS=12) 
+</p><p><b>SetBufferRept</b>[task]   ( stream nrept -- stream ) To make it possible to a have a loop that is not the highest index, we add SetBufferRept, which sets the number of repetitions of the metatask list.  It defaults to 1, so it is unnecessary to set it if the loop grid is the outermost grid. 
+</p><p><b>SetBuffernchunk</b>[task]   ( stream nchunk -- stream ) As it turns out, given the stream structures I have, it is more reasonable to set the buffer's nchunk just after the begin buffer loop than anything else.  This routine makes it possible. 
+</p><p><b>SetStreamIndex*</b>[stream]   ( nrdim -- object nrdim mark ) This word is used to set 'SIRecord' with a new streamidex pointer. </p><p><b>*</b>[stream]   ( object nrdim mark grid1 ... gridn -- ) This pair of words is used to set 'SIRecord' with a new streamindex pointer.  The technique is to create an object with two definitions: `start*' and `*'.  Then we define NewStreamIndex to be a procedure which puts the object on the stack and then executes 'start*'. 
+</p><p><b>StreamTree</b>[stream]   ( stream -- ) prints chain of buffers for a stream. 
+</p><p><b>TABLE</b>[table]   ( [ stream1 ... streamN ] grid combine -- ) prints a table using values from several streams.  The rows correspond to different values of grid. 
+</p><p><b>TraceStream</b>[stream]   ( stream -- ) prints chain of buffers for a stream. 
+</p><p><b>Tspharmfns</b>[legendre]   ( n nlat -- stream ) calculates spherical harmonic functions for triangular truncation N and an nlat gaussian grid. 
+</p><p><b>VALUE</b>[stream]   ( stream grid value -- stream' ) samples stream along one coordinate.  Works by created an child object of the stream, a child which contains a modified &lt;SIRecord>. 
+</p><p><b>WFwriteinputs</b>[cuf]   ( stream -- stream iindex counts limits cufS ) creates 
+</p><p><b>a64l</b>[newfns]   ( string string2 -- ) converts up to 4 ch string1 to up to 3 ch string2 using 64 bit decoding. 
+</p><p><b>abrat</b>[eos]   ( <i>\theta</i> S P -- <i>\alpha/\beta</i> ) ratio of <i>\alpha</i> to <i>\beta</i>. </p><p><b>beta</b>[eos]   ( <i>\theta</i> S P -- <i>\beta</i> ) $\beta = {1 \over \rho }                 \left.{\partial \rho \over \partial S}\right|_{\theta,p}$. </p><p><b>dens</b>[eos]   ( T S P -- density ) unecso'81 density (insitu) of seawater. </p><p><b>densa</b>[eos]   ( T S P -- density ) unecso'81 density (insitu) of seawater minus 1. </p><p><b>depth</b>[eos]   ( P -- depth ) depth from pressure, ignoring density anomaly. </p><p><b>potemp</b>[eos]   ( T S P -- <i>\theta</i> ) calculates potential temperature. </p><p><b>pressure</b>[eos]   ( T S Z -- P ) computes hydrostatic pressure by integrating from the surface. 
+</p><p><b>abs</b>[fginterp]   ( num -- num ) absolute value. 
+</p><p><b>add0</b>[pairdiff]   ( stream1 stream2 -- stream' ) subtracts stream2 from stream1 preserving the chunking of stream1 if stream2 is 1D. 
+</p><p><b>add</b>[fginterp]   ( num num -- num ) adds two numbers. 
+</p><p><b>add</b>[filters]   ( stream1 stream2 -- stream' ) adds two streams value by value. 
+</p><p><b>addhistory</b>[stream]   ( string -- ) adds to the history (see below). </p><p><b>2combinehistory</b>[stream]   ( <i>stream_1</i> <i>stream_2</i> -- string/array ) combines the histories of two streams. </p><p><b>combinehistory</b>[stream]   ( <i>stream_1</i> \ldots <i>stream_n</i> n -- string/array ) combines the histories of <i>n</i> streams. </p><p><b>combinefullname</b>[stream]   ( <i>stream/fullname_1</i> \ldots <i>stream/fullname_n</i> <i>n</i> <i>name/string_{OP}</i> -- array ) combines <i>n</i> fullname arrays using the operator <i>string_{OP}</i>.  If <i>n</i> is negative, includes common 1pt grids in the new name, otherwise, assumes they will be kept as grids. 
+</p><p><b>aload</b>[fginterp]   ( array -- any1, \ldots, anyn array ) gets FGIelements from array. 
+</p><p><b>and</b>[fginterp]   ( bool bool -- bool ) logical `and' of two booleans. 
+</p><p><b>append</b>[fginterp]   ( <i>string/array_1</i> <i>string/array_2</i> -- string/array ) combines two strings or arrays into one by concatenation. </p><p><b>array</b>[fginterp]   ( n -- array ) makes array of size <i>n</i>. 
+</p><p><b>arraypairtodict</b>[newfns]   ( array1 array2 -- object ) makes an object where array1 indexes array2.  Both arrays should be realarray, integerarray, or name arrays. 
+</p><p><b>astore</b>[fginterp]   ( any1, \ldots, anyn array -- array ) stores FGIelements </p><p><b>begin</b>[fginterp]   ( object -- ) pushes object onto dictionary stack </p><p><b>end</b>[fginterp]   ( -- ) pops object off of dictionary stack into array. 
+</p><p><b>autoload</b>[ingridinit]   ( name string -- ) defines name to load file 'string' and then execute name.  The file must redefine name in order for this to work. 
+</p><p><b>average</b>[ingridinit]   ( A [ grid1 grid2 ... ] -- AM ) returns the average over the specified grids, skipping missing_values. </p><p><b>rmsover</b>[ingridinit]   ( A [ grid1 grid2 ... ] -- AM ) returns the rms averaged over the specified grids, skipping missing_values. </p><p><b>rmsaover</b>[ingridinit]   ( A [ grid1 grid2 ... ] -- AM ) returns the rms (mean removed) averaged over the specified grids, skipping missing_values. </p><p><b>maxover</b>[ingridinit]   ( A [ grid1 grid2 ... ] -- AM ) returns the max over the specified grids, skipping missing_values. </p><p><b>minover</b>[ingridinit]   ( A [ grid1 grid2 ... ] -- AM ) returns the min over the specified grids, skipping missing_values. </p><p><b>standardize</b>[ingridinit]   ( stream [ grid1 ... ] -- AS ) returns the data with the mean removed and normalized by the standard deviation.  purely stream functions 
+</p><p><b>bandmax</b>[ingridinit]   ( color value -- ) interprets value as desired upper edge of one of the maxncolor-3 color boxes. 
+</p><p><b>bilinearinterp</b>[bilin]   ( D WX(S) WY(S) I(S) [ NX NS ] -- D(S) ) compute actual interpolation.  
+</p><p><b>bilinearweights</b>[bilin]   ( X Y X(S) Y(S) -- WX(S) WY(S) I(S) [ NX NS ] ) returns bilinear weights WX and WY and a composite index. 
+</p><p><b>binarysetSIRecord</b>[matchchunk]   ( stream stream1 stream2 -- stream' ) sets the grids for stream from combining stream1 and stream2 consistent with {\bf chunkpattern}. 
+</p><p><b>blue</b>[fig]   ( -- figobject ) makes subsequent lines/contours blue. </p><p><b>black</b>[fig]   ( -- figobject ) makes subsequent lines/contours black (default). </p><p><b>white</b>[fig]   ( -- figobject ) makes subsequent lines/contours white. </p><p><b>yellow</b>[fig]   ( -- figobject ) makes subsequent lines/contours yellow. </p><p><b>magenta</b>[fig]   ( -- figobject ) makes subsequent lines/contours magenta. </p><p><b>cyan</b>[fig]   ( -- figobject ) makes subsequent lines/contours cyan. </p><p><b>green</b>[fig]   ( -- figobject ) makes subsequent lines/contours green. </p><p><b>red</b>[fig]   ( -- figobject ) makes subsequent lines/contours red. </p><p><b>thin</b>[fig]   ( -- figobject ) makes subsequent lines/contours thin. </p><p><b>thinish</b>[fig]   ( -- figobject ) makes subsequent lines/contours almost thin. </p><p><b>medium</b>[fig]   ( -- figobject ) makes subsequent lines/contours medium. </p><p><b>mediumthick</b>[fig]   ( -- figobject ) makes subsequent lines/contours thicker than medium. </p><p><b>thick</b>[fig]   ( -- figobject ) makes subsequent lines/contours thick. </p><p><b>uniform</b>[fig]   ( -- figobject ) makes subsequent contours uniform. </p><p><b>nozero</b>[fig]   ( -- figobject ) makes subsequent contours skip the zero contour, dashed for negative. </p><p><b>thickzero</b>[fig]   ( -- figobject ) makes subsequent contours emphasize the zero contour, dashed for negative (default). </p><p><b>solid</b>[fig]   ( -- figobject ) makes subsequent lines/contours solid (default for first line). </p><p><b>dashed</b>[fig]   ( -- figobject ) makes subsequent lines/contours dashed (default for second line). </p><p><b>dotted</b>[fig]   ( -- figobject ) makes subsequent lines/contours dotted. </p><p><b>dotdashed</b>[fig]   ( -- figobject ) makes subsequent lines/contours dotdashed. 
+</p><p><b>buffer</b>[grid]   ( grid -- grid bufferid ) returns buffer of a grid. 
+</p><p><b>checkforD</b>[newdata]   ( mark grid1 ... gridn -- ) checks the grid list for an array of names.  If found, removes it from the list and calls it Darray, its position in the list (starting from 0) is Dgridno. 
+</p><p><b>checkunits</b>[ingridinit]   ( name -- ) makes sure it is a legal unit. 
+</p><p><b>chunkaverage</b>[ingridinit]   ( stream -- stream' ) averages over the chunk of the current stream. 
+</p><p><b>chunkmax</b>[ingridinit]   ( stream -- stream' ) maximum of the chunk of the current stream. 
+</p><p><b>chunkmin</b>[ingridinit]   ( stream -- stream' ) minimum of the chunk of the current stream. 
+</p><p><b>chunkpattern</b>[matchchunk]   ( stream1 stream2 -- stream1 stream2 [ndim n inc1 inc2 m inc1 inc2 ... ] ) returns the pattern of integers that describes the n-dimensional do-loop necessary to process the chunks of the two streams that have been through {\bf reordertomatch}.  This n-dimensional do-loop is described by an array of integers: first the number of sets, then each set consists of the size of the set followed by the approprate increment for the dimension.  The idea is to have a loop that goes through all the elements of the array, and exactly one increment is applied for each interation of the loop.  The increment that is applied is the one that corresponds to the dimension that is incremented (lower dimensions were simply reset to 1).  For example, suppose the two streams were <i>str1 [ X Y T ]</i> and  <i>str2 [P T]</i>.  The output stream is then <i>out [ X Y P T]</i> and the sets are derived from IOUT1 = [ N 1 T] and IOUT2 = [ 1 P T ], where N is the number of XY points, P is the number of P points, and T is the number of T points.  That gives an output array of [ 3  N 1 0   P (1-N) 1  T 1 1 ]. 
+</p><p><b>chunks==</b>[ingridinit]   ( stream -- stream string ) returns a string which describes the chunk of a stream. 
+</p><p><b>chunksub</b>[pairdiff]   ( stream1 stream2 -- stream' ) takes the difference between two streams with identical chunking. 
+</p><p><b>chunksum</b>[ingridinit]   ( stream -- stream' ) sums over the chunk of the current stream. 
+</p><p><b>chusci</b>[newfns]   ( low high -- first step nstep ) picks round intervals. 
+</p><p><b>coasts</b>[fig]   ( grid1 grid2 -- ) draws coasts from WORLDBATH. 
+</p><p><b>colorareas</b>[fig]   ( stream1 stream2 stream3 -- ) draws lines with points colored by a third variable. 
+</p><p><b>colorbars2</b>[fig]   ( stream1 stream2 grid -- ) draws bar plot with heights stream1 and colors stream2. 
+</p><p><b>colorbars</b>[fig]   ( stream1 stream2 stream3 -- ) draws bar plot with points colored by a third variable. 
+</p><p><b>colorcontours</b>[fig]   ( stream grid1 grid2 -- ) renders stream in colorcontours. 
+</p><p><b>colorlines</b>[fig]   ( stream1 stream2 stream3 -- ) draws lines with points colored by a third variable. 
+</p><p><b>colors</b>[fig]   ( stream grid1 grid2 -- ) renders stream in colors. 
+</p><p><b>colorscale20</b>[fig]   ( stream1 stream2 grid  -- ) renders colorscale for colorbars2, i.e. 2 streams. 
+</p><p><b>colorscale2</b>[fig]   ( stream grid1 grid2 -- ) renders colorscale for colors, i.e. 2D stream. 
+</p><p><b>colorscale30</b>[fig]   ( stream1 stream2 stream3 -- ) renders colorscale for scattercolors, i.e. 3 streams. 
+</p><p><b>colorscale</b>[fig]   ( stream -- ) renders colorscale.. 
+</p><p><b>combine</b>[table]   ( [ stream1 ... streamN ] grid -- stream ) combines several streams together, using their names to create a D coordinate. 
+</p><p><b>commonachunk</b>[matchchunk]   ( stream1 ... streamN N -- [ grid1 .. gridN ] ) returns an array of grids that spans the achunks of all the streams.  
+</p><p><b>commongrids</b>[matchchunk]   ( stream1 ... stream N N -- [ grid1 ... gridN ] returns a set of grids which are the intersection of the grids in the streams. 
+</p><p><b>compression:</b>[ingridinit]   ( stream name -- stream object ) Marks the current stream as being compressed with type name. </p><p><b>:compression</b>[ingridinit]   (stream object -- stream ) Finishes setting compression.  All definitions between compression: and :compression are saved for the decompression routine. 
+</p><p><b>concat</b>[ingridinit]   ( [ string1 \dots stringn ] -- string ) concatenates an array of strings together. 
+</p><p><b>constantdata</b>[newdata]   ( stream num/realarray/doublearray -- stream' ) returns constant data. 
+</p><p><b>contouraveraging</b>[ingridinit]   ( stream -- mean sd ) computes the averaging 
+</p><p><b>contours</b>[fig]   ( stream grid1 grid2 -- ) renders stream in contours. 
+</p><p><b>convertunits</b>[ingridinit]   ( real/stream units -- real/stream' ) converts to standard units (MKS). 
+</p><p><b>copy</b>[fginterp]   ( <i>any_1</i> \ldots <i>any_n</i> n -- <i>any_1</i> \ldots <i>any_n</i>  <i>any_1</i> \ldots <i>any_n</i> ) duplicates the top <i>n</i> elements on the stack. </p><p><b>counttomark</b>[fginterp]   ( mark <i>any_1</i> \ldots <i>any_n</i> -- n ) counts items to mark. </p><p><b>counttoobject</b>[fginterp]   ( mark <i>any_1</i> \ldots <i>any_n</i> -- n ) counts items to object. </p><p><b>cvi</b>[fginterp]   ( real -- int ) converts real to integer. </p><p><b>cvlit</b>[fginterp]   ( any -- any ) makes any literal rather than executable. </p><p><b>cvn</b>[fginterp]   ( string -- name ) converts string to name. </p><p><b>cvntos</b>[fginterp]   ( name -- string ) converts name to a string. </p><p><b>cvx</b>[fginterp]   ( any -- any ) marks any executable. 
+</p><p><b>copyachunk</b>[pairdiff]   ( stream1 stream2 -- stream1 stream2' ) copies the achunk of stream1 to stream2.  stream1 can be an array of grids, alternatively.  
+</p><p><b>copyimagetoPS2defs</b>[fig]   ( plotobject -- plotobject ) copies some defs from the current imagename to PS2defs. 
+</p><p><b>cos</b>[filters]   ( stream/num -- stream/real ) cosine of a stream or number. </p><p><b>eexp</b>[filters]   ( stream/num -- stream/real ) power base <i>e</i> of a stream or number. </p><p><b>ln</b>[filters]   ( stream/num -- stream/real ) natural log of a stream or number. </p><p><b>log</b>[filters]   ( stream/num -- stream/real ) log (base 10) of a stream or number. </p><p><b>mag</b>[filters]   ( stream/num stream/num -- stream/real ) vector magnitude. </p><p><b>min</b>[filters]   ( stream/num stream/num -- stream/real ) min of two streams </p><p><b>max</b>[filters]   ( stream/num stream/num -- stream/real ) max of two streams </p><p><b>pi</b>[filters]   ( -- <i>\pi</i> ) {returns 3.14159265}. </p><p><b>sin</b>[filters]   ( stream/num -- stream/real ) sine of a stream or number. </p><p><b>sqrt</b>[filters]   ( stream/num -- stream/real ) square root of a stream or number. </p><p><b>sqrtsgn</b>[filters]   ( stream/num -- stream/real ) square root of a stream or number, negative arguments result in a negative answer. 
+</p><p><b>covAdvance</b>[kalman]   ( Q A P -- <i>P_F</i> ) advances covariance one timestep. 
+</p><p><b>covAssimilateMS</b>[kalman]   ( RI H <i>P_F</i> -- K P ) calculates covariance after assimilation and assimilation matrix K given the model covariance, the inverse data covariance RI, and the sampling model H.  Inverts in model space. 
+</p><p><b>covReplaceMS</b>[kalman]   ( RI H <i>P_F</i> -- K P ) calculates covariance after assimilation by replacement and the replacement matrix K given the model covariance, the inverse data covariance RI, and the sampling model H.  Inverts in model space. \subsection{covNotOptimal: Additional error introduced by non-optimal   estimator} When the assimilation scheme is not optimal, an additional error is introducted.  This routine computes the increment.  
+</p><p><b>covarianceEvolution</b>[kalman]   ( Q A RI H P(0) T -- K P PF ) calculates covariance evolution. 
+</p><p><b>cufcheckforgrid</b>[ingridinit]   ( dataset cufvar name string -- dataset cufvar name string/grid ) called in readcuf to convert entries that consist 
+</p><p><b>currentobject</b>[ingridinit]   ( -- object ) gets the current object. 
+</p><p><b>cvdatatype</b>[ingridinit]   ( stream/dataset/grid value -- stream/dataset/grid value' ) converts the type of value to match the datatype of stream, if possible. 
+</p><p><b>datarank0</b>[newfns]   ( stream -- ) converts data to rank. 
+</p><p><b>datarank</b>[ingridinit]   ( stream [ grids ] -- stream' ) ranks data over given grids. 
+</p><p><b>dataset:</b>[newdata]   ( -- object object ) marks the beginning of a dataset. 
+</p><p><b>datatable0</b>[fghtml]   ( stream X Y -- ) prints data from a stream. 
+</p><p><b>datatable1</b>[fghtml]   ( stream X Y T -- ) prints data from a stream. 
+</p><p><b>datatabletsv0</b>[fghtml]   ( stream X Y -- ) prints data from a stream. 
+</p><p><b>datatabletsv1</b>[fghtml]   ( stream X Y T -- ) prints data from a stream. 
+</p><p><b>def</b>[fginterp]   ( name any -- ) defines name to be any in the current object. </p><p><b>div</b>[fginterp]   ( num num -- num ) divides. </p><p><b>dup</b>[fginterp]   ( any -- any any ) duplicates. </p><p><b>eq</b>[fginterp]   ( <i>any_1</i> <i>any_2</i> -- bool ) returns true if the two objects are equal{.}  strings, objects, and arrays must be duplicates of the same array:  having the same values is not sufficient. </p><p><b>exch</b>[fginterp]   ( <i>any_1</i> <i>any_2</i> -- <i>any_2</i> <i>any_1</i> ) swaps two elements on the stack. </p><p><b>exec</b>[fginterp]   ( any -- ) executes top element on the stack. 
+</p><p><b>defdatasetgrids</b>[newdata]   ( dataset [ grid1 grid2 ... ] -- ) defines grids in dataset and all parent datasets. 
+</p><p><b>deltabars</b>[fig]   ( stream1 stream2 grid -- ) draws bars between stream1 and stream2. 
+</p><p><b>differences0</b>[pairdiff]   ( stream p -- stream' ) takes the pairwise difference along one coordinate of the stream within the chunk. 
+</p><p><b>differences</b>[pairdiff]   ( stream grid -- stream' ) takes pairwise differences along grid of stream. 
+</p><p><b>distrib1D0</b>[distrib]   ( A Alo Ahi -- C ) computes univariate counts for a stream A. 
+</p><p><b>distrib1D</b>[ingridinit]   ( A DATA Alo Ahi Astp RANGESTEP -- C ) or ( A [ grid1 grid2 ... ] -- C ) returns 
+</p><p><b>distrib2D</b>[distrib]   ( A B  -- C ) returns bivariate counts 
+</p><p><b>distrib2D</b>[ingridinit]   ( A B -- C ) or ( A B [ grid ] -- C ) returns bivariate counts 
+</p><p><b>distrib</b>[filters]   ( stream min step max -- stream' ) gives the distributions of values for a given stream <i>d(x,y,z,t)</i> by returning a new stream <i>f(d)</i> which gives the number of occurrences of data points nearest the values <i>d_i</i> which are equally spaced from <i>min</i> to <i>max</i> in steps of <i>step</i>. \subsection{filters.distrib.h} \begin{includefile}[filters.distrib.h] 
+</p><p><b>div0</b>[pairdiff]   ( stream1 stream2 -- stream' ) divides stream1 by stream2 preserving the chunking of stream1.  stream2 is 1D. 
+</p><p><b>div</b>[filters]   ( stream1 stream2 -- stream' ) divides two streams value by value. 
+</p><p><b>doPLOTCOAST</b>[ingridinit]   ( { ifcoast } { ifland } { ifnone } -- ) picks 
+</p><p><b>dods</b>[ingridinit]   ( dataset/stream -- dataset/stream dods ) makes it possible to download a dataset or stream directly into an application using the DODS protecol. 
+</p><p><b>domainline</b>[fig]   ( plotobject -- plotobject ) prints domainline for a zoomable object.  Only works after inputimagelink is called. 
+</p><p><b>dots</b>[fig]   ( stream grid -- ) draws single line as dots. 
+</p><p><b>dupmulsub</b>[newfns]   ( stream stream -- stream ) computes dup mul sub in real*8 
+</p><p><b>eigenvalues</b>[kalman]   ( stream grid1 grid2 -- ev ) calculates eigenvalues of a matrix. 
+</p><p><b>eigrs</b>[kalman]   ( Q -- D Z ) computes eigenvalues and eigenvectors -- returns low to high (but indexes the highest one as 1). 
+</p><p><b>evengridAverage</b>[ingridinit]   ( stream grid low step high [Wmin] -- stream' ) regrids a stream to a new grid by averaging. 
+</p><p><b>false</b>[fginterp]   ( -- bool ) returns false. </p><p><b>forall</b>[fginterp]   ( array proc -- ) executes {\it proc } for each element in array by pushing the first element onto the stack, executing {\it proc}, pushing the second element onto the stack, etc. </p><p><b>ge</b>[fginterp]   ( bool bool -- bool ) greater than or equal to. </p><p><b>get</b>[fginterp]   ( array index -- any ) extracts any from array: array can also be a string, a realarray, an integerarray, or a namearray{.}  Also works on objects: ( {\it object key -- any} ). </p><p><b>getinterval</b>[fginterp]   ( array index count -- subarray ) extracts subarray from array: array can also be a string, a realarray, an integerarray, or a namearray. </p><p><b>gt</b>[fginterp]   ( num num -- bool ) greater than. </p><p><b>if</b>[fginterp]   ( bool proc -- ) executes proc if bool is true. </p><p><b>ifelse</b>[fginterp]   ( bool <i>proc_1</i> <i>proc_2</i> -- ) executes <i>proc_1</i> if true, <i>proc_2</i> if false. </p><p><b>index</b>[fginterp]   ( <i>any_n</i> \ldots <i>any_0</i> n -- <i>any_n</i> \ldots <i>any_0</i> <i>any_n</i> ) copies <i>n^{th}</i> element to top of stack. </p><p><b>known</b>[fginterp]   ( object name -- bool ) returns true if name is defined in object.   
+</p><p><b>fftspi</b>[fft]   ( npts -- coeffs ) generates coefficients for fft transform. </p><p><b>fftrcsp</b>[fft]   ( stream grid sign -- ft) computes fourier transform real to complex symmetric. 
+</p><p><b>fgmasknotfound0</b>[newfns]   ( stream p - stream' ) changes all strings not containing the substring to start with a null. 
+</p><p><b>fig</b>[fig]   ( -- object ) contains defining words for figures. </p><p><b>fig:</b>[fig]   ( -- fig figobject mark ) delimits the beginning of a figure. </p><p><b>:fig</b>[fig]   ( fig figobject mark plotobject \ldots -- plotobject ) creates a new plotobject out of a set of plot objects. </p><p><b>fig-</b>[fig]   ( -- fig mark ) synonym for fig: that is URL-legal. </p><p><b>-fig</b>[fig]   ( fig mark plotobject \ldots -- plotobject ) synonym for :fig that is URL-legal.  The idea here is that \ldots fig: vector contour :fig.ps will generate a vector contour plot from \ldots.  This gives me a clean mechanism for creating multiple plot overlays:  I pile all the data on the stack, then run this function.  Another example might be \ldots fig: colors land :fig.ps would generate a plot with land overlaid.  A URL version would be fig-+colors+land+-fig.ps.  draw has the needed stack behavior of a draw function.  It puts the grids into an array and carefully moves it around on the stack as it loops through the plot objects in the array.  At the end, it drops the grid array.  This means it is recursive:  figobjects are legal subobjects of figobjects.  
+</p><p><b>file:</b>[newdata]   :file ( -- ) file containing multiple variables. 
+</p><p><b>first</b>[grid]   ( grid -- grid firstvalue ) returns first value of a grid. 
+</p><p><b>first</b>[grid]   ( grid value -- grid index ) returns index corresponding to value (numbered from 0). 
+</p><p><b>flagge</b>[filters]   ( stream1 stream2 -- stream' ) ge two streams value by value. 
+</p><p><b>foralldata</b>[forallstreams]   ( dataset -- ) runs doifgrid doifstream doifdataset doifnetcdf for each object in dataset. 
+</p><p><b>foralldatasets2</b>[newdata]   ( dataset { datasetproc } { streamproc } -- ) operates on all datasets and streams.  Improved version: automatically operates on all datasets and streams, stack is clear for use, relativename returns the namearray for the current dataset/stream relative to the dataset being traversed. 
+</p><p><b>foralldatasets</b>[newdata]   ( dataset { datasetproc } { streamproc } -- ) operates on all datasets and streams.  Both datasetproc and streamproc should pop their argument from the stack, i.e. </p><p><b>datasetproc</b>[newdata]   ( dataset -- ) operates on datasets.  It needs to invoke mycaseexeconeach on the dataset in order to process all subdatasets. 
+</p><p><b>forallstns</b>[ingridinit]   ( longs lats ids xl xh yl yh proc -- ) runs proc on long lat id for all points within ranges.. 
+</p><p><b>forsome</b>[fginterp]   ( object botobject skipobject proc -- ) Like forall in that each entry in object is pushed on the stack (name and value) and proc is executed, but some entries are not executed. If botobject is a parent object to object or any of its parents, object is considered to end above botobject.  skipobject is a list of names (their definitions are ignored) that are also not operated upon. botobject can be null, in which case the whole object is processed. skipobject can be null, in which case no definitions are skipped.  skipobject must have parent null. 
+</p><p><b>fullimagelink</b>[fig]   ( plotobject ingridcode -- ) creates an img link to an image which is invoked by the ingridcode.  'null' for ingridcode means use the standard figure name .gif (no grids!).  
+</p><p><b>gaussianinv</b>[ingridinit]   ( stream -- stream' ) converts random data uniformly distributed on [0,1) to gaussian data. 
+</p><p><b>gaussianlat</b>[legendre]   ( n -- grid ) returns gaussian grid with n points. </p><p><b>gaussianlatWeights</b>[legendre]   ( grid -- stream ) returns weights for a gaussian grid. 
+</p><p><b>gentab</b>[ingridinit]   ( stream1 ... streamN tableobject format -- entrycount ) generates table. 
+</p><p><b>getimageinput</b>[fig]   ( name -- object true or false ) returns an object containing the information corresponding to the input image 'name' on the current form.   To allow url to be blank, when getimageinput is invoked for the first time on a particular image, the plotobject should be on the bottom of the stack.  Since getimageinput is called from inputimagelink, this is fairly likely since inputimagelink is frequently called first. 
+</p><p><b>getrealization</b>[newfns]   ( stream -- array ) returns values for the (single realization of the stream). 
+</p><p><b>ginverse</b>[kalman]   ( stream [grid1a grid1b] [grid2a grid2b] -- inverse ) computes the (tranposed) generalized inverse <i>[A)((A][A))^{-1}</i> of <i>[A)</i> with the grid1 grids as the first dimension of the matrix and the grid2 grids as the second dimension of the matrix.   
+</p><p><b>grayMV</b>[fig]   ( stream grid1 grid2 -- ) renders missing data in stream in gray. 
+</p><p><b>grid:</b>[newdata]   ( -- object mark ) marks the beginning of a grid declaration. 
+</p><p><b>gridarray1fn</b>[ingridinit]   ( dataset/stream [ grids ] option proc name -- dataset/stream ) applies proc to single dataset/stream with optional gridarray and real options.  Used in average and company. 
+</p><p><b>gridarray1fnnopt</b>[ingridinit]   ( dataset/stream [ grids ] proc name -- dataset/stream ) applies proc to single dataset/stream with optional gridarray.  Used in average and company. 
+</p><p><b>grideven</b>[grid]   ( -- flag ) returns true if grid is evenly spaced. 
+</p><p><b>gridno</b>[stream]   ( stream grid -- stream int ) returns dimension index of grid in stream. </p><p><b>gridstride</b>[stream]   ( stream grid -- stream int ) returns stride of grid in stream. </p><p><b>ndim</b>[stream]   ( -- n ) returns number of dimensions in a stream. </p><p><b>nrdim</b>[stream]   ( -- m ) returns number of dimensions in the chunk of a stream. </p><p><b>chunk</b>[stream]   ( stream -- stream <i>grid_1</i> \ldots <i>grid_m</i> m ) returns grids and number of dimensions in the chunk of a stream. </p><p><b>>chunk</b>[stream]   ( stream -- <i>grid_1</i> \ldots <i>grid_m</i> m ) returns grids and number of dimensions in the chunk of a stream. </p><p><b>achunk</b>[stream]   ( stream -- stream <i>grid_1</i> \ldots <i>grid_n</i> n ) returns grids above the chunk and ndim-nrdim for the current stream. </p><p><b>>achunk</b>[stream]   ( stream -- <i>grid_1</i> \ldots <i>grid_n</i> n ) returns grids above the chunk and ndim-nrdim for the current stream. </p><p><b>streamgrids</b>[stream]   ( stream -- stream <i>grid_1</i> \ldots <i>grid_n</i> ) returns stream grids. </p><p><b>>streamgrids</b>[stream]   ( stream -- <i>grid_1</i> \ldots <i>grid_n</i> ) returns stream grids. </p><p><b>chunksize</b>[stream]   ( -- nsize ) returns number of elements in a chunk of the stream. </p><p><b>nchunk</b>[stream]   ( -- n ) returns number of chunks in the stream. 
+</p><p><b>gridtomatch</b>[ingridinit]   ( stream1 stream2 -- stream1' ) returns stream1 regridded  to match stream2.  
+</p><p><b>gridtomatchnamed</b>[ingridinit]   ( stream1 stream2 object name -- stream1' ) returns   stream1 regridded to match stream2, giving it name name in object. 
+</p><p><b>gridtype</b>[grid]   ( -- type ) returns grid type: ordered, periodic, or unordered. 
+</p><p><b>gridvalues</b>[grid]   ( -- array ) returns array of grid values. 
+</p><p><b>history</b>[stream]   ( -- array ) {returns a nested array of strings which contain the history of manipulations of the current stream. history starts with a null definition}.  </p><p><b>name</b>[stream]   ( -- name ) short name of stream. </p><p><b>fullname</b>[stream]   ( -- array of names/strings ) full name of stream. </p><p><b>{longname</b>[stream]   {\it or} long_name} ( -- string ) returns a string describing the current stream: defaults to string version of name. longname defaults to name, and long_name is mapped to longname (I really do not like underscores).  </p><p><b>title</b>[stream]   ( -- string) returns a short description of the stream: defaults to null. </p><p><b>units</b>[stream]   ( -- name ) units of data in the current stream: units defaults to real.  </p><p><b>missing_value</b>[stream]   ( -- null/real ) {value to use as a missing data flag.  Many stream filters changed this to NaN.  It defaults to null, which means there is no missing data flag}.  </p><p><b>scale_factor</b>[stream]   ( -- real ) simple data compression scale factor. </p><p><b>add_offset</b>[stream]   ( -- real ) simple data compression offset (applied after scale_factor).  scale_factor and add_offset also default to have no effect.  The data is considered to be trueval = scale_factor*val + add_offset.  This 
+</p><p><b>horizontalgridlines</b>[fig]   ( grid1 -- ) draws horizontalgridlines. 
+</p><p><b>htmlformulaprint</b>[ingridinit]   ( string -- ) converts and prints a string that has PS equation escapes in it.  HTML is pretty limited, so it does not do much, but it does some. 
+</p><p><b>idtoidf</b>[ingridinit]   ( id -- idf ) returns idf (i.e. return from NCOPEN) for permanent id id.  Opens file if necessary, could close other files if necessary, too. 
+</p><p><b>imageexists?</b>[fig]   ( nameofobject nameofvalue -- flag ) checks for definition in current image. 
+</p><p><b>imageget?</b>[fig]   ( nameofobject nameofvalue -- value true or false )  if it  exists, returns value and true flag, otherwise returns false. 
+</p><p><b>imagegetnum?</b>[fig]   ( nameofobject nameofvalue -- number true or false )  if it  exists, returns value and true flag, otherwise returns false.  Differs from inageget? only in that it converts the string to a number.  
+</p><p><b>imageknown</b>[fig]   ( name -- flag ) checks for name in current image. 
+</p><p><b>imagelink</b>[fig]   ( plotobject url -- ) creates an img link to an image which is invoked by the url.  Omitting the url means it will generate the url from the datsets and the fig. 
+</p><p><b>imagelinkstart</b>[fig]   ( fig url -- imageobject ) preps for imagelink and similar words. 
+</p><p><b>imageput</b>[fig]   ( nameofobject nameofvalue value --  ) stores value as nameofvalue in nameofobject in imagename. 
+</p><p><b>incGRIBvar</b>[grib]   ( name time depth -- ) adds entry to list. </p><p><b>var:</b>[grib]     ( name -- object ) pulls var from set. 
+</p><p><b>initGrADS</b>[grads]   ( stream filename -- stream IUNIT ) initializes GrADS files. 
+</p><p><b>inputimagelink</b>[fig]   ( plotobject name url -- plotobject ) creates a input link 'name'  to an image which is invoked by the url.  'null' for url means use the standard figure name .gif (no grids!).  Also creates an hidden variable that hold the info needed to process a click. 
+</p><p><b>insertdataset:</b>[newdata]   ( name -- object object ) marks the beginning of a dataset.  At completion this dataset will be stored in the current 
+</p><p><b>integral0</b>[pairdiff]   ( stream dx p -- stream' ) integrates along one coordinate of the stream within the chunk. 
+</p><p><b>integral1</b>[pairdiff]   ( integral stream dx p -- stream' ) integral over chunks. 
+</p><p><b>integral</b>[pairdiff]   ( stream grid -- stream' ) takes integral with respect to grid. 
+</p><p><b>integral</b>[partial]   ( stream grid -- stream' ) takes integral with respect to grid. \begin{code}       SUBROUTINE STREAMintegral 
+</p><p><b>integrate</b>[pairdiff]   ( stream grid initial -- stream' ) takes integral with respect to grid starting with initial value. 
+</p><p><b>integrateddistrib1D</b>[ingridinit]   ( A -- stream ) computes the integrated distribution of A, i.e. the values along A range from 0 to 1. 
+</p><p><b>integrateddistrib2D</b>[ingridinit]   ( A B -- stream ) computes the normalized distribution and then integates it, thus the values will range from zero to one.  The stream is marked so that contours will be at 66\% and 96\% widths as well as at the median. 
+</p><p><b>ipack</b>[ingridinit]   ( -- ) ipack compression.  Assumes {\it indices\/} is an integer array or the name of an integer array, {\it grids} is an array of grids or names of grids for the uncompressed stream (defaults 
+</p><p><b>isolines</b>[ingridinit]   ( data X Y levels -- XS YS GRDS ) 
+</p><p><b>kalmanFilter</b>[kalman]   ( WO RI H P00 Q A T -- dataset[ W P WOERR K H A RI WO ] ) Kalman Filter with optimally assimilated initial conditions, i.e. I start with zero model state so that the initial covariance (P00) is the total variance of the system. 
+</p><p><b>labels</b>[fig]   ( stream1 stream2 names/stream3 -- ) draws scatter plot with just labels. 
+</p><p><b>laggedcovariance3</b>[ingridinit]   ( stream Tgrid period [ lags ] Egrid -- D1 cov 
+</p><p><b>laggedcovariance3bs</b>[ingridinit]   ( stream Tgrid period [ lags ] Egrid nrealizations fraction -- D1 cov 
+</p><p><b>laggedcovariance</b>[ingridinit]   ( stream Tgrid period [ lags ] Egrid -- cov ) computes 
+</p><p><b>land</b>[fig]   ( grid1 grid2 -- ) draws land from WORLDBATH. 
+</p><p><b>last</b>[grid]   ( grid -- grid lastvalue ) returns last value of a grid. 
+</p><p><b>lcovar0</b>[covar]   ( A LAGS -- C ) computes seasonal covariance at a set of 
+</p><p><b>lcovar0b</b>[covar]   ( A LAGS -- C ) computes seasonal covariance at a set of 
+</p><p><b>lcovar30</b>[covar]   ( A LAG -- C D1 D0) computes seasonal covariance at multiple lags.  Covariance averages over n1,n2,n3,n5, depends on n4,m,ns,nl. Returns both the lag zero covariance at the next timestep and the lag zero covariance at the current timestep in addition to the lag(s) requested.  The season corresponds to the lagged month. 
+</p><p><b>lcovar30b</b>[covar]   ( A LAG -- C D1 D0) computes seasonal covariance at multiple lags.  Covariance averages over n1,n2,n3,n5, depends on n4,m,ns,nl. Returns both the lag zero covariance at the next timestep and the lag zero covariance at the current timestep in addition to the lag(s) requested. 
+</p><p><b>lcovar30bs</b>[covar]   ( SKIP A LAG  -- C D1 D0) computes seasonal covariance at multiple lags.  Covariance averages over n1,n2,n3,n5, depends on n4,m,ns,nl. Returns both the lag zero covariance at the next timestep and the lag zero covariance at the current timestep in addition to the lag(s) requested.    %Skips the ISKIPth point to generate a set of realizations %for bootstrapping.  Randomly selects half the points for bootstrapping.  The season corresponds to the lagged month. 
+</p><p><b>lcovar31</b>[covar]   ( A LAG -- C D1 D0) computes seasonal covariance at multiple lags.  Covariance averages over n1,n2,n3,n5, depends on n4,m,ns,nl. Returns both the lag zero covariance at the previous timestep and the lag zero covariance at the current timestep in addition to the lag(s) requested. Same as lcovar30, except now m varies faster than nt in the A array. 
+</p><p><b>le</b>[fginterp]   ( num num -- bool ) less than or equal to. </p><p><b>length</b>[fginterp]   ( array/string -- int ) returns length of array or string. </p><p><b>lt</b>[fginterp]   ( num num -- bool ) less than. </p><p><b>mark</b>[fginterp]   ( -- mark ) returns a mark. </p><p><b>max</b>[fginterp]   ( num num -- num ) returns maximum. </p><p><b>maxlength</b>[fginterp]   ( object -- int ) returns maximum length of object. </p><p><b>max==array</b>[fginterp]   ( -- int/null ) maximum number of array elements to print. </p><p><b>min</b>[fginterp]   ( num num -- num ) returns minimum. </p><p><b>mul</b>[fginterp]   ( num num -- num ) returns product. </p><p><b>ne</b>[fginterp]   ( num num -- bool ) not equal. </p><p><b>not</b>[fginterp]   ( bool -- bool ) logical not. </p><p><b>null</b>[fginterp]   ( -- null ) returns a null element. 
+</p><p><b>leftline</b>[fig]   ( stream grid -- ) draws single line with left axis. 
+</p><p><b>leftlines</b>[ingridinit]   ( array/string -- ) prints an array of strings with each string on a separate line.  
+</p><p><b>line</b>[fig]   ( stream grid -- ) draws single line. 
+</p><p><b>linearweights</b>[bilin]   ( X X(S) -- W(S) I(S) ) returns weight W and index I such that <i>X(S) = W(S)*X(I(S)) + ( 1 - W(S) ) * X(I(S) + 1)</i>.  The index is such that the first element is 0. 
+</p><p><b>makeperiodic</b>[ingridinit]   ( stream grid period -- stream' ) makes a stream periodic in grid. 
+</p><p><b>markstreamsymmetric</b>[ingridinit]   ( stream -- stream' ) changes a stream which has been defined as full storage to a stream that is in symmetric storage mode.  The data is not actually changed, i.e. the stream so far has been defined incorrectly.  The first two grids are combined into the symmetric grid. 
+</p><p><b>mask0</b>[newfns]   ( stream stream2 p -- stream' ) masks stream with NaN in stream2. 
+</p><p><b>mask</b>[fig]   ( stream grid1 grid2 -- ) renders non-negative data as black, missing or negative as clear. 
+</p><p><b>maskbybin</b>[ingridinit]   ( stream bin edges  -- stream' ) bins data into bins from lo to high by step, returning a mask with an additional grid (the bins) that is either NaN or 1. 
+</p><p><b>matchachunk</b>[matchchunk]   ( stream1 ... streamN N -- stream1' ... streamN' ) changes stream1 through streamN to have the same achunk, i.e. a common set of grids is found, and the data in each stream is reordered and repeated to match.  
+</p><p><b>matrixinverse</b>[kalman]   ( stream [ grid1a ... grid1n] [ grid2a ... grid2n] -- stream' ) calculates matrix inverse of stream using the first array of grids as the first dimension and the second array of grids for the second dimension.  At the momement, assumes the matrix is compressed symmetric. 
+</p><p><b>maxfnof0</b>[distrib]   ( A -- C AM ) computes maximum for a stream A. 
+</p><p><b>mean0</b>[distrib]   ( A -- AM C ) computes mean for a stream A. 
+</p><p><b>mean</b>[ingridinit]   ( A  -- C ) or ( A [ grid1 grid2 ... ] -- AM ) returns mean of A values.  If [ grid1 ... ] is given, then the mean <i>AM</i> will 
+</p><p><b>meanpmsd</b>[ingridinit]   ( stream -- mean sd) computes mean and sd over first two dimensions of stream. 
+</p><p><b>meansq0</b>[distrib]   ( A -- AM C ) computes mean square for a stream A. 
+</p><p><b>meansq</b>[ingridinit]   ( A  -- C ) or ( A [ grid1 grid2 ... ] -- AM ) returns mean square of A values.  If [ grid1 ... ] is given, then the mean <i>AM</i> will 
+</p><p><b>median</b>[ingridinit]   ( A -- stream ) computes the median. 
+</p><p><b>medianover</b>[ingridinit]   ( stream [ grids ] -- stream') computes median over the given grids (special case of replacebypercentile). 
+</p><p><b>minfnof0</b>[distrib]   ( A -- C AM ) computes maximum for a stream A. 
+</p><p><b>monthlygrid</b>[ingridinit]   ( grid  -- newgrid ) computes the monthly grid that encompasses first and last from grid. 
+</p><p><b>monthtimetodaytime</b>[ingridinit]   (grid -- grid') changes units from months since 1 Jan 1960 to days since 1 Jan 1960. 
+</p><p><b>mul0</b>[pairdiff]   ( stream1 stream2 -- stream' ) multiplies stream1 by stream2 preserving the chunking of stream1.  stream2 is 1D. 
+</p><p><b>mul</b>[filters]   ( stream1 stream2 -- stream' ) multiplies two streams value by value. 
+</p><p><b>mulsum</b>[pairdiff]   ( A B grid -- C ) returns A*B multiplied and summed along grid.   If grid is an array of grids, sums over all of them. 
+</p><p><b>n==</b>[udunits]   ( unitS -- name ) converts unit structure to a (canonical and PS) name.  We use this to recognize units. 
+</p><p><b>name</b>[grid]   ( -- name ) returns grid name. 
+</p><p><b>nameargs</b>[ingridinit]   ( arg1 ... argn { nam1 ... namn } -- object ) creates an object that contains all the input arguments 
+</p><p><b>nan00</b>[newfns]   ( stream mvs -- stream' ) converts the stream using the list of missing values in mvs so that missing values are now NaNs. 
+</p><p><b>nan01</b>[newfns]   ( stream mvs -- stream' ) converts the stream using the valid range in mvs so that values outside the range are now NaNs. 
+</p><p><b>neededpsdefs</b>[fig]   ( plotobject -- plotobject ) defines PS2defs that are changed from their defaults. 
+</p><p><b>netCDFdef</b>[ingridinit]   ( dataset stream -- dataset ) defines stream in dataset after some postprocessing. 
+</p><p><b>newid</b>[ingridinit]   ( filename -- id ) returns permanent id for filename. 
+</p><p><b>newpartialS</b>[pairdiff]   ( stream grid -- structure ) makes new partialS structure and sets it to go along grid in stream. 
+</p><p><b>newplotstream</b>[ingridinit]   ( integer/array/stream -- ) resets the plotstream according to the input argument.  If an integer, the achunk is an integer grid of that size.  If an array of grids, those grids are used as the achunk.  If a stream, the achunk of the stream is used as the achunk of the new plotstream. 
+</p><p><b>newurloption</b>[fig]   ( -- ) allows figure changing. 
+</p><p><b>normalize</b>[pairdiff]   ( stream1 stream2 minimum -- stream' ) divides stream1 by stream2.  Points less than minimum in stream2 become NaN in the 
+</p><p><b>normalizePOPs0</b>[kalman]   ( evec npts -- alpha evec ) renomalizes a la VNRMC2. 
+</p><p><b>normalizePOPs</b>[kalman]   ( evec -- evec alpha ) renormalizes POPs. 
+</p><p><b>normalizeddistrib1D</b>[ingridinit]   ( A -- stream ) computes the normalized distribution of A, i.e. the integral along A will be one. 
+</p><p><b>normalizeddistrib2D</b>[ingridinit]   ( A B -- stream ) computes the distribution of A vs B (see distrib2D) and then renormalizes by the integral along B.  This new stream has the property that the integral along B is 1. 
+</p><p><b>npts</b>[grid]   ( -- npts ) returns grid number of points. 
+</p><p><b>nullplot</b>[fig]   ( -- ) does nothing. 
+</p><p><b>object</b>[fginterp]   ( parent size -- newobject) creates a new object from parent of size. 
+</p><p><b>ocean</b>[fig]   ( grid1 grid2 -- ) draws land from WORLDBATH. 
+</p><p><b>ocean</b>[fig]   ( grid1 grid2 -- ) draws land from WORLDBATH. 
+</p><p><b>outlinedata</b>[forallstreams]   ( dataset -- ) makes an outline of the data catalog/a dataset. 
+</p><p><b>pairsums0</b>[pairdiff]   ( stream p -- stream' ) pairwise sums along one coordinate of the stream within the chunk. 
+</p><p><b>pairsums1</b>[pairdiff]   ( streamsum stream p -- stream' ) pairsums over chunks. 
+</p><p><b>pairsums</b>[pairdiff]   ( stream grid -- stream' ) pairwise sums along grid of stream.  This is the stream equivalent of integralgrid. 
+</p><p><b>parenstring</b>[ingridinit]   ( string -- string' ) puts () around string. 
+</p><p><b>parent</b>[fginterp]   ( object -- parent) returns parent of object,  null if no parent. </p><p><b>pop</b>[fginterp]   ( any -- ) removes object from stack. </p><p><b>print</b>[fginterp]   ( string -- ) prints string to stdout. </p><p><b>pstack</b>[fginterp]   ( <i>any_1</i> \ldots <i>any_n</i> -- <i>any_1</i> \ldots <i>any_n</i>) prints stack without changing it. </p><p><b>put</b>[fginterp]   (array/string/dict index/key any -- ) puts any into array/string/dict with given index/key. </p><p><b>putinterval</b>[fginterp]   ( array/string index <i>array/string_2</i> -- ) puts <i>array_2</i> into <i>array_1</i> at index (first element is zero). </p><p><b>repeat</b>[fginterp]   ( i proc -- ) repeats proc <i>i</i> times. </p><p><b>roll</b>[fginterp]   ( <i>any_{n-1}</i> \ldots <i>any_0</i> n j -- <i>any_{(j-1) \mod n}</i> \ldots <i>any_0</i> <i>any_{n-1}</i> \ldots <i>any_{j \mod n}</i> ) performs circular shift on stack. </p><p><b>round</b>[fginterp]   ( num -- num ) returns rounded number. </p><p><b>setmax==array</b>[fginterp]   ( int/null -- ) sets maximum number of array elements to print, {\it null} means print all the values. </p><p><b>split</b>[fginterp]   ( any [ <i>proc_1</i> \ldots <i>proc_n</i> ] -- ) applies each of the {\it proc}edures in the array [ ] to <i>any</i>, {i.e.} for each procedure pushes <i>any</i> onto the stack and then executes <i>proc</i>{.} Usually used to split a stream into substreams. </p><p><b>string</b>[fginterp]   ( int -- string ) creates a string of the specified length. </p><p><b>sub</b>[fginterp]   ( num num -- num ) subtracts. </p><p><b>type</b>[fginterp]   ( any -- name ) returns name of type of any. </p><p><b>true</b>[fginterp]   ( -- bool ) returns true. </p><p><b>xor</b>[fginterp]   ( bool bool -- bool ) logical eXclusive OR. 
+</p><p><b>parsedimageurl</b>[fig]   ( -- object ) returns an object containing the parsed imageurl if it is completely parseable, otherwise returns false.  parseable means everything before fig- is understood, and there is something between fig- and -fig (though the latter is not currently checked). 
+</p><p><b>partial</b>[pairdiff]   ( stream grid -- stream' ) takes partial derivative of stream along grid. 
+</p><p><b>partial</b>[partial]   ( stream grid -- stream' ) takes partial derivative with respect to grid. \begin{code}       SUBROUTINE STREAMpartial 
+</p><p><b>partialS</b>[pairdiff]   ( -- structure ) a structure used for holding the arguments to differences0. 
+</p><p><b>partialgrid</b>[ingridinit]   ( grid -- newgrid ) computes grid for partial deriviatives; new grid has points in between the old gridpts. 
+</p><p><b>percentileover</b>[ingridinit]   ( stream [ grids ] -- stream' ) normalized rank data over given grids. 
+</p><p><b>pickstn</b>[newfns]   ( xs ys xl xh yl yh -- is ) returns indices of xs and ys that fall in range. 
+</p><p><b>placelabels</b>[ingridinit]   ( XS YS GRD LVL -- LBLARRAY ) calculates array of labels for a contour plot.  Labels are placed at minimum gradient of contours and higher levels are favored if crowded. 
+</p><p><b>plaincolor</b>[fig]   ( stream grid1 grid2 -- ) does plain color plot. 
+</p><p><b>plaincontour</b>[fig]   ( stream grid1 grid2 -- ) does plaincontour map. 
+</p><p><b>plotgridcheck</b>[ingridinit]   ( grid -- grid' ) checks grid for short range in large number. If so, removes offset. 
+</p><p><b>plotobject</b>[fig]   ( -- object ) parent to all plotobjects. \subsection{Within plotobject} </p><p><b>new</b>[fig]   ( plotobject -- object ) creates a new plotobject. </p><p><b>nplotstream</b>[fig]   ( -- int ) number of data streams used by plot. </p><p><b>nplotgrid</b>[fig]   ( -- int ) number of grids used by plot.  The plot arguments are then stream1 \ldots streamN grid1 \ldots gridM. </p><p><b>rollplotobject</b>[fig]   ( stream1 \ldots streamN grid1 \ldots gridM plotobject deviceobject -- plotobject deviceobject stream1 \ldots streamN grid1 \ldots gridM ) reorders stack so that the data is accessable to the plotting routines. </p><p><b>drawfn</b>[fig]   ( stream1 \ldots streamN grid1 \ldots gridM -- ) appends the plot from the current plotobject to the current opened plot.  None of the plotobject information is used. </p><p><b>draw</b>[fig]   ( stream1 \ldots streamN grid1 \ldots gridM plotobject -- ) appends the plot from the current plotobject to the current opened plot.  </p><p><b>standardplot</b>[fig]   ( stream1 \ldots streamN grid1 \ldots gridM plotobject -- ) draws the standardplot for the current plotobject.  note that ps and .ps are the same because ps removes objects from the stack (the . prefix only removes the previous element from the stack if the word adds things to the stack). </p><p><b>boundingbox</b>[fig]   ( -- x0 x1 y0 y1 ) returns bounding box of figure. </p><p><b>x0,x1,y0,y1</b>[fig]   ( -- int ) returns pixel limits of data area. 
+</p><p><b>plotoptionline</b>[fig]   ( -- ) give plot-sizing options. 
+</p><p><b>ppnewobjectdefget</b>[ingridinit]   ( object name -- newobject ) defines an empty object name in object and replaces it with the newobject.  Used by ppdef, one version in FORMwords and one version in DATASET. 
+</p><p><b>preferredunitname</b>[ingridinit]   ( string/name -- name ) returns the preferred name for the given unit.  If udunits is active, this involves real processing.  Otherwise, just converts to a name after checking PreferredUnits.  
+</p><p><b>printcatentry</b>[ingridinit]   ( name  -- ) prints data catalog entry. 
+</p><p><b>printvarlist</b>[forallstreams]   ( object -- ) prints sorted-by-variable object as html nested list. 
+</p><p><b>profile</b>[fig]   ( stream grid -- ) draws single vertical line. 
+</p><p><b>psfigline</b>[fig]   ( plotobject -- plotobject ) prints fig line after inputimagelink has run. \end{ingrid} 
+</p><p><b>publicproc:</b>[ingridinit]   ( stream1 ... streamN N name [lib] -- stream1 ... streamN ) marks the beginning of a public procedure, i.e. one that adds to the history chain.  lib is the object containing the proc, if any.  End of the procedure is marked by :publicproc. 
+</p><p><b>randomdata</b>[newdata]   ( stream -- stream' ) returns a stream of random numbers. 
+</p><p><b>rankcorrelate</b>[ingridinit]   ( stream1 stream2 [ grids ] minfraction -- stream ) rank correlates stream1 and stream2 over grids.  Points with less than minfraction of the data are dropped (0. keeps all, 1. insists on all data). 
+</p><p><b>rddai</b>[newfns]   ( array offset name  -- ) reads data. 
+</p><p><b>read3col0</b>[newfns]   ( -- stream ) reads 3 col datafile. 
+</p><p><b>readarray</b>[newfns]   ( N name format -- array ) reads <i>N</i>-element real array from file {\it name} using {\it format}. 
+</p><p><b>readcdf</b>[nasacdf]   ( string -- object ) reads a cdf file, converting it to an object which contains several streams. 
+</p><p><b>readgrib</b>[grib]   ( -- ) ( filename int -- dataset ) appends int to filename and uses as the name of a gribfile -- continues incrementing until filename is not found referring to all the grib files.  
+</p><p><b>readunits</b>[ingridinit]   ( object string -- object number/string ) converts string to number as appropriate for current units. 
+</p><p><b>rechunktocontaingrids</b>[ingridinit]   ( stream [ grids ] -- stream ) rechunks (and copies) stream so that the grids are within the chunk if necessary. 
+</p><p><b>regridAverage</b>[ingridinit]   ( stream grid grid' [Wmin] -- stream'    or stream1 stream2 [ grid1 ... gridn ] Wght Wmin -- stream1 stream2' ) regrids by averaging. Second form allows regridded multiple grids at once (the Wmin is also optional). 
+</p><p><b>regridAverageVer2</b>[ingridinit]   ( stream1 stream2 [ grid1 grid2 ... ] Wght Wmin -- stream1 stream2' ) regrids stream2 along the named grids to match stream1. A single grid need not be in an array. 
+</p><p><b>removeGRID</b>[ingridinit]   ( stream grid -- stream' ) removes a single-valued grid from stream. 
+</p><p><b>renameGRID</b>[ingridinit]   ( stream grid name -- stream' ) renames grid in stream. 
+</p><p><b>reordertomatch</b>[matchchunk]   ( stream1 stream2 -- stream1 stream2' ) reorders second stream to match the first.  grids in the first stream's chunk are in the second stream's chunk; grids in the first stream's achunk are highest in the second stream's achunk.  Assumes setcommongrids has already been run on the pair. 
+</p><p><b>replaceGRID</b>[ingridinit]   ( stream grid1 grid2 -- stream' ) replaces grid in stream. 
+</p><p><b>replaceGRID</b>[stream]   ( stream oldgrid newgrid -- stream' ) returns a stream where oldgrid is replaced by newgrid in the SIRecord. If the newgrid is null, removes the grid. 
+</p><p><b>replaceNaN</b>[ingridinit]   ( stream value -- stream' ) replaces missing_values in stream with value (which can be a stream).  The stream is then considered to have no missing data. 
+</p><p><b>replacebypercentile</b>[ingridinit]   ( stream [ grids ] p1 ... pn minfrac -- stream' ) computes percentile bounds over given grids. 
+</p><p><b>reserverealization</b>[newfns]   ( stream --  ) schedules single realization for later calls by getrealization. 
+</p><p><b>rightline</b>[fig]   ( stream grid -- ) draws single line with left axis. 
+</p><p><b>rms</b>[ingridinit]   ( A  -- C ) or ( A [ grid1 grid2 ... ] -- AM ) returns rms (mean not removed) of A values.  If [ grid1 ... ] is given, then the mean <i>AM</i> will 
+</p><p><b>rootmeansq0</b>[distrib]   ( A -- AM C ) computes root mean square for a stream A. 
+</p><p><b>rootmeansqanom0</b>[distrib]   ( A -- AM C ) computes root mean square for a stream A. 
+</p><p><b>rotatedata</b>[ingridinit]   ( D X Y X' Y' <i>\alpha</i> ox oy -- D' ) rotates a stream onto a new grid (X' Y'). 
+</p><p><b>rotatedata</b>[testrot]   ( D X Y X' Y' <i>\alpha</i> ox oy -- D' ) rotates a stream onto a new grid (X' Y'). 
+</p><p><b>samplearray</b>[newfns]   ( array N -- array' ) samples array to length N.  If array is shorter than N, returns array unmodified. 
+</p><p><b>scatter</b>[fig]   ( stream1 stream2  -- ) draws scatter plot. 
+</p><p><b>scattercolor</b>[fig]   ( stream1 stream2 stream3 -- ) draws scatter plot with points colored by a third variable. 
+</p><p><b>scatterlabel</b>[fig]   ( stream1 stream2 names/stream3 -- ) draws scatter plot with labelled points. 
+</p><p><b>scatterline</b>[fig]   ( stream1 stream2  -- ) draws scatter plot. 
+</p><p><b>scatterlines</b>[fig]   ( stream1 stream2 stream3 -- ) draws scatter line, one for each stream3 (but no labels). 
+</p><p><b>scattersized</b>[fig]   ( stream1 stream2 stream3 -- ) draws scatter plot with points sized by a third variable. 
+</p><p><b>seasmarkov</b>[ingridinit]    (cov stab or lag0cov1 cov lag0cov0 stab -- dataset ) seasonal markov model from lagged covariance. 
+</p><p><b>seasmarkovI</b>[ingridinit]   ( cov stab -- dataset ) seasonal markov model from lagged covariance. 
+</p><p><b>seasmarkovII</b>[ingridinit]   ( cov1 cov cov0 stab -- ) seasonal markov model from lagged covariance. 
+</p><p><b>seasonalPOPs</b>[kalman]   ( A -- dataset ) calculates seasonal POPs. 
+</p><p><b>selectarray</b>[ingridinit]   ( stream grid -- gridvaluearray ) finds elements of grid that correspond to non-missing-values of stream. 
+</p><p><b>selectarray</b>[newfns]   ( stream grid -- gridvaluearray ) returns grid values that correspond to non-missing values in stream. </p><p><b>selectarray0</b>[newfns]   ( stream grid -- npts gridvalues ) returns a stream of gridvalues that have been picked out by stream (stream and grid should be the same size), i.e. missing_values in stream will be dropped.  Note that gridvalues and npts are streams: they are converted to arrays by selectarray. 
+</p><p><b>setIthGrid</b>[regrid]   ( stream grid i -- stream' ) makes a child stream which has the <i>i_{th}</i> grid {\it grid}. 
+</p><p><b>setLastTaskArgs</b>[ingridinit]   (arg1 .. argn param n -- arg1 .. argn param ) internal word called by Ingrid to set TaskStreams and TaskParameterBlock.  TaskStreams is an array that contains the stream 
+</p><p><b>setSIRecord</b>[matchchunk]   ( stream ptr -- stream' ) sets SIRecord in the current stream.  If it results in a change, a child stream of the original stream is created.  Otherwise, the stream is left unchanged, and the SIRecord is deleted. 
+</p><p><b>setcommongrids</b>[matchchunk]   ( stream1 ... streamN N -- stream1 ... streamN ) samples a set of streams to have matching points (without reordering or repeating). 
+</p><p><b>setfirsttime</b>[grib]   ( year month day hour -- ) sets the first time. </p><p><b>setlasttime</b>[grib]   ( year month day hour -- ) sets subsequent times. These words together keep track of the time grid with quadruplets of integers representing each time. Since the time grids are usually even, firsttime, lasttime, and NT are usually sufficient.  If the grids are not even, then an object alltimes is defined, which stores all the times keyed by NT.  setlasttime is responsible for making that decision.   
+</p><p><b>setgridtype</b>[grid]   ( type --  ) sets grid type: ordered, periodic, or unordered. 
+</p><p><b>setmissing_value</b>[ingridinit]   ( stream value -- stream' ) changes the missing_value (flag for missing data to value. 
+</p><p><b>setplotstream</b>[ingridinit]   ( -- ) initializes plotstream. </p><p><b>nextplotstream</b>[ingridinit]   ( -- ) uses buffer from last task to reset plotstream. 
+</p><p><b>settaskqueue</b>[task]   ( int -- ) sets the queue where tasks will be put. Default is zero, the computational queue. 
+</p><p><b>setunits</b>[grid]   ( units -- ) sets grid units. 
+</p><p><b>shiftGRID</b>[ingridinit]   ( stream  grid delta -- stream' ) shifts grid by delta, i.e. the data is relabeled. 
+</p><p><b>shiftdata</b>[ingridinit]   ( stream grid low high -- stream' ) shifts data in turn by first to last.  Defines a new grid with _lag appended  to the grid name.  Positive lag means data in the output stream has been moved later, i.e. if it is correlated with another dataset it leads by that amount. 
+</p><p><b>showstream</b>[forallstreams]   ( name stream -- ) shows a stream. 
+</p><p><b>showunitsdict</b>[ingridinit]   ( -- object ) contains words that convert units to strings.  
+</p><p><b>sirecord==</b>[stream]   ( -- ) print sirecord of the current stream. 
+</p><p><b>sortbyvariable</b>[forallstreams]   ( dataset -- ) makes an outline of the data catalog/a dataset. 
+</p><p><b>splitgrid</b>[grid]   ( grid real -- grid1 grid2 ) converts a grid into two grids by using {\it real} as the interval in grid2; grid1 indexes within {\it real}. 
+</p><p><b>splitstreamgrid</b>[ingridinit]   ( stream grid largestep -- stream' ) splits grid into two parts: the second grid will have step largestep. 
+</p><p><b>stackreserverealization</b>[newfns]   (  --  )  calls reserverealization for all streams in stack. 
+</p><p><b>standardsetXOVY</b>[ingridinit]   ( -- ) sets XOVY from plot width if not defined. 
+</p><p><b>stateAdvance</b>[kalman]   ( A W -- WF' ) advances state one timestep. 
+</p><p><b>stateAssimilate</b>[kalman]   ( WO K H WF -- WOERR WA ) assimilates observations WO into forecast WF using the sampling model H and the assimilation matrix K.  Returns both the modified model state WA and the data misfits WOERR. 
+</p><p><b>stateEvolution</b>[kalman]   ( WO W(0) T K H A  -- WOERR WA WF ) calculates model state evolution. 
+</p><p><b>sub0</b>[pairdiff]   ( stream1 stream2 -- stream' ) subtracts stream2 from stream1 preserving the chunking of stream1 if stream2 is 1D. 
+</p><p><b>sub</b>[filters]   ( stream1 stream2 -- stream' ) subtracts two streams value by value. 
+</p><p><b>subvssq</b>[ingridinit]   ( stream streams -- stream' ) subtracts a scalar from a vector and squares it.  Streams must have matching achunk and streams has to have chunksize 1. 
+</p><p><b>sums0</b>[pairdiff]   ( stream p -- stream' ) sums along one coordinate of the stream within the chunk. 
+</p><p><b>sums1</b>[pairdiff]   ( streamsum stream p -- stream' ) sums over chunks. 
+</p><p><b>sums</b>[pairdiff]   ( stream grid -- stream' ) sums along grid of stream. 
+</p><p><b>surfaceaverage:integral</b>[ingridinit]   ( stream -- stream' ) returns the X Y average value. 
+</p><p><b>svd</b>[newdata]   ( stream/dataset [ grid1 \ldots gridn ] [ grid1' \ldots gridm'] percent -- dataset ) calculates the singular value decomposition (i.e. Empirical Orthogonal Functions) of an input stream or dataset, returning a dataset containing the structures and eigenvalues.   There are a set of structures S ( grid1 \ldots gridn iev  ) which are normalized to rms 1, a set of structures T ( grid1' \ldots gridm' iev ) such that S*T = stream/dataset, a set of singular values: sv(iev), such that sum(sv*sv) = trace(covariance)/N, and a set of normalized eigenvalues evaln(iev), such that sum(evaln) = 1 (i.e. percentage of variance). All outputs remain functions of any unmentioned grids.  In the case of a dataset input, an optional first array controls whether variables are combined in forming the S structures.  Omitting the array means  eofs will be computed for each variable separately. An empty array means that eofs will be computed averaging over all variables.  If the array has elements, each subelement results in a separate set of eofs: variables listed within a subelement are combined together.  For example, if the dataset contains the four variables u,v,sst,h: \begin{description} \item means there will be separate eofs for u,v,sst,h, and the output   dataset eofs will contain svd.u.Ss, svd.v.Ss, etc, \item[[]] means there will be one set of eofs, including components   for u,v,sst,h, and the output dataset will contain svd.Ss, svd.Ts,   etc, and \item[[[u v] sst h]] means there will be separate eofs for (u,v), sst,   and h and the output dataset will contain svd.u_v.Ss svd.sst.Ss,   svd.h.Ss, etc.  Note that svd.u_v.Ss.u are the structures for u, and   svd.u_v.Ss.v are the structures for v, while svd.u_v.Ts are the   time series for the combined variables. \end{description}  Note that usually different variables with different units have to be renormalized so that it makes sense to combine them.  That can be done in the specification of variables, namely \begin{description} \item[[u 20 div v 20 div sst 100 div h 1000 div ]] means there will be   one set of eofs using the renormalized variables. \end{description} 
+</p><p><b>tablefunction</b>[ingridinit]   ( A(...) B(A) -- B(...) or A(...) A2(Z ...) [Z] -- Z(...) ) converts a stream A to a stream B using a table B(A) (a 1D stream). 
+</p><p><b>thisfigure</b>[fig]   ( plotobject label -- plotobject ) prints link to plain page version of current plotobject. 
+</p><p><b>timetable.tsv</b>[ingridinit]   ( stream1 ... streamN N -- ) makes table. 
+</p><p><b>toGrADStime</b>[grads]   ( real -- string ) converts to GrADS time format according to units. 
+</p><p><b>toNaN</b>[ingridinit]   ( stream -- stream' ) changes missing_values into NaNs. Uses either missing_value or valid_range flags. 
+</p><p><b>total0</b>[distrib]   ( A -- AM C ) computes sum for a stream A. 
+</p><p><b>transit</b>[bilin]   ( D(X,Y) X(S) Y(S) S -- D(S) ) given a stream D(X,Y) and a ship track X(S), Y(S), returns D(S). 
+</p><p><b>translateNASAatts</b>[ingridinit]   ( stream -- stream' ) defines Ingrid versions of all the NASA cdf attributes. 
+</p><p><b>trimulsum</b>[legendre]   ( stream(sp) stream(sp,lat) nx -- stream'(k_x,lat) ) does mulsum of legendre polynomials with spectral coefficients.    
+</p><p><b>trimulsuminv</b>[legendre]   ( stream(k_X,lat) stream(sp,lat)  -- stream'(sp) ) does mulsum of legendre polynomials with zonal Fourier transform.    
+</p><p><b>tsptogau</b>[legendre]   ( stream nx ny -- stream' ) converts spectral coefficients to lon/lat. </p><p><b>gautotsp</b>[legendre]   ( stream nwave -- stream' ) converts lon/lat to spectral coefficients. 
+</p><p><b>tsptogauR</b>[legendre]   ( stream nx ny -- stream' ) converts spectral coefficients to lon/lat. </p><p><b>gautotsp</b>[legendre]   ( stream nwave -- stream' ) converts lon/lat to spectral coefficients. 
+</p><p><b>units</b>[grid]   ( -- units ) returns grid units. 
+</p><p><b>unsplitstreamgrid</b>[ingridinit]   ( stream grid -- stream' ) undoes the splitting done by splitstreamgrid. 
+</p><p><b>value</b>[ingridinit]   ( color value -- ) interprets value  as desired center of one of the maxncolor-3 color boxes. 
+</p><p><b>vectors</b>[fig]   ( stream1 stream2 grid1 grid2 -- ) does vector map. 
+</p><p><b>viewimagelink.html</b>[fig]   ( plotobject  -- ) creates an img link to an image with anchor to the view page.  Assumes imageurl already set. 
+</p><p><b>vmufsf</b>[kalman]   ( cov vector grid -- cov ) multiply a covariance matrix by a vector on both sides. 
+</p><p><b>wf_define_dataset_attributes</b>[ingridinit]   ( dataset -- ) defines attributes for dataset.  
+</p><p><b>wf_define_variable_attributes</b>[ingridinit]   ( stream --  ) copies attributes from stream to cuf/cdf file. 
+</p><p><b>width96</b>[ingridinit]   ( A -- stream ) computes the 96 precentile widths. 
+</p><p><b>wr.r4</b>[newfns]   ( stream file -- ) writes stream to random access file. </p><p><b>wrda</b>[newfns]    ( stream offset file -- ) writes data to random access file. </p><p><b>wrda0</b>[newfns]   ( stream p -- ) writes data. 
+</p><p><b>wrNaN</b>[newfns]   (  stream name  -- ) writes NaN to file. 
+</p><p><b>wrdai</b>[newfns]   ( array offset name  -- ) writes data. 
+</p><p><b>writeCUF</b>[ingridinit]   ( dataset filename -- ) writes dataset to file filename. If the filename is null, writes to standard output.    This word opens the file, defines all the attributes and variables, and submits tasks to write the variables to the file. 
+</p><p><b>writeGrADS</b>[grads]   ( stream filename -- ) writes a pair of files for input to GrADS. 
+</p><p><b>writegrads0</b>[grads]   ( stream p -- ) actually writes data 
+</p><p><b>yearlymodel</b>[ingridinit]   ( A -- Y ) converts a set of seasonal lagged models A into  yearly transition matrices, starting with the first month only. 
+</p><p><b>yearlymodels</b>[covar]   ( -- ) converts markov models at various lags to yearly lags. 
+</p><p><b>yearlymodels</b>[ingridinit]   ( A -- Y ) converts a set of seasonal lagged models A into a set of year transition matrices. 
+</p><p><b>zeroline</b>[fig]   ( grid1 -- ) draws zeroline. 
+</p>
+<div class="optionsBar">
+<fieldset class="navitem" id="share"><legend>Share</legend></fieldset>
+<fieldset class="navitem" id="contactus"></fieldset>
+</div>
+</body></html>
