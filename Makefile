@@ -84,6 +84,7 @@ maproom:
 	echo 'tabs.nt' >> $@
 	echo 'tabs.xml' >> $@
 	echo 'topindex.owl' >> $@
+	echo 'index.xhtml' >> $@
 	echo '.gitignore' >> $@
 	echo 'maproom' >> $@
 	echo 'linkexternalmaproom.owl' >> $@
